@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+<div class="artigo-wrapper">
+  <nav class="menu artigo-nav" aria-label="Voltar ao início">
+    <ul>
+      <li><a href="{{ '/' | relative_url }}">← Home</a></li>
+    </ul>
+  </nav>
+
+  <h1>Projects & Softwares</h1>
+
+  <ul class="rss-list">
+    {% for software in site.softwares %}
+    <li class="rss-item">
+    <h4><a href="{{ software.github }}" target="_blank" rel="noopener noreferrer">{{ software.title }}</a></h4>
+    {% if software.subtitle %}<p>{{ software.subtitle }}</p>{% endif %}
+    {% if software.language %}
+    <span class="rss-meta">{{ software.language }}</span>
+    {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</div>

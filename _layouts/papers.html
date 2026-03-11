@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<div class="artigo-wrapper">
+  <nav class="menu artigo-nav" aria-label="Voltar ao início">
+    <ul>
+      <li><a href="{{ '/' | relative_url }}">← Home</a></li>
+    </ul>
+  </nav>
+
+  <h1>Papers</h1>
+
+  <ul class="rss-list">
+    {% assign sorted = site.papers | sort: "date" | reverse %}
+    {% for paper in sorted %}
+    <li class="rss-item">
+      <h4><a href="{{ paper.url | relative_url }}">{{ paper.title }}</a></h4>
+      <span class="rss-meta">{{ paper.date | date: "%d de %B de %Y" }}</span>
+      {% if paper.subtitle %}<p>{{ paper.subtitle }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</div>

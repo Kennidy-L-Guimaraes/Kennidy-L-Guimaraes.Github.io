@@ -1,0 +1,37 @@
+title: "Kennidy L. Guimarães"
+description: "Writer and Software Developer"
+baseurl: ""
+url: ""
+lang: "pt-br"
+
+author:
+  name: "Kennidy L. Guimarães"
+  role: "Writer and software developer"
+  github: "Kennidy-L-Guimaraes"
+  instagram: "Kennidy.L.Guimaraes"
+  twitter: "kennidyl.guimaraes"
+  medium: "kennidylguimaraes"
+  avatar: "/assets/img/HarpyFortofBrazil.png"
+  email: "kennidylguimaraes@gmail.com"
+  address: "Florianópolis, Brazil"
+
+future: true
+
+markdown: kramdown
+
+plugins:
+  - jekyll-seo-tag
+
+collections:
+  softwares:
+    output: true
+    permalink: /softwares/:name/
+  papers:
+    output: true
+    permalink: /papers/:name/
+  articles:
+    output: true
+    permalink: /articles/:name/
+  essays:
+    output: true
+    permalink: /essays/:name/

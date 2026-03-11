@@ -1,0 +1,29 @@
+<div class="footer-grid">
+    <div>
+        <h4>Contact</h4>
+        <ul>
+            {% if site.author.email %}
+            <li>Email: <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
+            {% endif %}
+            {% if site.author.address %}
+            <li>Address: {{ site.author.address }}</li>
+            {% endif %}
+            {% if site.author.phone %}
+            <li>Number: {{ site.author.phone }}</li>
+            {% endif %}
+        </ul>
+    </div>
+    <div>
+        <h4>Quick Links</h4>
+        <ul>
+            <li><a href="{{ '/articles/' | relative_url }}">Articles</a></li>
+        <li><a href="{{ '/papers/' | relative_url }}">Papers</a></li>
+        <li><a href="{{ '/essays/' | relative_url }}">Essays</a></li>
+        <li><a href="{{ '/softwares/' | relative_url }}">Projects & Softwares</a></li>
+        <!--<li><a href="{{ '/#certificacoes' | relative_url }}">Certificações</a></li>-->
+        <li><a href="https://www.theinstituteoflogic.com/members/kennidylguimaraes" target="_blank" rel="noopener noreferrer">TIOL Member</a></li>
+            <li><a href="https://github.com/Kennidy-L-Guimaraes" target="_blank">GitHub</a></li>
+        </ul>
+    </div>
+</div>
+<p>&copy; {{ 'now' | date: "%Y" }} {{ site.author.name }}. All rights reserved. (All essays and articles are licensed under CC BY-ND 4.0)</p>

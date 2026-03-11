@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+<div class="grid">
+    <div class="sidebar">
+        {% include nav.html %}
+        {% include social.html %}
+    </div>
+
+    <div class="main-content">
+        <img src="{{ site.author.avatar }}" alt="{{ site.author.name }}" class="profile-img" loading="lazy">
+        <h1>{{ site.author.name }}</h1>   
+        <hr></hr>
+        <h2>{{ site.author.role }}</h2>
+     
+
+        {{ content }}
+
+        <!--<div class="rss-feed-section">
+            <h3>Artigos Recentes (Medium)</h3>
+            <ul id="medium-articles" class="rss-list" aria-live="polite">
+                <li class="rss-item"><p>Carregando artigos…</p></li>
+            </ul>
+        </div>-->
+
+        <div class="rss-feed-section">
+            <h3>Recent Repositories (GitHub)</h3>
+            <ul id="github-repos" class="rss-list" aria-live="polite">
+                <li class="rss-item"><p>Loading Repositories...</p></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% include scripts.html %}

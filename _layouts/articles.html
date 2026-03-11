@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<div class="artigo-wrapper">
+  <nav class="menu artigo-nav" aria-label="Voltar ao início">
+    <ul>
+      <li><a href="{{ '/' | relative_url }}">← Home</a></li>
+    </ul>
+  </nav>
+
+  <h1>Articles</h1>
+
+  <ul class="rss-list">
+    {% assign sorted = site.articles | sort: "date" | reverse %}
+    {% for article in sorted %}
+    <li class="rss-item">
+      <h4><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h4>
+      <span class="rss-meta">{{ article.date | date: "%d de %B de %Y" }}</span>
+      {% if article.subtitle %}<p>{{ article.subtitle }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</div>

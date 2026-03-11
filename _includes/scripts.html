@@ -1,0 +1,65 @@
+<script>
+    function truncateWords(text, max = 26) {
+        const words = text.replace(/\s+/g,' ').trim().split(' ');
+        if (words.length <= max) return text;
+        return words.slice(0, max).join(' ') + '…';
+    }
+
+    async function fetchMediumRSS() {
+        const target = document.getElementById('medium-articles');
+        const feedUrl = 'https://medium.com/feed/@{{ site.author.medium }}';
+        try {
+            const res = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(feedUrl));
+            const xml = new DOMParser().parseFromString(await res.text(), 'text/xml');
+            const items = Array.from(xml.querySelectorAll('item')).slice(0, 5);
+            if (!items.length) throw new Error('Sem itens');
+            target.innerHTML = items.map(el => {
+                const title = el.querySelector('title')?.textContent ?? 'Sem título';
+                const link = el.querySelector('link')?.textContent ?? '#';
+                const pubDate = el.querySelector('pubDate') ? new Date(el.querySelector('pubDate').textContent).toLocaleDateString('pt-BR') : '';
+                const contentNode = el.getElementsByTagName('content:encoded')[0] || el.querySelector('encoded, description');
+                let snippet = '', image = '';
+                if (contentNode) {
+                    const temp = document.createElement('div');
+                    temp.innerHTML = contentNode.textContent;
+                    const p = temp.querySelector('p');
+                    const img = temp.querySelector('img');
+                    snippet = p ? `<p>${truncateWords(p.textContent, 36)}</p>` : '';
+                    image = img ? `<img src="${img.src}" alt="${title}">` : '';
+                }
+                return `<li class="rss-item"><h4><a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a></h4><span class="rss-meta">Publicado em: ${pubDate}</span>${image}${snippet}</li>`;
+            }).join('');
+        } catch(e) {
+            try {
+                const res2 = await fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl));
+                const data = await res2.json();
+                if (!data.items?.length) throw new Error('Sem itens');
+                target.innerHTML = data.items.slice(0,5).map(item => {
+                    const temp = document.createElement('div');
+                    temp.innerHTML = item.content || item.description || '';
+                    const p = temp.querySelector('p');
+                    const img = temp.querySelector('img');
+                    const pubDate = item.pubDate ? new Date(item.pubDate).toLocaleDateString('pt-BR') : '';
+                    return `<li class="rss-item"><h4><a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a></h4><span class="rss-meta">Publicado em: ${pubDate}</span>${img ? `<img src="${img.src}" alt="${item.title}">` : ''}${p ? `<p>${truncateWords(p.textContent, 36)}</p>` : ''}</li>`;
+                }).join('');
+            } catch(err) {
+                target.innerHTML = '<li class="rss-item"><p>Não foi possível carregar os artigos do Medium agora.</p></li>';
+            }
+        }
+    }
+
+    async function fetchGitHubRepos() {
+        const target = document.getElementById('github-repos');
+        try {
+            const res = await fetch('https://api.github.com/users/{{ site.author.github }}/repos?sort=updated&per_page=6', { headers: { 'Accept': 'application/vnd.github+json' }});
+            const repos = await res.json();
+            if (!Array.isArray(repos) || !repos.length) throw new Error('Sem repositórios');
+            target.innerHTML = repos.map(r => `<li class="rss-item"><h4><a href="${r.html_url}" target="_blank" rel="noopener noreferrer">${r.name}</a></h4><span class="rss-meta">Atualizado em: ${new Date(r.updated_at).toLocaleDateString('pt-BR')}</span><p>${r.description ? truncateWords(r.description, 32) : 'Sem descrição.'}</p></li>`).join('');
+        } catch(e) {
+            target.innerHTML = '<li class="rss-item"><p>Não foi possível carregar os repositórios do GitHub.</p></li>';
+        }
+    }
+
+    fetchMediumRSS();
+    fetchGitHubRepos();
+</script>
