@@ -24,7 +24,7 @@ The use of algorithms that generate pseudo-random values has become increasingly
 
 Although working with truly "random" values is impractical under the deterministic rules that govern computing, working with **pseudo-random values** is a functional and well-understood approach.
 
-The **Mersenne Twister** algorithm (Makoto Matsumoto and Takuji Nishimura) [[1]](#references) was chosen as the mathematical foundation, having proven efficient and reliable across diverse scenarios. Its primary appeal is its extraordinarily long period before repetition:
+The **Mersenne Twister** algorithm (Makoto Matsumoto and Takuji Nishimura) [[1]](#ref-1) was chosen as the mathematical foundation, having proven efficient and reliable across diverse scenarios. Its primary appeal is its extraordinarily long period before repetition:
 
 <div class="math-block">
 
