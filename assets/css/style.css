@@ -370,6 +370,7 @@ h2 {
     margin-bottom: 20px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    font-weight: bold;
 }
 
 h3 {
@@ -411,6 +412,15 @@ p a {
     text-decoration: none;
     border-bottom: 1px solid rgba(138, 122, 103, 0.35);
     transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+/* ---------- Citações inline [N] ---------- */
+.artigo-corpo a[href^="#ref-"] {
+    color: #8B0000;
+    text-decoration: none;
+    pointer-events: none;
+    cursor: default;
+    background-color: #8b00001e;
 }
 
 p a:hover {
