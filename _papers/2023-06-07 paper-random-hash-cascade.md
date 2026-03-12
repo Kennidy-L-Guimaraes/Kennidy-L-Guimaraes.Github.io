@@ -92,7 +92,7 @@ These arrays are then composed into a higher-order structure:
 
 <div class="math-block">
 
-$$V_{09} = [\, V_{08} + V_{07} + V_{09} + \cdots \,]$$
+$$V_{09} = [\, V_{08} + V_{07} + V_{06} + \cdots \,]$$
 
 </div>
 
