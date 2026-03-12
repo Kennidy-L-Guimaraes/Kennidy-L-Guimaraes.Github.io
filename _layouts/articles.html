@@ -16,7 +16,7 @@ layout: default
     {% for article in sorted %}
     <li class="rss-item">
       <h4><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h4>
-      <span class="rss-meta">{{ article.date | date: "%d de %B de %Y" }}</span>
+      <span class="rss-meta">{{ article.date | date: "%B  %d , %Y" }}</span>
       {% if article.subtitle %}<p>{{ article.subtitle }}</p>{% endif %}
     </li>
     {% endfor %}

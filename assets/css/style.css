@@ -505,6 +505,55 @@ h3::before {
     margin-bottom: 10px;
 }
 
+
+/* ─────────────────────────────────────────────
+   math-block — RHC / Technical Article Style
+   Light theme | Minimalist border | Math font
+──────────────────────────────────────────────── */
+
+.math-block {
+  /* Background: slightly stronger than page white */
+  background-color: #f0f0edcc;
+
+  /* Minimalist left border */
+  border-left: 3px solid #b0a898dd;
+
+  /* Spacing */
+  padding: 1rem 1.5rem;
+  margin: 1.75rem 0;
+
+  /* Subtle rounding */
+  border-radius: 4px;
+
+  /* Math-style font stack */
+  font-family: "Computer Modern", "Latin Modern Math", "STIX Two Math",
+               "Times New Roman", serif;
+  font-size: 1.05rem;
+
+  /* Prevent overflow on narrow screens */
+  overflow-x: auto;
+
+  /* Light shadow for depth without noise */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* Tighten spacing between stacked equations inside a block */
+.math-block .MathJax,
+.math-block mjx-container {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 640px) {
+  .math-block {
+    padding: 0.75rem 1rem;
+    font-size: 0.97rem;
+  }
+}
+
+
+
 /* Rodapé aprimorado */
 footer {
     text-align: center;

@@ -20,7 +20,7 @@ layout: default
             {% endif %}
             <div class="artigo-meta">
                 {% if page.date %}
-                <span><i class="far fa-calendar"></i> {{ page.date | date: "%d de %B de %Y" }}</span>
+                <span><i class="far fa-calendar"></i> {{ page.date | date: "%B  %d , %Y" }}</span>
                 {% endif %}
                 <span><i class="far fa-user"></i> {{ page.author | default: site.author.name }}</span>
             </div>
@@ -35,7 +35,7 @@ layout: default
 
     {% if page.references %}
     <section class="referencias" aria-label="Referências bibliográficas">
-        <span class="referencias-cabecalho">Referências</span>
+        <span class="referencias-cabecalho">References</span>
         <ol>
             {% for ref in page.references %}
             <li>{{ ref | markdownify | remove: '<p>' | remove: '</p>' }}</li>

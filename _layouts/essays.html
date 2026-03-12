@@ -16,7 +16,7 @@ layout: default
     {% for essay in sorted %}
     <li class="rss-item">
       <h4><a href="{{ essay.url | relative_url }}">{{ essay.title }}</a></h4>
-      <span class="rss-meta">{{ essay.date | date: "%d de %B de %Y" }}</span>
+      <span class="rss-meta">{{ essay.date | date: "%B  %d , %Y" }}</span>
       {% if essay.subtitle %}<p>{{ essay.subtitle }}</p>{% endif %}
     </li>
     {% endfor %}
