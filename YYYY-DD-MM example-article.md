@@ -62,6 +62,13 @@ related:
 "[INSERT QUOTE]" — [Source Name, Document Title (Year)]
 </span>
 
+## Include Graph Mermaid
+<pre class="mermaid"> 
+
+ *HERE
+
+</pre> 
+
 ---
 
 ### [Section 3 Title — Optional]
