@@ -21,6 +21,9 @@ markdown: kramdown
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-mermaid
+mermaid:
+  src: 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js'
 
 collections:
   softwares:

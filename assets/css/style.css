@@ -1,3 +1,21 @@
+/* ---------- Efeito de Entrada ---------- */
+
+body {
+    animation: fadein 0.5s ease;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ---------- Efeito de seleção do texto ---------- */
+::selection {
+    background: rgba(155, 106, 28, 0.15);
+    color: var(--cor-texto);
+}
+
+
 /* ============================================================
    artigo.css — Página de artigo
    ============================================================ */
@@ -416,11 +434,11 @@ p a {
 
 /* ---------- Citações inline [N] ---------- */
 .artigo-corpo a[href^="#ref-"] {
-    color: #8B0000;
+    color: #8b4f00;
     text-decoration: none;
     pointer-events: none;
     cursor: default;
-    background-color: #8b00001e;
+    background-color: #8b5f001e;
 }
 
 p a:hover {

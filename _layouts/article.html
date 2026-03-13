@@ -44,19 +44,30 @@ layout: default
     </section>
     {% endif %}
 
-    {% if page.related %}
+    {% assign related_posts = site.articles | concat: site.papers | concat: site.essays %}
+    {% assign filtered = related_posts | where_exp: "item", "item.url != page.url" %}
+    {% assign matches = "" | split: "" %}
+    {% for item in filtered %}
+    {% for cat in item.categories %}
+        {% if page.categories contains cat %}
+        {% assign matches = matches | push: item %}
+        {% break %}
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+
+    {% if matches.size > 0 %}
     <section class="similares" aria-label="Artigos similares">
-        <span class="similares-cabecalho">Artigos Similares</span>
+        <span class="similares-cabecalho">Related</span>
         <div class="similares-grid">
-            {% for item in page.related %}
-            <a class="similar-card" href="{{ item.url | default: '#' }}">
-                <span class="similar-card-categoria">{{ item.category }}</span>
+            {% for item in matches limit: 3 %}
+            <a class="similar-card" href="{{ item.url | relative_url }}">
+                <span class="similar-card-categoria">{{ item.categories | first }}</span>
                 <span class="similar-card-titulo">{{ item.title }}</span>
-                <span class="similar-card-data">{{ item.date }}</span>
+                <span class="similar-card-data">{{ item.date | date: "%Y" }}</span>
             </a>
             {% endfor %}
         </div>
     </section>
     {% endif %}
-
 </div>

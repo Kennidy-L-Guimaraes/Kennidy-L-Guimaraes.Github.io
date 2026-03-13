@@ -6,3 +6,5 @@ gem "jekyll-seo-tag"
 group :jekyll_plugins do
   gem "jekyll-seo-tag"
 end
+
+gem "jekyll-mermaid", "~> 1.0"
