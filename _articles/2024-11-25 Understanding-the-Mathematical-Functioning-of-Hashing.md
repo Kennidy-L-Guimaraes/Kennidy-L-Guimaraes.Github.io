@@ -35,9 +35,9 @@ The focus here is SHA-256, a member of the SHA-2 family. It is worth clarifying 
 
 SHA-256 is a cryptographic hash function that transforms any input data into a fixed-size output of **256 bits (32 bytes)**, regardless of the size of the original input. For example, applying SHA-256 to the string `"pizza"` produces the following deterministic value:
 
-```
+<div class="math-block">
 9ed1515819dec61fd361d5fdabb57f41ecce1a5fe1fe263b98c0d6943b9b232e
-```
+</div>
 
 This output — referred to as a **hash** or **digest** — is computationally infeasible to reverse to the original input. This one-way property is foundational to its use in security and data integrity applications.
 
@@ -54,7 +54,9 @@ The algorithm is built upon two well-established constructions:
 
 SHA-256 belongs to the **SHA-2 family**, which includes SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, and SHA-512/256 — each differing in output size and internal word length.
 
-> "We recommend that anyone relying on SHA-1 for security migrate to SHA-2 or SHA-3 as soon as possible." — Chris Celi, NIST scientist.
+<span class="destaque-bloco">
+"We recommend that anyone relying on SHA-1 for security migrate to SHA-2 or SHA-3 as soon as possible." — Chris Celi, NIST scientist.
+</span>
 
 In **2005**, Professor Xiaoyun Wang announced a differential attack against SHA-1 demonstrating a viable path to finding **hash collisions** — two distinct inputs that produce the same digest. This vulnerability does not affect SHA-256, but it underscores why the migration away from SHA-1 is necessary. The NIST formally recommends full deprecation of SHA-1 by **December 31, 2030**.
 
@@ -85,10 +87,10 @@ SHA-256 guarantees that the same input always produces the same output — a pro
 
 Compare:
 
-```
+<div class="math-block">
 SHA-256("pizza") = 9ed1515819dec61fd361d5fdabb57f41ecce1a5fe1fe263b98c0d6943b9b232e
 SHA-256("Pizza") = 10fd14157...
-```
+</div>
 
 The internal processing of SHA-256 occurs in five distinct phases:
 
@@ -104,19 +106,19 @@ The internal processing of SHA-256 occurs in five distinct phases:
 
 The input string is first converted to its binary representation. Using `"pizza"` as an example:
 
-```
+<div class="math-block">
 p = 01110000
 i = 01101001
 z = 01111010
 z = 01111010
 a = 01100001
-```
+</div>
 
 Concatenated, this yields 40 bits:
 
-```
+<div class="math-block">
 0111000001101001011110100111101001100001
-```
+</div>
 
 SHA-256 operates on **512-bit blocks**. Since our input is only 40 bits, a **padding** procedure is applied to bring the total to exactly 512 bits:
 
