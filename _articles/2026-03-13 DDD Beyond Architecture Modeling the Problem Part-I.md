@@ -2,7 +2,7 @@
 layout: article
 title: "DDD in practice: from problem to model - Part I"
 subtitle: "Serie: Domain-Driven Design: From Problem to Code. Why domain modeling matters more than the pattern itself"
-date: 2026-03-23
+date: 2026-03-13
 author: "Author Name"
 categories: [software-architecture, domain-driven-design]
 series: "ddd-in-practice"
