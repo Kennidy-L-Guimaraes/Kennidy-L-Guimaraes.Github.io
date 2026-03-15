@@ -16,10 +16,6 @@ author:
   address: "Florianópolis, Brazil"
 
 future: true
-
-include:
-  - _files
-
 markdown: kramdown
 
 plugins:
