@@ -17,6 +17,9 @@ author:
 
 future: true
 
+include:
+  - _files
+
 markdown: kramdown
 
 plugins:
