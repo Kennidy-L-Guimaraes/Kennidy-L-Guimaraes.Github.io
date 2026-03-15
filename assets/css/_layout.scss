@@ -1,0 +1,67 @@
+// ============================================================
+// _layout.scss — Page structure: container, grid, sidebar
+// ============================================================
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+// --- Two-column grid (sidebar + main) ---
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+// --- Main content area ---
+.main-content {
+    padding-top: 40px;
+    text-align: center;
+}
+
+// --- Profile image ---
+.profile-img {
+    max-width: 200px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 20px;
+    border: var(--borda-fina);
+}
+
+// --- Sidebar ---
+.sidebar {
+    padding-top: 40px;
+    border-top: var(--borda-fina);
+
+    @media (min-width: 768px) {
+        border-top: none;
+        border-right: var(--borda-fina);
+        padding-right: 40px;
+    }
+}
+
+// --- Social links ---
+.social-links {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    a {
+        text-decoration: none;
+        color: var(--cor-link);
+        font-size: 1.05rem;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &:hover { color: var(--cor-destaque); }
+    }
+}

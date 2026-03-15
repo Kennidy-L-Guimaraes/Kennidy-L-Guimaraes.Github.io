@@ -2,7 +2,10 @@
 layout: default
 ---
 
-<nav class="menu artigo-nav" aria-label="Voltar ao início">
+<!-- Reading progress bar — styled via _progress.scss -->
+<div class="leitura-progresso" id="leitura-progresso"></div>
+
+<nav class="menu artigo-nav" aria-label="Back to home">
     <ul>
         <li><a href="{{ '/' | relative_url }}">← Home</a></li>
         <li><a href="{{ '/articles/' | relative_url }}">Articles & Papers</a></li>
@@ -20,21 +23,54 @@ layout: default
             {% endif %}
             <div class="artigo-meta">
                 {% if page.date %}
-                <span><i class="far fa-calendar"></i> {{ page.date | date: "%B  %d , %Y" }}</span>
+                <span><i class="far fa-calendar"></i> {{ page.date | date: "%B %d, %Y" }}</span>
                 {% endif %}
                 <span><i class="far fa-user"></i> {{ page.author | default: site.author.name }}</span>
+                <span class="artigo-tempo-leitura" id="tempo-leitura"></span>
             </div>
         </div>
     </header>
 
     <hr class="artigo-divider">
 
-    <article class="artigo-corpo">
+    {% if page.series %}
+    {% assign serie_posts = site.articles | concat: site.papers | concat: site.essays
+        | where: "series", page.series
+        | sort: "series_part" %}
+    {% assign serie_total = serie_posts | size %}
+    <div class="serie-callout">
+        <div class="serie-callout-inner">
+            <span class="serie-callout-label">Series</span>
+            <div class="serie-callout-info">
+                <span class="serie-callout-titulo">{{ page.subtitle | split: "Serie:" | last | strip }}</span>
+                <span class="serie-callout-parte">Part {{ page.series_part }} of {{ serie_total }}</span>
+            </div>
+            {% if serie_total > 1 %}
+            <nav class="serie-callout-nav">
+                {% for item in serie_posts %}
+                <a href="{{ item.url | relative_url }}"
+                   class="serie-callout-item {% if item.url == page.url %}ativo{% endif %}">
+                    <span class="serie-callout-item-num">{{ item.series_part }}</span>
+                    <span class="serie-callout-item-titulo">{{ item.title }}</span>
+                </a>
+                {% endfor %}
+            </nav>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    <aside class="toc" id="toc" aria-label="Table of contents">
+        <span class="toc-cabecalho">Contents</span>
+        <nav id="toc-lista"></nav>
+    </aside>
+
+    <article class="artigo-corpo" id="artigo-corpo">
         {{ content }}
     </article>
 
     {% if page.references %}
-    <section class="referencias" aria-label="Referências bibliográficas">
+    <section class="referencias" aria-label="References">
         <span class="referencias-cabecalho">References</span>
         <ol>
             {% for ref in page.references %}
@@ -57,7 +93,7 @@ layout: default
     {% endfor %}
 
     {% if matches.size > 0 %}
-    <section class="similares" aria-label="Artigos similares">
+    <section class="similares" aria-label="Related articles">
         <span class="similares-cabecalho">Related</span>
         <div class="similares-grid">
             {% for item in matches limit: 3 %}
@@ -70,4 +106,25 @@ layout: default
         </div>
     </section>
     {% endif %}
+
 </div>
+
+<!-- Back to top button -->
+<button class="voltar-topo" id="voltar-topo" aria-label="Back to top">↑</button>
+
+<!-- Lightbox overlay -->
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Expanded image">
+    <button class="lightbox-fechar" id="lightbox-fechar" aria-label="Close">&#x2715;</button>
+    <div class="lightbox-conteudo">
+        <img id="lightbox-img" src="" alt="">
+        <div id="lightbox-svg"></div>
+        <span class="lightbox-legenda" id="lightbox-legenda"></span>
+    </div>
+</div>
+
+<!-- Article scripts — order matters -->
+<script src="{{ '/assets/js/progress.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/reading-time.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/toc.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/lightbox.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/code-blocks.js' | relative_url }}"></script>

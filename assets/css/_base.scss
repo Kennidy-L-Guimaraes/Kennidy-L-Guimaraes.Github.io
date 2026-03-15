@@ -1,0 +1,96 @@
+// ============================================================
+// _base.scss — Reset, global typography, and body defaults
+// ============================================================
+
+// --- Reset ---
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+// --- Body ---
+body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.8;
+    padding: 20px;
+    animation: fadein 0.5s ease;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+// --- Text selection ---
+::selection {
+    background: rgba(155, 106, 28, 0.15);
+    color: var(--cor-texto);
+}
+
+// --- Headings ---
+h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--cor-destaque);
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    color: var(--cor-destaque);
+    border-bottom: var(--borda-fina);
+    padding-bottom: 5px;
+
+    // Ornament before h3 (suppressed inside article body via _article.scss)
+    &::before {
+        content: '❦';
+        display: block;
+        text-align: center;
+        color: var(--cor-destaque);
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+}
+
+h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+ul {
+    list-style: none;
+    text-align: left;
+}
+
+ul.link-list li { margin-bottom: 10px; }
+
+// --- Inline links ---
+p a {
+    color: var(--cor-link);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(138, 122, 103, 0.35);
+    transition: color 0.25s ease, border-color 0.25s ease;
+
+    &:hover {
+        color: var(--cor-destaque);
+        border-bottom-color: var(--cor-destaque);
+    }
+}

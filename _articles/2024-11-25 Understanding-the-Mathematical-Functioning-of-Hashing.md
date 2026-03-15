@@ -134,7 +134,7 @@ $$M' = M \;\|\; 1 \;\|\; 0^k \;\|\; \langle |M| \rangle_{64}$$
 
 </div>
 
-where $k$ is chosen so that $|M'| \equiv 0 \pmod{512}$. For `"pizza"`, this requires appending 472 bits (1 bit + approximately 407 zero bits + 64 length bits).
+where $k$ is chosen so that $\|M'\| \equiv 0 \pmod{512}$. For `"pizza"`, this requires appending 472 bits (1 bit + approximately 407 zero bits + 64 length bits).
 
 ---
 
@@ -315,9 +315,9 @@ Both SHA-256 and SHA-512 remain considered secure for cryptographic applications
 ---
 
 ## Author's Note
-
+<div class="nota-autor">
 This article focuses on the general cryptographic use of SHA-256 within the SHA-2 family. Hash functions serve a broader range of purposes — including hash tables, content addressing, and data deduplication — which are outside the scope of this discussion.
 
 The mathematical representations in Section 6 follow the official FIPS 180-4 specification. Where simplified notation is used, it is explicitly marked as such.
-
+</div>
 ---

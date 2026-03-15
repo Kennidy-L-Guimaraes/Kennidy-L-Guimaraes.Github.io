@@ -1,21 +1,39 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en-us' }}">
+
+<!-- ============================================================
+     HEAD — Meta, fonts, and stylesheets
+     ============================================================ -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title: uses article title + author name, or site title as fallback -->
     <title>{% if page.title %}{{ page.title }} — {{ site.author.name }}{% else %}{{ site.title }}{% endif %}</title>
 
+    <!-- Google Fonts: Cormorant Garamond (editorial body) + JetBrains Mono (code blocks) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome: icon library used in article meta (calendar, user, clock) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Main stylesheet (compiled from assets/css/style.scss) -->
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+    <!-- Favicon: only injected on article pages -->
     {% if page.layout == 'article' %}
-    <!--<link rel="stylesheet" href="{{ '/assets/css/artigo.css' | relative_url }}">-->
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"> 
-    {% endif %} 
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    {% endif %}
 </head>
+
+<!-- ============================================================
+     BODY
+     ============================================================ -->
 <body>
+
+    <!-- Main content wrapper — max-width and centering defined in _layout.scss -->
     <div class="container">
         {{ content }}
 
@@ -23,23 +41,205 @@
             {% include footer.html %}
         </footer>
     </div>
-    <script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$']],        /* Ativa $...$ para inline */
-      displayMath: [['$$', '$$']],     /* Ativa $$...$$ para blocos */
-      tags: 'none'
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-</script>
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
+    <!-- ============================================================
+         NEW ARTICLE POPUP
+         - Shown only on the home page
+         - Pulls the most recent article across all collections
+         - Dismissed per session via sessionStorage
+         - Reappears automatically when a new article is published
+         ============================================================ -->
+    {% if page.url == '/' or page.url == '/index.html' %}
+    {% assign all_posts = site.articles | concat: site.papers | concat: site.essays | sort: 'date' | reverse %}
+    {% assign latest = all_posts | first %}
+    {% if latest %}
+
+    <div class="novo-artigo" id="novo-artigo" role="status" aria-live="polite">
+        <div class="novo-artigo-inner">
+
+            <!-- Top row: badge, publication date, close button -->
+            <div class="novo-artigo-topo">
+                <span class="novo-artigo-label">New</span>
+                <span class="novo-artigo-data">{{ latest.date | date: "%b %d, %Y" }}</span>
+                <button class="novo-artigo-fechar" id="novo-artigo-fechar" aria-label="Close">&#x2715;</button>
+            </div>
+
+            <!-- Article title -->
+            <a class="novo-artigo-titulo" href="{{ latest.url | relative_url }}">{{ latest.title }}</a>
+
+            <!-- Subtitle as short description -->
+            {% if latest.subtitle %}
+            <p class="novo-artigo-desc">{{ latest.subtitle }}</p>
+            {% endif %}
+
+            <!-- Author and estimated read time -->
+            <div class="novo-artigo-meta">
+                <span><i class="far fa-user"></i> {{ latest.author | default: site.author.name }}</span>
+                <span><i class="far fa-clock"></i> <span id="popup-tempo">—</span></span>
+            </div>
+
+            <!-- Call to action -->
+            <a class="novo-artigo-cta" href="{{ latest.url | relative_url }}">Read article →</a>
+
+        </div>
+    </div>
+
+    <script>
+    (function () {
+        const popup  = document.getElementById('novo-artigo');
+        const fechar = document.getElementById('novo-artigo-fechar');
+
+        // Unique key per article — changes when a new article is published
+        const key = 'popup-seen-{{ latest.date | date: "%Y%m%d" }}-{{ latest.title | slugify }}';
+
+        // Already dismissed this session — hide and stop
+        if (sessionStorage.getItem(key)) {
+            popup.style.display = 'none';
+            return;
+        }
+
+        // Slide in after a short delay
+        setTimeout(function () { popup.classList.add('visivel'); }, 800);
+
+        // Read time: word count from Liquid at build time, 220 wpm
+        const wordCount = {{ latest.content | number_of_words }};
+        const minutes   = Math.ceil(wordCount / 220);
+        const tempoEl   = document.getElementById('popup-tempo');
+        if (tempoEl) tempoEl.textContent = minutes + ' min read';
+
+        // Close button
+        fechar.addEventListener('click', function () {
+            popup.classList.remove('visivel');
+            setTimeout(function () { popup.style.display = 'none'; }, 350);
+            sessionStorage.setItem(key, '1');
+        });
+    })();
+    </script>
+
+    {% endif %}
+    {% endif %}
+
+    <!-- ============================================================
+         MEDIUM RSS + GITHUB REPOS
+         Inline because it uses Liquid variables:
+           {{ site.author.medium }} and {{ site.author.github }}
+         ============================================================ -->
+    {% if page.url == '/' or page.url == '/index.html' %}
+    <script>
+    function truncateWords(text, max) {
+        max = max || 26;
+        const words = text.replace(/\s+/g, ' ').trim().split(' ');
+        if (words.length <= max) return text;
+        return words.slice(0, max).join(' ') + '…';
+    }
+
+    async function fetchMediumRSS() {
+        const target  = document.getElementById('medium-articles');
+        if (!target) return;
+        const feedUrl = 'https://medium.com/feed/@{{ site.author.medium }}';
+        try {
+            const res   = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(feedUrl));
+            const xml   = new DOMParser().parseFromString(await res.text(), 'text/xml');
+            const items = Array.from(xml.querySelectorAll('item')).slice(0, 5);
+            if (!items.length) throw new Error('No items');
+            target.innerHTML = items.map(function (el) {
+                const title   = el.querySelector('title')?.textContent ?? 'Untitled';
+                const link    = el.querySelector('link')?.textContent ?? '#';
+                const pubDate = el.querySelector('pubDate')
+                    ? new Date(el.querySelector('pubDate').textContent).toLocaleDateString('en-US') : '';
+                const contentNode = el.getElementsByTagName('content:encoded')[0]
+                    || el.querySelector('encoded, description');
+                let snippet = '', image = '';
+                if (contentNode) {
+                    const temp = document.createElement('div');
+                    temp.innerHTML = contentNode.textContent;
+                    const p   = temp.querySelector('p');
+                    const img = temp.querySelector('img');
+                    snippet = p   ? '<p>' + truncateWords(p.textContent, 36) + '</p>' : '';
+                    image   = img ? '<img src="' + img.src + '" alt="' + title + '">' : '';
+                }
+                return '<li class="rss-item"><h4><a href="' + link + '" target="_blank" rel="noopener noreferrer">'
+                    + title + '</a></h4><span class="rss-meta">Published in: ' + pubDate + '</span>'
+                    + image + snippet + '</li>';
+            }).join('');
+        } catch (e) {
+            try {
+                const res2 = await fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl));
+                const data = await res2.json();
+                if (!data.items?.length) throw new Error('No items');
+                target.innerHTML = data.items.slice(0, 5).map(function (item) {
+                    const temp = document.createElement('div');
+                    temp.innerHTML = item.content || item.description || '';
+                    const p       = temp.querySelector('p');
+                    const img     = temp.querySelector('img');
+                    const pubDate = item.pubDate
+                        ? new Date(item.pubDate).toLocaleDateString('en-US') : '';
+                    return '<li class="rss-item"><h4><a href="' + item.link
+                        + '" target="_blank" rel="noopener noreferrer">' + item.title + '</a></h4>'
+                        + '<span class="rss-meta">Published in: ' + pubDate + '</span>'
+                        + (img ? '<img src="' + img.src + '" alt="' + item.title + '">' : '')
+                        + (p   ? '<p>' + truncateWords(p.textContent, 36) + '</p>' : '')
+                        + '</li>';
+                }).join('');
+            } catch (err) {
+                target.innerHTML = '<li class="rss-item"><p>We were unable to load the Medium articles at this time.</p></li>';
+            }
+        }
+    }
+
+    async function fetchGitHubRepos() {
+        const target = document.getElementById('github-repos');
+        if (!target) return;
+        try {
+            const res   = await fetch(
+                'https://api.github.com/users/{{ site.author.github }}/repos?sort=updated&per_page=6',
+                { headers: { 'Accept': 'application/vnd.github+json' } }
+            );
+            const repos = await res.json();
+            if (!Array.isArray(repos) || !repos.length) throw new Error('No repositories');
+            target.innerHTML = repos.map(function (r) {
+                return '<li class="rss-item"><h4><a href="' + r.html_url
+                    + '" target="_blank" rel="noopener noreferrer">' + r.name + '</a></h4>'
+                    + '<span class="rss-meta">Updated on: '
+                    + new Date(r.updated_at).toLocaleDateString('en-US') + '</span>'
+                    + '<p>' + (r.description ? truncateWords(r.description, 32) : 'Without description.') + '</p>'
+                    + '</li>';
+            }).join('');
+        } catch (e) {
+            target.innerHTML = '<li class="rss-item"><p>The GitHub repositories could not be loaded.</p></li>';
+        }
+    }
+
+    fetchMediumRSS();
+    fetchGitHubRepos();
+    </script>
+    {% endif %}
+
+    <!-- ============================================================
+         MATHJAX — Renders LaTeX math expressions
+         Supports inline ($...$) and display ($$...$$) syntax
+         ============================================================ -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath:  [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                tags: 'none'
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- ============================================================
+         MERMAID — Renders flowcharts from <pre class="mermaid"> blocks
+         ============================================================ -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+
 </body>
 </html>

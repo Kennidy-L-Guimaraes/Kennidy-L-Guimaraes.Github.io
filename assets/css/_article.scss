@@ -1,0 +1,411 @@
+// ============================================================
+// _article.scss — Article page layout and typography
+// ============================================================
+
+// --- Wrapper ---
+.artigo-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+// --- Header with red accent bar ---
+.artigo-header {
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.artigo-header-barra {
+    width: 2px;
+    background-color: #9b1c1c;
+    border-radius: 1px;
+    flex-shrink: 0;
+    align-self: stretch;
+}
+
+.artigo-header-texto { flex: 1; }
+
+.artigo-titulo {
+    font-family: var(--fonte-principal);
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--cor-texto);
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+// Overrides the global h1 color
+h1.artigo-titulo { color: var(--cor-texto); }
+
+.artigo-subtitulo {
+    font-family: var(--fonte-principal);
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--cor-destaque);
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+    text-transform: none;
+}
+
+.artigo-meta {
+    font-size: 0.88rem;
+    color: var(--cor-link);
+    font-style: italic;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    text-align: left;
+    margin-bottom: 0;
+
+    span { white-space: nowrap; }
+}
+
+// --- Divider ---
+.artigo-divider {
+    border: none;
+    border-top: var(--borda-fina);
+    margin: 32px 0;
+}
+
+// --- Body text ---
+.artigo-corpo {
+    font-family: var(--fonte-principal);
+    font-size: 1.07rem;
+    line-height: 1.9;
+    color: var(--cor-texto);
+
+    p {
+        margin-bottom: 22px;
+        text-align: justify;
+    }
+
+    // Drop cap on first paragraph
+    > p:first-of-type::first-letter {
+        font-family: var(--fonte-principal);
+        font-size: 4.2rem;
+        font-weight: 700;
+        color: var(--cor-destaque);
+        float: left;
+        line-height: 0.78;
+        margin-right: 7px;
+        margin-top: 8px;
+    }
+
+    // Suppress global h3 ornament inside article
+    h3::before { content: none; }
+
+    h3 { margin-top: 38px; }
+
+    // Inline citation links [N]
+    a[href^="#ref-"] {
+        color: #8b4f00;
+        text-decoration: none;
+        pointer-events: none;
+        cursor: default;
+        background-color: #8b5f001e;
+    }
+}
+
+// --- Highlight block (quotes and callouts) ---
+.destaque-bloco {
+    display: block;
+    border-left: 2px solid var(--cor-destaque);
+    padding: 2px 0 2px 20px;
+    margin: 28px 0;
+    font-style: italic;
+    color: var(--cor-link);
+    font-size: 1.1rem;
+    line-height: 1.85;
+    font-family: var(--fonte-principal);
+}
+
+// --- Figures and images ---
+.artigo-figura {
+    display: block;
+    width: 100%;
+    margin: 32px 0;
+
+    img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 3px;
+        border: var(--borda-fina);
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    figcaption {
+        display: block;
+        text-align: center;
+        font-size: 0.82rem;
+        color: var(--cor-link);
+        font-style: italic;
+        font-family: var(--fonte-principal);
+        margin-top: 8px;
+        line-height: 1.5;
+    }
+}
+
+// --- Zoom cursor on clickable images and diagrams ---
+.artigo-figura img,
+.artigo-corpo img {
+    cursor: zoom-in;
+    transition: opacity 0.2s ease;
+
+    &:hover { opacity: 0.88; }
+}
+
+.artigo-corpo .mermaid svg {
+    cursor: zoom-in;
+    transition: opacity 0.2s ease;
+
+    &:hover { opacity: 0.88; }
+}
+
+// --- References section ---
+.referencias {
+    margin-top: 52px;
+    padding-top: 22px;
+    border-top: var(--borda-fina);
+}
+
+.referencias-cabecalho {
+    font-family: var(--fonte-principal);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cor-destaque);
+    margin-bottom: 18px;
+    display: block;
+}
+
+.referencias ol {
+    list-style: none;
+    padding: 0;
+    counter-reset: ref;
+
+    li {
+        counter-increment: ref;
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+        color: var(--cor-link);
+        line-height: 1.65;
+        text-align: left;
+        font-family: var(--fonte-principal);
+
+        &::before {
+            content: counter(ref) ".";
+            position: absolute;
+            left: 0;
+            font-weight: 600;
+            color: var(--cor-destaque);
+            font-size: 0.88rem;
+        }
+
+        a {
+            color: var(--cor-destaque);
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(138, 122, 103, 0.4);
+            transition: border-color 0.2s ease;
+
+            &:hover { border-bottom-color: var(--cor-destaque); }
+        }
+    }
+}
+
+// --- Related articles grid ---
+.similares {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: var(--borda-fina);
+}
+
+.similares-cabecalho {
+    font-family: var(--fonte-principal);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cor-destaque);
+    margin-bottom: 22px;
+    display: block;
+}
+
+.similares-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    @media (min-width: 560px) { grid-template-columns: repeat(2, 1fr); }
+    @media (min-width: 860px) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.similar-card {
+    border: var(--borda-fina);
+    border-radius: 3px;
+    padding: 16px 15px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    background: var(--cor-fundo);
+
+    &:hover {
+        box-shadow: 0 4px 16px rgba(138, 122, 103, 0.1);
+        border-color: var(--cor-destaque);
+    }
+}
+
+.similar-card-categoria {
+    font-family: var(--fonte-principal);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--cor-destaque);
+    font-weight: 600;
+}
+
+.similar-card-titulo {
+    font-family: var(--fonte-principal);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cor-texto);
+    line-height: 1.35;
+}
+
+.similar-card-data {
+    font-family: var(--fonte-principal);
+    font-size: 0.8rem;
+    color: var(--cor-link);
+    font-style: italic;
+    margin-top: auto;
+    padding-top: 6px;
+}
+
+// --- Styled tables inside article body ---
+.artigo-corpo table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0;
+    font-family: var(--fonte-principal);
+    font-size: 0.97rem;
+}
+
+.artigo-corpo thead tr {
+    border-bottom: 2px solid var(--cor-destaque);
+}
+
+.artigo-corpo thead th {
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 600;
+    color: var(--cor-destaque);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.artigo-corpo tbody tr {
+    border-bottom: var(--borda-fina);
+    transition: background 0.15s ease;
+
+    &:last-child { border-bottom: none; }
+    &:nth-child(even) { background-color: rgba(138, 122, 103, 0.04); }
+    &:hover { background-color: rgba(138, 122, 103, 0.08); }
+}
+
+.artigo-corpo td {
+    padding: 10px 14px;
+    color: var(--cor-texto);
+    line-height: 1.6;
+    vertical-align: top;
+}
+
+// --- Code blocks ---
+.artigo-corpo pre {
+    background-color: #f5f3ef;
+    border: var(--borda-fina);
+    border-left: 3px solid var(--cor-destaque);
+    border-radius: 3px;
+    padding: 42px 20px 20px 56px;
+    margin: 28px 0;
+    overflow-x: auto;
+    position: relative;
+    counter-reset: linha;
+    font-size: 0.88rem;
+    line-height: 1.75;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+
+    code {
+        font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        color: #3a3228;
+        display: block;
+    }
+}
+
+.artigo-corpo pre code .linha {
+    display: block;
+    position: relative;
+
+    &::before {
+        counter-increment: linha;
+        content: counter(linha);
+        position: absolute;
+        left: -40px;
+        width: 24px;
+        text-align: right;
+        color: rgba(138, 122, 103, 0.45);
+        font-size: 0.8rem;
+        user-select: none;
+        font-family: inherit;
+    }
+}
+
+.codigo-copiar {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: transparent;
+    border: var(--borda-fina);
+    border-radius: 3px;
+    font-family: var(--fonte-principal);
+    font-size: 0.75rem;
+    color: var(--cor-link);
+    padding: 3px 10px;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    letter-spacing: 0.5px;
+
+    &:hover {
+        color: var(--cor-destaque);
+        border-color: var(--cor-destaque);
+    }
+
+    &.copiado {
+        color: #5a7a5a;
+        border-color: #5a7a5a;
+    }
+}
+
+// --- Inline code ---
+.artigo-corpo p code,
+.artigo-corpo li code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+    font-size: 0.85em;
+    background-color: rgba(138, 122, 103, 0.08);
+    border: var(--borda-fina);
+    border-radius: 2px;
+    padding: 1px 6px;
+    color: #6b4f2a;
+}

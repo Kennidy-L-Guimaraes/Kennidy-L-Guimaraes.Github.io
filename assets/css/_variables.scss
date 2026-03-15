@@ -1,0 +1,14 @@
+// ============================================================
+// _variables.scss — CSS custom properties (design tokens)
+// All colors, fonts, and borders used across the site.
+// Must be imported first so all other partials can use them.
+// ============================================================
+
+:root {
+    --fonte-principal: 'Cormorant Garamond', serif;
+    --cor-fundo:       #fefdfa;
+    --cor-texto:       #333;
+    --cor-destaque:    #8a7a67;
+    --cor-link:        #5c5c5c;
+    --borda-fina:      1px solid rgba(138, 122, 103, 0.3);
+}

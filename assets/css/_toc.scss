@@ -1,0 +1,74 @@
+// ============================================================
+// _toc.scss — Floating table of contents (article pages only)
+// Visible only on screens wider than 1200px.
+// Position is anchored to the right of the article column.
+// ============================================================
+
+.toc {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: calc(50% + 380px);
+    transform: translateY(-50%);
+    width: 190px;
+    padding: 18px 0;
+    z-index: 100;
+}
+
+.toc-cabecalho {
+    display: block;
+    font-family: var(--fonte-principal);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cor-destaque);
+    margin-bottom: 12px;
+    padding-left: 12px;
+}
+
+.toc-item {
+    display: block;
+    font-family: var(--fonte-principal);
+    font-size: 0.88rem;
+    color: var(--cor-link);
+    text-decoration: none;
+    padding: 4px 12px;
+    border-left: 2px solid transparent;
+    line-height: 1.4;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    margin-bottom: 2px;
+
+    &:hover {
+        color: var(--cor-destaque);
+        border-left-color: rgba(138, 122, 103, 0.3);
+    }
+
+    &.ativo {
+        color: var(--cor-destaque);
+        border-left-color: var(--cor-destaque);
+        font-weight: 600;
+    }
+}
+
+// h2 — top-level section, flush left
+.toc-item.toc-h2 {
+    font-size: 0.88rem;
+    color: var(--cor-link);
+    padding-left: 12px;
+}
+
+// h3 — subsection, indented and slightly muted
+.toc-item.toc-h3 {
+    font-size: 0.82rem;
+    color: var(--cor-link);
+    opacity: 0.75;
+    padding-left: 22px;
+
+    &:hover,
+    &.ativo { opacity: 1; }
+}
+
+@media (max-width: 1200px) {
+    .toc { display: none !important; }
+}

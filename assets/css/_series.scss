@@ -1,0 +1,95 @@
+// ============================================================
+// _series.scss — Series callout shown on article pages
+// Animates in on load; hidden on articles without a series.
+// ============================================================
+
+.serie-callout {
+    margin-bottom: 32px;
+    opacity: 0;
+    transform: translateY(-6px);
+    animation: serie-entrada 0.5s ease 0.3s forwards;
+}
+
+@keyframes serie-entrada {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.serie-callout-inner {
+    border-top: var(--borda-fina);
+    border-bottom: var(--borda-fina);
+    padding: 12px 0;
+    font-family: var(--fonte-principal);
+}
+
+.serie-callout-label {
+    display: inline;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cor-destaque);
+    margin-right: 10px;
+}
+
+.serie-callout-info { display: inline; }
+
+.serie-callout-titulo {
+    font-size: 0.88rem;
+    color: var(--cor-link);
+    font-weight: 400;
+    font-style: italic;
+}
+
+.serie-callout-parte {
+    font-size: 0.82rem;
+    color: var(--cor-link);
+    font-style: italic;
+    opacity: 0.7;
+    margin-left: 8px;
+}
+
+.serie-callout-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+}
+
+.serie-callout-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--cor-link);
+    font-size: 0.86rem;
+    line-height: 1.4;
+    padding: 2px 0;
+    opacity: 0.75;
+    transition: opacity 0.2s ease, color 0.2s ease;
+
+    &:hover {
+        opacity: 1;
+        color: var(--cor-destaque);
+    }
+
+    &.ativo {
+        color: var(--cor-texto);
+        font-weight: 600;
+        opacity: 1;
+        pointer-events: none;
+
+        .serie-callout-item-num { opacity: 1; }
+    }
+}
+
+.serie-callout-item-num {
+    font-size: 0.72rem;
+    color: var(--cor-destaque);
+    opacity: 0.7;
+    flex-shrink: 0;
+    font-style: normal;
+    min-width: 14px;
+}

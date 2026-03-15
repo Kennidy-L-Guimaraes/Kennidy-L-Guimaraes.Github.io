@@ -1,0 +1,51 @@
+// ============================================================
+// _progress.scss — Reading progress bar and back-to-top button
+// ============================================================
+
+// --- Reading progress bar (fixed, top of page) ---
+.leitura-progresso {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--cor-destaque);
+    z-index: 10000;
+    transition: width 0.1s linear;
+}
+
+// --- Reading time estimate (shown in article meta) ---
+.artigo-tempo-leitura { white-space: nowrap; }
+
+// --- Back to top button ---
+.voltar-topo {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 38px;
+    height: 38px;
+    border: var(--borda-fina);
+    border-radius: 3px;
+    background: var(--cor-fundo);
+    color: var(--cor-link);
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-family: var(--fonte-principal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, color 0.2s ease, border-color 0.2s ease;
+    z-index: 500;
+
+    &.visivel {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    &:hover {
+        color: var(--cor-destaque);
+        border-color: var(--cor-destaque);
+    }
+}

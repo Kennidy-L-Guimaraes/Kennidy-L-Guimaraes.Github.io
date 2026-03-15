@@ -1,0 +1,40 @@
+// ============================================================
+// _responsive.scss — Mobile overrides
+// All breakpoint rules that override base styles go here.
+// ============================================================
+
+@media (max-width: 767px) {
+
+    // Layout
+    .container      { padding: 10px; }
+    .main-content   { padding-top: 20px; }
+    .sidebar        { padding-top: 20px; }
+
+    // Typography
+    h1              { font-size: 2rem; }
+    h2              { font-size: 1rem; }
+    .profile-img    { max-width: 150px; }
+
+    // Article
+    .artigo-titulo  { font-size: 1.8rem; }
+    .artigo-subtitulo { font-size: 0.97rem; }
+    .artigo-wrapper { padding: 20px 12px 60px; }
+    .destaque-bloco { font-size: 1rem; }
+    .nota-autor     { padding: 16px 18px 14px; }
+
+    .artigo-corpo > p:first-of-type::first-letter { font-size: 3rem; }
+
+    // Tables
+    .artigo-corpo table { font-size: 0.88rem; }
+    .artigo-corpo th,
+    .artigo-corpo td    { padding: 8px 10px; }
+
+    // Series callout
+    .serie-callout-titulo { display: block; margin-top: 4px; }
+    .serie-callout-parte  { margin-left: 0; display: block; }
+
+    // Popup
+    .novo-artigo-inner  { padding: 14px 16px 16px; }
+    .novo-artigo-titulo { font-size: 1rem; }
+    .novo-artigo-desc   { font-size: 0.88rem; }
+}

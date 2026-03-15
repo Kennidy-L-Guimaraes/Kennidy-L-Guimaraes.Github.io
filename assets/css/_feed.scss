@@ -1,0 +1,50 @@
+// ============================================================
+// _feed.scss — RSS feed and GitHub repos list (home page)
+// ============================================================
+
+.rss-feed-section {
+    margin-top: 40px;
+    text-align: left;
+}
+
+.rss-list {
+    list-style: none;
+    padding: 0;
+}
+
+.rss-item {
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: var(--borda-fina);
+
+    &:last-child { border-bottom: none; }
+
+    h4 a {
+        color: var(--cor-texto);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-weight: 600;
+
+        &:hover { color: var(--cor-destaque); }
+    }
+
+    img {
+        max-width: 0%;
+        height: 0px;
+        margin-top: 15px;
+        display: block;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+        border: var(--borda-fina);
+    }
+
+    p { font-size: 1rem; }
+}
+
+.rss-meta {
+    display: inline-block;
+    margin-top: 4px;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--cor-link);
+}
