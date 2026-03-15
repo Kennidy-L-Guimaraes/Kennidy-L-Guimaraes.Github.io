@@ -1,0 +1,316 @@
+// ============================================================
+// _about.scss — About page
+// ============================================================
+
+// --- Header: name + CV button inline ---
+.about-header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+// --- CV button ---
+.about-cv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--fonte-principal);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--cor-destaque);
+    text-decoration: none;
+    border: var(--borda-fina);
+    padding: 7px 16px;
+    border-radius: 2px;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    flex-shrink: 0;
+    margin-top: 4px;
+
+    i { font-size: 0.82rem; }
+
+    &:hover {
+        background: var(--cor-destaque);
+        color: var(--cor-fundo);
+        border-color: var(--cor-destaque);
+    }
+}
+
+// --- Section headers (shared) ---
+.about-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.about-section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cor-destaque);
+    white-space: nowrap;
+}
+
+.about-section-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(138, 122, 103, 0.2);
+    display: block;
+}
+
+// --- GitHub Activity section ---
+.about-activity {
+    margin-bottom: 0;
+}
+
+.about-commits-row {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.about-commits-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    min-width: 90px;
+}
+
+.about-commits-num {
+    font-family: var(--fonte-principal);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--cor-destaque);
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.about-commits-label {
+    font-family: var(--fonte-principal);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cor-link);
+    opacity: 0.65;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.about-commits-desc {
+    font-family: var(--fonte-principal);
+    font-size: 0.95rem;
+    color: var(--cor-link);
+    font-style: italic;
+    line-height: 1.7;
+}
+
+.about-graph {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.about-graph-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+    opacity: 0.88;
+    transition: opacity 0.2s ease;
+    &:hover { opacity: 1; }
+}
+
+.about-graph-caption {
+    font-family: var(--fonte-principal);
+    font-size: 0.78rem;
+    color: var(--cor-link);
+    font-style: italic;
+    opacity: 0.55;
+    text-align: center;
+}
+
+// --- Profile image ---
+.about-perfil {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.about-perfil-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: var(--borda-fina);
+    display: block;
+    object-fit: cover;
+}
+
+// --- Bio text ---
+.about-corpo {
+    font-family: var(--fonte-principal);
+    font-size: 1.07rem;
+    line-height: 1.9;
+    color: var(--cor-texto);
+    margin-bottom: 48px;
+
+    p {
+        margin-bottom: 22px;
+        text-align: justify;
+        &:last-child { margin-bottom: 0; }
+    }
+
+    a {
+        color: var(--cor-link);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(138, 122, 103, 0.35);
+        transition: color 0.2s ease, border-color 0.2s ease;
+        &:hover {
+            color: var(--cor-destaque);
+            border-bottom-color: var(--cor-destaque);
+        }
+    }
+}
+
+// --- Skills section ---
+.about-skills {
+    margin-bottom: 48px;
+}
+
+.about-skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.about-skill-group {
+    padding: 18px 0;
+    border-bottom: var(--borda-fina);
+
+    &:first-child { border-top: var(--borda-fina); }
+}
+
+.about-skill-lang {
+    display: block;
+    font-family: var(--fonte-principal);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--cor-destaque);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.about-skill-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    li {
+        font-family: var(--fonte-principal);
+        font-size: 0.97rem;
+        color: var(--cor-link);
+        line-height: 1.6;
+        padding-left: 14px;
+        position: relative;
+
+        &::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--cor-destaque);
+            opacity: 0.5;
+            font-size: 0.85rem;
+        }
+    }
+}
+
+// --- Projects section ---
+.about-projects {
+    margin-bottom: 48px;
+}
+
+.about-project-item {
+    padding: 20px 0;
+    border-top: var(--borda-fina);
+    border-bottom: var(--borda-fina);
+}
+
+.about-project-top {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.about-project-name {
+    font-family: var(--fonte-principal);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+.about-project-tech {
+    font-family: var(--fonte-principal);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--cor-destaque);
+    opacity: 0.75;
+}
+
+.about-project-desc {
+    font-family: var(--fonte-principal);
+    font-size: 0.97rem;
+    color: var(--cor-link);
+    font-style: italic;
+    line-height: 1.75;
+    margin: 0;
+    text-align: left;
+}
+
+// --- Social links ---
+.about-social {
+    margin-top: 0;
+    padding-top: 28px;
+    border-top: var(--borda-fina);
+}
+
+.about-social-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cor-destaque);
+    margin-bottom: 16px;
+}
+
+.about-social .social-links {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+// --- Responsive ---
+@media (max-width: 767px) {
+    .about-header-top   { flex-direction: column; align-items: flex-start; }
+    .about-cv-btn       { margin-top: 8px; }
+    .about-commits-row  { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .about-commits-num  { font-size: 2.4rem; }
+    .about-project-top  { flex-direction: column; gap: 4px; }
+}

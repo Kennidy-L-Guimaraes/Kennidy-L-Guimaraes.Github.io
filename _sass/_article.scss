@@ -409,3 +409,11 @@ h1.artigo-titulo { color: var(--cor-texto); }
     padding: 1px 6px;
     color: #6b4f2a;
 }
+
+// Remove outer border and background from Mermaid container
+.artigo-corpo pre.mermaid {
+    border: none;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+}

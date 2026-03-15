@@ -1,24 +1,63 @@
 ---
 layout: default
+title: "Articles"
+description: "Essays and technical articles on software architecture, domain modeling, cryptography, and computer science by Kennidy L. Guimarães."
 ---
 
 <div class="artigo-wrapper">
-  <nav class="menu artigo-nav" aria-label="Voltar ao início">
-    <ul>
-      <li><a href="{{ '/' | relative_url }}">← Home</a></li>
-    </ul>
-  </nav>
 
-  <h1>Articles</h1>
+    <nav class="menu artigo-nav" aria-label="Back to home">
+        <ul>
+            <li><a href="{{ '/' | relative_url }}">← Home</a></li>
+        </ul>
+    </nav>
 
-  <ul class="rss-list">
-    {% assign sorted = site.articles | sort: "date" | reverse %}
-    {% for article in sorted %}
-    <li class="rss-item">
-      <h4><a href="{{ article.url | relative_url }}">{{ article.title }}</a></h4>
-      <span class="rss-meta">{{ article.date | date: "%B  %d , %Y" }}</span>
-      {% if article.subtitle %}<p>{{ article.subtitle }}</p>{% endif %}
-    </li>
-    {% endfor %}
-  </ul>
+    <header class="list-header">
+        <h1 class="list-titulo">Articles</h1>
+        <p class="list-descricao">Technical writing on software architecture, domain modeling, cryptography, and computer science.</p>
+    </header>
+
+    <hr class="artigo-divider">
+
+    <div class="list-grid">
+        {% assign sorted = site.articles | sort: "date" | reverse %}
+        {% for article in sorted %}
+        <a class="list-card" href="{{ article.url | relative_url }}">
+
+            <div class="list-card-top">
+                {% if article.categories %}
+                <span class="list-card-cat">{{ article.categories | join: ' · ' }}</span>
+                {% endif %}
+                {% if article.series %}
+                <span class="list-card-series">Series</span>
+                {% endif %}
+            </div>
+
+            <h2 class="list-card-titulo">{{ article.title }}</h2>
+
+            {% if article.subtitle %}
+            <p class="list-card-sub">{{ article.subtitle }}</p>
+            {% endif %}
+
+            <div class="list-card-meta">
+                <span>{{ article.date | date: "%B %d, %Y" }}</span>
+                <span class="list-card-dot">·</span>
+                <span>{{ article.author | default: site.author.name }}</span>
+                <span class="list-card-dot">·</span>
+                <span class="list-card-tempo" data-words="{{ article.content | number_of_words }}">— min read</span>
+            </div>
+
+        </a>
+        {% endfor %}
+    </div>
+
 </div>
+
+<script>
+// Calculate reading time for each card using word count injected by Liquid
+document.querySelectorAll('.list-card-tempo').forEach(function (el) {
+    const words   = parseInt(el.dataset.words, 10) || 0;
+    const minutes = Math.ceil(words / 220);
+    el.textContent = minutes + ' min read';
+});
+</script>

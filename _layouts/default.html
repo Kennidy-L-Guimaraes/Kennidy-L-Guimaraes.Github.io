@@ -5,6 +5,14 @@
      HEAD — Meta, fonts, and stylesheets
      ============================================================ -->
 <head>
+    <!-- SEO: tries article image first, falls back to site avatar -->
+    {% if page.image %}
+        {% seo image=page.image %}
+    {% elsif site.author.avatar %}
+        {% seo image=site.author.avatar %}
+    {% else %}
+        {% seo %}
+    {% endif %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

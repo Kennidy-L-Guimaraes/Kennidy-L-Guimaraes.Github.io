@@ -1,0 +1,128 @@
+// ============================================================
+// _list.scss — Article / paper / essay listing pages
+// ============================================================
+
+// --- Page header ---
+.list-header {
+    margin-bottom: 8px;
+}
+
+.list-titulo {
+    font-family: var(--fonte-principal);
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--cor-destaque);
+    margin-bottom: 10px;
+}
+
+.list-descricao {
+    font-family: var(--fonte-principal);
+    font-size: 1rem;
+    color: var(--cor-link);
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+// --- Cards grid ---
+.list-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+// --- Individual card ---
+.list-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 28px 0;
+    border-bottom: var(--borda-fina);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+
+    &:first-child { border-top: var(--borda-fina); }
+    &:last-child  { border-bottom: none; }
+    &:hover       { opacity: 0.75; }
+    &:hover .list-card-titulo { color: var(--cor-destaque); }
+}
+
+// --- Top row: category + series badge ---
+.list-card-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.list-card-cat {
+    font-family: var(--fonte-principal);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cor-destaque);
+    opacity: 0.75;
+}
+
+.list-card-series {
+    font-family: var(--fonte-principal);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--cor-fundo);
+    background: #f04f00;
+    padding: 1px 7px;
+    opacity: 0.85;
+}
+
+// --- Title ---
+.list-card-titulo {
+    font-family: var(--fonte-principal);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--cor-texto);
+    line-height: 1.25;
+    transition: color 0.2s ease;
+}
+
+// --- Subtitle ---
+.list-card-sub {
+    font-family: var(--fonte-principal);
+    font-size: 0.95rem;
+    color: var(--cor-link);
+    font-style: italic;
+    line-height: 1.55;
+    margin: 0;
+    text-align: left;
+    max-width: 580px;
+}
+
+// --- Meta row: date · author · read time ---
+.list-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--fonte-principal);
+    font-size: 0.84rem;
+    color: var(--cor-link);
+    font-style: italic;
+    flex-wrap: wrap;
+}
+
+.list-card-dot {
+    opacity: 0.35;
+}
+
+.list-card-tempo {
+    white-space: nowrap;
+}
+
+// --- Responsive ---
+@media (max-width: 767px) {
+    .list-card      { padding: 22px 0; }
+    .list-card-titulo { font-size: 1.15rem; }
+    .list-card-sub  { font-size: 0.9rem; }
+}
