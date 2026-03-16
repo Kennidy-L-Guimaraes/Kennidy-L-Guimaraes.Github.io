@@ -49,14 +49,14 @@ As explained earlier, the blockchain is a ledger that involves solving complex m
 Blocks contain some information that is necessary for the functioning and operation of the network as a whole, including: the digital signature of the previous block, the *hash* of the previous block, date and time, Merkle tree, and the transaction (destination address and value).
 
 <figure class="artigo-figura">
-  <img src="/files/essays/the-chain-nobody-controls/structure-of-a-block-in-blockchain.png" alt="structure of a block in blockchain" />
+  <img src="{{ site.baseurl }}/files/essays/the-chain-nobody-controls/structure-of-a-block-in-blockchain.png" alt="structure of a block in blockchain" />
   <figcaption>Figure 1 — Simple representation taken from the Bitcoin whitepaper. www.shiksha.com</figcaption>
 </figure>
 
 The requirement to contain the signature of the previous block creates what can be called a chain between blocks, since each block remains linked to a previous block. In simple terms, the last block will always be the most up-to-date and will always be treated as the main block.
 
 <figure class="artigo-figura">
-  <img src="/files/essays/the-chain-nobody-controls/TCNCBlockchain.png" alt="Diagram of chained blocks in the blockchain" />
+  <img src="{{ site.baseurl }}/files/essays/the-chain-nobody-controls/TCNCBlockchain.png" alt="Diagram of chained blocks in the blockchain" />
   <figcaption>Figure 2 — Simple representation taken from the Bitcoin whitepaper.</figcaption>
 </figure>
 
