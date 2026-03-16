@@ -51,7 +51,7 @@ Instead, it is a distributed ledger replicated across thousands of nodes [[1]](#
 Systems like the one described above (trust-based credit systems) have numerous characteristics that many may consider either advantageous or disadvantageous, such as spending controls that prevent a given amount from being sent twice to the same account. Imagine that Alice owes Bob US$ 50.00 (fifty dollars). She decides to send a check for the amount owed; however, until the check clears, she can still change her mind and cancel it, leaving Bob with a minor trust problem.
 
 <figure class="artigo-figura">
-<img src="{{ site.baseurl }}/files/essays/The-Chain-Nobody-Controls/AliceAndBob.webp" alt="Alice And Bob" data-lb="1" role="button" tabindex="0" style="cursor: zoom-in;">
+<img src="{{ site.baseurl }}/files/essays/the-chain-nobody-controls/AliceAndBob.webp" alt="Alice And Bob" data-lb="1" role="button" tabindex="0" style="cursor: zoom-in;">
   <figcaption>Figure 1 — The image represents a potential breach of trust.</figcaption>
 </figure>
 
