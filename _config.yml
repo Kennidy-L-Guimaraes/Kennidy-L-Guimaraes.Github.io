@@ -38,3 +38,11 @@ collections:
   essays:
     output: true
     permalink: /essays/:name/
+
+announcement:
+  active: false
+  show_on: home          # "home" ou "all" (todas as páginas)
+  label: "Important!"    # texto do badge vermelho
+  message: "I am currently open to relocation and available for senior engineering opportunities in the UAE and Middle East. Feel free to reach out."
+  cta_text: "Get in touch"
+  cta_url: "mailto:kennidylguimaraes@gmail.com"

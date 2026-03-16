@@ -9,15 +9,16 @@
 
 .list-titulo {
     font-family: var(--fonte-principal);
-    font-size: 2rem;
-    font-weight: 500;
-    color: var(--cor-destaque);
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: var(--cor-texto);
     margin-bottom: 10px;
+    font-style: italic;
 }
 
 .list-descricao {
     font-family: var(--fonte-principal);
-    font-size: 1rem;
+    font-size: 0.97rem;
     color: var(--cor-link);
     font-style: italic;
     line-height: 1.6;
@@ -34,18 +35,22 @@
 
 // --- Individual card ---
 .list-card {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 28px 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto;
+    column-gap: 24px;
+    row-gap: 6px;
+    padding: 26px 0;
     border-bottom: var(--borda-fina);
     text-decoration: none;
-    transition: opacity 0.2s ease;
+    transition: background 0.15s ease;
 
     &:first-child { border-top: var(--borda-fina); }
     &:last-child  { border-bottom: none; }
-    &:hover       { opacity: 0.75; }
-    &:hover .list-card-titulo { color: var(--cor-destaque); }
+
+    &:hover {
+        .list-card-titulo { color: var(--cor-destaque); }
+    }
 }
 
 // --- Top row: category + series badge ---
@@ -54,75 +59,104 @@
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
+    grid-column: 1;
+    grid-row: 1;
 }
 
 .list-card-cat {
     font-family: var(--fonte-principal);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 0.16em;
     color: var(--cor-destaque);
-    opacity: 0.75;
 }
 
+// Series badge — refined, consistent with site palette
 .list-card-series {
     font-family: var(--fonte-principal);
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--cor-fundo);
-    background: #000000;
-    padding: 1px 7px;
-    opacity: 0.95;
+    letter-spacing: 0.14em;
+    color: var(--cor-destaque);
+    border: 1px solid rgba(138, 122, 103, 0.4);
+    padding: 1px 8px;
+    border-radius: 2px;
 }
 
 // --- Title ---
 .list-card-titulo {
     font-family: var(--fonte-principal);
-    font-size: 1.35rem;
-    font-weight: 600;
+    font-size: 1.3rem;
+    font-weight: 500;
     color: var(--cor-texto);
-    line-height: 1.25;
+    line-height: 1.3;
     transition: color 0.2s ease;
+    grid-column: 1;
+    grid-row: 2;
+    text-transform: none;
 }
 
 // --- Subtitle ---
 .list-card-sub {
     font-family: var(--fonte-principal);
-    font-size: 0.95rem;
+    font-size: 0.93rem;
     color: var(--cor-link);
     font-style: italic;
-    line-height: 1.55;
+    line-height: 1.6;
     margin: 0;
     text-align: left;
-    max-width: 580px;
+    max-width: 560px;
+    grid-column: 1;
+    grid-row: 3;
 }
 
 // --- Meta row: date · author · read time ---
 .list-card-meta {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     font-family: var(--fonte-principal);
-    font-size: 0.84rem;
+    font-size: 0.82rem;
     color: var(--cor-link);
     font-style: italic;
     flex-wrap: wrap;
+    grid-column: 1;
+    grid-row: 4;
+    margin-top: 4px;
 }
 
 .list-card-dot {
-    opacity: 0.35;
+    opacity: 0.3;
 }
 
 .list-card-tempo {
     white-space: nowrap;
 }
 
+// Arrow — appears on the right, vertically centered
+.list-card::after {
+    content: '→';
+    font-size: 1rem;
+    color: var(--cor-destaque);
+    opacity: 0;
+    grid-column: 2;
+    grid-row: 1 / 5;
+    align-self: center;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateX(-4px);
+}
+
+.list-card:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 // --- Responsive ---
 @media (max-width: 767px) {
-    .list-card      { padding: 22px 0; }
+    .list-card        { padding: 20px 0; grid-template-columns: 1fr; }
+    .list-card::after { display: none; }
     .list-card-titulo { font-size: 1.15rem; }
-    .list-card-sub  { font-size: 0.9rem; }
+    .list-card-sub    { font-size: 0.88rem; }
 }

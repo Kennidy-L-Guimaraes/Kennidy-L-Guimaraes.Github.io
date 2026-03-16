@@ -5,7 +5,10 @@
 // --- Reset ---
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+    font-size: 19px; // Base size — Cormorant Garamond needs ~18-20px to render well
+}
 
 // --- Body ---
 body {
@@ -30,14 +33,14 @@ body {
 
 // --- Headings ---
 h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 500;
     color: var(--cor-destaque);
     margin-bottom: 5px;
 }
 
 h2 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: bold;
     margin-bottom: 20px;
     letter-spacing: 1px;
@@ -45,7 +48,7 @@ h2 {
 }
 
 h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 600;
     margin-top: 40px;
     margin-bottom: 15px;
@@ -53,19 +56,18 @@ h3 {
     border-bottom: var(--borda-fina);
     padding-bottom: 5px;
 
-    // Ornament before h3 (suppressed inside article body via _article.scss)
     &::before {
         content: '❦';
         display: block;
         text-align: center;
         color: var(--cor-destaque);
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         margin-bottom: 10px;
     }
 }
 
 h4 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 500;
     margin-top: 20px;
 }

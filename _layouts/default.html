@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en-us' }}">
 
-<!-- ============================================================
-     HEAD — Meta, fonts, and stylesheets
-     ============================================================ -->
 <head>
-    <!-- SEO: tries article image first, falls back to site avatar -->
     {% if page.image %}
         {% seo image=page.image %}
     {% elsif site.author.avatar %}
@@ -15,122 +11,79 @@
     {% endif %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Page title: uses article title + author name, or site title as fallback -->
     <title>{% if page.title %}{{ page.title }} — {{ site.author.name }}{% else %}{{ site.title }}{% endif %}</title>
-
-    <!-- Google Fonts: Cormorant Garamond (editorial body) + JetBrains Mono (code blocks) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome: icon library used in article meta (calendar, user, clock) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- Main stylesheet (compiled from assets/css/style.scss) -->
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-
-    <!-- Favicon: only injected on article pages -->
     {% if page.layout == 'article' %}
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     {% endif %}
 </head>
 
-<!-- ============================================================
-     BODY
-     ============================================================ -->
 <body>
 
-    <!-- Main content wrapper — max-width and centering defined in _layout.scss -->
     <div class="container">
         {{ content }}
-
         <footer>
             {% include footer.html %}
         </footer>
     </div>
 
     <!-- ============================================================
-         NEW ARTICLE POPUP
-         - Shown only on the home page
-         - Pulls the most recent article across all collections
-         - Dismissed per session via sessionStorage
-         - Reappears automatically when a new article is published
+         ANNOUNCEMENT POPUP
+         Controlled via _config.yml:
+           announcement:
+             active: true/false
+             show_on: home / all
+             label: "Important!"
+             message: "Your message here."
+             cta_text: "Get in touch"
+             cta_url: "mailto:you@email.com"
          ============================================================ -->
-    {% if page.url == '/' or page.url == '/index.html' %}
-    {% assign all_posts = site.articles | concat: site.papers | concat: site.essays | sort: 'date' | reverse %}
-    {% assign latest = all_posts | first %}
-    {% if latest %}
-
-    <div class="novo-artigo" id="novo-artigo" role="status" aria-live="polite">
-        <div class="novo-artigo-inner">
-
-            <!-- Top row: badge, publication date, close button -->
-            <div class="novo-artigo-topo">
-                <span class="novo-artigo-label">New</span>
-                <span class="novo-artigo-data">{{ latest.date | date: "%b %d, %Y" }}</span>
-                <button class="novo-artigo-fechar" id="novo-artigo-fechar" aria-label="Close">&#x2715;</button>
+    {% if site.announcement.active %}
+    {% assign show = false %}
+    {% if site.announcement.show_on == 'all' %}
+        {% assign show = true %}
+    {% elsif page.url == '/' or page.url == '/index.html' %}
+        {% assign show = true %}
+    {% endif %}
+    {% if show %}
+    <div class="aviso-overlay" id="aviso-overlay" role="dialog" aria-modal="true" aria-label="Announcement">
+        <div class="aviso-caixa">
+            <div class="aviso-topo">
+                <span class="aviso-label">{{ site.announcement.label | default: "Notice" }}</span>
+                <button class="aviso-fechar" id="aviso-fechar" aria-label="Close">&#x2715;</button>
             </div>
-
-            <!-- Article title -->
-            <a class="novo-artigo-titulo" href="{{ latest.url | relative_url }}">{{ latest.title }}</a>
-
-            <!-- Subtitle as short description -->
-            {% if latest.subtitle %}
-            <p class="novo-artigo-desc">{{ latest.subtitle }}</p>
+            <p class="aviso-mensagem">{{ site.announcement.message }}</p>
+            {% if site.announcement.cta_url and site.announcement.cta_text %}
+            <a class="aviso-cta" href="{{ site.announcement.cta_url }}">{{ site.announcement.cta_text }} &rarr;</a>
             {% endif %}
-
-            <!-- Author and estimated read time -->
-            <div class="novo-artigo-meta">
-                <span><i class="far fa-user"></i> {{ latest.author | default: site.author.name }}</span>
-                <span><i class="far fa-clock"></i> <span id="popup-tempo">—</span></span>
-            </div>
-
-            <!-- Call to action -->
-            <a class="novo-artigo-cta" href="{{ latest.url | relative_url }}">Read article →</a>
-
         </div>
     </div>
-
     <script>
     (function () {
-        const popup  = document.getElementById('novo-artigo');
-        const fechar = document.getElementById('novo-artigo-fechar');
-
-        // Unique key per article — changes when a new article is published
-        const key = 'popup-seen-{{ latest.date | date: "%Y%m%d" }}-{{ latest.title | slugify }}';
-
-        // Already dismissed this session — hide and stop
-        if (sessionStorage.getItem(key)) {
-            popup.style.display = 'none';
-            return;
-        }
-
-        // Slide in after a short delay
-        setTimeout(function () { popup.classList.add('visivel'); }, 800);
-
-        // Read time: word count from Liquid at build time, 220 wpm
-        const wordCount = {{ latest.content | number_of_words }};
-        const minutes   = Math.ceil(wordCount / 220);
-        const tempoEl   = document.getElementById('popup-tempo');
-        if (tempoEl) tempoEl.textContent = minutes + ' min read';
-
-        // Close button
+        var overlay = document.getElementById('aviso-overlay');
+        var fechar  = document.getElementById('aviso-fechar');
+        var key     = 'aviso-seen-{{ site.announcement.message | slugify | truncate: 32, "" }}';
+        if (sessionStorage.getItem(key)) { overlay.style.display = 'none'; return; }
+        setTimeout(function () { overlay.classList.add('visivel'); }, 600);
         fechar.addEventListener('click', function () {
-            popup.classList.remove('visivel');
-            setTimeout(function () { popup.style.display = 'none'; }, 350);
+            overlay.classList.remove('visivel');
+            setTimeout(function () { overlay.style.display = 'none'; }, 300);
             sessionStorage.setItem(key, '1');
+        });
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) fechar.click();
         });
     })();
     </script>
-
     {% endif %}
     {% endif %}
 
     <!-- ============================================================
-         MEDIUM RSS + GITHUB REPOS
-         Inline because it uses Liquid variables:
-           {{ site.author.medium }} and {{ site.author.github }}
+         GITHUB REPOS + MEDIUM RSS (home only)
          ============================================================ -->
     {% if page.url == '/' or page.url == '/index.html' %}
     <script>
@@ -142,33 +95,28 @@
     }
 
     async function fetchMediumRSS() {
-        const target  = document.getElementById('medium-articles');
+        const target = document.getElementById('medium-articles');
         if (!target) return;
         const feedUrl = 'https://medium.com/feed/@{{ site.author.medium }}';
         try {
-            const res   = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(feedUrl));
-            const xml   = new DOMParser().parseFromString(await res.text(), 'text/xml');
+            const res  = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(feedUrl));
+            const xml  = new DOMParser().parseFromString(await res.text(), 'text/xml');
             const items = Array.from(xml.querySelectorAll('item')).slice(0, 5);
             if (!items.length) throw new Error('No items');
             target.innerHTML = items.map(function (el) {
                 const title   = el.querySelector('title')?.textContent ?? 'Untitled';
                 const link    = el.querySelector('link')?.textContent ?? '#';
-                const pubDate = el.querySelector('pubDate')
-                    ? new Date(el.querySelector('pubDate').textContent).toLocaleDateString('en-US') : '';
-                const contentNode = el.getElementsByTagName('content:encoded')[0]
-                    || el.querySelector('encoded, description');
+                const pubDate = el.querySelector('pubDate') ? new Date(el.querySelector('pubDate').textContent).toLocaleDateString('en-US') : '';
+                const contentNode = el.getElementsByTagName('content:encoded')[0] || el.querySelector('encoded, description');
                 let snippet = '', image = '';
                 if (contentNode) {
                     const temp = document.createElement('div');
                     temp.innerHTML = contentNode.textContent;
-                    const p   = temp.querySelector('p');
-                    const img = temp.querySelector('img');
+                    const p = temp.querySelector('p'), img = temp.querySelector('img');
                     snippet = p   ? '<p>' + truncateWords(p.textContent, 36) + '</p>' : '';
                     image   = img ? '<img src="' + img.src + '" alt="' + title + '">' : '';
                 }
-                return '<li class="rss-item"><h4><a href="' + link + '" target="_blank" rel="noopener noreferrer">'
-                    + title + '</a></h4><span class="rss-meta">Published in: ' + pubDate + '</span>'
-                    + image + snippet + '</li>';
+                return '<li class="rss-item"><h4><a href="' + link + '" target="_blank" rel="noopener noreferrer">' + title + '</a></h4><span class="rss-meta">Published in: ' + pubDate + '</span>' + image + snippet + '</li>';
             }).join('');
         } catch (e) {
             try {
@@ -178,16 +126,9 @@
                 target.innerHTML = data.items.slice(0, 5).map(function (item) {
                     const temp = document.createElement('div');
                     temp.innerHTML = item.content || item.description || '';
-                    const p       = temp.querySelector('p');
-                    const img     = temp.querySelector('img');
-                    const pubDate = item.pubDate
-                        ? new Date(item.pubDate).toLocaleDateString('en-US') : '';
-                    return '<li class="rss-item"><h4><a href="' + item.link
-                        + '" target="_blank" rel="noopener noreferrer">' + item.title + '</a></h4>'
-                        + '<span class="rss-meta">Published in: ' + pubDate + '</span>'
-                        + (img ? '<img src="' + img.src + '" alt="' + item.title + '">' : '')
-                        + (p   ? '<p>' + truncateWords(p.textContent, 36) + '</p>' : '')
-                        + '</li>';
+                    const p = temp.querySelector('p'), img = temp.querySelector('img');
+                    const pubDate = item.pubDate ? new Date(item.pubDate).toLocaleDateString('en-US') : '';
+                    return '<li class="rss-item"><h4><a href="' + item.link + '" target="_blank" rel="noopener noreferrer">' + item.title + '</a></h4><span class="rss-meta">Published in: ' + pubDate + '</span>' + (img ? '<img src="' + img.src + '" alt="' + item.title + '">' : '') + (p ? '<p>' + truncateWords(p.textContent, 36) + '</p>' : '') + '</li>';
                 }).join('');
             } catch (err) {
                 target.innerHTML = '<li class="rss-item"><p>We were unable to load the Medium articles at this time.</p></li>';
@@ -198,23 +139,22 @@
     async function fetchGitHubRepos() {
         const target = document.getElementById('github-repos');
         if (!target) return;
+        var iconGit    = '<svg class="repo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/><line x1="12" y1="1.05" x2="12" y2="7"/><line x1="12" y1="17.01" x2="12" y2="22.96"/></svg>';
+        var iconGitHub = '<svg class="repo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>';
         try {
-            const res   = await fetch(
-                'https://api.github.com/users/{{ site.author.github }}/repos?sort=updated&per_page=6',
-                { headers: { 'Accept': 'application/vnd.github+json' } }
-            );
+            const res   = await fetch('https://api.github.com/users/{{ site.author.github }}/repos?sort=updated&per_page=6', { headers: { 'Accept': 'application/vnd.github+json' } });
             const repos = await res.json();
             if (!Array.isArray(repos) || !repos.length) throw new Error('No repositories');
             target.innerHTML = repos.map(function (r) {
-                return '<li class="rss-item"><h4><a href="' + r.html_url
-                    + '" target="_blank" rel="noopener noreferrer">' + r.name + '</a></h4>'
-                    + '<span class="rss-meta">Updated on: '
-                    + new Date(r.updated_at).toLocaleDateString('en-US') + '</span>'
+                return '<li class="home-repo-item">'
+                    + '<div class="repo-header"><div class="repo-icons">' + iconGit + iconGitHub + '</div>'
+                    + '<h4><a href="' + r.html_url + '" target="_blank" rel="noopener noreferrer">' + r.name + '</a></h4></div>'
+                    + '<span class="rss-meta">Updated on: ' + new Date(r.updated_at).toLocaleDateString('en-US') + '</span>'
                     + '<p>' + (r.description ? truncateWords(r.description, 32) : 'Without description.') + '</p>'
                     + '</li>';
             }).join('');
         } catch (e) {
-            target.innerHTML = '<li class="rss-item"><p>The GitHub repositories could not be loaded.</p></li>';
+            target.innerHTML = '<li class="home-repo-item"><p>The GitHub repositories could not be loaded.</p></li>';
         }
     }
 
@@ -223,10 +163,7 @@
     </script>
     {% endif %}
 
-    <!-- ============================================================
-         MATHJAX — Renders LaTeX math expressions
-         Supports inline ($...$) and display ($$...$$) syntax
-         ============================================================ -->
+    <!-- MathJax -->
     <script>
         window.MathJax = {
             tex: {
@@ -234,16 +171,12 @@
                 displayMath: [['$$', '$$'], ['\\[', '\\]']],
                 tags: 'none'
             },
-            options: {
-                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-            }
+            options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] }
         };
     </script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    <!-- ============================================================
-         MERMAID — Renders flowcharts from <pre class="mermaid"> blocks
-         ============================================================ -->
+    <!-- Mermaid -->
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: true });

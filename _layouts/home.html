@@ -2,35 +2,152 @@
 layout: default
 ---
 
-<div class="grid">
-    <div class="sidebar">
-        {% include nav.html %}
-        {% include social.html %}
+{% assign all_posts = site.articles | concat: site.papers | concat: site.essays | sort: 'date' | reverse %}
+{% assign featured = all_posts | first %}
+
+<div class="home-wrapper">
+
+  <!-- NAV -->
+  <nav class="home-nav">
+    <span class="home-nav-logo">{{ site.author.name }}</span>
+    <div class="home-nav-links">
+      <a href="{{ '/articles/' | relative_url }}">Articles</a>
+      <a href="{{ '/papers/' | relative_url }}">Papers</a>
+      <a href="{{ '/essays/' | relative_url }}">Essays</a>
+      <a href="{{ '/softwares/' | relative_url }}">Projects</a>
+      <a href="{{ '/about' | relative_url }}">About</a>
     </div>
+    <div class="home-nav-search">
+      <input type="text" id="home-search-input" placeholder="Search articles..." aria-label="Search" autocomplete="off" />
+      <span class="home-search-icon">
+        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8.5" cy="8.5" r="5.5"/>
+          <line x1="13" y1="13" x2="18" y2="18"/>
+        </svg>
+      </span>
+    </div>
+  </nav>
+  <div class="home-search-results" id="home-search-results" hidden></div>
 
-    <div class="main-content">
-        <img src="{{ site.author.avatar }}" alt="{{ site.author.name }}" class="profile-img" loading="lazy">
-        <h1>{{ site.author.name }}</h1>   
-        <hr></hr>
-        <h2>{{ site.author.role }}</h2>
-     
+  <!-- HERO -->
+  <section class="home-hero">
+    <div class="home-hero-avatar">
+      <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" loading="lazy" />
+    </div>
+    <div class="home-hero-text">
+      <div class="home-hero-available">Available for opportunities</div>
+      <h1 class="home-hero-name">{{ site.author.name }}</h1>
+      <p class="home-hero-role">{{ site.author.role }}</p>
+      <p class="home-hero-tags">Architecture &middot; Domain-Driven Design &middot; Cryptography &middot; System Design</p>
+      <div class="home-hero-bio">{{ content }}</div>
+      <div class="home-hero-btns">
+        <a class="home-btn-primary" href="{{ '/articles/' | relative_url }}">Read Articles</a>
+        <a class="home-btn-secondary" href="{{ '/softwares/' | relative_url }}">View Projects</a>
+      </div>
+    </div>
+  </section>
 
-        {{ content }}
+  <!-- FEATURED ARTICLE -->
+  {% if featured %}
+  <section class="home-section">
+    <div class="home-section-head">
+      <span class="home-section-label">Featured article</span>
+    </div>
+    <a class="home-featured-card" href="{{ featured.url | relative_url }}">
+      <div class="home-featured-top">
+        <span class="home-featured-badge">New</span>
+        <span class="home-featured-type">
+          {{ featured.date | date: "%b %d, %Y" }}
+          &middot; {{ featured.content | number_of_words | divided_by: 220 | plus: 1 }} min read
+        </span>
+      </div>
+      <h2 class="home-featured-title">{{ featured.title }}</h2>
+      {% if featured.subtitle %}
+      <p class="home-featured-desc">{{ featured.subtitle }}</p>
+      {% endif %}
+      <span class="home-featured-read">Read Article &rarr;</span>
+    </a>
+  </section>
+  {% endif %}
 
-        <!--<div class="rss-feed-section">
-            <h3>Artigos Recentes (Medium)</h3>
-            <ul id="medium-articles" class="rss-list" aria-live="polite">
-                <li class="rss-item"><p>Carregando artigos…</p></li>
-            </ul>
-        </div>-->
-
-        <div class="rss-feed-section">
-            <h3>Recent Repositories (GitHub)</h3>
-            <ul id="github-repos" class="rss-list" aria-live="polite">
-                <li class="rss-item"><p>Loading Repositories...</p></li>
-            </ul>
+  <!-- LATEST ARTICLES -->
+  <section class="home-section">
+    <div class="home-section-head">
+      <span class="home-section-label">Latest articles</span>
+      <a class="home-section-viewall" href="{{ '/articles/' | relative_url }}">View all articles &rarr;</a>
+    </div>
+    <div class="home-articles-grid">
+      {% for post in all_posts limit: 3 %}
+      <a class="home-article-card" href="{{ post.url | relative_url }}">
+        <h3 class="home-article-title">{{ post.title }}</h3>
+        <div class="home-article-tags">
+          {% for cat in post.categories limit: 2 %}
+          <span class="home-tag">#{{ cat }}</span>
+          {% endfor %}
         </div>
+        {% if post.subtitle %}
+        <p class="home-article-desc">{{ post.subtitle }}</p>
+        {% endif %}
+        <span class="home-article-meta">
+          {{ post.date | date: "%b %d, %Y" }} &middot; {{ post.content | number_of_words | divided_by: 220 | plus: 1 }} min read
+        </span>
+      </a>
+      {% endfor %}
     </div>
+  </section>
+
+  <!-- PROJECTS (GitHub repos) -->
+  <section class="home-section">
+    <div class="home-section-head">
+      <span class="home-section-label">Projects</span>
+      <a class="home-section-viewall" href="{{ '/softwares/' | relative_url }}">View all projects &rarr;</a>
+    </div>
+    <ul id="github-repos" class="home-repos-list" aria-live="polite">
+      <li class="home-repo-item"><p>Loading repositories…</p></li>
+    </ul>
+  </section>
+
+  <!-- RESEARCH PAPERS -->
+  <section class="home-section">
+    <div class="home-section-head">
+      <span class="home-section-label">Research papers</span>
+      <a class="home-section-viewall" href="{{ '/papers/' | relative_url }}">View all papers &rarr;</a>
+    </div>
+    <div class="home-papers-list">
+      {% assign papers = site.papers | sort: 'date' | reverse %}
+      {% for paper in papers %}
+      <a class="home-paper-item" href="{{ paper.url | relative_url }}">
+        <div>
+          <div class="home-paper-title">{{ paper.title }}</div>
+          {% if paper.subtitle %}<div class="home-paper-sub">{{ paper.subtitle }}</div>{% endif %}
+        </div>
+        <span class="home-paper-arr">&nearr;</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
 </div>
 
 {% include scripts.html %}
+
+<script>
+(function(){
+  var input  = document.getElementById('home-search-input');
+  var box    = document.getElementById('home-search-results');
+  if (!input || !box) return;
+  var posts = [{% for post in all_posts %}{"title":{{ post.title | jsonify }},"url":{{ post.url | relative_url | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}];
+  input.addEventListener('input', function(){
+    var q = input.value.trim().toLowerCase();
+    if (!q) { box.hidden = true; return; }
+    var m = posts.filter(function(p){ return p.title.toLowerCase().includes(q); });
+    box.innerHTML = m.length
+      ? m.slice(0,6).map(function(p){ return '<a class="hsr-item" href="'+p.url+'">'+p.title+'</a>'; }).join('')
+      : '<div class="hsr-empty">No results.</div>';
+    box.hidden = false;
+  });
+  document.addEventListener('click', function(e){
+    if (!input.contains(e.target) && !box.contains(e.target)) box.hidden = true;
+  });
+})();
+</script>
