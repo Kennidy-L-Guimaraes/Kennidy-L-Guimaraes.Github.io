@@ -471,9 +471,16 @@
   padding: 1.2rem 1.3rem;
   text-decoration: none;
   color: inherit;
-  transition: background 0.15s;
+  transition: border-color 0.22s ease, transform 0.18s ease;
 
-  &:hover { background: rgba(138,122,103,0.05); }
+  &:hover {
+    border-color: var(--cor-texto);
+    transform: translateY(-2px);
+
+    .home-article-title { color: var(--cor-destaqueLink); }
+
+    .home-article-title::before { color: var(--cor-destaqueLink); }
+  }
 }
 
 .home-article-title {
@@ -535,6 +542,13 @@
   border: var(--borda-fina);
   border-radius: 8px;
   padding: 1.1rem 1.2rem;
+  cursor: pointer;
+  transition: border-color 0.22s ease, transform 0.18s ease;
+
+  &:hover {
+    border-color: var(--cor-texto);
+    transform: translateY(-2px);
+  }
 
   h4 {
     font-family: var(--fonte-principal);
@@ -564,6 +578,14 @@
   }
 }
 
+.home-repo-item {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: var(--borda-fina);
+
+}
+
 // Repo card header — icons + title row
 .repo-header {
   display: flex;
@@ -584,12 +606,15 @@
 .repo-icon {
   width: 15px;
   height: 15px;
-  color: var(--cor-destaque);
-  opacity: 0.6;
+  color: var(--cor-link);
+  opacity: 0.5;
   flex-shrink: 0;
-  transition: opacity 0.2s ease;
+  transition: color 0.22s ease, opacity 0.22s ease;
 
-  .home-repo-item:hover & { opacity: 1; }
+  .home-repo-item:hover & {
+    color: #F05032;
+    opacity: 1;
+  }
 }
 
 .home-repo-loading {

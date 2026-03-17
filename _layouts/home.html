@@ -107,16 +107,16 @@ layout: default
     </div>
   </section>
 
-  <!-- PROJECTS (GitHub repos) -->
-  <section class="home-section">
-    <div class="home-section-head">
-      <span class="home-section-label">Projects</span>
-      <a class="home-section-viewall" href="{{ '/softwares/' | relative_url }}">View all projects &rarr;</a>
-    </div>
-    <ul id="github-repos" class="home-repos-list" aria-live="polite">
-      <li class="home-repo-item"><p>Loading repositories…</p></li>
-    </ul>
-  </section>
+ <!-- PROJECTS (GitHub repos) -->
+<section class="home-section">
+  <div class="home-section-head">
+    <span class="home-section-label">Projects</span>
+    <a class="home-section-viewall" href="{{ '/softwares/' | relative_url }}">View all projects &rarr;</a>
+  </div>
+  <div id="github-repos" class="home-repos-list" aria-live="polite">
+    <p class="home-repo-loading">Loading repositories…</p>
+  </div>
+</section>
 
   <!-- RESEARCH PAPERS -->
   <section class="home-section">
