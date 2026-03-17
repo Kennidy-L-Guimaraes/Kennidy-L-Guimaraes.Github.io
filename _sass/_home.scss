@@ -72,7 +72,7 @@
   }
 
   // SVG lupa — inline no HTML, estilo consistente com o site
-.home-search-icon {
+  .home-search-icon {
     position: absolute;
     right: 10px;
     top: 50%;
@@ -95,7 +95,7 @@
       stroke-linecap: round;
     }
   }
-}  
+}
 
 // ── Search results dropdown ───────────────────────────────────
 .home-search-results {
@@ -172,31 +172,32 @@
 .home-hero-available {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 9px;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #1a7a27;
-  background: rgba(48, 122, 26, 0.07);
-  border: 1px solid rgba(26, 122, 42, 0.25);
+  color: #166534;
+  background: #f0fdf4;
+  border: 1.5px solid #166534;
   border-radius: 100px;
-  padding: 4px 12px;
+  padding: 8px 20px;
   margin-bottom: 0.9rem;
 
   &::before {
     content: '';
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: #1a7a1a;
-    animation: pulse-red 2s ease-in-out infinite;
+    background: #16a34a;
+    flex-shrink: 0;
+    animation: pulse-green 2s ease-in-out infinite;
   }
 }
 
-@keyframes pulse-red {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.3; }
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4); }
+  50%       { box-shadow: 0 0 0 5px rgba(22, 163, 74, 0.0); }
 }
 
 .home-hero-name {
@@ -308,17 +309,68 @@
 
 // ── Featured card ─────────────────────────────────────────────
 .home-featured-card {
-  display: block;
+  display: grid;
+  grid-template-columns: 0fr 1fr;
   border: var(--borda-fina);
   border-left: 4px solid #7a1a1a;
   border-radius: 0 8px 8px 0;
-  padding: 1.6rem 1.8rem;
-  background: rgba(122, 71, 26, 0.03);
+  background: rgba(122, 26, 26, 0.03);
   text-decoration: none;
   color: inherit;
-  transition: background 0.2s;
+  overflow: hidden;
+  transition: grid-template-columns 0.4s ease, background 0.3s;
 
-  &:hover { background: rgba(122, 26, 26, 0.06); }
+  &:hover {
+    grid-template-columns: 0.43fr 1fr;
+    background: rgba(122, 26, 26, 0.05);
+
+    .home-featured-excerpt {
+      opacity: 1;
+    }
+  }
+}
+
+// Excerpt panel
+.home-featured-excerpt {
+  overflow: hidden;
+  background: #7a1a1a;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.1s;
+  padding: 1.6rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-self: stretch;
+
+  p {
+    font-family: var(--fonte-principal);
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    text-align: left;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+  }
+}
+
+.home-featured-excerpt-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  display: block;
+  margin-bottom: 0.3rem;
+  white-space: nowrap;
+}
+
+// Body
+.home-featured-body {
+  padding: 1.6rem 1.8rem;
+  min-width: 0;
 }
 
 .home-featured-top {
@@ -337,6 +389,7 @@
   color: #fff;
   padding: 3px 9px;
   border-radius: 3px;
+  flex-shrink: 0;
 }
 
 .home-featured-type {
@@ -372,6 +425,31 @@
   transition: border-color 0.2s;
 
   .home-featured-card:hover & { border-color: #7a1a1a; }
+}
+
+@media (max-width: 700px) {
+  .home-featured-card,
+  .home-featured-card:hover {
+    grid-template-columns: 1fr;
+  }
+
+  .home-featured-excerpt {
+    display: none;
+  }
+
+  .home-featured-body {
+    padding: 1.2rem 1.2rem;
+  }
+
+  .home-featured-title {
+    font-size: 1.2rem;
+  }
+
+  .home-featured-type {
+    font-size: 0.75rem;
+    white-space: normal;
+    word-break: break-word;
+  }
 }
 
 // ── Articles grid ─────────────────────────────────────────────

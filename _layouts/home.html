@@ -35,7 +35,7 @@ layout: default
       <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" loading="lazy" />
     </div>
     <div class="home-hero-text">
-      <div class="home-hero-available">Available for opportunities</div>
+      <div class="home-hero-available">Open to opportunities</div>
       <h1 class="home-hero-name">{{ site.author.name }}</h1>
       <p class="home-hero-role">{{ site.author.role }}</p>
       <p class="home-hero-tags">Architecture &middot; Domain-Driven Design &middot; Cryptography &middot; System Design</p>
@@ -49,23 +49,35 @@ layout: default
 
   <!-- FEATURED ARTICLE -->
   {% if featured %}
+  {% assign excerpt_text = featured.content | strip_html | truncatewords: 45 %}
   <section class="home-section">
     <div class="home-section-head">
       <span class="home-section-label">Featured article</span>
     </div>
     <a class="home-featured-card" href="{{ featured.url | relative_url }}">
-      <div class="home-featured-top">
-        <span class="home-featured-badge">New</span>
-        <span class="home-featured-type">
-          {{ featured.date | date: "%b %d, %Y" }}
-          &middot; {{ featured.content | number_of_words | divided_by: 220 | plus: 1 }} min read
-        </span>
+
+      <!-- Excerpt panel — slides in from left on hover -->
+      <div class="home-featured-excerpt" aria-hidden="true">
+        <span class="home-featured-excerpt-label">Preview</span>
+        <p>{{ excerpt_text }}</p>
       </div>
-      <h2 class="home-featured-title">{{ featured.title }}</h2>
-      {% if featured.subtitle %}
-      <p class="home-featured-desc">{{ featured.subtitle }}</p>
-      {% endif %}
-      <span class="home-featured-read">Read Article &rarr;</span>
+
+      <!-- Main content — shifts right on hover -->
+      <div class="home-featured-body">
+        <div class="home-featured-top">
+          <span class="home-featured-badge">New</span>
+          <span class="home-featured-type">
+            {{ featured.date | date: "%b %d, %Y" }}
+            &middot; {{ featured.content | number_of_words | divided_by: 220 | plus: 1 }} min read
+          </span>
+        </div>
+        <h2 class="home-featured-title">{{ featured.title }}</h2>
+        {% if featured.subtitle %}
+        <p class="home-featured-desc">{{ featured.subtitle }}</p>
+        {% endif %}
+        <span class="home-featured-read">Read Article &rarr;</span>
+      </div>
+
     </a>
   </section>
   {% endif %}
