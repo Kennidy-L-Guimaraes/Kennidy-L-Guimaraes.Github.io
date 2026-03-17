@@ -4,143 +4,152 @@ layout: default
 
 <div class="artigo-wrapper">
 
-    <nav class="menu artigo-nav" aria-label="Back to home">
-        <ul>
-            <li><a href="{{ '/' | relative_url }}">← Home</a></li>
-        </ul>
-    </nav>
+  <nav class="menu artigo-nav" aria-label="Back to home">
+    <ul>
+      <li><a href="{{ '/' | relative_url }}">← Home</a></li>
+    </ul>
+  </nav>
 
-    <!-- ── Header: name + CV button ──────────────────────── -->
-    <header class="artigo-header">
-        <div class="artigo-header-barra" aria-hidden="true"></div>
-        <div class="artigo-header-texto">
-            <div class="about-header-top">
-                <h1 class="artigo-titulo">{{ page.title }}</h1>
-                <a
-                    class="about-cv-btn"
-                    href="{{ site.author.cv_url | default: '#' }}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <i class="far fa-file-alt"></i> Curriculum Vitae
-                </a>
-            </div>
-            <div class="artigo-meta">
-                <span><i class="far fa-user"></i> {{ site.author.name }}</span>
-                <span><i class="far fa-map-marker-alt"></i> {{ site.author.address }}</span>
-            </div>
-        </div>
-    </header>
+  <!-- ── Hero ──────────────────────────────────────────────── -->
+  <div class="about-hero">
+    <div class="about-hero-avatar">
+      <img src="{{ site.author.avatar }}" alt="{{ site.author.name }}" loading="lazy" />
+    </div>
+    <div class="about-hero-text">
+      <div class="about-avail">
+        <span class="about-avail-dot"></span>
+        Open to opportunities
+      </div>
+      <h1 class="about-name">{{ site.author.name }}</h1>
+      <p class="about-role">{{ site.author.role }}</p>
+      <div class="about-hero-meta">
+        <span>{{ site.author.address }}</span>
+        <span class="about-meta-sep">·</span>
+        <span>Open to relocation · UAE &amp; Middle East</span>
+      </div>
+    </div>
+    <a class="about-cv-btn"
+       href="{{ site.author.cv_url | default: '#' }}"
+       target="_blank" rel="noopener noreferrer">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+      Download CV
+    </a>
+  </div>
 
-    <hr class="artigo-divider">
+  <hr class="artigo-divider">
 
-    <!-- ── GitHub Activity — top ──────────────────────────── -->
-    <section class="about-activity">
-        <div class="about-section-header">
-            <span class="about-section-label">GitHub Activity</span>
-            <span class="about-section-rule"></span>
-        </div>
+  <!-- ── Bio ───────────────────────────────────────────────── -->
+  <div class="about-corpo">
+    {{ content }}
+  </div>
 
-        <div class="about-commits-row">
-            <div class="about-commits-block">
-                <span class="about-commits-num" id="about-commits-num">—</span>
-                <span class="about-commits-label">total commits</span>
-            </div>
-            <span class="about-commits-desc">
-                Public contributions across all repositories on GitHub.
-            </span>
-        </div>
+  <!-- ── Stack ─────────────────────────────────────────────── -->
+  <section class="about-block">
+    <div class="about-section-header">
+      <span class="about-section-label">Core expertise</span>
+      <span class="about-section-rule"></span>
+    </div>
+    <div class="about-tags">
+      <span class="about-tag about-tag-main">Software Architecture</span>
+      <span class="about-tag about-tag-main">Domain-Driven Design</span>
+      <span class="about-tag about-tag-main">Cryptography</span>
+      <span class="about-tag about-tag-main">System Design</span>
+      <span class="about-tag about-tag-main">Technical Writing</span>
+      <span class="about-tag">Pascal / Lazarus</span>
+      <span class="about-tag">Delphi</span>
+      <span class="about-tag">HTML5 / CSS3</span>
+      <span class="about-tag">C# / .NET</span>
+      <span class="about-tag">Jekyll / Sass</span>
+      <span class="about-tag">Git / GitHub</span>
+      <span class="about-tag">CI/CD</span>
+      <span class="about-tag">Bitcoin / Blockchain</span>
+      <span class="about-tag">Hashing Algorithms</span>
+    </div>
+  </section>
 
-        <div class="about-graph">
-            <img
-                src="https://ghchart.rshah.org/8a7a67/{{ site.author.github }}"
-                alt="GitHub contribution graph — {{ site.author.name }}"
-                class="about-graph-img"
-                loading="lazy"
-            >
-            <span class="about-graph-caption">GitHub contribution activity</span>
-        </div>
-    </section>
+  <!-- ── Timeline ──────────────────────────────────────────── -->
+  
 
-    <hr class="artigo-divider">
-
-    <!-- ── Profile image ──────────────────────────────────── -->
-    <div class="about-perfil">
+  <!-- ── GitHub Activity ───────────────────────────────────── -->
+  <section class="about-block">
+    <div class="about-section-header">
+      <span class="about-section-label">GitHub Activity</span>
+      <span class="about-section-rule"></span>
+    </div>
+    <div class="about-activity-wrap">
+      <div class="about-commits-stat">
+        <span class="about-commits-num" id="about-commits-num">—</span>
+        <span class="about-commits-lbl">public contributions</span>
+      </div>
+      <div class="about-graph">
         <img
-            src="{{ site.author.avatar }}"
-            alt="{{ site.author.name }}"
-            class="about-perfil-img"
-            loading="lazy"
+          src="https://ghchart.rshah.org/8a7a67/{{ site.author.github }}"
+          alt="GitHub contribution graph — {{ site.author.name }}"
+          class="about-graph-img"
+          loading="lazy"
         >
+        <span class="about-graph-caption">GitHub contribution activity · last 52 weeks</span>
+      </div>
     </div>
+  </section>
 
-    <!-- ── Bio content from about.md ─────────────────────── -->
-    <div class="about-corpo">
-        {{ content }}
+  <!-- ── Connect ───────────────────────────────────────────── -->
+  <section class="about-block">
+    <div class="about-section-header">
+      <span class="about-section-label">Connect</span>
+      <span class="about-section-rule"></span>
     </div>
-
-    <!-- ── Social links ───────────────────────────────────── -->
-    <div class="about-social">
-        <span class="about-social-label">Find me on</span>
-        {% include social.html %}
+    <div class="about-connect">
+      <a class="about-connect-link" href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a>
+      {% if site.author.linkedin %}
+      <a class="about-connect-link" href="https://linkedin.com/in/{{ site.author.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+      {% endif %}
+      <a class="about-connect-link" href="https://x.com/{{ site.author.twitter }}" target="_blank" rel="noopener">X / Twitter</a>
+      <a class="about-connect-link" href="https://medium.com/@{{ site.author.medium }}" target="_blank" rel="noopener">Medium</a>
+      <a class="about-connect-link" href="https://www.theinstituteoflogic.com/members/kennidylguimaraes" target="_blank" rel="noopener">TIOL Profile</a>
+      <a class="about-connect-link" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
     </div>
+  </section>
 
 </div>
 
 <script>
 (function () {
-    const el       = document.getElementById('about-commits-num');
-    const username = '{{ site.author.github }}';
+  var el       = document.getElementById('about-commits-num');
+  var username = '{{ site.author.github }}';
 
-    async function fetchCommits() {
-        try {
-            const res   = await fetch(
-                'https://api.github.com/users/' + username + '/repos?per_page=100',
-                { headers: { 'Accept': 'application/vnd.github+json' } }
-            );
-            const repos = await res.json();
-            if (!Array.isArray(repos)) throw new Error('No repos');
+  async function fetchCommits() {
+    try {
+      var res   = await fetch('https://api.github.com/users/' + username + '/repos?per_page=100', { headers: { 'Accept': 'application/vnd.github+json' } });
+      var repos = await res.json();
+      if (!Array.isArray(repos)) throw new Error('No repos');
+      var counts = await Promise.all(repos.map(function (r) {
+        return fetch('https://api.github.com/repos/' + username + '/' + r.name + '/commits?per_page=1', { headers: { 'Accept': 'application/vnd.github+json' } })
+          .then(function (res) {
+            var link  = res.headers.get('Link') || '';
+            var match = link.match(/page=(\d+)>; rel="last"/);
+            return match ? parseInt(match[1], 10) : 1;
+          }).catch(function () { return 0; });
+      }));
+      animateCount(counts.reduce(function (a, b) { return a + b; }, 0));
+    } catch (e) { el.textContent = '—'; }
+  }
 
-            const counts = await Promise.all(
-                repos.map(function (r) {
-                    return fetch(
-                        'https://api.github.com/repos/' + username + '/' + r.name
-                        + '/commits?per_page=1',
-                        { headers: { 'Accept': 'application/vnd.github+json' } }
-                    ).then(function (res) {
-                        const link  = res.headers.get('Link') || '';
-                        const match = link.match(/page=(\d+)>; rel="last"/);
-                        return match ? parseInt(match[1], 10) : 1;
-                    }).catch(function () { return 0; });
-                })
-            );
-
-            const total = counts.reduce(function (a, b) { return a + b; }, 0);
-            animateCount(total);
-        } catch (e) {
-            el.textContent = '—';
-        }
+  function animateCount(target) {
+    var duration = 1800, start = performance.now();
+    function step(now) {
+      var progress = Math.min((now - start) / duration, 1);
+      var eased    = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target).toLocaleString();
+      if (progress < 1) requestAnimationFrame(step);
     }
+    requestAnimationFrame(step);
+  }
 
-    function animateCount(target) {
-        const duration = 1800;
-        const start    = performance.now();
-        function step(now) {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased    = 1 - Math.pow(1 - progress, 3);
-            el.textContent = Math.round(eased * target).toLocaleString();
-            if (progress < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-    }
+  var observer = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting) { fetchCommits(); observer.disconnect(); }
+  }, { threshold: 0.3 });
 
-    const observer = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) {
-            fetchCommits();
-            observer.disconnect();
-        }
-    }, { threshold: 0.3 });
-
-    if (el) observer.observe(el);
+  if (el) observer.observe(el);
 })();
 </script>

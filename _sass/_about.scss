@@ -1,316 +1,328 @@
 // ============================================================
-// _about.scss — About page
+// _about.scss — About page redesign
 // ============================================================
 
-// --- Header: name + CV button inline ---
-.about-header-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 8px;
+// ── Hero ─────────────────────────────────────────────────────
+.about-hero {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
-// --- CV button ---
+.about-hero-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: var(--borda-fina);
+  overflow: hidden;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 700px) {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+.about-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.about-avail {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #166534;
+  background: #f0fdf4;
+  border: 1.5px solid #166534;
+  border-radius: 100px;
+  padding: 5px 14px;
+  margin-bottom: 0.5rem;
+  width: fit-content;
+}
+
+.about-avail-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #16a34a;
+  flex-shrink: 0;
+  animation: pulse-green-about 2s ease-in-out infinite;
+}
+
+@keyframes pulse-green-about {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4); }
+  50%       { box-shadow: 0 0 0 5px rgba(22, 163, 74, 0); }
+}
+
+.about-name {
+  font-family: var(--fonte-principal);
+  font-size: 2.2rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--cor-texto);
+  margin: 0 0 0.2rem;
+}
+
+.about-role {
+  font-family: var(--fonte-principal);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--cor-destaque);
+  margin: 0 0 0.5rem;
+}
+
+.about-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--cor-link);
+}
+
+.about-meta-sep { opacity: 0.4; }
+
+// ── CV button ─────────────────────────────────────────────────
 .about-cv-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    font-family: var(--fonte-principal);
-    font-size: 0.78rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--cor-destaque);
-    text-decoration: none;
-    border: var(--borda-fina);
-    padding: 7px 16px;
-    border-radius: 2px;
-    white-space: nowrap;
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-    flex-shrink: 0;
-    margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fonte-principal);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 10px 22px;
+  background: var(--cor-texto);
+  color: var(--cor-fundo);
+  text-decoration: none;
+  border-radius: 3px;
+  white-space: nowrap;
+  align-self: center;
+  transition: opacity 0.2s;
 
-    i { font-size: 0.82rem; }
+  svg { flex-shrink: 0; }
+  &:hover { opacity: 0.82; }
 
-    &:hover {
-        background: var(--cor-destaque);
-        color: var(--cor-fundo);
-        border-color: var(--cor-destaque);
-    }
+  @media (max-width: 700px) {
+    align-self: flex-start;
+    grid-column: 1;
+  }
 }
 
-// --- Section headers (shared) ---
+// ── Bio ───────────────────────────────────────────────────────
+.about-corpo {
+  font-family: var(--fonte-principal);
+  font-size: 1.07rem;
+  line-height: 1.9;
+  color: var(--cor-texto);
+  margin-bottom: 2.5rem;
+  max-width: 640px;
+
+  p {
+    margin-bottom: 22px;
+    text-align: justify;
+    &:last-child { margin-bottom: 0; }
+  }
+
+  a {
+    color: var(--cor-link);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(138, 122, 103, 0.35);
+    transition: color 0.2s, border-color 0.2s;
+    &:hover { color: var(--cor-destaque); border-bottom-color: var(--cor-destaque); }
+  }
+}
+
+// ── Shared block ─────────────────────────────────────────────
+.about-block {
+  margin-bottom: 2.8rem;
+}
+
 .about-section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.4rem;
 }
 
 .about-section-label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--cor-destaque);
-    white-space: nowrap;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--cor-destaque);
+  white-space: nowrap;
 }
 
 .about-section-rule {
-    flex: 1;
-    height: 1px;
-    background: rgba(138, 122, 103, 0.2);
-    display: block;
+  flex: 1;
+  height: 1px;
+  background: rgba(138, 122, 103, 0.2);
+  display: block;
 }
 
-// --- GitHub Activity section ---
-.about-activity {
-    margin-bottom: 0;
+// ── Stack tags ────────────────────────────────────────────────
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.about-commits-row {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
+.about-tag {
+  font-family: var(--fonte-principal);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 5px 14px;
+  border: var(--borda-fina);
+  border-radius: 100px;
+  color: var(--cor-link);
 }
 
-.about-commits-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-shrink: 0;
-    min-width: 90px;
+.about-tag-main {
+  border-color: var(--cor-texto);
+  color: var(--cor-texto);
+}
+
+// ── Timeline ─────────────────────────────────────────────────
+.about-timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-tl-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1.5rem;
+  padding: 1.1rem 0;
+  border-bottom: var(--borda-fina);
+
+  &:first-child { border-top: var(--borda-fina); }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+}
+
+.about-tl-year {
+  font-family: var(--fonte-principal);
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--cor-link);
+  padding-top: 2px;
+  opacity: 0.75;
+}
+
+.about-tl-title {
+  font-family: var(--fonte-principal);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--cor-texto);
+  margin-bottom: 3px;
+}
+
+.about-tl-sub {
+  font-size: 0.83rem;
+  color: var(--cor-link);
+  font-style: italic;
+}
+
+// ── GitHub Activity ───────────────────────────────────────────
+.about-activity-wrap {
+  background: rgba(138, 122, 103, 0.05);
+  border: var(--borda-fina);
+  border-radius: 8px;
+  padding: 1.4rem 1.6rem;
+}
+
+.about-commits-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 1.2rem;
 }
 
 .about-commits-num {
-    font-family: var(--fonte-principal);
-    font-size: 3rem;
-    font-weight: 300;
-    color: var(--cor-destaque);
-    line-height: 1;
-    letter-spacing: -1px;
+  font-family: var(--fonte-principal);
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: var(--cor-destaque);
+  line-height: 1;
 }
 
-.about-commits-label {
-    font-family: var(--fonte-principal);
-    font-size: 0.68rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--cor-link);
-    opacity: 0.65;
-    margin-top: 5px;
-    text-align: center;
-}
-
-.about-commits-desc {
-    font-family: var(--fonte-principal);
-    font-size: 0.95rem;
-    color: var(--cor-link);
-    font-style: italic;
-    line-height: 1.7;
+.about-commits-lbl {
+  font-size: 0.85rem;
+  color: var(--cor-link);
+  font-style: italic;
 }
 
 .about-graph {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .about-graph-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 2px;
-    opacity: 0.88;
-    transition: opacity 0.2s ease;
-    &:hover { opacity: 1; }
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+  opacity: 0.88;
+  transition: opacity 0.2s;
+  &:hover { opacity: 1; }
 }
 
 .about-graph-caption {
-    font-family: var(--fonte-principal);
-    font-size: 0.78rem;
-    color: var(--cor-link);
-    font-style: italic;
-    opacity: 0.55;
-    text-align: center;
+  font-family: var(--fonte-principal);
+  font-size: 0.78rem;
+  color: var(--cor-link);
+  font-style: italic;
+  opacity: 0.6;
+  text-align: center;
 }
 
-// --- Profile image ---
-.about-perfil {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 32px;
+// ── Connect ───────────────────────────────────────────────────
+.about-connect {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.about-perfil-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: var(--borda-fina);
-    display: block;
-    object-fit: cover;
-}
+.about-connect-link {
+  font-family: var(--fonte-principal);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 7px 16px;
+  border: var(--borda-fina);
+  border-radius: 3px;
+  color: var(--cor-texto);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
 
-// --- Bio text ---
-.about-corpo {
-    font-family: var(--fonte-principal);
-    font-size: 1.07rem;
-    line-height: 1.9;
-    color: var(--cor-texto);
-    margin-bottom: 48px;
-
-    p {
-        margin-bottom: 22px;
-        text-align: justify;
-        &:last-child { margin-bottom: 0; }
-    }
-
-    a {
-        color: var(--cor-link);
-        text-decoration: none;
-        border-bottom: 1px solid rgba(138, 122, 103, 0.35);
-        transition: color 0.2s ease, border-color 0.2s ease;
-        &:hover {
-            color: var(--cor-destaque);
-            border-bottom-color: var(--cor-destaque);
-        }
-    }
-}
-
-// --- Skills section ---
-.about-skills {
-    margin-bottom: 48px;
-}
-
-.about-skills-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-}
-
-.about-skill-group {
-    padding: 18px 0;
-    border-bottom: var(--borda-fina);
-
-    &:first-child { border-top: var(--borda-fina); }
-}
-
-.about-skill-lang {
-    display: block;
-    font-family: var(--fonte-principal);
-    font-size: 0.88rem;
-    font-weight: 600;
+  &:hover {
+    border-color: var(--cor-destaque);
     color: var(--cor-destaque);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-}
-
-.about-skill-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-
-    li {
-        font-family: var(--fonte-principal);
-        font-size: 0.97rem;
-        color: var(--cor-link);
-        line-height: 1.6;
-        padding-left: 14px;
-        position: relative;
-
-        &::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--cor-destaque);
-            opacity: 0.5;
-            font-size: 0.85rem;
-        }
-    }
-}
-
-// --- Projects section ---
-.about-projects {
-    margin-bottom: 48px;
-}
-
-.about-project-item {
-    padding: 20px 0;
-    border-top: var(--borda-fina);
-    border-bottom: var(--borda-fina);
-}
-
-.about-project-top {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-}
-
-.about-project-name {
-    font-family: var(--fonte-principal);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--cor-texto);
-}
-
-.about-project-tech {
-    font-family: var(--fonte-principal);
-    font-size: 0.78rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--cor-destaque);
-    opacity: 0.75;
-}
-
-.about-project-desc {
-    font-family: var(--fonte-principal);
-    font-size: 0.97rem;
-    color: var(--cor-link);
-    font-style: italic;
-    line-height: 1.75;
-    margin: 0;
-    text-align: left;
-}
-
-// --- Social links ---
-.about-social {
-    margin-top: 0;
-    padding-top: 28px;
-    border-top: var(--borda-fina);
-}
-
-.about-social-label {
-    display: block;
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--cor-destaque);
-    margin-bottom: 16px;
-}
-
-.about-social .social-links {
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
-}
-
-// --- Responsive ---
-@media (max-width: 767px) {
-    .about-header-top   { flex-direction: column; align-items: flex-start; }
-    .about-cv-btn       { margin-top: 8px; }
-    .about-commits-row  { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .about-commits-num  { font-size: 2.4rem; }
-    .about-project-top  { flex-direction: column; gap: 4px; }
+  }
 }
