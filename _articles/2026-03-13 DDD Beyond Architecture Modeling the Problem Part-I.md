@@ -360,4 +360,4 @@ In this article we walked through the core building blocks of DDD — Bounded Co
 
 The analogy of the pizzeria served to show that even an apparently simple system demands careful separation of responsibilities, clearly scoped rules, and a model that resists the chaos of growth.
 
-In **Part II: Modeling the Real System**, we will step down one level and translate this mental map into actual engineering — where these ideas finally take shape in code.
+In **DDD in Practice: From Ubiquitous Language to Bounded Context - Part II**, we will step down one level and translate this mental map into actual engineering — where these ideas finally take shape in code.
