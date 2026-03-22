@@ -330,7 +330,7 @@ h1.artigo-titulo { color: var(--cor-texto); }
 
 // --- Code blocks ---
 .artigo-corpo pre {
-    background-color: #f5f3ef;
+    background-color: var(--cor-BlockCode);
     border: var(--borda-fina);
     border-left: 3px solid var(--cor-destaque);
     border-radius: 3px;

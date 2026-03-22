@@ -46,7 +46,7 @@
 
 // --- Math display block ---
 .math-block {
-    background-color: #f0f0edcc;
+    background-color: var(--cor-BlockMath);
     border-left: 3px solid #b0a898dd;
     padding: 1rem 1.5rem;
     margin: 1.75rem 0;

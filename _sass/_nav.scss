@@ -25,3 +25,65 @@
         &:hover { color: var(--cor-destaque); }
     }
 }
+
+.site-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+
+    button {
+        background: none;
+        border: none;
+        color: var(--cor-link);
+        cursor: pointer;
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s ease;
+        opacity: 0.5;
+
+        svg {
+            width: 15px;
+            height: 15px;
+            display: block;
+        }
+
+        &:hover { opacity: 0.9; }
+
+        &.active {
+            opacity: 1;
+            color: var(--cor-destaque);
+        }
+    }
+
+    // Botões de idioma mantêm texto
+    #btn-en, #btn-pt {
+        font-family: var(--fonte-principal);
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 4px 6px;
+        opacity: 0.5;
+
+        &.active  { opacity: 1; color: var(--cor-destaque); }
+        &:hover   { opacity: 0.9; }
+    }
+
+    .controls-divider {
+        width: 1px;
+        height: 12px;
+        background: rgba(138, 122, 103, 0.3);
+        display: inline-block;
+        margin: 0 4px;
+    }
+}
+
+/* Esconde o widget do Google Translate */
+.goog-te-banner-frame,
+.skiptranslate { display: none !important; }
+body { top: 0 !important; }
+.goog-te-gadget { font-size: 0 !important; }
