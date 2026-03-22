@@ -251,11 +251,11 @@
   font-size: 0.9rem;
   font-weight: 600;
   padding: 9px 22px;
-  background: var(--cor-destaque);
+  background: var(--cor-destaqueBtn);
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
-  border: 1px solid var(--cor-destaque);
+  border: 1px solid var(--cor-destaqueBordaBtn);
   transition: opacity 0.2s;
 
   &:hover { opacity: 0.85; }
@@ -314,7 +314,7 @@
   border: var(--borda-fina);
   border-left: 4px solid #7a1a1a;
   border-radius: 0 8px 8px 0;
-  background: rgba(122, 26, 26, 0.03);
+  background: rgba(122, 26, 26, 0);
   text-decoration: none;
   color: inherit;
   overflow: hidden;
@@ -322,7 +322,7 @@
 
   &:hover {
     grid-template-columns: 0.43fr 1fr;
-    background: rgba(122, 26, 26, 0.05);
+    background: rgba(122, 26, 26, 0);
 
     .home-featured-excerpt {
       opacity: 1;
