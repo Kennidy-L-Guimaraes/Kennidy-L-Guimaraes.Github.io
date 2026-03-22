@@ -6,10 +6,32 @@
 
 :root {
     --fonte-principal: 'Cormorant Garamond', serif;
-    --cor-fundo:       #fefdfa;
-    --cor-texto:       #333;
-    --cor-destaque: #1a1a1a;
-    --cor-destaqueLink: #830808; 
-    --cor-link: #3a3a3a;
-    --borda-fina:      1px solid rgba(138, 122, 103, 0.3);
+    --cor-fundo:            #fefdfa;
+    --cor-texto:            #333;
+    --cor-destaque:         #1a1a1a;
+    --cor-destaqueBtn:      #111111e8;
+    --cor-destaqueBordaBtn: #111111;
+    --cor-destaqueLink:     #830808; 
+    --cor-link:             #3a3a3a;
+    --borda-fina:           1px solid rgba(138, 122, 103, 0.3);
+    --cor-BlockMath:        rgba(240, 240, 237, 0.8);
+    --cor-BlockCode:        rgba(98, 183, 255, 0.08);
+
+}
+
+//*, *::before, *::after {
+  //  transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s ease;
+//}
+
+[data-theme="dark"] {
+    --cor-fundo:        #0f0f0f;
+    --cor-texto:        #d4d0c8;
+    --cor-destaque:     #f0ece0e8;
+    --cor-destaqueBtn:  #74000070;
+    --cor-destaqueBordaBtn: #740000de;
+    --cor-destaqueLink: #c45c5c;
+    --cor-link:         #a09a90;
+    --borda-fina:       1px solid rgba(180, 160, 130, 0.2);
+    --cor-BlockMath:    #0f0f0fce;
+    --cor-BlockCode:    rgba(98, 182, 255, 0);
 }
