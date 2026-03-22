@@ -32,17 +32,17 @@ related:
   ╚══════════════════════════════════════════════════════════════╝
 -->
 
-[OPENING PARAGRAPH — 2 to 4 sentences introducing the topic and why it matters. No section heading here. Cite sources as needed [1].]
+[OPENING PARAGRAPH — 2 to 4 sentences introducing the topic and why it matters. No section heading here. Cite sources as needed [[1]](#ref-1).]
 
 ---
 
 ### [Section 1 Title]
 
-[Introduce the first major concept. What is it? Why should the reader care? [2]]
+[Introduce the first major concept. What is it? Why should the reader care?] [[2]](#ref-2)
 
 **[Key term]** — [Definition or explanation of the term in plain language.]
 
-[Continue the explanation. Add examples, analogies, or context as needed [3].]
+[Continue the explanation. Add examples, analogies, or context as needed] [[3]](#ref-3)
 
 <!-- TIP: Use the <span class="destaque-bloco"> tag below for important quotes or highlighted callouts -->
 <span class="destaque-bloco">
@@ -53,7 +53,7 @@ related:
 
 ### [Section 2 Title]
 
-[Introduce the second major concept or argument. How does it connect to Section 1? [4]]
+[Introduce the second major concept or argument. How does it connect to Section 1? [[4]](#ref-4)]
 
 [Body of this section. Aim for 2–4 paragraphs. Break complex ideas into shorter paragraphs.]
 
@@ -73,9 +73,16 @@ related:
 
 ### [Section 3 Title — Optional]
 
-[Use this section for historical context, supporting arguments, or technical details. [5]]
+[Use this section for historical context, supporting arguments, or technical details. [[5]](#ref-5)]
 
 [Body text here.]
+
+Example of Table
+| Example Label | Example Label |
+|---|---|
+| column | Value |
+| column | Value |
+| column | Value |
 
 ---
 
@@ -97,3 +104,7 @@ related:
   If this is part of a series, add a transition sentence pointing to the next part:
   Example: "That question will be answered in **Part II: [Subtitle of Part II]**."
 -->
+## Author's Note
+<div class="nota-autor">
+Field for author's notes, such as update notes or recaps.
+</div>
