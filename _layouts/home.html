@@ -8,26 +8,9 @@ layout: default
 <div class="home-wrapper">
 
   <!-- NAV -->
-  <nav class="home-nav">
-    <span class="home-nav-logo">{{ site.author.name }}</span>
-    <div class="home-nav-links">
-      <a href="{{ '/articles/' | relative_url }}">Articles</a>
-      <a href="{{ '/papers/' | relative_url }}">Papers</a>
-      <a href="{{ '/essays/' | relative_url }}">Essays</a>
-      <a href="{{ '/softwares/' | relative_url }}">Projects</a>
-      <a href="{{ '/about' | relative_url }}">About</a>
-    </div>
-    <div class="home-nav-search">
-      <input type="text" id="home-search-input" placeholder="Search articles..." aria-label="Search" autocomplete="off" />
-      <span class="home-search-icon">
-        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="8.5" cy="8.5" r="5.5"/>
-          <line x1="13" y1="13" x2="18" y2="18"/>
-        </svg>
-      </span>
-    </div>
-  </nav>
-  <div class="home-search-results" id="home-search-results" hidden></div>
+<!-- NAV -->
+{% include nav.html %}
+<div class="home-search-results" id="home-search-results" hidden></div>
 
   <!-- HERO -->
   <section class="home-hero">
