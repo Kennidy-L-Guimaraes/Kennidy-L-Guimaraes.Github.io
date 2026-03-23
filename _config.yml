@@ -38,6 +38,9 @@ collections:
   essays:
     output: true
     permalink: /essays/:name/
+  topics:
+    output: true
+    permalink: /topics/:name/
 
 announcement:
   active: true

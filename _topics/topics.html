@@ -1,0 +1,121 @@
+---
+layout: default
+title: "Topics"
+permalink: /topics/
+---
+
+<div class="artigo-wrapper">
+
+    <nav class="menu artigo-nav" aria-label="Back to home">
+        <ul>
+            <li><a href="{{ '/' | relative_url }}">← Home</a></li>
+        </ul>
+    </nav>
+
+    <header class="list-header">
+        <h1 class="list-titulo" id="topic-title">Topics</h1>
+        <p class="list-descricao" id="topic-desc"></p>
+    </header>
+
+    <hr class="artigo-divider">
+
+    <div class="list-grid" id="topic-grid">
+        <p style="font-family: var(--fonte-principal); color: var(--cor-link);">Loading…</p>
+    </div>
+
+</div>
+
+{% comment %} Dump all posts as JSON for JS to filter {% endcomment %}
+<script>
+const ALL_POSTS = [
+  {% assign all_posts = site.articles | concat: site.papers | concat: site.essays | sort: 'date' | reverse %}
+  {% for post in all_posts %}
+  {
+    "title":    {{ post.title | jsonify }},
+    "subtitle": {{ post.subtitle | default: "" | jsonify }},
+    "url":      {{ post.url | relative_url | jsonify }},
+    "date":     {{ post.date | date: "%B %d, %Y" | jsonify }},
+    "author":   {{ post.author | default: site.author.name | jsonify }},
+    "words":    {{ post.content | number_of_words }},
+    "categories": {{ post.categories | jsonify }},
+    "series":   {{ post.series | default: "" | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+];
+
+const TOPIC_META = {
+  "cryptography": {
+    label: "Cryptography",
+    desc:  "Articles on cryptographic systems, algorithms, and protocols.",
+    slugs: ["cryptography", "crypto", "criptografia", "algorithms"]
+  },
+  "ddd": {
+    label: "Domain-Driven Design",
+    desc:  "Articles on DDD, bounded contexts, and software architecture.",
+    slugs: ["ddd", "domain-driven-design"]
+  },
+  "bitcoin": {
+    label: "Bitcoin & Blockchain",
+    desc:  "Articles on Bitcoin, blockchain, and distributed ledger systems.",
+    slugs: ["bitcoin", "blockchain", "btc"]
+  },
+  "philosophy": {
+    label: "Philosophy",
+    desc:  "Articles on philosophy, epistemology, and ethics.",
+    slugs: ["philosophy", "filosofia", "ethics", "epistemology"]
+  }
+};
+
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const key    = (params.get("topic") || "").toLowerCase().trim();
+  const meta   = TOPIC_META[key];
+
+  const title = document.getElementById("topic-title");
+  const desc  = document.getElementById("topic-desc");
+  const grid  = document.getElementById("topic-grid");
+
+  if (!meta) {
+    title.textContent = "Topic not found";
+    grid.innerHTML    = '<p style="font-family:var(--fonte-principal);color:var(--cor-link);">No topic specified.</p>';
+    return;
+  }
+
+  title.textContent = meta.label;
+  desc.textContent  = meta.desc;
+  document.title    = meta.label + " — {{ site.author.name }}";
+
+  const filtered = ALL_POSTS.filter(function (post) {
+    return post.categories.some(function (cat) {
+      return meta.slugs.includes(cat.toLowerCase().trim());
+    });
+  });
+
+  if (!filtered.length) {
+    grid.innerHTML = '<p style="font-family:var(--fonte-principal);color:var(--cor-link);">No articles in this topic yet.</p>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(function (post) {
+    const minutes = Math.ceil((post.words || 0) / 220) || 1;
+    const cats    = (post.categories || []).join(' · ').toUpperCase();
+    return [
+      '<a class="list-card" href="' + post.url + '">',
+        '<div class="list-card-top">',
+          cats ? '<span class="list-card-cat">' + cats + '</span>' : '',
+          post.series ? '<span class="list-card-series">Series</span>' : '',
+        '</div>',
+        '<h2 class="list-card-titulo">' + post.title + '</h2>',
+        post.subtitle ? '<p class="list-card-sub">' + post.subtitle + '</p>' : '',
+        '<div class="list-card-meta">',
+          '<span>' + post.date + '</span>',
+          '<span class="list-card-dot">·</span>',
+          '<span>' + post.author + '</span>',
+          '<span class="list-card-dot">·</span>',
+          '<span>' + minutes + ' min read</span>',
+        '</div>',
+      '</a>'
+    ].join('');
+  }).join('');
+})();
+</script>
