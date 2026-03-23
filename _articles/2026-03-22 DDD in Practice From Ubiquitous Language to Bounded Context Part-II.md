@@ -7,6 +7,7 @@ author: "Kennidy L. Guimarães"
 categories: [software-architecture, domain-driven-design]
 series: "ddd-in-practice"
 series_part: 2
+image: /assets/img/og/ddd-in-practice-from-ubiquitous-language-to-bounded-context-part-ii.png
 references:
   - "Evans, E. (2003). Domain-Driven Design: Tackling Complexity in the Heart of Software. Addison-Wesley. https://www.domainlanguage.com/ddd/"
   - "Fowler, M. Ubiquitous Language. martinfowler.com. https://martinfowler.com/bliki/UbiquitousLanguage.html"

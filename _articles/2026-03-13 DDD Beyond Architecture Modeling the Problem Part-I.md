@@ -7,6 +7,7 @@ author: "Kennidy L. Guimarães"
 categories: [software-architecture, domain-driven-design]
 series: "ddd-in-practice"
 series_part: 1
+image: /assets/img/og/ddd-in-practice-from-problem-to-model-part-i.png
 references:
   - "Evans, E. (2003). Domain-Driven Design: Tackling Complexity in the Heart of Software. Addison-Wesley. https://www.domainlanguage.com/ddd/"
   - "Vernon, V. (2013). Implementing Domain-Driven Design. Addison-Wesley. https://vaughnvernon.com/"

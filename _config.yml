@@ -1,7 +1,7 @@
 title: "Kennidy L. Guimarães"
 description: "Writer and Software Developer"
 baseurl: ""
-url: "https://kennidy-l-guimaraes.github.io"
+url: "https://kennidylguimaraes.com"
 lang: "en-us"
 
 author:
@@ -12,7 +12,7 @@ author:
   twitter: "kennidyl.guimaraes"
   medium: "kennidylguimaraes"
   avatar: "/assets/img/HarpyFortofBrazil.png"
-  email: "kennidylguimaraes@gmail.com"
+  email: "me@kennidylguimaraes.com"
   address: "Florianópolis, Brazil"
 
 future: true

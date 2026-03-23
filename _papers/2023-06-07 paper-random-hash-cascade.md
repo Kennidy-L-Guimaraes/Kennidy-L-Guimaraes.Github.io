@@ -6,6 +6,7 @@ date: 2023-06-07
 author: "Kennidy L. Guimarães"
 email: "kennidyLguimaraes@gmail.com"
 categories: [cryptography, algorithms]
+image: /assets/img/og/rhc-random-hash-cascade.png
 references:
   - "Matsumoto, M., & Nishimura, T. (1998). Mersenne Twister: A 623-Dimensionally Equidistributed Uniform Pseudo-Random Number Generator. https://dl.acm.org/doi/pdf/10.1145/272991.272995"
   - "Guimarães, K. L. (2024). RHC Collision Test Output — [RHCHashTest_2024-12-30_00-28-45.txt](/files/papers/rhc/RHCHashTest_2024-12-30_00-28-45.txt)"

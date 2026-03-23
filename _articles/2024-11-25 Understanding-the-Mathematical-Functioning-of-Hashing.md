@@ -7,6 +7,7 @@ author: "Kennidy L. Guimarães"
 email: "kennidyLguimaraes@gmail.com"
 categories: [cryptography, hash-functions, security]
 key_signing: "6e42e29e4b817c503f57122697fdce325134109487a01ae1890efb7513453119"
+image: /assets/img/og/understanding-the-mathematical-functioning-of-hashing.png
 references:
   - "National Institute of Standards and Technology. (2015). Secure Hash Standard (SHS). FIPS PUB 180-4. https://csrc.nist.gov/publications/detail/fips/180/4/final"
   - "Eastlake, D., & Hansen, T. (2011). US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF). RFC 6234. https://datatracker.ietf.org/doc/html/rfc6234"

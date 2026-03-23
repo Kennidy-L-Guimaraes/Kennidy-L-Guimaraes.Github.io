@@ -8,6 +8,7 @@ email: "kennidyLguimaraes@gmail.com"
 categories: [bitcoin, blockchain, cryptography]
 series: "the-chain-nobody-controls"
 series_part: 2
+image: /assets/img/og/how-blockchain-works-blocks-hashes-and-mining.png
 references:
   - "Nakamoto, S. (2008). Bitcoin: A Peer-to-Peer Electronic Cash System. https://bitcoin.org/bitcoin.pdf"
   - "Satoshi Nakamoto — Bitcoin Wiki. https://en.bitcoin.it/wiki/Satoshi_Nakamoto"

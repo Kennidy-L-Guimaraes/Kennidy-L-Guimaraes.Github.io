@@ -1,0 +1,105 @@
+---
+layout: null
+permalink: /og-template/
+---
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    background: #fefdfa;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .accent {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: #7a1a1a;
+  }
+
+  .content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 52px 64px 48px 72px;
+  }
+
+  .tag {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 18px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .title {
+    font-size: 52px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.15;
+    margin-bottom: 18px;
+    max-width: 900px;
+  }
+
+  .subtitle {
+    font-size: 22px;
+    color: #888;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 48px;
+    max-width: 800px;
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(138, 122, 103, 0.3);
+    padding-top: 20px;
+  }
+
+  .author {
+    font-size: 16px;
+    color: #888;
+  }
+
+  .domain {
+    font-size: 13px;
+    color: #bbb;
+    letter-spacing: 0.06em;
+    font-family: monospace;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="accent"></div>
+  <div class="content">
+    <div class="tag" id="tag"></div>
+    <h1 class="title" id="title"></h1>
+    <p class="subtitle" id="subtitle"></p>
+    <div class="footer">
+      <span class="author">Kennidy L. Guimarães</span>
+      <span class="domain">kennidylguimaraes.com</span>
+    </div>
+  </div>
+  <script>
+    const p = new URLSearchParams(window.location.search);
+    document.getElementById('tag').textContent      = p.get('tag')      || '';
+    document.getElementById('title').textContent    = p.get('title')    || '';
+    document.getElementById('subtitle').textContent = p.get('subtitle') || '';
+  </script>
+</body>
+</html>
