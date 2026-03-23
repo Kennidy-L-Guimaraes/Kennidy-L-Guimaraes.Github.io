@@ -251,7 +251,7 @@
 
 // ── GitHub Activity ───────────────────────────────────────────
 .about-activity-wrap {
-  background: rgba(138, 122, 103, 0.05);
+  background: var(--cor-fundo);
   border: var(--borda-fina);
   border-radius: 8px;
   padding: 1.4rem 1.6rem;

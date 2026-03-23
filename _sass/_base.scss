@@ -27,7 +27,7 @@ body {
 
 // --- Text selection ---
 ::selection {
-    background: rgba(155, 106, 28, 0.15);
+    background: var(--cor-selecao);
     color: var(--cor-texto);
 }
 

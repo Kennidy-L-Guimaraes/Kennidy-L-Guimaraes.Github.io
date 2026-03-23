@@ -171,7 +171,7 @@ $$\textbf{Intel Core i5 (10th gen):} \quad \approx 266{,}000\ \text{H/min}, \qua
 ---
 
 ## Author's Note — March 11, 2026
- 
+<div class="nota-autor"> 
 The test values will be made available in the References tab below. I am currently re-running the tests.
  
 Please take into account the nature of this paper: it is a **technical study**. It does not guarantee that applying this algorithm in your system will provide complete security or computational infeasibility. **Recalculate with the assistance of a mathematician and a security engineer** — this is strongly advisable.
@@ -183,7 +183,7 @@ From the final considerations: I tested this algorithm in software specifically 
 <div class="math-block">
 Hash( Random(24 bytes  |  16 bytes) )
 </div>
- 
+</div> 
 Thank you for taking the time to read this paper.
  
 ---
