@@ -8,3 +8,4 @@ group :jekyll_plugins do
 end
 
 gem "jekyll-mermaid", "~> 1.0"
+gem "jekyll-feed"
