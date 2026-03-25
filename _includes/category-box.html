@@ -1,41 +1,38 @@
 {% comment %} _includes/category-box.html {% endcomment %}
 {% assign _all = site.articles | concat: site.papers | concat: site.essays %}
-{% assign _groups = "Cryptography|cryptography,crypto,criptografia,algorithms|cryptography||DDD|ddd,domain-driven-design|ddd||Bitcoin & Blockchain|bitcoin,blockchain,btc|bitcoin||Philosophy|philosophy,filosofia,ethics,epistemology|philosophy" | split: "||" %}
-{% assign _counts = "" | split: "" %}
 
-{% for _raw in _groups %}
-  {% assign _parts  = _raw | strip | split: "|" %}
-  {% assign _label  = _parts[0] %}
-  {% assign _slugs  = _parts[1] | downcase | split: "," %}
-  {% assign _anchor = _parts[2] %}
-  {% assign _n = 0 %}
-  {% for post in _all %}
-    {% assign _matched = false %}
-    {% for cat in post.categories %}
-      {% assign _cat_low = cat | downcase | strip %}
-      {% for slug in _slugs %}
-        {% if _cat_low == slug | strip %}{% assign _matched = true %}{% endif %}
-      {% endfor %}
-    {% endfor %}
-    {% if _matched %}{% assign _n = _n | plus: 1 %}{% endif %}
+{% comment %} Coleta todas as categorias únicas de todos os posts {% endcomment %}
+{% assign _all_cats = "" | split: "" %}
+{% for post in _all %}
+  {% for cat in post.categories %}
+    {% assign _cat_norm = cat | downcase | strip %}
+    {% unless _all_cats contains _cat_norm %}
+      {% assign _all_cats = _all_cats | push: _cat_norm %}
+    {% endunless %}
   {% endfor %}
-  {% if _n > 0 %}
-    {% assign _entry = _label | append: "§" | append: _anchor | append: "§" | append: _n %}
-    {% assign _counts = _counts | push: _entry %}
-  {% endif %}
 {% endfor %}
 
 <aside class="cat-box" aria-label="Topics">
   <h3 class="cat-box__title">Topics</h3>
   <ul class="cat-box__list">
-    {% for _entry in _counts %}
-      {% assign _p = _entry | split: "§" %}
-      <li class="cat-box__item">
-        <a class="cat-box__link" href="{{ '/topics/' | relative_url }}?topic={{ _p[1] }}">
-          <span class="cat-box__label">{{ _p[0] }}</span>
-          <span class="cat-box__count">{{ _p[2] }}</span>
-        </a>
-      </li>
+    {% for _cat in _all_cats %}
+      {% assign _n = 0 %}
+      {% for post in _all %}
+        {% for post_cat in post.categories %}
+          {% assign _post_cat_norm = post_cat | downcase | strip %}
+          {% if _post_cat_norm == _cat %}
+            {% assign _n = _n | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+      {% if _n > 0 %}
+        <li class="cat-box__item">
+          <a class="cat-box__link" href="{{ '/topics/' | relative_url }}?topic={{ _cat | url_encode }}">
+            <span class="cat-box__label">{{ _cat | capitalize }}</span>
+            <span class="cat-box__count">{{ _n }}</span>
+          </a>
+        </li>
+      {% endif %}
     {% endfor %}
   </ul>
 </aside>

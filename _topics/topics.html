@@ -43,51 +43,26 @@ const ALL_POSTS = [
   {% endfor %}
 ];
 
-const TOPIC_META = {
-  "cryptography": {
-    label: "Cryptography",
-    desc:  "Articles on cryptographic systems, algorithms, and protocols.",
-    slugs: ["cryptography", "crypto", "criptografia", "algorithms"]
-  },
-  "ddd": {
-    label: "Domain-Driven Design",
-    desc:  "Articles on DDD, bounded contexts, and software architecture.",
-    slugs: ["ddd", "domain-driven-design"]
-  },
-  "bitcoin": {
-    label: "Bitcoin & Blockchain",
-    desc:  "Articles on Bitcoin, blockchain, and distributed ledger systems.",
-    slugs: ["bitcoin", "blockchain", "btc"]
-  },
-  "philosophy": {
-    label: "Philosophy",
-    desc:  "Articles on philosophy, epistemology, and ethics.",
-    slugs: ["philosophy", "filosofia", "ethics", "epistemology"]
-  }
-};
-
 (function () {
   const params = new URLSearchParams(window.location.search);
   const key    = (params.get("topic") || "").toLowerCase().trim();
-  const meta   = TOPIC_META[key];
 
   const title = document.getElementById("topic-title");
   const desc  = document.getElementById("topic-desc");
   const grid  = document.getElementById("topic-grid");
 
-  if (!meta) {
+  if (!key) {
     title.textContent = "Topic not found";
     grid.innerHTML    = '<p style="font-family:var(--fonte-principal);color:var(--cor-link);">No topic specified.</p>';
     return;
   }
 
-  title.textContent = meta.label;
-  desc.textContent  = meta.desc;
-  document.title    = meta.label + " — {{ site.author.name }}";
+  title.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+  document.title    = title.textContent + " — {{ site.author.name }}";
 
   const filtered = ALL_POSTS.filter(function (post) {
     return post.categories.some(function (cat) {
-      return meta.slugs.includes(cat.toLowerCase().trim());
+      return cat.toLowerCase().trim() === key;
     });
   });
 
