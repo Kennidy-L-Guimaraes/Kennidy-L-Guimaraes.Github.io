@@ -62,6 +62,12 @@ related:
 "[INSERT QUOTE]" — [Source Name, Document Title (Year)]
 </span>
 
+<div class="math-block">
+
+$$C_S = \sum_{i=1}^{n} P(F_i) \cdot \mathcal{I}(i)$$ <!--EXAMPLE MATH-->
+
+</div>
+
 ## Include Graph Mermaid
 <pre class="mermaid"> 
 
