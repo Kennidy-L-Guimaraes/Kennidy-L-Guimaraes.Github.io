@@ -27,7 +27,7 @@
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: 'en',
-            includedLanguages: 'en,pt',
+            includedLanguages: 'en,pt,es',
             autoDisplay: false
         }, 'google_translate_element');
     }
@@ -66,16 +66,18 @@
         }
 
         // ── Language ───────────────────────────────────────────────────
-        function setLang(lang) {
+       function setLang(lang) {
             var select = document.querySelector('.goog-te-combo');
             if (!select) return;
-            select.value = lang === 'pt' ? 'pt' : 'en';
+            select.value = lang === 'pt' ? 'pt' : lang === 'es' ? 'es' : 'en';
             select.dispatchEvent(new Event('change'));
             localStorage.setItem('lang', lang);
             var btnEn = document.getElementById('btn-en');
             var btnPt = document.getElementById('btn-pt');
+            var btnEs = document.getElementById('btn-es');
             if (btnEn) btnEn.classList.toggle('active', lang === 'en');
             if (btnPt) btnPt.classList.toggle('active', lang === 'pt');
+            if (btnEs) btnEs.classList.toggle('active', lang === 'es');
         }
 
         // ── Init (após DOM pronto) ──────────────────────────────────────
