@@ -7,6 +7,7 @@ author: "Author Name"
 categories: [category1, category2]
 series: "series-slug"         # Remove if not part of a series
 series_part: 1                # Remove if not part of a series
+image: #Og image 
 references:
   - "Author, A. (Year). Title. URL"         # [1]
   - "Author, B. (Year). Title. URL"         # [2]
