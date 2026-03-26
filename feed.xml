@@ -3,7 +3,9 @@ layout: null
 permalink: /feed.xml
 ---
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ site.lang | default: 'en' }}">
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:media="http://search.yahoo.com/mrss/"
+      xml:lang="{{ site.lang | default: 'en' }}">
   <generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>
   <link href="{{ '/feed.xml' | absolute_url }}" rel="self" type="application/atom+xml"/>
   <link href="{{ '/' | absolute_url }}" rel="alternate" type="text/html" hreflang="{{ site.lang | default: 'en' }}"/>
@@ -31,12 +33,24 @@ permalink: /feed.xml
     <category term="{{ cat | xml_escape }}"/>
     {% endfor %}
     {% endif %}
+
     {% if post.subtitle %}
     <summary type="html">{{ post.subtitle | xml_escape }}</summary>
     {% else %}
     <summary type="html">{{ post.content | strip_html | truncatewords: 50 | xml_escape }}</summary>
     {% endif %}
-    <content type="html">{{ post.content | xml_escape }}</content>
+
+    {% comment %} Apenas o primeiro parágrafo como content {% endcomment %}
+    {% assign first_para = post.content | split: '</p>' | first %}
+    <content type="html">{{ first_para | append: '</p>' | xml_escape }}</content>
+
+    {% comment %} Imagem OG via media:content {% endcomment %}
+    {% if post.image %}
+    <media:content url="{{ post.image | absolute_url }}" medium="image"/>
+    {% elsif post.og_image %}
+    <media:content url="{{ post.og_image | absolute_url }}" medium="image"/>
+    {% endif %}
+
     <author>
       <name>{{ post.author | default: site.author.name | xml_escape }}</name>
     </author>
