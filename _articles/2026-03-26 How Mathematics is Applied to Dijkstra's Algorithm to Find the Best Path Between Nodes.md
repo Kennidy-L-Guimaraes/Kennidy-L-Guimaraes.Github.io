@@ -3,8 +3,8 @@ layout: article
 title: "How Mathematics is Applied to Dijkstra's Algorithm to Find the Best Path Between Nodes"
 subtitle: "From a coffee terrace in Amsterdam to every GPS route calculated today"
 date: 2026-03-26
-author: "Author Name"
-categories: [algorithms, mathematics, computer-science]
+author: "Kennidy L. Guimarães"
+categories: [algorithms, computer-science]
 image: /assets/img/og/how-mathematics-is-applied-to-dijkstra-s-algorithm-to-find-the-best-path-between-nodes.png
 references:
   - "Frana, P. L. (2001). An Interview with Edsger W. Dijkstra. Communications of the ACM. https://dl.acm.org/doi/epdf/10.1145/1787234.1787249"         # [1]
@@ -305,4 +305,4 @@ $$O\bigl((V + E) \log V\bigr)$$
 
 where $V$ is the number of vertices and $E$ the number of edges in the graph. With a **Fibonacci heap**, this bound can be reduced to $O(E + V \log V)$ — relevant in dense graphs. In the most naive implementation, without a heap, the complexity is $O(V^2)$, which becomes prohibitive as the graph grows.
 
-It is precisely this balance between correctness and efficiency that makes Dijkstra applicable at real scale. Every time Google Maps recalculates your route, every time a data packet chooses the most efficient path through a network, every time a game character finds the shortest path to their destination — there is, at some layer, the same idea designed in twenty minutes on a café terrace in Amsterdam. What Dijkstra did was transform a problem that seemed intractable into a sequence of local, simple decisions that, together, guarantee the global optimum. That is no small thing. It is the kind of insight that separates a good engineer from a great scientist.
+It is precisely this balance between correctness and efficiency that makes Dijkstra's method applicable on a large scale. Every time Google Maps recalculates your route, every time a data packet chooses the most efficient path on a network, every time a game character finds the shortest route to their destination—there is, at some level, the same idea conceived in twenty minutes on the terrace of a café in Amsterdam. What Dijkstra did was transform a seemingly unsolvable problem into a sequence of simple, local decisions that, together, guarantee the global optimum.

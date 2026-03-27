@@ -4,7 +4,7 @@ title: "DDD in practice: from problem to model - Part I"
 subtitle: "Serie: Domain-Driven Design: From Problem to Code. Why domain modeling matters more than the pattern itself"
 date: 2026-03-13
 author: "Kennidy L. Guimarães"
-categories: [software-architecture, domain-driven-design]
+categories: [architecture, Domain-Driven-Design]
 series: "ddd-in-practice"
 series_part: 1
 image: /assets/img/og/ddd-in-practice-from-problem-to-model-part-i.png

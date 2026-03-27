@@ -4,7 +4,7 @@ title: "DDD in Practice: From Ubiquitous Language to Bounded Context - Part II"
 subtitle: "Serie: Domain-Driven Design: From Problem to Code. How naming things right — and in the right place — shapes the entire architecture"
 date: 2026-03-23
 author: "Kennidy L. Guimarães"
-categories: [software-architecture, domain-driven-design]
+categories: [architecture, Domain-Driven-Design]
 series: "ddd-in-practice"
 series_part: 2
 image: /assets/img/og/ddd-in-practice-from-ubiquitous-language-to-bounded-context-part-ii.png
