@@ -5,7 +5,7 @@ subtitle: "A Technical Overview of SHA-256: Architecture, Operations, and Securi
 date: 2024-11-25
 author: "Kennidy L. Guimarães"
 email: "kennidyLguimaraes@gmail.com"
-categories: [cryptography, hash, security]
+categories: [cryptography, hash]
 key_signing: "6e42e29e4b817c503f57122697fdce325134109487a01ae1890efb7513453119"
 image: /assets/img/og/understanding-the-mathematical-functioning-of-hashing.png
 references:

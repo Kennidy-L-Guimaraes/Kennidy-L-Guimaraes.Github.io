@@ -5,7 +5,7 @@ subtitle: "Part 1 — The Chain Nobody Controls"
 date:  2023-10-16
 author: "Kennidy L. Guimarães"
 email: "kennidyLguimaraes@gmail.com"
-categories: [bitcoin, blockchain, cryptography]
+categories: [bitcoin & blockchain, cryptography]
 image: /assets/img/og/bitcoin-as-an-intangible-asset-and-the-double-spending-problem.png
 references:
   - "Nakamoto, S. (2008). Bitcoin: A Peer-to-Peer Electronic Cash System. https://bitcoin.org/bitcoin.pdf"
