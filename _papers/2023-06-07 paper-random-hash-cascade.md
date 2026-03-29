@@ -1,12 +1,17 @@
 ---
 layout: article
-title: "RHC (Random Hash Cascade)"
+title: "Random Hash Cascade (RHC): A Pseudo-Random Hashing Algorithm Using Mersenne Twister and SHA-256"
 subtitle: "Study: Utilization of Hash Cascades for Pseudo-Random Hash Generation"
 date: 2023-06-07
+last_modified_at: 2026-03-29
+schema:
+  type: ScholarlyArticle  
 author: "Kennidy L. Guimarães"
 email: "kennidyLguimaraes@gmail.com"
 categories: [cryptography, algorithms]
+tags: [hashing, pseudo-random, mersenne twister, sha-256, distributed systems, entropy, security]
 image: /assets/img/og/rhc-random-hash-cascade.png
+description: "Random Hash Cascade (RHC) is a hashing algorithm that combines Mersenne Twister and SHA-256 to generate pseudo-random values with high entropy and low collision probability. This paper explores its structure, performance, and security implications."
 references:
   - "Matsumoto, M., & Nishimura, T. (1998). Mersenne Twister: A 623-Dimensionally Equidistributed Uniform Pseudo-Random Number Generator. https://dl.acm.org/doi/pdf/10.1145/272991.272995"
   - "Guimarães, K. L. (2024). RHC Collision Test Output — [RHCHashTest_2024-12-30_00-28-45.txt](/files/papers/rhc/RHCHashTest_2024-12-30_00-28-45.txt)"
