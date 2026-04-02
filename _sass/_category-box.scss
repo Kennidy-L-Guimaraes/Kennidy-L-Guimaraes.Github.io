@@ -30,21 +30,21 @@
   }
 
   // ── Link ───────────────────────────────────────────────────
-  &__link {
-    display:         inline-flex;
-    align-items:     baseline;
-    gap:             5px;
-    text-decoration: none;
-    color:           var(--cor-link);
-    font-family:     var(--fonte-principal);
-    font-size:       0.85rem;
-    transition:      color 0.15s;
+&__link {
+  display:         inline-flex;
+  align-items:     baseline;
+  gap:             5px;
+  text-decoration: none;
+  color:           var(--cor-link);
+  font-family:     var(--fonte-principal);
+  font-size:       0.85rem;
+  transition:      color 0.15s;
 
-    &:hover {
-      color: var(--cor-destaque);
-      .cat-box__count { color: var(--cor-destaqueLink); }
-    }
+  &:hover {
+    color: var(--cor-destaque);
+    .cat-box__count { color: var(--cor-destaqueLink); }
   }
+}
 
   &__icon   { display: none; }
 

@@ -6,22 +6,21 @@
 
 :root {
     --fonte-principal: 'Cormorant Garamond', serif;
-    --cor-fundo:            #fff8e1c9;
+    --cor-fundo:            #fff9e7;
     --cor-texto:            #2a1404;
-    --cor-destaque:         #803100ca;
-    --cor-progresso:        #1a1a1a;  
+    --cor-destaque:         rgb(61 39 35);
+    --cor-progresso:        #944700;  
     --cor-selecao:          rgba(155, 106, 28, 0.15); 
-    --cor-destaqueBtn:      #db7500;
-    --cor-destaqueBordaBtn: #ffa200;
+    --cor-destaqueBtn:      rgb(143, 68, 27);
+    --cor-destaqueBordaBtn: #a76d08bd;
     --cor-destaqueLink:     #803100ca; 
     --cor-link:             #3a3a3a;
-    --borda-fina:           1px solid rgba(138, 122, 103, 0.3);
-    --cor-BlockMath:        #fff8e197;
+    --borda-fina:           1px solid rgba(110, 62, 4, 0.3);
+    --cor-BlockMath:        #fff4cf8a;
     --cor-BlockCode:        rgba(98, 183, 255, 0.08);
     --cor-ArtigoBarra:      #9b511c;  
     --cor-CardHome:         rgba(255, 249, 240, 0.812);
-    --cor-CardHomeColapse:  #9b511c;    
-
+    --cor-CardHomeColapse:  #9b511c;
 }
 
 //*, *::before, *::after {
@@ -43,5 +42,5 @@
     --cor-BlockCode:         rgba(98, 182, 255, 0);
     --cor-ArtigoBarra:       #9f9f9fc4;  
     --cor-CardHome:          rgba(78, 78, 78, 0.02);
-    --cor-CardHomeColapse:   #6d150b;  
+    --cor-CardHomeColapse:   #520f0f;  
 }
