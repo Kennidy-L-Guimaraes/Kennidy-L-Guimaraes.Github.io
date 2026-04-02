@@ -134,23 +134,3 @@ layout: default
 
 {% include scripts.html %}
 
-<script>
-(function(){
-  var input  = document.getElementById('home-search-input');
-  var box    = document.getElementById('home-search-results');
-  if (!input || !box) return;
-  var posts = [{% for post in all_posts %}{"title":{{ post.title | jsonify }},"url":{{ post.url | relative_url | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}];
-  input.addEventListener('input', function(){
-    var q = input.value.trim().toLowerCase();
-    if (!q) { box.hidden = true; return; }
-    var m = posts.filter(function(p){ return p.title.toLowerCase().includes(q); });
-    box.innerHTML = m.length
-      ? m.slice(0,6).map(function(p){ return '<a class="hsr-item" href="'+p.url+'">'+p.title+'</a>'; }).join('')
-      : '<div class="hsr-empty">No results.</div>';
-    box.hidden = false;
-  });
-  document.addEventListener('click', function(e){
-    if (!input.contains(e.target) && !box.contains(e.target)) box.hidden = true;
-  });
-})();
-</script>

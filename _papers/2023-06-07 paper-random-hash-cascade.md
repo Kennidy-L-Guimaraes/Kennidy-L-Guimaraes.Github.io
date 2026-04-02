@@ -7,7 +7,7 @@ last_modified_at: 2026-03-29
 schema:
   type: ScholarlyArticle  
 author: "Kennidy L. Guimarães"
-email: "kennidyLguimaraes@gmail.com"
+email: "me@kennidylguimaraes.com"
 categories: [cryptography, algorithms]
 tags: [hashing, pseudo-random, mersenne twister, sha-256, distributed systems, entropy, security]
 image: /assets/img/og/rhc-random-hash-cascade.png
