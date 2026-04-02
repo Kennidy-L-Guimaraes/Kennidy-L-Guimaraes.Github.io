@@ -312,9 +312,9 @@
   display: grid;
   grid-template-columns: 0fr 1fr;
   border: var(--borda-fina);
-  border-left: 4px solid #7a1a1a;
+  border-left: 4px solid var(--cor-ArtigoBarra);
   border-radius: 0 8px 8px 0;
-  background: rgba(122, 26, 26, 0);
+  background: var(--cor-CardHome);
   text-decoration: none;
   color: inherit;
   overflow: hidden;
@@ -333,7 +333,8 @@
 // Excerpt panel
 .home-featured-excerpt {
   overflow: hidden;
-  background: #7a1a1a;
+  background: var(--cor-CardHomeColapse);
+;
   opacity: 0;
   transition: opacity 0.3s ease 0.1s;
   padding: 1.6rem 1.4rem;
@@ -385,7 +386,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  background: #7a1a1a;
+  background: var(--cor-destaqueBtn);
   color: #fff;
   padding: 3px 9px;
   border-radius: 3px;
@@ -420,12 +421,12 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #7a1a1a;
-  border-bottom: 1.5px solid rgba(122, 26, 26, 0.4);
+  color: var(--cor-destaque);
+  border-bottom: 1.5px solid rgba(122, 58, 26, 0.4);
   padding-bottom: 1px;
   transition: border-color 0.2s;
 
-  .home-featured-card:hover & { border-color: #7a1a1a; }
+  .home-featured-card:hover & { border-color: var(--cor-destaque);}
 }
 
 @media (max-width: 700px) {

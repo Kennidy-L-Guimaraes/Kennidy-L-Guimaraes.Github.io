@@ -6,18 +6,21 @@
 
 :root {
     --fonte-principal: 'Cormorant Garamond', serif;
-    --cor-fundo:            #fefdfa;
-    --cor-texto:            #333;
-    --cor-destaque:         #1a1a1a;
+    --cor-fundo:            #fff8e1c9;
+    --cor-texto:            #2a1404;
+    --cor-destaque:         #803100ca;
     --cor-progresso:        #1a1a1a;  
     --cor-selecao:          rgba(155, 106, 28, 0.15); 
-    --cor-destaqueBtn:      #111111e8;
-    --cor-destaqueBordaBtn: #111111;
-    --cor-destaqueLink:     #830808; 
+    --cor-destaqueBtn:      #db7500;
+    --cor-destaqueBordaBtn: #ffa200;
+    --cor-destaqueLink:     #803100ca; 
     --cor-link:             #3a3a3a;
     --borda-fina:           1px solid rgba(138, 122, 103, 0.3);
-    --cor-BlockMath:        rgba(240, 240, 237, 0.8);
+    --cor-BlockMath:        #fff8e197;
     --cor-BlockCode:        rgba(98, 183, 255, 0.08);
+    --cor-ArtigoBarra:      #9b511c;  
+    --cor-CardHome:         rgba(255, 249, 240, 0.812);
+    --cor-CardHomeColapse:  #9b511c;    
 
 }
 
@@ -26,16 +29,19 @@
 //}
 
 [data-theme="dark"] {
-    --cor-fundo:        #0f0f0f;
-    --cor-texto:        #d4d0c8;
-    --cor-destaque:     #f0ece0e8;
-    --cor-progresso:    #c45c5c;
-    --cor-selecao:      rgba(155, 28, 28, 0.15);  
-    --cor-destaqueBtn:  #74000070;
-    --cor-destaqueBordaBtn: #740000de;
-    --cor-destaqueLink: #c45c5c;
-    --cor-link:         #a09a90;
-    --borda-fina:       1px solid rgba(180, 160, 130, 0.2);
-    --cor-BlockMath:    #0f0f0fce;
-    --cor-BlockCode:    rgba(98, 182, 255, 0);
+    --cor-fundo:             #0f0f0f;
+    --cor-texto:             #d4d0c8;
+    --cor-destaque:          #f0ece0e8;
+    --cor-progresso:         #c45c5c;
+    --cor-selecao:           rgba(155, 28, 28, 0.15);  
+    --cor-destaqueBtn:       #74000070;
+    --cor-destaqueBordaBtn:  #740000de;
+    --cor-destaqueLink:      #c45c5c;
+    --cor-link:              #a09a90;
+    --borda-fina:            1px solid rgba(180, 160, 130, 0.2);
+    --cor-BlockMath:         #0f0f0fce;
+    --cor-BlockCode:         rgba(98, 182, 255, 0);
+    --cor-ArtigoBarra:       #9f9f9fc4;  
+    --cor-CardHome:          rgba(78, 78, 78, 0.02);
+    --cor-CardHomeColapse:   #6d150b;  
 }
