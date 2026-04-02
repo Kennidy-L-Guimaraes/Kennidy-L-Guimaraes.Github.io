@@ -1,0 +1,49 @@
+<script>
+(function(){
+  var input  = document.getElementById('home-search-input');
+  var box    = document.getElementById('home-search-results');
+  var nav    = document.querySelector('.home-nav');
+  
+  if (!input || !box || !nav) return;
+
+  // Detecta o tipo de página pelo data attribute
+  var pageType = nav.getAttribute('data-page-type');
+
+  // Define os posts baseado no tipo de página
+  var posts = [
+    {% if page.url == "/" %}
+      {% assign all_posts = site.articles | concat: site.papers | concat: site.essays | sort: 'date' | reverse %}
+    {% elsif page.collection == 'articles' %}
+      {% assign all_posts = site.articles | sort: 'date' | reverse %}
+    {% elsif page.collection == 'essays' %}
+      {% assign all_posts = site.essays | sort: 'date' | reverse %}
+    {% elsif page.collection == 'papers' %}
+      {% assign all_posts = site.papers | sort: 'date' | reverse %}
+    {% else %}
+      {% assign all_posts = site.articles | concat: site.papers | concat: site.essays | sort: 'date' | reverse %}
+    {% endif %}
+    {% for post in all_posts %}
+      {
+        "title": {{ post.title | jsonify }},
+        "url": {{ post.url | relative_url | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  input.addEventListener('input', function(){
+    var q = input.value.trim().toLowerCase();
+    if (!q) { box.hidden = true; return; }
+    var m = posts.filter(function(p){ return p.title.toLowerCase().includes(q); });
+    box.innerHTML = m.length
+      ? m.slice(0,6).map(function(p){ 
+          return '<a class="hsr-item" href="'+p.url+'">'+p.title+'</a>'; 
+        }).join('')
+      : '<div class="hsr-empty">No results.</div>';
+    box.hidden = false;
+  });
+
+  document.addEventListener('click', function(e){
+    if (!input.contains(e.target) && !box.contains(e.target)) box.hidden = true;
+  });
+})();
+</script>
