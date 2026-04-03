@@ -525,6 +525,42 @@
   margin-top: auto;
 }
 
+.home-article-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Container da imagem */
+.home-article-image-wrapper {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+/* Imagem */
+.home-article-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+/* Hover sutil */
+.home-article-card:hover .home-article-image {
+  transform: scale(1.04);
+}
+
+/* Conteúdo separado */
+.home-article-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 // ── Projects (GitHub repos) ───────────────────────────────────
 .home-repos-list {
   list-style: none;
