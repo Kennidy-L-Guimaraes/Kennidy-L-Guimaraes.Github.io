@@ -45,7 +45,7 @@ collections:
     permalink: /topics/:name/
 
 announcement:
-  active: true
+  active: false
   show_on: all          # "home" ou "all" (todas as páginas)
   label: "Important!"    # texto do badge vermelho
   message: "Please note that this website is still under construction; it may undergo changes, present inconsistencies, and its articles may be redirected. Thank you for your understanding."
