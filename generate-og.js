@@ -20,6 +20,17 @@ const COLORS = {
   corArtigoBarra:  '#9b511c',
 };
 
+// Configuração da OG da home
+const HOME_OG = {
+  tag:      'kennidylguimaraes.com',
+  title:    'Kennidy L. Guimarães',
+  subtitle: 'Writer and software developer',
+  bio:      'Software developer and writer, currently studying Computer Science at Italo-Brazilian University. Focused on software architecture, domain modeling, and long-term system maintainability.',
+  filename: 'home.png',
+  // Caminho do index.md para injetar a imagem
+  indexPath: path.join(__dirname, 'index.md'),
+};
+
 fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
 function slugify(str) {
@@ -46,7 +57,7 @@ function formatDate(dateStr) {
 
   const date = new Date(dateStr);
   if (isNaN(date.getTime())) {
-    return dateStr; // Se não conseguir fazer parse, retorna como está
+    return dateStr;
   }
 
   return date.toLocaleDateString('en-US', {
@@ -60,10 +71,7 @@ function buildUrl(fm, content) {
   const cats = (fm.categories || []).join(' · ').toUpperCase();
   const tag = [cats, fm.series ? 'Series' : ''].filter(Boolean).join(' · ');
 
-  // Calcula read time do conteúdo
   const readtime = calculateReadTime(content);
-
-  // Formata data
   const date = formatDate(fm.date);
 
   const params = new URLSearchParams({
@@ -77,10 +85,20 @@ function buildUrl(fm, content) {
   return `${TEMPLATE}?${params.toString()}`;
 }
 
+function buildHomeUrl() {
+  const params = new URLSearchParams({
+    tag:      HOME_OG.tag,
+    title:    HOME_OG.title,
+    subtitle: HOME_OG.subtitle,
+    bio:      HOME_OG.bio,
+  });
+  return `${TEMPLATE}?${params.toString()}`;
+}
+
 function injectImage(imgPath, raw) {
   if (/^image:\s*["']?["']?\s*$/m.test(raw)) {
     return raw.replace(/^image:\s*["']?["']?\s*$/m, `image: ${imgPath}`);
-  } 
+  }
   else if (!/^image:/m.test(raw)) {
     return raw.replace(/^---\n/, `---\nimage: ${imgPath}\n`);
   }
@@ -90,7 +108,6 @@ function injectImage(imgPath, raw) {
 async function applyTheme(page) {
   await page.evaluate((colors) => {
     const root = document.documentElement;
-
     root.style.setProperty('--cor-fundo', colors.corFundo);
     root.style.setProperty('--cor-texto', colors.corTexto);
     root.style.setProperty('--cor-destaque', colors.corDestaque);
@@ -104,25 +121,57 @@ async function preparePage(page, url) {
     timeout: 15000
   });
 
-  // Garante que fontes carregaram
   await page.evaluateHandle('document.fonts.ready');
-
-  // Injeta tema corretamente
   await applyTheme(page);
-
-  // Pequeno delay pra garantir repaint
   await new Promise(r => setTimeout(r, 50));
+}
+
+async function generateHome(page) {
+  const outPath = path.join(OUTPUT_DIR, HOME_OG.filename);
+  const imgPath = `/assets/img/og/${HOME_OG.filename}`;
+
+  const alreadyExists = fs.existsSync(outPath);
+  const raw           = fs.existsSync(HOME_OG.indexPath)
+    ? fs.readFileSync(HOME_OG.indexPath, 'utf8')
+    : null;
+  const { data: fm }  = raw ? matter(raw) : { data: {} };
+  const imageSet      = fm.image && fm.image.trim() !== '';
+
+  if (!FORCE_ALL && alreadyExists && imageSet) {
+    console.log(`⏭  ${HOME_OG.filename} (home)`);
+    return 'skipped';
+  }
+
+  const url = buildHomeUrl();
+  console.log(`Gerando: ${HOME_OG.filename} (home)`);
+
+  try {
+    await preparePage(page, url);
+
+    await page.screenshot({
+      path: outPath,
+      type: 'png',
+      clip: { x: 0, y: 0, width: 1200, height: 630 }
+    });
+
+    if (raw) {
+      const updated = injectImage(imgPath, raw);
+      if (updated !== raw) {
+        fs.writeFileSync(HOME_OG.indexPath, updated, 'utf8');
+      }
+    }
+
+    return 'generated';
+  } catch (err) {
+    console.error(`Erro na home:`, err.message);
+    return 'error';
+  }
 }
 
 async function generate() {
   const files = COLLECTIONS.flatMap(col =>
     glob.sync(`${col}/**/*.md`, { cwd: __dirname })
   );
-
-  if (!files.length) {
-    console.log('Nenhum arquivo encontrado.');
-    process.exit(1);
-  }
 
   const browser = await puppeteer.launch({ headless: 'new' });
   const page    = await browser.newPage();
@@ -135,6 +184,15 @@ async function generate() {
 
   let generated = 0;
   let skipped   = 0;
+
+  // Gera OG da home primeiro
+  const homeResult = await generateHome(page);
+  if (homeResult === 'generated') generated++;
+  else if (homeResult === 'skipped') skipped++;
+
+  if (!files.length) {
+    console.log('\nNenhum arquivo de coleção encontrado.');
+  }
 
   for (const file of files) {
     const fullPath = path.join(__dirname, file);
@@ -172,7 +230,6 @@ async function generate() {
       });
 
       const updated = injectImage(imgPath, raw);
-
       if (updated !== raw) {
         fs.writeFileSync(fullPath, updated, 'utf8');
       }

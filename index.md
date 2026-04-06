@@ -1,6 +1,7 @@
 ---
 layout: home
 title: Kennidy L. Guimarães
+image: /assets/img/og/home.png
 ---
 
 <p>Software developer and writer, currently studying Computer Science at
