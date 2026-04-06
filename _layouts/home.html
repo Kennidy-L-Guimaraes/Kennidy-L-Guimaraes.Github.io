@@ -8,9 +8,11 @@ layout: default
 <div class="home-wrapper">
 
   <!-- NAV -->
-<!-- NAV -->
-{% include nav.html %}
-<div class="home-search-results" id="home-search-results" hidden></div>
+  {% include nav.html %}
+  <div class="home-search-results" id="home-search-results" hidden></div>
+
+  <!-- FLOATING SOCIAL -->
+  {% include social-float.html %}
 
   <!-- HERO -->
   <section class="home-hero">
@@ -19,7 +21,7 @@ layout: default
     </div>
     <div class="home-hero-text">
       <h1 class="home-hero-name">{{ site.author.name }}</h1>
-      <p class="home-hero-role">{{ site.author.role }}</p>
+      <p class="home-hero-role">Words and systems — built to last.</p>
       <p class="home-hero-tags">Architecture &middot; Domain-Driven Design &middot; Cryptography &middot; System Design</p>
       <div class="home-hero-bio">{{ content }}</div>
       <div class="home-hero-btns">
@@ -38,13 +40,11 @@ layout: default
     </div>
     <a class="home-featured-card" href="{{ featured.url | relative_url }}">
 
-      <!-- Excerpt panel — slides in from left on hover -->
       <div class="home-featured-excerpt" aria-hidden="true">
         <span class="home-featured-excerpt-label">Preview</span>
         <p>{{ excerpt_text }}</p>
       </div>
 
-      <!-- Main content — shifts right on hover -->
       <div class="home-featured-body">
         <div class="home-featured-top">
           <span class="home-featured-badge">New</span>
@@ -64,72 +64,71 @@ layout: default
   </section>
   {% endif %}
 
-  
-    <!-- TOPICS -->
-    <section class="home-section">
+  <!-- TOPICS -->
+  <section class="home-section">
     <div class="home-section-head">
       <span class="home-section-label">Browse by topic</span>
     </div>
-      {% include category-box.html %}
-    </section>
+    {% include category-box.html %}
+  </section>
 
-<!-- LATEST ARTICLES -->
-<section class="home-section">
-  <div class="home-section-head">
-    <span class="home-section-label">Latest articles</span>
-    <a class="home-section-viewall" href="{{ '/articles/' | relative_url }}">
-      View all articles &rarr;
-    </a>
-  </div>
+  <!-- LATEST ARTICLES -->
+  <section class="home-section">
+    <div class="home-section-head">
+      <span class="home-section-label">Latest articles</span>
+      <a class="home-section-viewall" href="{{ '/articles/' | relative_url }}">
+        View all articles &rarr;
+      </a>
+    </div>
 
-  <div class="home-articles-grid">
-    {% for post in all_posts limit: 3 %}
-    <a class="home-article-card" href="{{ post.url | relative_url }}">
+    <div class="home-articles-grid">
+      {% for post in all_posts limit: 3 %}
+      <a class="home-article-card" href="{{ post.url | relative_url }}">
 
-      {% if post.image %}
-      <div class="home-article-image-wrapper">
-        <img 
-          src="{{ post.image | relative_url }}" 
-          alt="{{ post.title }}" 
-          class="home-article-image"
-        >
-      </div>
-      {% endif %}
-
-      <div class="home-article-content">
-        <h3 class="home-article-title">{{ post.title }}</h3>
-
-        <div class="home-article-tags">
-          {% for cat in post.categories limit: 2 %}
-          <span class="home-tag">#{{ cat }}</span>
-          {% endfor %}
+        {% if post.image %}
+        <div class="home-article-image-wrapper">
+          <img
+            src="{{ post.image | relative_url }}"
+            alt="{{ post.title }}"
+            class="home-article-image"
+          >
         </div>
-
-        {% if post.subtitle %}
-        <p class="home-article-desc">{{ post.subtitle }}</p>
         {% endif %}
 
-        <span class="home-article-meta">
-          {{ post.date | date: "%b %d, %Y" }} &middot;
-          {{ post.content | number_of_words | divided_by: 220 | plus: 1 }} min read
-        </span>
-      </div>
+        <div class="home-article-content">
+          <h3 class="home-article-title">{{ post.title }}</h3>
 
-    </a>
-    {% endfor %}
-  </div>
-</section>
+          <div class="home-article-tags">
+            {% for cat in post.categories limit: 2 %}
+            <span class="home-tag">#{{ cat }}</span>
+            {% endfor %}
+          </div>
 
- <!-- PROJECTS (GitHub repos) -->
-<section class="home-section">
-  <div class="home-section-head">
-    <span class="home-section-label">Projects</span>
-    <a class="home-section-viewall" href="{{ '/softwares/' | relative_url }}">View all projects &rarr;</a>
-  </div>
-  <div id="github-repos" class="home-repos-list" aria-live="polite">
-    <p class="home-repo-loading">Loading repositories…</p>
-  </div>
-</section>
+          {% if post.subtitle %}
+          <p class="home-article-desc">{{ post.subtitle }}</p>
+          {% endif %}
+
+          <span class="home-article-meta">
+            {{ post.date | date: "%b %d, %Y" }} &middot;
+            {{ post.content | number_of_words | divided_by: 220 | plus: 1 }} min read
+          </span>
+        </div>
+
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- PROJECTS (GitHub repos) -->
+  <section class="home-section">
+    <div class="home-section-head">
+      <span class="home-section-label">Projects</span>
+      <a class="home-section-viewall" href="{{ '/softwares/' | relative_url }}">View all projects &rarr;</a>
+    </div>
+    <div id="github-repos" class="home-repos-list" aria-live="polite">
+      <p class="home-repo-loading">Loading repositories…</p>
+    </div>
+  </section>
 
   <!-- RESEARCH PAPERS -->
   <section class="home-section">
@@ -154,4 +153,3 @@ layout: default
 </div>
 
 {% include scripts.html %}
-
