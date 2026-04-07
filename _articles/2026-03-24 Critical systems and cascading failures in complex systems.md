@@ -3,9 +3,11 @@ layout: article
 title: "Critical systems and cascading failures in complex systems"
 subtitle: "Why Failures at the Weakest Link Are Not Isolated Events"
 date: 2026-03-24
+last_modified_at: 2026-04-7
 author: "Kennidy L. Guimarães"
 email: "me@kennidylguimaraes.com"
 categories: [computer-science]
+tags: [algorithms, Computer Science, systems, Mathematical]
 image: /assets/img/og/critical-systems-and-cascading-failures-in-complex-systems.png
 references:
   - "Cascading failures in complex networks https://academic.oup.com/comnet/article/8/2/cnaa013/5849333"

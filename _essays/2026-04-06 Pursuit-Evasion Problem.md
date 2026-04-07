@@ -8,6 +8,7 @@ schema:
   type: Essay
 author: "Kennidy L. Guimarães"
 categories: [mathematics]
+tags: [algorithms, Computer Science, systems, Mathematical, Graphs, Search]
 tags: [pursuit-evasion, probability, search theory, game theory, mathematics]
 image: /assets/img/og/pursuit-evasion-problem-a-probabilistic-search-analysis-in-a-deterministic-scope.png
 ---

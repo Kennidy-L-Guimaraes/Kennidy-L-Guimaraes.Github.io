@@ -8,7 +8,7 @@ schema:
   type: ScholarlyArticle  
 author: "Kennidy L. Guimarães"
 categories: [algorithms]
-tags: [algorithms, A*, A-Star, Computer Science, systems]
+tags: [algorithms, Computer Science, systems, Mathematical, Graphs, Search]
 image: /assets/img/og/how-a-uses-heuristics-and-mathematics-to-define-the-best-and-least-costly-route.png
 references:
   - "Hart, P. E., Nilsson, N. J., & Raphael, B. (1968). A Formal Basis for the Heuristic Determination of Minimum Cost Paths. IEEE Transactions on Systems Science and Cybernetics, 4(2), 100–107."         # [1]

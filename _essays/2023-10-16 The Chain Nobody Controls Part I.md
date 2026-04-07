@@ -6,6 +6,7 @@ date:  2023-10-16
 author: "Kennidy L. Guimarães"
 email: "kennidyLguimaraes@gmail.com"
 categories: [bitcoin & blockchain, cryptography]
+tags: [Bitcoin, Blockchain, Chains of links, Hash, Mathematics, Satoshi Nakamoto]
 image: /assets/img/og/bitcoin-as-an-intangible-asset-and-the-double-spending-problem.png
 references:
   - "Nakamoto, S. (2008). Bitcoin: A Peer-to-Peer Electronic Cash System. https://bitcoin.org/bitcoin.pdf"

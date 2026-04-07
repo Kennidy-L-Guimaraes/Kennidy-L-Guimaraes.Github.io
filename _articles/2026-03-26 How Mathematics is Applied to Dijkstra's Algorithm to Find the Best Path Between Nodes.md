@@ -3,8 +3,10 @@ layout: article
 title: "How Mathematics is Applied to Dijkstra's Algorithm to Find the Best Path Between Nodes"
 subtitle: "From a coffee terrace in Amsterdam to every GPS route calculated today"
 date: 2026-03-26
+last_modified_at: 2026-04-7
 author: "Kennidy L. Guimarães"
 categories: [algorithms]
+tags: [algorithms, Computer Science, systems, Mathematical, Graphs, Search]
 image: /assets/img/og/how-mathematics-is-applied-to-dijkstra-s-algorithm-to-find-the-best-path-between-nodes.png
 references:
   - "Frana, P. L. (2001). An Interview with Edsger W. Dijkstra. Communications of the ACM. https://dl.acm.org/doi/epdf/10.1145/1787234.1787249"         # [1]

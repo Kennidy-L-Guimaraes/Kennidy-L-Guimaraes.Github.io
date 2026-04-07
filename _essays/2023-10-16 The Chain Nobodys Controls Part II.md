@@ -6,6 +6,7 @@ date: 2023-10-16
 author: "Kennidy L. Guimarães"
 email: "kennidyLguimaraes@gmail.com"
 categories: [bitcoin & blockchain, cryptography]
+tags: [Bitcoin, Blockchain, Chains of links, Hash, Mathematics, Satoshi Nakamoto]
 series: "the-chain-nobody-controls"
 series_part: 2
 image: /assets/img/og/how-blockchain-works-blocks-hashes-and-mining.png
