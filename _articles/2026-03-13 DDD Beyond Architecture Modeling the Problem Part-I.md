@@ -6,7 +6,7 @@ date: 2026-03-13
 last_modified_at: 2026-04-7
 author: "Kennidy L. Guimarães"
 categories: [architecture, Domain-Driven-Design]
-tags: [algorithms, Computer Science, systems, Architecture, DDD, Serie]
+tags: [systems, Architecture, DDD, Series]
 series: "ddd-in-practice"
 series_part: 1
 image: /assets/img/og/ddd-in-practice-from-problem-to-model-part-i.png

@@ -79,32 +79,37 @@ layout: default
     </section>
     {% endif %}
 
-    {% assign related_posts = site.articles | concat: site.papers | concat: site.essays %}
-    {% assign filtered = related_posts | where_exp: "item", "item.url != page.url" %}
-    {% assign matches = "" | split: "" %}
-    {% for item in filtered %}
-    {% for cat in item.categories %}
-        {% if page.categories contains cat %}
-        {% assign matches = matches | push: item %}
-        {% break %}
-        {% endif %}
-    {% endfor %}
-    {% endfor %}
-
-    {% if matches.size > 0 %}
-    <section class="similares" aria-label="Related articles">
-        <span class="similares-cabecalho">Related</span>
-        <div class="similares-grid">
-            {% for item in matches limit: 3 %}
-            <a class="similar-card" href="{{ item.url | relative_url }}">
-                <span class="similar-card-categoria">{{ item.categories | first }}</span>
-                <span class="similar-card-titulo">{{ item.title }}</span>
-                <span class="similar-card-data">{{ item.date | date: "%Y" }}</span>
-            </a>
-            {% endfor %}
-        </div>
+    <section class="similares" id="similares" aria-label="Related articles" style="display:none">
+        <span class="similares-cabecalho" id="similares-cabecalho"></span>
+        <div class="similares-grid" id="similares-grid"></div>
     </section>
-    {% endif %}
+
+    <script>
+  window.SITE_POSTS = [
+    {% assign all_posts = site.articles | concat: site.papers | concat: site.essays %}
+    {% assign other_posts = all_posts | where_exp: "item", "item.url != page.url" %}
+    {% for post in other_posts %}{% unless forloop.first %},{% endunless %}
+    {
+      "url": "{{ post.url | relative_url }}",
+      "title": {{ post.title | jsonify }},
+      "category": {{ post.categories | first | jsonify }},
+      "year": "{{ post.date | date: '%Y' }}",
+      "series": {{ post.series | jsonify }},
+      "series_part": {{ post.series_part | default: 0 }},
+      "categories": {{ post.categories | jsonify }},
+      "tags": {{ post.tags | jsonify }}
+    }
+    {% endfor %}
+  ];
+
+  window.CURRENT_POST = {
+    "url": "{{ page.url | relative_url }}",
+    "series": {{ page.series | jsonify }},
+    "series_part": {{ page.series_part | default: 0 }},
+    "categories": {{ page.categories | jsonify }},
+    "tags": {{ page.tags | jsonify }}
+  };
+</script>
 
 </div>
 
@@ -127,3 +132,4 @@ layout: default
 <script src="{{ '/assets/js/toc.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/lightbox.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/code-blocks.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/related.js' | relative_url }}"></script>

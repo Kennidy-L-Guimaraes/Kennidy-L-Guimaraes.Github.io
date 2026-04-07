@@ -6,7 +6,7 @@ date: 2026-03-23
 last_modified_at: 2026-04-7
 author: "Kennidy L. Guimarães"
 categories: [architecture, Domain-Driven-Design]
-tags: [algorithms, Computer Science, systems, Architecture, DDD, Serie]
+tags: [systems, Architecture, DDD, Series]
 series: "ddd-in-practice"
 series_part: 2
 image: /assets/img/og/ddd-in-practice-from-ubiquitous-language-to-bounded-context-part-ii.png

@@ -7,7 +7,7 @@ last_modified_at: 2026-04-7
 author: "Kennidy L. Guimarães"
 email: "me@kennidylguimaraes.com"
 categories: [computer-science]
-tags: [algorithms, Computer Science, systems, Mathematical]
+tags: [algorithms, systems, Critical, Mathematical]
 image: /assets/img/og/critical-systems-and-cascading-failures-in-complex-systems.png
 references:
   - "Cascading failures in complex networks https://academic.oup.com/comnet/article/8/2/cnaa013/5849333"
