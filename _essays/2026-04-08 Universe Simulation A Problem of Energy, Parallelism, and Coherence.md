@@ -16,7 +16,7 @@ references:
 
 ---
 
-Corriqueiramente, I often hear the paradox: if we are in a matrix, you would never know; you could, right now, be living inside a matrix within another matrix and never realize it. I like to argue that such an idea is mainly based on the hypothesis of absurdity, or of “ignorant scientists”; that is, we would be facing a large conglomerate of scientists who, in other words, would be ignorant regarding the nature of atoms and stars, or we would be facing a terrifying force with enough energy to sustain infinite suns and the infinity of infinity merely to observe our simplest daily activities.
+I often hear the paradox: if we are in a matrix, you would never know; you could, right now, be living inside a matrix within another matrix and never realize it. I like to argue that such an idea is mainly based on the hypothesis of absurdity, or of “ignorant scientists”; that is, we would be facing a large conglomerate of scientists who, in other words, would be ignorant regarding the nature of atoms and stars, or we would be facing a terrifying force with enough energy to sustain infinite suns and the infinity of infinity merely to observe our simplest daily activities.
 
 ---
 
