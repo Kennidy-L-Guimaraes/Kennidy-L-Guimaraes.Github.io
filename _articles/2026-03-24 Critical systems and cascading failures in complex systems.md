@@ -6,7 +6,7 @@ date: 2026-03-24
 last_modified_at: 2026-04-7
 author: "Kennidy L. Guimarães"
 email: "me@kennidylguimaraes.com"
-categories: [computer-science]
+categories: [computer science]
 tags: [algorithms, systems, Critical, Mathematical]
 image: /assets/img/og/critical-systems-and-cascading-failures-in-complex-systems.png
 references:
