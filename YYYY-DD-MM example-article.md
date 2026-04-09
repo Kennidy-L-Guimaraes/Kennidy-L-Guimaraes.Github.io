@@ -3,8 +3,12 @@ layout: article
 title: "ARTICLE TITLE HERE"
 subtitle: "A short subtitle describing the article"
 date: 2026-03-23
+last_modified_at: 2026-03-23
+schema: 
+  type: ScholarlyArticle #Or Essays and Papers
 author: "Author Name"
-categories: [category1, category2]
+categories: [category]
+tags: [tag1, tag2, tag3...]
 series: "series-slug"         # Remove if not part of a series
 series_part: 1                # Remove if not part of a series
 image: #Og image 
