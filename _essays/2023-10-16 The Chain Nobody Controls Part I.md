@@ -28,10 +28,7 @@ related:
     url: "#"
 ---
 
-## Tangible and Intangible Assets
-
 To understand what the blockchain is, you first need to understand what tangible and intangible assets are.
-
 Tangible assets are everything that can be physically touched in the real world. They may belong to you or to others: a house, land, gold, silver, and so on. Intangible assets are the opposite: although they can also belong to you or to third parties, they have no physical form — such as intellectual property, files on the internet, or data.
 
 ### Tangible Assets
