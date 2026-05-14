@@ -9,11 +9,8 @@ schema:
 author: "Kennidy L. Guimarães"
 categories: [Network Protocols]
 tags: [Network protocols, Internet, DARPA, Networks, TCP, IP, TCP/IP]
-series: "The-Network-Society"
-series_part: 1
 image: /assets/img/og/the-network-society-tcp-ip-protocol-and-the-birth-of-the-internet.png
 references: 
-
  - "https://en.wikipedia.org/wiki/Internet_protocol_suite" #1
  - "https://en.wikipedia.org/wiki/Network_Control_Protocol_(ARPANET)#Network_Control_Program" #2
  - "https://www.cs.princeton.edu/courses/archive/fall06/cos561/papers/cerf74.pdf" #3
@@ -26,6 +23,13 @@ references:
  - "https://www.open.edu/openlearn/mod/oucontent/view.php?id=48321&section=3.1" #10
  - "https://www.ibm.com/docs/pt-br/aix/7.3.0?topic=protocol-tcpip-protocols Amin, Md Shohel & Rahman, Showrov. (2023). An Introduction of Open System Interconnection (OSI) Model and its Architecture." #11  
  - "https://www.researchgate.net/publication/371120497_An_Introduction_of_Open_System_Interconnection_OSI_Model_and_its_Architecture" #12
+series: "The-Network-Society"
+series_part: 1
+related:
+  - title: "TCP/IP Protocol and the Birth of the Internet"
+    category: "Network Protocols"
+    date: "2026"
+    url: "#"
 
 ---
 

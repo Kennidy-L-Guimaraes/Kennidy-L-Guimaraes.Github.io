@@ -5,7 +5,7 @@ subtitle: "Part 2 — The Chain Nobody Controls"
 date: 2023-10-16
 author: "Kennidy L. Guimarães"
 email: "kennidyLguimaraes@gmail.com"
-categories: [bitcoin & blockchain, cryptography]
+categories: [bitcoin & blockchain]
 tags: [Bitcoin, Blockchain, Chains of links, Hash, Mathematics, Satoshi Nakamoto]
 series: "the-chain-nobody-controls"
 series_part: 2
