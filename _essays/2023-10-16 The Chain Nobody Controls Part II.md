@@ -1,7 +1,7 @@
 ---
 layout: article
-title: "How Blockchain Works: Blocks, Hashes and Mining"
-subtitle: "Part 2 — The Chain Nobody Controls"
+title: "The Chain Nobody Controls: How Blockchain Works: Blocks, Hashes and Mining"
+subtitle: "Part II - The Infrastructure of a Trustless System"
 date: 2023-10-16
 author: "Kennidy L. Guimarães"
 email: "kennidyLguimaraes@gmail.com"
