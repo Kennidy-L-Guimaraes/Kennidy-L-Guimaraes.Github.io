@@ -150,16 +150,16 @@
   flex-shrink: 0;
 
   img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
+    width: 280px;
+    height: 280px;
+    //border-radius: 50%;
     object-fit: cover;
-    border: var(--borda-fina);
+    //border: var(--borda-fina);
     display: block;
 
     @media (max-width: 600px) {
-      width: 130px;
-      height: 130px;
+      width: 150px;
+      height: 150px;
       margin: 0 auto;
     }
   }
