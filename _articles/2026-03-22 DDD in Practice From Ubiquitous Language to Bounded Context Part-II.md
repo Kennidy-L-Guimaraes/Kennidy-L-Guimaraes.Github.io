@@ -24,6 +24,7 @@ related:
     date: "2026"
     url: "#"
 ---
+{% include ref-tooltips.html references=page.references %}
 
 In the previous article, we covered several topics at once and understood why modeling a system is truly necessary — and where that need comes from. Before building, we must understand the reason for building. Now, before we type a single line of code, there is something crucial to DDD we need to grasp — something that is not exclusive to DDD, but central to Clean Architecture as a whole. It is grounded in Clean Code and in the KISS principle (Keep It Simple, Stupid). I am referring to the **Ubiquitous Language** — and make no mistake: this is not difficult.
 
@@ -36,7 +37,7 @@ For many developers, writing compact, low-verbosity code that looks technically 
 Writing good code does not require making it more complex than it already is. **Ubiquitous Language** addresses exactly this: bridging the language of the code with the language of the business. Even if names become longer, the goal is not brevity — it is comprehension, shared across the entire team, so that even a non-technical stakeholder reading the code can follow what is happening.
 
 <span class="destaque-bloco">
-"By using a model-based language pervasively and not being satisfied until it flows, we approach a model that is complete and comprehensible, composed of simple elements that combine to express complex ideas." — Eric Evans [[1]](#ref-1)
+"By using a model-based language pervasively and not being satisfied until it flows, we approach a model that is complete and comprehensible, composed of simple elements that combine to express complex ideas." — Eric Evans {% include ref.html n=1 %}
 </span>
 
 Consider the example below. You may not know C# syntax, but the code is readable even to developers working in other languages:
@@ -86,7 +87,7 @@ The code tells a story — it reads almost like a book. This makes it far easier
 Factory.PreparingOrder(ReceivesTheOrder) → Returns OrderReady
 ```
 
-At times, it becomes necessary to refactor the Ubiquitous Language itself to keep it more precise [[2]](#ref-2):
+At times, it becomes necessary to refactor the Ubiquitous Language itself to keep it more precise {% include ref.html n=2 %}:
 
 ```
 Factory.PreparingPizza(ReceivesTheOrder) → Returns PizzaReady
@@ -102,7 +103,7 @@ Which makes it even more readable and faithful to the domain.
 
 **II.** APIs, dependencies, and all parts of the system must speak the same language (with the exception of infrastructure — databases and similar components).
 
-**III.** It is a living language — one that can and should be refactored to stay current and accurate [[2]](#ref-2).
+**III.** It is a living language — one that can and should be refactored to stay current and accurate {% include ref.html n=2 %}.
 
 **IV.** If someone unfamiliar with the syntax reads the code and understands it, and if collaborators — from management to operations — recognise the verbs being used, then the code is ubiquitous.
 
@@ -144,7 +145,7 @@ Once the language is defined, we must define the contexts. This is because "Orde
 
 Naming things well is the first step, but in larger projects, a name alone is not enough. Imagine a solution with dozens of classes — if both "orders" live in the same place without physical separation, context exists only in the name, not in the structure. Over time, boundaries weaken and one context begins to bleed into the other.
 
-Contexts are often shaped by human culture itself. False cognates are a vivid example: in Portuguese, *cachorro* means dog, and *cachorrinho* means puppy — but in Spanish, *cachorro* refers to any young animal, regardless of species. The same applies to false cognates in English: the word changes, and the context changes with it [[3]](#ref-3).
+Contexts are often shaped by human culture itself. False cognates are a vivid example: in Portuguese, *cachorro* means dog, and *cachorrinho* means puppy — but in Spanish, *cachorro* refers to any young animal, regardless of species. The same applies to false cognates in English: the word changes, and the context changes with it {% include ref.html n=3 %}.
 
 This is why separation must be reinforced in the very organisation of the code, following the hierarchy of module, package, and context:
 

@@ -11,18 +11,18 @@ categories: [Network Protocols]
 tags: [Network protocols, Internet, DARPA, Networks, TCP, IP, TCP/IP]
 image: /assets/img/og/the-network-society-tcp-ip-protocol-and-the-birth-of-the-internet.png
 references: 
- - "https://en.wikipedia.org/wiki/Internet_protocol_suite" #1
- - "https://en.wikipedia.org/wiki/Network_Control_Protocol_(ARPANET)#Network_Control_Program" #2
- - "https://www.cs.princeton.edu/courses/archive/fall06/cos561/papers/cerf74.pdf" #3
- - "https://www.rfc-editor.org/rfc/rfc675" #4
- - "https://www.rfc-editor.org/ien/ien2.txt" #5
- - "https://www.rfc-editor.org/rfc/rfc791" #6
- - "https://www.rfc-editor.org/rfc/rfc793" #7
- - "https://www.rfc-editor.org/rfc/rfc820" #8
- - "https://en.wikipedia.org/wiki/Kahn_process_networks" #9
- - "https://www.open.edu/openlearn/mod/oucontent/view.php?id=48321&section=3.1" #10
- - "https://www.ibm.com/docs/pt-br/aix/7.3.0?topic=protocol-tcpip-protocols Amin, Md Shohel & Rahman, Showrov. (2023). An Introduction of Open System Interconnection (OSI) Model and its Architecture." #11  
- - "https://www.researchgate.net/publication/371120497_An_Introduction_of_Open_System_Interconnection_OSI_Model_and_its_Architecture" #12
+ - "Wikipedia Internet Protocol Suite. https://en.wikipedia.org/wiki/Internet_protocol_suite" #1
+ - "WikiPedia Network Control Protocol .https://en.wikipedia.org/wiki/Network_Control_Protocol_(ARPANET)#Network_Control_Program" #2
+ - "Princeton A Protocol for Packet Network Intercommunication VINTON G. CERF AND ROBERT E. KAHN. https://www.cs.princeton.edu/courses/archive/fall06/cos561/papers/cerf74.pdf" #3
+ - "RFC 675 - SPECIFICATION OF INTERNET TRANSMISSION CONTROL PROGRAM. https://www.rfc-editor.org/rfc/rfc675" #4
+ - "RFC IEN - Comments on Internet Protocol and TCP. https://www.rfc-editor.org/ien/ien2.txt" #5
+ - "RFC 791 - INTERNET PROTOCOL DARPA INTERNET PROGRAM. https://www.rfc-editor.org/rfc/rfc791" #6
+ - "RFC 793 - TRANSMISSION CONTROL PROTOCOL. https://www.rfc-editor.org/rfc/rfc793" #7
+ - "RFC 820 - ASSIGNED NUMBERS. https://www.rfc-editor.org/rfc/rfc820" #8
+ - "Wikipedia Kahn Process Networks. https://en.wikipedia.org/wiki/Kahn_process_networks" #9
+ - "Open University Introducing the TCP/IP protocols. https://www.open.edu/openlearn/mod/oucontent/view.php?id=48321&section=3.1" #10
+ - "Amin, Md Shohel & Rahman, Showrov. (2023). An Introduction of Open System Interconnection (OSI) Model and its Architecture. https://www.ibm.com/docs/pt-br/aix/7.3.0?topic=protocol-tcpip-protocols" #11  
+ - "Researchgate An Introduction of Open System Interconnection OSI Model and Its Architecture. https://www.researchgate.net/publication/371120497_An_Introduction_of_Open_System_Interconnection_OSI_Model_and_its_Architecture" #12
 series: "The-Network-Society"
 series_part: 1
 related:
@@ -32,6 +32,7 @@ related:
     url: "#"
 
 ---
+{% include ref-tooltips.html references=page.references %}
 
 The internet as we know it is a tangle of protocols, requests, and methods being applied together with mathematical algorithms. In this article, I want to address the functioning of one of these protocol suites, the TCP/IP suite, and how your computer is identified on the network.
 
@@ -58,13 +59,13 @@ They were advanced technologies with completely sterile external communication, 
 
 ## NCP and the First Protocols
 
-In 1970, DARPA began working on several projects (which are now widely commercialized), among them data transmission via radio (Mobile Radio), packet data service, and local networks. A year earlier, a working group at DARPA had developed the NCP protocol, under the leadership of Steve Crocker. The NCP was a protocol that served Host machines — it allowed Simplex communication, meaning Host-A communicated with Host-B but Host-B could not communicate back with Host-A in the same way, that is, it is a one-way communication. It was not a protocol per se; in fact, the acronym NCP refers to the name of the software that implemented the protocol, but lacking a name for it and for its own protocol (the Software's protocol), the researchers and scientists decided to name it NCP [[2]](#ref-2).
+In 1970, DARPA began working on several projects (which are now widely commercialized), among them data transmission via radio (Mobile Radio), packet data service, and local networks. A year earlier, a working group at DARPA had developed the NCP protocol, under the leadership of Steve Crocker. The NCP was a protocol that served Host machines — it allowed Simplex communication, meaning Host-A communicated with Host-B but Host-B could not communicate back with Host-A in the same way, that is, it is a one-way communication. It was not a protocol per se; in fact, the acronym NCP refers to the name of the software that implemented the protocol, but lacking a name for it and for its own protocol (the Software's protocol), the researchers and scientists decided to name it NCP {% include ref.html n=2 %}.
 
 Only in 1973 did Vincent Cerf begin collaborating with Bob Kahn, with the goal of enabling interconnection between DARPA networks. He would later become known as one of the Fathers of the Internet due to his commitment and contributions to the development of network protocols.
 
-The fruits of Cerf and Kahn's collaboration, together with other scientists (Xerox and the United Kingdom), came in 1974 when Cerf and Kahn published the paper *A Protocol for Packet Network Intercommunication* [[3]](#ref-3). This was the solution to the sterility of private networks — now data packets could be mutually shared, as long as they followed a set of rules, in the words of the paper itself:
+The fruits of Cerf and Kahn's collaboration, together with other scientists (Xerox and the United Kingdom), came in 1974 when Cerf and Kahn published the paper *A Protocol for Packet Network Intercommunication* {% include ref.html n=3 %}. This was the solution to the sterility of private networks — now data packets could be mutually shared, as long as they followed a set of rules, in the words of the paper itself:
 
-> "For data to make sense, computers and terminals share a common protocol (i.e., a set of agreed conventions)" [[3]](#ref-3)
+> "For data to make sense, computers and terminals share a common protocol (i.e., a set of agreed conventions)" {% include ref.html n=3 %}
 
 ---
 
@@ -157,7 +158,7 @@ As we saw, Anne can send Peter a file like a cat image (cute_cat.png), but we mu
 
 Just as Anne can send only an Emoji to Peter, she can definitely send an article like this one — therefore, there can be no limitation.
 
-For this, we can suppose that on Anne's and Peter's computers there is a transmission control program — this is what we call TCP. TCP, before being a protocol, was described as a program in Vincent Cerf's original paper [[3]](#ref-3). Today we call TCP simply a protocol due to the separations and evolutions that have occurred, but in the beginning, TCP was conceived with low abstraction.
+For this, we can suppose that on Anne's and Peter's computers there is a transmission control program — this is what we call TCP. TCP, before being a protocol, was described as a program in Vincent Cerf's original paper {% include ref.html n=3 %}. Today we call TCP simply a protocol due to the separations and evolutions that have occurred, but in the beginning, TCP was conceived with low abstraction.
 
 Alright, now using TCP, Anne can send information to Peter through interconnected networks. This information is divided into smaller segments, numbered and transmitted separately across the network.
 
@@ -195,7 +196,7 @@ At the beginning of this chapter and in the supplementary texts, we dealt exclus
 
 ## Sockets and Identification
 
-In order to send the packet, we will need TCP to make a junction between the user identifier, the port — port here can be understood as an ARPANET port that allows connection via Gateway — and the Network identifier. We will name this a Network Socket, or simply Socket [[4]](#ref-4), as explained by Cerf in RFC 675 "Request for Comments: 675 Yogen Dalal".
+In order to send the packet, we will need TCP to make a junction between the user identifier, the port — port here can be understood as an ARPANET port that allows connection via Gateway — and the Network identifier. We will name this a Network Socket, or simply Socket {% include ref.html n=4 %}, as explained by Cerf in RFC 675 "Request for Comments: 675 Yogen Dalal".
 <div class="destaque-bloco">
 
  "We borrow the term SOCKET from the ARPANET terminology [CACR70, MCKE73]. In general, a socket is the concatenation of a NETWORK Identifier, TCP identifier, and PORT identifier."
@@ -217,7 +218,7 @@ In this case, 0 does not literally mean "port 0", but rather that the port was n
 
 ## Jon Postel and the Separation Between TCP and IP
 
-However, you must have noticed that the TCP, which originally emerged to solve a problem of connection between multiple types and states of networks, is now doing much more than expected — and this was also pointed out by Postel in memorandum IEN2 [[5]](#ref-5).
+However, you must have noticed that the TCP, which originally emerged to solve a problem of connection between multiple types and states of networks, is now doing much more than expected — and this was also pointed out by Postel in memorandum IEN2 {% include ref.html n=5 %}.
 <div class="destaque-bloco">
 
 "We are making an error in our Internet protocol designs by violating the principle of layering." [5]
@@ -243,15 +244,15 @@ Another detail is truly important for us — not now, but in the future for this
 
 The protocol should be able to forward a message (or fragment) at each hop to the next network Gateway. Unlike TCP, the Internet protocol did not have robust mechanisms for reliability, retransmission, or flow control. If a fragment suffered corruption or was lost, the protocol could simply discard it. The responsibility for data recovery and retransmission still belonged to TCP.
 
-Postel also presented what he called variable-length addresses, organized in 4-bit prefixed blocks [[5]](#ref-5).
+Postel also presented what he called variable-length addresses, organized in 4-bit prefixed blocks {% include ref.html n=5 %}.
 The objective was to demonstrate that, as an address was processed during hop-by-hop routing, the consumed part of the address would be shifted to the end of a structure he called a "rope."
 <div class="destaque-bloco">
 
 "This bit-by-bit circular shift of the address allows each node in the hop-by-hop processing of a message to examine the part of the address it consumes without knowing how many addresses precede or follow that part." – Postel.
 </div>
-This new protocol began to be called IP (Internet Protocol), being initially conceived as a protocol responsible for transporting datagrams between Gateways of different networks. The protocol should contain information such as the protocol version (at the time Postel delimited an IPv0 Internet Protocol version 0, however without exact application [[5]](#ref-5)), in addition to data related to the fragmentation and reassembly of messages — responsibility that now passed to the Internet layer, and no longer to TCP.
+This new protocol began to be called IP (Internet Protocol), being initially conceived as a protocol responsible for transporting datagrams between Gateways of different networks. The protocol should contain information such as the protocol version (at the time Postel delimited an IPv0 Internet Protocol version 0, however without exact application {% include ref.html n=5 %}), in addition to data related to the fragmentation and reassembly of messages — responsibility that now passed to the Internet layer, and no longer to TCP.
 
-During the 1970s the concept still evolved experimentally, but in September 1981, Jon Postel formally published the protocol specification in RFC 791 [[6]](#ref-6).
+During the 1970s the concept still evolved experimentally, but in September 1981, Jon Postel formally published the protocol specification in RFC 791 {% include ref.html n=6 %}.
 
 IP then began to consolidate itself as the standard protocol for routing and addressing the Internet (DARPANET Network).
 <div class="destaque-bloco">
@@ -275,7 +276,7 @@ Still in the example of Anne and Peter, Peter will now receive all the packets (
 
 The experimental version of the Internet Protocol underwent several changes during its evolution. The first models described by Jon Postel were still experimental and used a version field in the protocol header to allow future changes without breaking compatibility between implementations.
 
-Unlike what it may seem, IPv4 does not simply represent the "fourth commercial version" of the protocol, but rather version 4 defined in the VERSION field of the IP header, later formalized in RFC 791 [[6]](#ref-6).
+Unlike what it may seem, IPv4 does not simply represent the "fourth commercial version" of the protocol, but rather version 4 defined in the VERSION field of the IP header, later formalized in RFC 791 {% include ref.html n=6 %}.
 The previous versions existed mainly in an experimental and conceptual form during the initial development of the Internet architecture.
 The VERSION field has 4 bits, and in the case of IPv4 it stores the value:
 
@@ -319,7 +320,7 @@ $$11000000.10101000.00000001.00001010$$
 
 </div>
 
-As described in RFC 791 [[6]](#ref-6):
+As described in RFC 791 {% include ref.html n=6 %}:
 <div class="destaque-bloco">
 
 "Addresses are a fixed length of four octets (32 bits). An address begins with a network number, followed by the local address."

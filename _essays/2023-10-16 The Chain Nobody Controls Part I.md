@@ -26,6 +26,7 @@ related:
     date: "2023"
     url: "#"
 ---
+{% include ref-tooltips.html references=page.references %}
 
 To understand what the blockchain is, you first need to understand what tangible and intangible assets are.
 Tangible assets are everything that can be physically touched in the real world. They may belong to you or to others: a house, land, gold, silver, and so on. Intangible assets are the opposite: although they can also belong to you or to third parties, they have no physical form — such as intellectual property, files on the internet, or data.
@@ -40,7 +41,7 @@ The same applies to bank credits which, although not tangible, can be compared t
 
 Bitcoin is an intangible asset, much like digital cash. It cannot be directly touched, nor does a file called "Btc.btc" exist. It can be described as a "registry key": a wallet key that grants access to the value stored within it. Although this may seem like a complex concept, you can think of Bitcoin as your bank password — essential for accessing your funds stored on the server. In Bitcoin's case, the "server" is not a central machine.
 
-Instead, it is a distributed ledger replicated across thousands of nodes [[1]](#ref-1), the coins are bitcoins, which are themselves ledger entries, and your password is your passphrase. This is why you have probably heard or read the phrase "Not your Keys, Not your Coins" — it is about trusting your own access key. Think of it as a password for your personal accounts, but one that is even more valuable. You would not consider yourself the owner of an account whose password is held by someone else, even if you can still make posts.
+Instead, it is a distributed ledger replicated across thousands of nodes {% include ref.html n=1 %}, the coins are bitcoins, which are themselves ledger entries, and your password is your passphrase. This is why you have probably heard or read the phrase "Not your Keys, Not your Coins" — it is about trusting your own access key. Think of it as a password for your personal accounts, but one that is even more valuable. You would not consider yourself the owner of an account whose password is held by someone else, even if you can still make posts.
 
 ---
 
@@ -57,11 +58,11 @@ Obviously, if she uses other methods such as PayPal, this will not be possible, 
 
 This problem is known in computer science as the double-spending problem, and it involves preventing the holder of a wallet (card or similar) from spending their funds twice, generating a deficit that may never be covered. The most commonly used approach to prevent double-spending is the use of records. These records must naturally be trustworthy and tamper-proof, so that we can guarantee that Alice paid what she owed Bob, and that Bob received the amount due to him.
 
-You might ask: what does this have to do with blockchain? The answer is simpler than you might think: everything. The blockchain is the solution that Satoshi Nakamoto (creator of Bitcoin and the blockchain) [[2]](#ref-2) found to solve the double-spending problem in Bitcoin. In general terms, the blockchain is a large ledger containing all information about the transfers made on the network, including who transferred what to whom, and when. The blockchain system is public and auditable by anyone, meaning Bob can track the transfer in real time and verify whether it has been completed. Likewise, Alice can confirm that the amount she sent to Bob has actually reached its destination.
+You might ask: what does this have to do with blockchain? The answer is simpler than you might think: everything. The blockchain is the solution that Satoshi Nakamoto (creator of Bitcoin and the blockchain) {% include ref.html n=2 %} found to solve the double-spending problem in Bitcoin. In general terms, the blockchain is a large ledger containing all information about the transfers made on the network, including who transferred what to whom, and when. The blockchain system is public and auditable by anyone, meaning Bob can track the transfer in real time and verify whether it has been completed. Likewise, Alice can confirm that the amount she sent to Bob has actually reached its destination.
 
 One truly important detail is that the blockchain is a pseudonymous system: although it may appear anonymous, there are ways to link transactions to a person's real-world identity — even if certain methods and practices, when adopted, can make transactions "nearly" untraceable. I will discuss this further in another article.
 
-From this, we can understand that the blockchain is a ledger — a large informational registry that documents every transaction on the Bitcoin network, recording who transferred what to whom, in a manner that is public and easily auditable. The blockchain is sometimes considered more secure than traditional systems due to its resistance to government censorship. The fact that the system cannot be altered without the consent of the network makes it highly resistant to dishonest manipulation. Every transaction is permanently recorded: it cannot be deleted or undone unless a majority of the network's hash power (commonly called a 51% majority) agrees [[3]](#ref-3).
+From this, we can understand that the blockchain is a ledger — a large informational registry that documents every transaction on the Bitcoin network, recording who transferred what to whom, in a manner that is public and easily auditable. The blockchain is sometimes considered more secure than traditional systems due to its resistance to government censorship. The fact that the system cannot be altered without the consent of the network makes it highly resistant to dishonest manipulation. Every transaction is permanently recorded: it cannot be deleted or undone unless a majority of the network's hash power (commonly called a 51% majority) agrees {% include ref.html n=3 %}.
 
 ---
 
@@ -79,17 +80,17 @@ The description of the blockchain can be found throughout the whitepaper, as in 
 
 In essence, the blockchain emerged alongside the idea of Bitcoin, with the WhitePaper serving as the starting point for both.
 
-Some important context must be noted. Bitcoin — and, consequently, the blockchain — emerged at a critical moment in world history: the year was 2008, and the severe crisis triggered by high-risk mortgage lending, known as the subprime bubble, was in full swing. Banks such as Lehman Brothers in the United States began to collapse, and a global economic crisis took hold rapidly [[4]](#ref-4).
+Some important context must be noted. Bitcoin — and, consequently, the blockchain — emerged at a critical moment in world history: the year was 2008, and the severe crisis triggered by high-risk mortgage lending, known as the subprime bubble, was in full swing. Banks such as Lehman Brothers in the United States began to collapse, and a global economic crisis took hold rapidly {% include ref.html n=4 %}.
 
 In response, governments around the world mobilized massively to rescue financial institutions through monetary subsidies and fiscal policies, seeking to prevent the collapse of the global financial system.
 
-Some estimates suggest that one in four families lost 75% or more of their net worth during this period [[5]](#ref-5). While these measures helped to contain the crisis to some extent, the resulting debt — along with the cost of the bailouts — was passed on to taxpayers. This naturally sparked intense debate across society, and one group in particular seemed genuinely willing to take action.
+Some estimates suggest that one in four families lost 75% or more of their net worth during this period {% include ref.html n=5 %}. While these measures helped to contain the crisis to some extent, the resulting debt — along with the cost of the bailouts — was passed on to taxpayers. This naturally sparked intense debate across society, and one group in particular seemed genuinely willing to take action.
 
 In 2009, a user operating under the pseudonym Satoshi Nakamoto registered on the site Bitcointalk.org (both BitcoinTalk.org and Bitcoin.org were once under the direct or indirect control of Satoshi Nakamoto; they are now managed by moderators).
 
 The platform was created to discuss and develop the Bitcoin and blockchain project proposed in the 2008 WhitePaper. Discussions on the forum were not limited to technical aspects — though these were the majority — but also addressed the philosophical and logical underpinnings of the currency and the system.
 
-The first block ever mined, known as the Genesis Block (a reference to the Book of Genesis in the Bible), contained not only the initial transaction data but also a reference to the 2008 financial crisis [[6]](#ref-6)[[7]](#ref-7). The block carried the following message:
+The first block ever mined, known as the Genesis Block (a reference to the Book of Genesis in the Bible), contained not only the initial transaction data but also a reference to the 2008 financial crisis {% include ref.html n=6 %} {% include ref.html n=7 %}. The block carried the following message:
  <span class="destaque-bloco">
  The Times 03/Jan/2009 Chancellor on brink of second bailout for banks
  </span>
@@ -104,9 +105,9 @@ Fiat currencies have been largely responsible for eroding that trust, not only b
 <span class="destaque-bloco">
 The root problem with conventional currency is all the trust that's required to make it work. The central bank must be trusted not to debase the currency, but the history of fiat currencies is full of breaches of that trust. Banks must be trusted to hold our money and transfer it electronically, but they lend it out in waves of credit bubbles with barely a fraction in reserve. We have to trust them with our privacy, trust them not to let identity thieves drain our accounts. — Satoshi Nakamoto.
 </span>
-According to a report by the United States Department of Labor covering 2021–2022, the dollar lost 7.4% of its purchasing power due to inflation [[8]](#ref-8).
+According to a report by the United States Department of Labor covering 2021–2022, the dollar lost 7.4% of its purchasing power due to inflation {% include ref.html n=8 %}.
 
-The statements made by Satoshi Nakamoto — both via email and on the Bitcointalk.org forum — indicate that he had lost confidence in the conventional monetary system, and this distrust appears to have been the primary motivation behind the creation of Bitcoin and the blockchain. Satoshi was inspired by earlier concepts, including B-Money by W. Dai and HashCash by Adam Back [[9]](#ref-9)[[10]](#ref-10).
+The statements made by Satoshi Nakamoto — both via email and on the Bitcointalk.org forum — indicate that he had lost confidence in the conventional monetary system, and this distrust appears to have been the primary motivation behind the creation of Bitcoin and the blockchain. Satoshi was inspired by earlier concepts, including B-Money by W. Dai and HashCash by Adam Back {% include ref.html n=9 %}{% include ref.html n=10 %}.
 
 If the blockchain is a public, immutable ledger, auditable by anyone — then who writes to it?
 

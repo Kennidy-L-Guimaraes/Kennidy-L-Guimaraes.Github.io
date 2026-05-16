@@ -32,22 +32,24 @@ related:
   ║  comments like this one before publishing.                   ║
   ║                                                              ║
   ║  CITATIONS                                                   ║
-  ║  • Inline automatic:  [N]          → rendered as superscript ║
+  ║  • Inline automatic:  {% include ref.html n=n %}             ║ 
+  ║          → rendered as superscript                           ║
   ║    (any [number] in the body is styled automatically)        ║
   ╚══════════════════════════════════════════════════════════════╝
 -->
 
-[OPENING PARAGRAPH — 2 to 4 sentences introducing the topic and why it matters. No section heading here. Cite sources as needed [[1]](#ref-1).]
+{% include ref-tooltips.html references=page.references %}
+{% include ref.html n=n %}
 
 ---
 
 ### [Section 1 Title]
 
-[Introduce the first major concept. What is it? Why should the reader care?] [[2]](#ref-2)
+[Introduce the first major concept. What is it? Why should the reader care?] {% include ref.html n=n %}
 
 **[Key term]** — [Definition or explanation of the term in plain language.]
 
-[Continue the explanation. Add examples, analogies, or context as needed] [[3]](#ref-3)
+[Continue the explanation. Add examples, analogies, or context as needed] {% include ref.html n=n %}
 
 <!-- TIP: Use the <span class="destaque-bloco"> tag below for important quotes or highlighted callouts -->
 <span class="destaque-bloco">
@@ -58,7 +60,7 @@ related:
 
 ### [Section 2 Title]
 
-[Introduce the second major concept or argument. How does it connect to Section 1? [[4]](#ref-4)]
+Introduce the second major concept or argument. How does it connect to Section 1? {% include ref.html n=n %}
 
 [Body of this section. Aim for 2–4 paragraphs. Break complex ideas into shorter paragraphs.]
 
@@ -84,7 +86,7 @@ $$C_S = \sum_{i=1}^{n} P(F_i) \cdot \mathcal{I}(i)$$ <!--EXAMPLE MATH-->
 
 ### [Section 3 Title — Optional]
 
-[Use this section for historical context, supporting arguments, or technical details. [[5]](#ref-5)]
+Use this section for historical context, supporting arguments, or technical details. {% include ref.html n=n %}
 
 [Body text here.]
 

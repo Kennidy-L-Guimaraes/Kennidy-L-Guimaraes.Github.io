@@ -21,6 +21,7 @@ related:
     date: "YYYY"
     url: "#"
 ---
+{% include ref-tooltips.html references=page.references %}
 
 You are driving through the city, need to quickly get to a meeting with your girlfriend, and certainly don't want to seem uninterested — delays can seem unforgivable. Luckily, you can always count on a routing app like Google Maps. But how does it actually work? If you had no app, just your paper map, how would you calculate the shortest route, considering the thousands of turns, hundreds of streets, and local and global variables? It can actually be done — though you'll still prefer to use Waze.
 
@@ -53,7 +54,7 @@ Having understood the problem, we need to understand where the solution was born
 ### Dijkstra's Algorithm
 
 <span class="destaque-bloco">
-"What is the shortest way to travel from Rotterdam to Groningen, in general: from a given city to a given city. It is the algorithm for the shortest path, which I designed in about twenty minutes. One morning I was shopping in Amsterdam with my young fiancée, and tired, we sat down on the café terrace to drink a cup of coffee and I was just thinking about whether I could do this, and I then designed the algorithm for the shortest path. As I said, it was a twenty-minute invention. In fact, it was published in 1959, three years later. The publication is still readable; it is, in fact, quite nice. One of the reasons that it is so nice was that I designed it without pencil and paper. I learned later that one of the advantages of designing without pencil and paper is that you are almost forced to avoid all avoidable complexities. Eventually, that algorithm became, to my great amazement, one of the cornerstones of my fame." — Edsger W. Dijkstra, in an interview with Philip L. Frana, Communications of the ACM, 2001 [[1]](#ref-1)
+"What is the shortest way to travel from Rotterdam to Groningen, in general: from a given city to a given city. It is the algorithm for the shortest path, which I designed in about twenty minutes. One morning I was shopping in Amsterdam with my young fiancée, and tired, we sat down on the café terrace to drink a cup of coffee and I was just thinking about whether I could do this, and I then designed the algorithm for the shortest path. As I said, it was a twenty-minute invention. In fact, it was published in 1959, three years later. The publication is still readable; it is, in fact, quite nice. One of the reasons that it is so nice was that I designed it without pencil and paper. I learned later that one of the advantages of designing without pencil and paper is that you are almost forced to avoid all avoidable complexities. Eventually, that algorithm became, to my great amazement, one of the cornerstones of my fame." — Edsger W. Dijkstra, in an interview with Philip L. Frana, Communications of the ACM, 2001 {% include ref.html n=1 %}
 </span>
 
 As we can see, a work of approximately twenty minutes yielded not only recognition for Edsger W. Dijkstra, but also fundamental applications in computing, GPS navigation systems, and artificial intelligence.
@@ -62,7 +63,7 @@ As we can see, a work of approximately twenty minutes yielded not only recogniti
 
 ### Initialization and Edge Relaxation
 
-The algorithm requires an initial node — a well-defined starting point. For the late driver, this point is their current location, node $A$, and their goal is to reach $Z$ as efficiently as possible. Since they do not previously know the cost of all paths within a search space that grows approximately as $k^d$, it is initially assumed that all distances are unknown, represented as infinity [[2]](#ref-2):
+The algorithm requires an initial node — a well-defined starting point. For the late driver, this point is their current location, node $A$, and their goal is to reach $Z$ as efficiently as possible. Since they do not previously know the cost of all paths within a search space that grows approximately as $k^d$, it is initially assumed that all distances are unknown, represented as infinity {% include ref.html n=2 %}:
 
 <div class="math-block">
 
@@ -112,7 +113,7 @@ $$V = \{A_0,\ C_\infty,\ F_5,\ G_\infty,\ E_\infty,\ H_\infty,\ \ldots\}$$
 
 ### Graph Expansion
 
-The algorithm must move on to the next node not yet visited — not in the sense of being completely unknown, but in the sense that its lowest cost can still be updated. The choice of this node is not arbitrary: the one with the lowest known accumulated cost at that moment is always selected [[3]](#ref-3).
+The algorithm must move on to the next node not yet visited — not in the sense of being completely unknown, but in the sense that its lowest cost can still be updated. The choice of this node is not arbitrary: the one with the lowest known accumulated cost at that moment is always selected {% include ref.html n=3 %}.
 
 Suppose $F$ has been reached with $\text{dist}(F) = 5$. From it, the algorithm analyzes its neighbors, such as $E$, checking whether there is a better path through $F$:
 
@@ -140,7 +141,7 @@ As the depth of exploration increases, the number of paths grows exponentially. 
 
 ### Iteration and Convergence
 
-Continuing the example, suppose the path $A \to F \to E$ results in a total cost [[4]](#ref-4):
+Continuing the example, suppose the path $A \to F \to E$ results in a total cost {% include ref.html n=4 %}:
 
 <div class="math-block">
 
@@ -257,7 +258,7 @@ The three diagrams below show the algorithm executing step by step over the same
 
 ### Application in Real Systems
 
-In systems like GPS, the balance is not based solely on kilometers. The edge weights incorporate environmental variables — traffic, road conditions, geolocation data. What the algorithm processes is not pure distance, but a **composite cost** that reflects the reality of travel [[5]](#ref-5).
+In systems like GPS, the balance is not based solely on kilometers. The edge weights incorporate environmental variables — traffic, road conditions, geolocation data. What the algorithm processes is not pure distance, but a **composite cost** that reflects the reality of travel {% include ref.html n=5 %}.
 
 In the example presented, the path found was $A \to F \to E \to Z$ due to the lower accumulated costs along those edges. However, this result is not fixed. Changes in weights can lead to completely different decisions. If $F$ is connected to multiple edges $F_1, F_2, \ldots, F_n$ with distinct weights, an imbalance in those values can turn a previously viable path into an inferior option, redirecting the search to another route.
 
@@ -267,7 +268,7 @@ The algorithm does not "choose" paths in a human sense — it responds directly 
 
 ### Mathematical Formulation
 
-The problem Dijkstra solves can be synthesized in one equation and one sentence [[6]](#ref-6):
+The problem Dijkstra solves can be synthesized in one equation and one sentence {% include ref.html n=6 %}:
 
 **Find the minimum accumulated cost between a node $A$ and a node $Z$.**
 

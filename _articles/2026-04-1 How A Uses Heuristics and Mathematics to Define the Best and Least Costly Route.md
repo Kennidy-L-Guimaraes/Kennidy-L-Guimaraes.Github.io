@@ -15,8 +15,9 @@ references:
   - "University of Auckland. A* Search Algorithm — Research Notes. https://www.cs.auckland.ac.nz/courses/compsci709s2c/resources/Mike.d/astarNilsson.pdf"         # [2]
   - "GeeksforGeeks. A* Search Algorithm. https://www.geeksforgeeks.org/dsa/a-search-algorithm/"         # [3]
 ---
+{% include ref-tooltips.html references=page.references %}
 
-Having explained Dijkstra's algorithm, we cannot overlook another algorithm that uses a similar system but is profoundly different: the **A* algorithm** (read as "A-star"). Peter Hart, Nils Nilsson, and Bertram Raphael from the Stanford Research Institute (now SRI International) published the foundational paper on this algorithm [[1]](#ref-1).
+Having explained Dijkstra's algorithm, we cannot overlook another algorithm that uses a similar system but is profoundly different: the **A* algorithm** (read as "A-star"). Peter Hart, Nils Nilsson, and Bertram Raphael from the Stanford Research Institute (now SRI International) published the foundational paper on this algorithm {% include ref.html n=1 %}.
 
 A* can be seen as an evolution of Dijkstra's algorithm, with changes in its mathematical formulation and the incorporation of heuristics. It represents a kind of "controlled mathematical leap" to discover the best route. If the heuristic is good, it can be significantly faster than Dijkstra; however, if the heuristic is poor, you would probably prefer Dijkstra. A* is used in GPS routing, artificial intelligence, and navigation systems, just like Dijkstra itself. Let's focus on what truly matters: its formulation.
 

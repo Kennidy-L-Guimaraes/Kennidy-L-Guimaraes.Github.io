@@ -16,6 +16,7 @@ references:
   - "Matsumoto, M., & Nishimura, T. (1998). Mersenne Twister: A 623-Dimensionally Equidistributed Uniform Pseudo-Random Number Generator. https://dl.acm.org/doi/pdf/10.1145/272991.272995"
   - "Guimarães, K. L. (2024). RHC Collision Test Output — [RHCHashTest_2024-12-30_00-28-45.txt](/files/papers/rhc/RHCHashTest_2024-12-30_00-28-45.txt)"
 ---
+{% include ref-tooltips.html references=page.references %}
 
 ## Abstract
 
@@ -31,7 +32,7 @@ The use of algorithms that generate pseudo-random values has become increasingly
 
 Although working with truly "random" values is impractical under the deterministic rules that govern computing, working with **pseudo-random values** is a functional and well-understood approach.
 
-The **Mersenne Twister** algorithm (Makoto Matsumoto and Takuji Nishimura) [[1]](#ref-1) was chosen as the mathematical foundation, having proven efficient and reliable across diverse scenarios. Its primary appeal is its extraordinarily long period before repetition:
+The **Mersenne Twister** algorithm (Makoto Matsumoto and Takuji Nishimura) {% include ref.html n=1 %} was chosen as the mathematical foundation, having proven efficient and reliable across diverse scenarios. Its primary appeal is its extraordinarily long period before repetition:
 
 <div class="math-block">
 

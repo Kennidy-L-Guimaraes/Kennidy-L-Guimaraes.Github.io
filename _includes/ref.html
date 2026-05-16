@@ -1,0 +1,6 @@
+{% comment %}
+  Usage: {% include ref.html n=1 %}
+  Renders a superscript citation link that triggers the tooltip on hover.
+  The matching reference data must be loaded via ref-tooltips.html on the same page.
+{% endcomment %}
+<a class="ref-link" data-ref="{{ include.n }}" href="#ref-{{ include.n }}" aria-label="Reference {{ include.n }}">[{{ include.n }}]</a>

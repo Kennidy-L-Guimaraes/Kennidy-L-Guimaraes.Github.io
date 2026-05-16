@@ -17,6 +17,7 @@ references:
   - "Brown, G. (2017). How secure is 256-bit security? 3Blue1Brown. https://www.3blue1brown.com/lessons/256-bit-security"
   - "Harper, D. (2010). How long would it take to count to a trillion? Numberphile reference."
 ---
+{% include ref-tooltips.html references=page.references %}
 
 Cryptographic hash functions are a foundational primitive in modern security systems, yet their internal mathematical mechanisms are rarely examined in detail outside of academic circles. This article offers a precise, technically grounded explanation of the SHA-256 algorithm — a member of the SHA-2 family developed by the NSA and standardized by NIST. We examine its complete processing pipeline, from binary encoding and padding through block decomposition, compression rounds, and final digest construction. We further analyze the practical infeasibility of brute-force attacks against SHA-256 by comparing its key space to measurable physical constants of the observable universe. The article is intended for developers and technical readers who are familiar with basic cryptographic concepts and seek a more rigorous understanding of how hashing actually works.
 
@@ -50,8 +51,8 @@ SHA-256 was developed by the **National Security Agency (NSA)** and published in
 
 The algorithm is built upon two well-established constructions:
 
-- **Merkle–Damgård scheme** [[4]](#ref-4): a framework for constructing hash functions that process messages of arbitrary length through an iterated compression function, producing a fixed-size output.
-- **Davies–Meyer structure** [[5]](#ref-4): a method for constructing one-way compression functions from block ciphers, where the plaintext is used to modify a running state variable.
+- **Merkle–Damgård scheme** {% include ref.html n=4 %}: a framework for constructing hash functions that process messages of arbitrary length through an iterated compression function, producing a fixed-size output.
+- **Davies–Meyer structure** {% include ref.html n=4 %}: a method for constructing one-way compression functions from block ciphers, where the plaintext is used to modify a running state variable.
 
 SHA-256 belongs to the **SHA-2 family**, which includes SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, and SHA-512/256 — each differing in output size and internal word length.
 
@@ -65,7 +66,7 @@ In **2005**, Professor Xiaoyun Wang announced a differential attack against SHA-
 
 ## 4. Standards
 
-SHA-256 is currently standardized under **FIPS PUB 180-4** [[1]](#ref-1), which supersedes the earlier FIPS PUB 180-2. The updated standard removed specifications for SHA-1, reflecting growing consensus around its inadequate security margins. Developers and systems integrators should reference FIPS 180-4 as the authoritative specification.
+SHA-256 is currently standardized under **FIPS PUB 180-4** {% include ref.html n=1 %}, which supersedes the earlier FIPS PUB 180-2. The updated standard removed specifications for SHA-1, reflecting growing consensus around its inadequate security margins. Developers and systems integrators should reference FIPS 180-4 as the authoritative specification.
 
 ---
 

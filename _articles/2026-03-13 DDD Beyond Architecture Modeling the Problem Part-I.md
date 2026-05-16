@@ -22,14 +22,15 @@ related:
     date: "2026"
     url: "#"
 ---
+{% include ref-tooltips.html references=page.references %}
 
-Harder than implementing a healthy software architecture is *not* implementing one. That is the kind of problem that surfaces after months of work: the system that ran fine yesterday starts throwing errors and everything grinds to a halt. The problem extends beyond the technical — it strikes the financial health of the company, especially when critical services are involved. And nearly every service is critical. [[1]](#ref-1)
+Harder than implementing a healthy software architecture is *not* implementing one. That is the kind of problem that surfaces after months of work: the system that ran fine yesterday starts throwing errors and everything grinds to a halt. The problem extends beyond the technical — it strikes the financial health of the company, especially when critical services are involved. And nearly every service is critical. {% include ref.html n=1 %}
 
 ---
 
 ### Critical Projects: For Whom, Why, and the Language of the Business
 
-Imagine you were hired to build software for a restaurant. You can do it in a way that lasts, or this could be your first and last job for "Laggio Pizzeria." The place sells dozens of distinct flavors, sources ingredients from multiple suppliers, offers discounts for regulars and staff, and operates under a set of tax rules that can land them in serious trouble if data is entered incorrectly. [[2]](#ref-2)
+Imagine you were hired to build software for a restaurant. You can do it in a way that lasts, or this could be your first and last job for "Laggio Pizzeria." The place sells dozens of distinct flavors, sources ingredients from multiple suppliers, offers discounts for regulars and staff, and operates under a set of tax rules that can land them in serious trouble if data is entered incorrectly. {% include ref.html n=2 %}
 
 Yes, even a pizzeria's software is a critical system. Maybe not to you — but certainly to the owner and manager of that chain.
 
@@ -43,7 +44,7 @@ Before you open your code editor and start building a heavily procedural system 
 
 ### Identifying a Domain
 
-In this example, the pizzeria will have at least two domains (there are actually more, but let's keep it to that number). The first is the fiscal domain, because it is the most critical part. Understanding the tax rules is what keeps the system viable — no company will use software that handles taxes incorrectly. This area deserves special attention. [[1]](#ref-1)
+In this example, the pizzeria will have at least two domains (there are actually more, but let's keep it to that number). The first is the fiscal domain, because it is the most critical part. Understanding the tax rules is what keeps the system viable — no company will use software that handles taxes incorrectly. This area deserves special attention. {% include ref.html n=1 %}
 
 We extract a domain like this: Laggio Pizzeria sells pizzas, pays taxes, has internal discounts, and issues a receipt for every customer and every supplier. It makes the pizzas based on what the customer ordered through an online form. The kitchen receives an order informing it only of what was requested — with no mention of payment method. That is not the kitchen's responsibility, and it is good that they do not know about it. Payment is the billing system's responsibility.
 
@@ -51,7 +52,7 @@ The pizza begins to be made according to what the customer ordered. Here we are 
 
 **The cook is not the cashier, and the cashier is not the cook.**
 
-In DDD, we call this separation a **Bounded Context**. Each context has its own rules and clear responsibilities. [[1]](#ref-1)
+In DDD, we call this separation a **Bounded Context**. Each context has its own rules and clear responsibilities. {% include ref.html n=1 %}
 
 Can you imagine how chaotic it would be if the accountant had to drop their spreadsheets to go bake pizzas? Do not do that in your software either.
 
@@ -61,7 +62,7 @@ So we have the Kitchen domain and the Fiscal domain. Now what?
 
 ### Entities and Responsibilities
 
-Now that we understand the pizza's journey from order to payment, we can define the entities in each domain. Think about the kitchen domain: it needs to be orchestrated by rules, with a head chef and cooks ready to make the best pizza your palate has ever tasted.  [[2]](#ref-2)
+Now that we understand the pizza's journey from order to payment, we can define the entities in each domain. Think about the kitchen domain: it needs to be orchestrated by rules, with a head chef and cooks ready to make the best pizza your palate has ever tasted.  {% include ref.html n=2 %}
 
 A common mistake is treating an entity as a step. Notice: the pizza does not leave the head chef and pass through the other cooks — it is orchestrated by the head chef and then prepared by the rest. It is a subtle difference in thinking, but it makes all the difference.
 
@@ -83,13 +84,13 @@ These are entities: they have their own rules and responsibilities limited to th
 
 ### Value Objects: Every Object Has Its Own Rule and Validation
 
-Knowing that ingredients are available, the ingredient cook still needs to verify the quality of each one — after all, the ingredients are their responsibility. Here we see that each ingredient can have its own rules, different from the rules of the entity that manages it. [[3]](#ref-3)
+Knowing that ingredients are available, the ingredient cook still needs to verify the quality of each one — after all, the ingredients are their responsibility. Here we see that each ingredient can have its own rules, different from the rules of the entity that manages it. {% include ref.html n=3 %}
 
 For example: we have doughs, and each dough has an expiration date. Some are sweet and others savory. Therefore, a sweet dough should not contain ingredients from a savory one.
 
 In this case, each kitchen object has its own rules. Those rules should not be the ingredient cook's concern. The cook still holds the responsibilities of their role, but since each object has its own values and rules, the objects themselves must validate themselves.
 
-This is what we call **Value Objects**: objects without their own identity, defined by their values, and responsible for their own rules. [[1]](#ref-1)
+This is what we call **Value Objects**: objects without their own identity, defined by their values, and responsible for their own rules. {% include ref.html n=1 %}
 
 The ingredient cook's role is to orchestrate that analysis, ensuring all products are compatible with each other. They can take a product and check its rule, but they cannot change it — a product's rules can only be modified by the product itself. They must not leak out of their scope.
 
@@ -101,7 +102,7 @@ If everything checks out, the order is forwarded to the next unit: the head chef
 
 The head chef is the one who can say whether an order can or cannot be fulfilled — not for lack of ingredients, but based on whether the entities under their coordination have the capacity to do so.
 
-This is what we call an **Aggregate**. It coordinates multiple entities and can reject an order only if one of the entities it contains is unable to fulfill its part. [[1]](#ref-1)
+This is what we call an **Aggregate**. It coordinates multiple entities and can reject an order only if one of the entities it contains is unable to fulfill its part. {% include ref.html n=1 %}
 
 In practice, it does not validate state directly — it only coordinates other entities. That is what sets it apart from a regular entity.
 
@@ -111,7 +112,7 @@ For example: the head chef coordinates both the ingredient cook and the line coo
 
 ### Factory: Where Everything Is Made
 
-The Factory is the only place where the pizza is truly made — where flavors are combined, the dough is baked, and the entire process takes place, potentially involving different entities and, sometimes, different domains. [[2]](#ref-2)
+The Factory is the only place where the pizza is truly made — where flavors are combined, the dough is baked, and the entire process takes place, potentially involving different entities and, sometimes, different domains. {% include ref.html n=2 %}
 
 If you have been paying attention, you noticed this: the order is received by the order manager, but the Factory has no access to it. It does not even know the order manager exists or what role they play. It trusts the head chef entirely and receives from them, and only from them, what needs to be done — meaning the order only reaches the Factory after all validations have been completed.
 
@@ -127,7 +128,7 @@ When the pizza is ready, it is sent to the counter, still without a price tag. F
 
 The Repository is not responsible for validating anything, and that is important to affirm: it trusts that the Factory always delivers everything ready. Its only job is to store the object.
 
-In programming, the Repository is an intermediary layer between the data persistence layer — but not the database itself — and the application layer. It lets you modularize data access, allowing for a quick and clean swap of databases when needed. [[4]](#ref-4)
+In programming, the Repository is an intermediary layer between the data persistence layer — but not the database itself — and the application layer. It lets you modularize data access, allowing for a quick and clean swap of databases when needed. {% include ref.html n=4 %}
 
 It is important to note that each domain can have its own Repository, with its own persistence responsibility. The Kitchen's Repository does not know the Fiscal Repository, and it does not need to. Each one answers only for what is its own.
 
@@ -188,7 +189,7 @@ But here, too, there are entity divisions, and this depends heavily on each coun
 
 The first entity is Cost Accounting. It receives the quantity of ingredients used — dough, onion, tomato, sauce, chicken, cheese, etc. — and, based on that, calculates the cost of each ingredient.
 
-It knows that the pizza's ingredients cost, say, 10.00~USD, and that per contract it was baked for 20 minutes, consuming 0.20~USD in energy. Every value counts here — none is fully negligible. [[3]](#ref-3)
+It knows that the pizza's ingredients cost, say, 10.00~USD, and that per contract it was baked for 20 minutes, consuming 0.20~USD in energy. Every value counts here — none is fully negligible. {% include ref.html n=3 %}
 
 It knows the cost of packaging, a share of the company's profit, the kitchen's commission, and so on. It is the entity that manages the values.
 
@@ -200,7 +201,7 @@ With the total value calculated — say, $17.60 — it is forwarded to the next 
 
 This is the agent responsible for applying the pizzeria's tax rules. It can add 5% if the pizza uses imported onions, or apply a 2% discount if the pizzeria uses locally grown tomatoes.
 
-Important: it does not apply promotional discounts. Think of this domain literally as a tax auditor. It does not set promotions, but it can apply reductions according to fiscal rules. [[1]](#ref-1)
+Important: it does not apply promotional discounts. Think of this domain literally as a tax auditor. It does not set promotions, but it can apply reductions according to fiscal rules. {% include ref.html n=1 %}
 
 And that is exactly what separates the entities: not just the macro responsibility, but the layers of rules each one must apply. If it were only about responsibility, the entire Fiscal Domain would be a single entity, since the general responsibility is pricing. Think in terms of *responsible layers*.
 
@@ -212,7 +213,7 @@ This entity is very important. It does not need to know what the pizza is made o
 
 In our case, the pizzeria rewards loyalty. So the only information it needs is the purchase count and the customer's name.
 
-It is the one that determines what discount to grant. For example: it can query the database and check the customer's name and how many times they purchased that week. That access is made through the Fiscal domain's Repository — just as the Kitchen has its own, the Fiscal domain has its own, without either needing to know the other. [[4]](#ref-4)
+It is the one that determines what discount to grant. For example: it can query the database and check the customer's name and how many times they purchased that week. That access is made through the Fiscal domain's Repository — just as the Kitchen has its own, the Fiscal domain has its own, without either needing to know the other. {% include ref.html n=4 %}
 
 Whether the pizza was sweet or savory does not matter here. The Promotions entity has no way of knowing, because prior entities limit what reaches it. It only needs those two pieces of information to approve or deny a discount.
 
@@ -230,7 +231,7 @@ The real question is: who can encapsulate all the rules necessary for an order t
 
 **The Order.**
 
-It functions as an **Aggregate Root**. It encapsulates all the rules necessary for an order to exist validly within the system, ensuring consistency across the items, the discounts, and the final total. [[1]](#ref-1)
+It functions as an **Aggregate Root**. It encapsulates all the rules necessary for an order to exist validly within the system, ensuring consistency across the items, the discounts, and the final total. {% include ref.html n=1 %}
 
 You can picture that relationship like this:
 
@@ -321,7 +322,7 @@ EVENT1 -->INV
 
 ### DDD: What It Is Not, and What It Is
 
-Throughout this article, we identified the main building blocks that form a DDD-modeled system: [[1]](#ref-1) &  [[2]](#ref-2)
+Throughout this article, we identified the main building blocks that form a DDD-modeled system: {% include ref.html n=1 %} &  {% include ref.html n=2 %}
 
 **Bounded Context** — the separation between domains by layers of business rules.
 
@@ -337,7 +338,7 @@ Throughout this article, we identified the main building blocks that form a DDD-
 
 **Repository** — the intermediary persistence layer; each domain with its own, each one responsible for its own data access.
 
-DDD is not an inflexible rule, nor an isolated architecture. It can be applied in different architectural styles — MVC, layered architectures, or even simpler systems. [[5]](#ref-5)
+DDD is not an inflexible rule, nor an isolated architecture. It can be applied in different architectural styles — MVC, layered architectures, or even simpler systems. {% include ref.html n=5 %}
 
 Generic and reusable components remain useful. Common validations, data normalization, and other technical responsibilities can be implemented in shared structures, avoiding rework and code repetition without compromising domain modeling.
 
@@ -347,9 +348,9 @@ Beyond that, with rare exceptions, early-career developers rarely participate di
 
 And yet it is precisely in that dialogue between domain experts and developers that DDD finds its true value. Even an apparently simple system — like a pizzeria's — can be extremely critical to a business's operation.
 
-An unhandled error, a poorly modeled entity, or a misapplied tax rule can result in systems going down during peak demand, incorrectly calculated taxes, or promotions applied the wrong way.  [[3]](#ref-3)
+An unhandled error, a poorly modeled entity, or a misapplied tax rule can result in systems going down during peak demand, incorrectly calculated taxes, or promotions applied the wrong way.  {% include ref.html n=3 %}
 
-In more complex scenarios, integrations with other systems can also introduce inconsistencies into the domain model. In those cases, structures like **Anti-Corruption Layers** become important for protecting the core domain against external rules or structures that could compromise its consistency. [[5]](#ref-5)
+In more complex scenarios, integrations with other systems can also introduce inconsistencies into the domain model. In those cases, structures like **Anti-Corruption Layers** become important for protecting the core domain against external rules or structures that could compromise its consistency. {% include ref.html n=5 %}
 
 <span class="destaque-bloco">
 Thinking the domain is only half the work. The other half is preventing the code from destroying the model.

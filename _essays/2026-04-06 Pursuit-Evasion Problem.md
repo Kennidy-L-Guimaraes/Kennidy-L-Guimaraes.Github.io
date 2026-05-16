@@ -11,6 +11,7 @@ categories: [mathematics, algorithms]
 tags: [algorithms, mathematics, Graphs, Search, search theory, game theory]
 image: /assets/img/og/pursuit-evasion-problem-a-probabilistic-search-analysis-in-a-deterministic-scope.png
 ---
+{% include ref-tooltips.html references=page.references %}
 
 Imagine yourself in a dark room, as dark as it can possibly be. With you are many people — a reasonable number, perhaps fifty of them — all in a room of approximately $100\,\text{m}^2$.
 

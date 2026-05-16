@@ -1,0 +1,175 @@
+// ── Reference tooltip — Wikipedia style ───────────────────────────────────
+
+.ref-link {
+  color: var(--borda-fina);
+  text-decoration: none;
+  font-size: 0.80em;
+  vertical-align: super;
+  line-height: 0;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover, &:focus {
+    color: var(--borda-fina);
+    text-decoration: underline;
+    outline: none;
+  }
+}
+
+.artigo-corpo a.ref-link {
+  pointer-events: auto !important;
+}
+
+.ref-tooltip {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  width: 300px;
+  background: var(--cor-fundo);
+  border: 1px solid var(--cor-texto);
+  //border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.13);
+  overflow: hidden;
+  pointer-events: auto !important; 
+
+  &.active {
+    display: block;
+    pointer-events: auto !important; 
+  }
+}
+
+.ref-tooltip-header {
+  background: var(--cor-fundo);
+  border-bottom: 1px solid var(--cor-texto);
+  padding: 9px 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.ref-tooltip-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  //border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ref-tooltip-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--cor-texto);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ref-tooltip-body {
+  padding: 9px 12px;
+}
+
+.ref-tooltip-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--cor-texto);
+  text-decoration: none;
+  border: 1px solid var(--borda-fina);
+  //border-radius: 6px;
+  padding: 5px 10px;
+  max-width: 100%;
+  transition: background 0.12s;
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &:hover { background: var(--cor-BlockMath); }
+}
+
+
+// ── Overlay (mobile) ───────────────────────────────────────────────────────
+
+.ref-tooltip-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+
+  &.active { display: block; }
+}
+
+// ── Mobile — bottom sheet ─────────────────────────────────────────────────
+
+@media (max-width: 640px) {
+  .ref-tooltip {
+    width: 100%;
+    left: 0 !important;
+    right: 0;
+    bottom: 0;
+    top: auto !important;
+    //border-radius: 14px 14px 0 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    box-shadow: 0 -4px 32px rgba(0, 0, 0, 0.22);
+    transform: translateY(100%);
+    transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+    display: block;
+    pointer-events: none;
+
+    &::before { display: none; }
+
+    &.active {
+      transform: translateY(0);
+      pointer-events: auto !important;
+    }
+  }
+
+  .rtt-header {
+    padding: 18px 16px 10px;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 4px;
+      background: var(--borda-fina);
+      //border-radius: 2px;
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.35;
+    }
+  }
+
+  .rtt-title { font-size: 15px; -webkit-line-clamp: 4; }
+
+  .rtt-body {
+    padding: 10px 16px calc(18px + env(safe-area-inset-bottom));
+  }
+
+  .rtt-link {
+    font-size: 12.5px;
+    padding: 8px 14px;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+

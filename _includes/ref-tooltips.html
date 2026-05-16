@@ -1,0 +1,30 @@
+{% comment %}
+  _includes/ref-tooltips.html
+  Injects tooltip HTML + reference data only.
+  Behaviour script lives in the layout, outside Markdown processing.
+{% endcomment %}
+
+<div id="ref-tooltip" class="ref-tooltip" role="tooltip">
+  <div class="ref-tooltip-header">
+    <span class="ref-tooltip-num" id="tt-num"></span>
+    <span class="ref-tooltip-title" id="tt-title"></span>
+  </div>
+  <div class="ref-tooltip-body">
+    <a class="ref-tooltip-link" id="tt-link" target="_blank" rel="noopener noreferrer">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      <span id="tt-link-label"></span>
+    </a>
+  </div>
+</div>
+
+<script>
+window.__refs = {};
+{% assign ref_index = 0 %}
+{% for ref_str in include.references %}
+  {% assign ref_index = ref_index | plus: 1 %}
+  {% assign tokens = ref_str | split: ' ' %}
+  {% assign ref_url = tokens | last %}
+  {% assign ref_title = ref_str | remove: ref_url | strip %}
+window.__refs[{{ ref_index }}] = { title: {{ ref_title | jsonify }}, url: {{ ref_url | jsonify }} };
+{% endfor %}
+</script>

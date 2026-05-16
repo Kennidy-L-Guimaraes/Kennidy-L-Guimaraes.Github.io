@@ -23,6 +23,7 @@ related:
     date: "2026"
     url: "#"
 ---
+{% include ref-tooltips.html references=page.references %}
 
 In the previous article, we dealt exclusively with Ubiquitous Language and the pain points of a multilingual system — when the goal is the exact opposite: a system where each context speaks the language of its own context. In this article, we will address precisely that. From where we left off, we could observe that an order in our pizzeria's kitchen is a pizza order, and an order in the Fiscal domain is a fiscal document — which are entirely different things.
 
@@ -47,7 +48,7 @@ It is clear to us that the pizza's responsibility belongs to the pizza order, bu
 We can therefore define that the ingredients will be Value Objects, since they follow two fundamental rules.
 
 <span class="destaque-bloco">
-"If I have two point objects that represent the cartesian coordinates of (2,3), it makes sense to treat them as equal. Objects that are equal due to the value of their properties, in this case their x and y coordinates, are called value objects." — Martin Fowler [[2]](#ref-2)
+"If I have two point objects that represent the cartesian coordinates of (2,3), it makes sense to treat them as equal. Objects that are equal due to the value of their properties, in this case their x and y coordinates, are called value objects." — Martin Fowler {% include ref.html n=2 %}
 </span>
 
 Each object holds a single responsibility. In the case of Flavors, the object returns whether a given Flavor is on the list, whether it is valid, whether a quantity X is available. Each object has its own rules and data validation methods.

@@ -14,6 +14,7 @@ references:
   - "Reliability Evaluation of Machine Center Components Based on Cascading Failure Analysis https://link.springer.com/article/10.1007/s10033-017-0144-y"
   - "Failure dependence and cascading failures: A literature review and research opportunities https://www.sciencedirect.com/science/article/pii/S0951832024008378"
 ---
+{% include ref-tooltips.html references=page.references %}
 
 If you have developed many projects, or lived through the security bubble between 2000 and 2015, you have probably heard the terms "critical project" or "safety-critical" repeatedly. This is directly tied to the state of digital security and the digitalization process that, in my country (Brazil), was already happening en masse during that period.
 
@@ -41,7 +42,7 @@ These are systems that cause significant losses, even if they do not directly th
 
 ### The Weakest Link
 
-The criticality of a system can be analyzed by considering two fundamental principles: the inevitability of failures over time and the tendency of systems to fail at their most fragile points [[1]](#ref-1).
+The criticality of a system can be analyzed by considering two fundamental principles: the inevitability of failures over time and the tendency of systems to fail at their most fragile points {% include ref.html n=1 %}.
 
 Formally, we define a system $S$ composed of components $C_i$, each with a failure probability $P(F_i)$. There therefore exists a component $W \in S$ such that:
 
@@ -158,7 +159,7 @@ The goal is to maintain a continuous history and perform recurring analyses on w
 
 ## Cascading Failures and Systemic Criticality
 
-We know that failures do not occur in isolation, but rather progressively and in chain. An initial failure can trigger a sequence of events that propagate through the system, amplifying its original impact [[1]](#ref-1)[[2]](#ref-2).
+We know that failures do not occur in isolation, but rather progressively and in chain. An initial failure can trigger a sequence of events that propagate through the system, amplifying its original impact {% include ref.html n=1 %} {% include ref.html n=2 %}.
 
 <span class="destaque-bloco">
 One of the most dramatic processes that spread in complex networks is the cascade of failures when a failure in part of the system leads to new failures in the same and in other systems that continue to propagate. Eventually, the entire system may become dysfunctional and collapse catastrophically. - Journal of Complex Networks, Volume 8, Issue 2, April 2020...
@@ -185,7 +186,7 @@ This model captures propagations of arbitrary depth — not just immediate failu
 
 ### Structural Analogy
 
-A problem that starts at $A_1$ can lead to an error in $A_2$, which in turn has its own dependencies, propagating the failure to $A_3$ and so on, until the system is interrupted or unforeseeable side effects occur [[2]](#ref-2).
+A problem that starts at $A_1$ can lead to an error in $A_2$, which in turn has its own dependencies, propagating the failure to $A_3$ and so on, until the system is interrupted or unforeseeable side effects occur {% include ref.html n=2 %}.
 <span class="destaque-bloco">
 For intuitive analysis: it is like a house of cards. Upon removing a structural element at the base, the balance of the whole is compromised, and collapse tends to propagate progressively — revealing cascading failures throughout the system. The recursive model of $\mathcal{I}(i)$ is the exact formalization of this behavior.
 </span>
