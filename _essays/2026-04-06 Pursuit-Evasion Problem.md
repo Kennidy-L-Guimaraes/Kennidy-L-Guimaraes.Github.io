@@ -177,7 +177,7 @@ Thus, the system converges toward capture with a probability tending to 1, but w
 <div class="nota-autor">
 
   Note: Probabilistic convergence to 1 does not imply mathematical certainty. The ant can, in theory, always survive — which makes this problem a classic case of asymptotic analysis applied to search systems.
-</span>
+</div>
 
 <div class="nota-autor">
 
