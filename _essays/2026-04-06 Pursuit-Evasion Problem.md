@@ -174,14 +174,16 @@ The main difficulty lies in analyzing the interception time. Although the model 
 
 Thus, the system converges toward capture with a probability tending to 1, but without absolute guarantee.
 
-<span class="destaque-bloco">
-**Note:** Probabilistic convergence to 1 does not imply mathematical certainty. The ant can, in theory, always survive — which makes this problem a classic case of asymptotic analysis applied to search systems.
+<div class="nota-autor">
+
+  Note: Probabilistic convergence to 1 does not imply mathematical certainty. The ant can, in theory, always survive — which makes this problem a classic case of asymptotic analysis applied to search systems.
 </span>
 
-<div class="destaque-bloco">
-Realistic example: One day, you arrive home and, upon entering your bedroom, you spot a cockroach on the wall. It must have come in through the gap under the door or through the window. You immediately close both. Now, the room becomes a closed and bounded system. The only possible exit route is the gap under the door — an exit that both you and the cockroach likely know about.
-At that moment, the space transforms into a classic pursuit-evasion problem. Although the cockroach is far faster and more agile than you, the system favors capture. You can turn on the lights, see it, and plan the search. The cockroach, in turn, has only one known escape path.
-Given sufficient time $T$, the probability that the cockroach is eliminated tends to 1. The space is finite, the escape route is unique and monitored, and the pursuer possesses visual information and the ability to block the critical point. Even so, at any finite instant, the cockroach retains a positive chance of survival — by running, hiding behind furniture, or exploring corners you have not yet searched.
+<div class="nota-autor">
+
+  Realistic example: One day, you arrive home and, upon entering your bedroom, you spot a cockroach on the wall. It must have come in through the gap under the door or through the window. You immediately close both. Now, the room becomes a closed and bounded system. The only possible exit route is the gap under the door — an exit that both you and the cockroach likely know about.
+  At that moment, the space transforms into a classic pursuit-evasion problem. Although the cockroach is far faster and more agile than you, the system favors capture. You can turn on the lights, see it, and plan the search. The cockroach, in turn, has only one known escape path.
+  Given sufficient time $T$, the probability that the cockroach is eliminated tends to 1. The space is finite, the escape route is unique and monitored, and the pursuer possesses visual information and the ability to block the critical point. Even so, at any finite instant, the cockroach retains a positive chance of survival — by running, hiding behind furniture, or exploring corners you have not yet searched.
 </div>
 
 ---
@@ -190,9 +192,9 @@ Given sufficient time $T$, the probability that the cockroach is eliminated tend
 
 <div class="nota-autor">
 
-The equations presented in this essay are **approximate heuristics**, not rigorous derivations of an exact model.
+The equations presented in this essay are approximate heuristics, not rigorous derivations of an exact model.
 
-In real pursuit-evasion games with multiple pursuers and a single evader, the probability of capture can be analyzed through reachability sets, optimal strategies in differential games, or persistent policies (such as those studied in *search theory* and swarm robotics). In such cases, the dynamics do not always follow exactly the simple exponential form used here, especially when the evader adopts intelligent adversarial strategies.
+In real pursuit-evasion games with multiple pursuers and a single evader, the probability of capture can be analyzed through reachability sets, optimal strategies in differential games, or persistent policies (such as those studied in search theory and swarm robotics). In such cases, the dynamics do not always follow exactly the simple exponential form used here, especially when the evader adopts intelligent adversarial strategies.
 
-The exponential model serves primarily to illustrate **asymptotic convergence** ($P \to 1$ when $T \to \infty$) in finite spaces under persistent search, inspired by classical concepts of accumulated sweep (*sweep width*) from search theory. The essay's closing note reinforces the central point: probabilistic convergence does not equate to mathematical certainty in finite time.
+The exponential model serves primarily to illustrate asymptotic convergence ($P \to 1$ when $T \to \infty$) in finite spaces under persistent search, inspired by classical concepts of accumulated sweep (sweep width) from search theory. The essay's closing note reinforces the central point: probabilistic convergence does not equate to mathematical certainty in finite time.
 </div>
