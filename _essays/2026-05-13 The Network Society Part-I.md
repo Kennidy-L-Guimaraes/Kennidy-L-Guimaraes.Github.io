@@ -51,7 +51,7 @@ The biggest problem was not the number of machines, but rather that each machine
 They were advanced technologies with completely sterile external communication, and that needed to change.
 
 <figure class="artigo-figura">
-<img src="{{ site.baseurl }}/files/essays/the-network-society/Figure1.drawio.png" alt="Hosts">
+<img src="{{ site.baseurl }}/files/essays/the-network-society/part-I/Figure1.drawio.png" alt="Hosts">
   <figcaption>Figure 1: Basic representation of computers (hosts) connected in a network with sterile external connection.</figcaption>
 </figure>
 
@@ -105,7 +105,7 @@ Upon arriving at the MiShare network, the Gateway verifies that Peter's address 
 Currently, the Gateway is called a Router, due to this property of route routing, and the term Gateway became more specific to the exit point to another network.
 
 <figure class="artigo-figura">
-<img src="{{ site.baseurl }}/files/essays/the-network-society/Figure2.drawio.png" alt="Anne and Peter">
+<img src="{{ site.baseurl }}/files/essays/the-network-society/part-I/Figure2.drawio.png" alt="Anne and Peter">
   <figcaption>Figure 2: Simple flow of sending an image from Anne (ShareOn) to Peter (MiShare) through gateways.</figcaption>
 </figure>
 
@@ -133,7 +133,7 @@ Thus, if Anne wants to send a file to Peter, Anne's HOST prepares the data and a
 Upon reaching the destination HOST, the received parts can then be correctly reassembled, allowing the reconstruction of the original data and integrity verification through the checksum.
 
 <figure class="artigo-figura">
-<img src="{{ site.baseurl }}/files/essays/the-network-society/Figure3.drawio.png" alt="Fragmentation">
+<img src="{{ site.baseurl }}/files/essays/the-network-society/part-I/Figure3.drawio.png" alt="Fragmentation">
   <figcaption>Figure 3: Fragmentation of the image into several parts for transmission between networks.</figcaption>
 </figure>
 
@@ -181,7 +181,7 @@ In other words, the system needs a mechanism that allows detecting when a packet
 Thus, Anne sends the packet and awaits a positive acknowledgment from the destination HOST indicating that the data was properly received. If this acknowledgment does not occur within a certain time interval (timeout), TCP assumes the packet may have been lost during transmission and initiates a retransmission process.
 
 <figure class="artigo-figura">
-<img src="{{ site.baseurl }}/files/essays/the-network-society/Figure4.drawio.png" alt="TCP with Checksum">
+<img src="{{ site.baseurl }}/files/essays/the-network-society/part-I/Figure4.drawio.png" alt="TCP with Checksum">
   <figcaption>Figure 4: Functioning of the TCP layer with segments, sequence numbers, and checksum.</figcaption>
 </figure>
 
@@ -266,7 +266,7 @@ Gateways, direct ancestors of modern routers, would be responsible for forwardin
 Still in the example of Anne and Peter, Peter will now receive all the packets (if he loses any, the checksum will detect it, and a new request will be made by TCP). And you can visualize the structure partially close to this:
 
 <figure class="artigo-figura">
-<img src="{{ site.baseurl }}/files/essays/the-network-society/Figure5.drawio.png" alt="TCP/IP with hop-by-hop">
+<img src="{{ site.baseurl }}/files/essays/the-network-society/part-I/Figure5.drawio.png" alt="TCP/IP with hop-by-hop">
   <figcaption>Figure 5: Complete TCP/IP model: hop-by-hop routing (IP) and end-to-end control (TCP) with ACK.</figcaption>
 </figure>
 
