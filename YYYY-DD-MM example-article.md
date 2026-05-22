@@ -65,9 +65,9 @@ Introduce the second major concept or argument. How does it connect to Section 1
 [Body of this section. Aim for 2–4 paragraphs. Break complex ideas into shorter paragraphs.]
 
 <!-- TIP: If this section has a key quote from the whitepaper, source, or relevant figure, add it below -->
-<span class="destaque-bloco">
+<div class="destaque-bloco">
 "[INSERT QUOTE]" — [Source Name, Document Title (Year)]
-</span>
+</div>
 
 <div class="math-block">
 
