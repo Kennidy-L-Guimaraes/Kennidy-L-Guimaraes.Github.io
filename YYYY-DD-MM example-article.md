@@ -1,3 +1,5 @@
+EXAMPLE
+
 ---
 layout: article
 title: "ARTICLE TITLE HERE"
