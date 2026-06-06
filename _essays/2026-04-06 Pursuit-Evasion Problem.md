@@ -2,6 +2,7 @@
 layout: article
 title: "Pursuit-Evasion Problem: A Probabilistic Search Analysis in a Deterministic Scope"
 subtitle: "When fifty blind humans try to eliminate an ant in a dark room"
+slug: pursuit-evasion-problem-a-probabilistic-search-analysis-in-a-deterministic-scope
 date: 2026-04-06
 last_modified_at: 2026-04-06
 schema:

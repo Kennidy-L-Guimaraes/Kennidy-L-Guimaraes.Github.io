@@ -2,6 +2,7 @@
 layout: article
 title: "How Mathematics is Applied to Dijkstra's Algorithm to Find the Best Path Between Nodes"
 subtitle: "From a coffee terrace in Amsterdam to every GPS route calculated today"
+slug: how-mathematics-is-applied-to-dijkstra-s-algorithm-to-find-the-best-path-between-nodes
 date: 2026-03-26
 last_modified_at: 2026-04-7
 author: "Kennidy L. Guimarães"

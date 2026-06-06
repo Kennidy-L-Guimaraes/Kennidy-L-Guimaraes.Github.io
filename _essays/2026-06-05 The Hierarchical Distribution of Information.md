@@ -2,6 +2,7 @@
 layout: article
 title: "The Hierarchical Distribution of Information"
 subtitle: "Toward a Theory of State and Strategic Knowledge in Hierarchical Systems"
+slug: the-hierarchical-distribution-of-information
 date: 2026-06-05
 last_modified_at: 2026-06-05
 schema:

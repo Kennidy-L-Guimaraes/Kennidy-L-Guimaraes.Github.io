@@ -2,6 +2,7 @@
 layout: article
 title: "Artificial Intelligence Does Not Pay for Itself: The Structural Limits of a Trillion-Dollar Bet"
 subtitle: "The economic and structural limits behind the AI boom"
+slug: artificial-intelligence-does-not-pay-for-itself-the-structural-limits-of-a-trillion-dollar-bet
 date: 2026-05-05
 last_modified_at: 2026-05-05
 schema:

@@ -2,6 +2,7 @@
 layout: article
 title: "Critical systems and cascading failures in complex systems"
 subtitle: "Why Failures at the Weakest Link Are Not Isolated Events"
+slug: critical-systems-and-cascading-failures-in-complex-systems
 date: 2026-03-24
 last_modified_at: 2026-04-7
 author: "Kennidy L. Guimarães"

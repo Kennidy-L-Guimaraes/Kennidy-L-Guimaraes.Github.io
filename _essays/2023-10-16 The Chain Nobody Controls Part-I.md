@@ -2,6 +2,7 @@
 layout: article
 title: "The Chain Nobody Controls: Bitcoin as an Intangible Asset and the Double-Spending Problem"
 subtitle: "Part I - A System Designed for a World Without Trust"
+slug: bitcoin-as-an-intangible-asset-and-the-double-spending-problem
 date:  2023-10-16
 author: "Kennidy L. Guimarães"
 categories: [bitcoin & blockchain]

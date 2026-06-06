@@ -2,6 +2,7 @@
 layout: article
 title: "True Quantum Computing: An Honest Introduction to QC"
 subtitle: "Where quantum physics intertwines with computing."
+slug: true-quantum-computing-an-honest-introduction-to-qc
 date: 2025-01-10
 last_modified_at: 2026-04-09
 schema:

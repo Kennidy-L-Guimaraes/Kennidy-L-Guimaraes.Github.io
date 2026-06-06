@@ -2,6 +2,7 @@
 layout: article
 title: "How A* Uses Heuristics and Mathematics to Define the Best and Least Costly Route"
 subtitle: "A mathematical leap forward from Dijkstra's algorithm with guided search"
+slug: how-a-uses-heuristics-and-mathematics-to-define-the-best-and-least-costly-route
 date: 2026-04-1
 last_modified_at: 2026-04-1
 schema: 

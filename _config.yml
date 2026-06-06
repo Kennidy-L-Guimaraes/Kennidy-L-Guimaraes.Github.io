@@ -10,7 +10,7 @@ author:
   github: "Kennidy-L-Guimaraes"
   instagram: "Kennidy.L.Guimaraes"
   twitter: "kennidyl.guimaraes"
-  linkedin: "kennidy-l-guimaraes-2031aa389"
+  linkedin: "kennidy-l-guimarães-2031aa389"
   medium: "kennidylguimaraes"
   avatar: "/assets/img/HarpyFortofBrazil.png"
   email: "me@kennidylguimaraes.com"
@@ -27,22 +27,22 @@ plugins:
 mermaid:
   src: 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js'
 
-collections:
+collections: # P/ Publications
   softwares:
     output: true
-    permalink: /softwares/:name/
+    permalink: /p/:slug/ 
   papers:
     output: true
-    permalink: /papers/:name/
+    permalink: /p/:slug/
   articles:
     output: true
-    permalink: /articles/:name/
+    permalink: /p/:slug/
   essays:
     output: true
-    permalink: /essays/:name/
+    permalink: /p/:slug/
   topics:
     output: true
-    permalink: /topics/:name/
+    permalink: /p/:slug/
 
 announcement:
   active: false

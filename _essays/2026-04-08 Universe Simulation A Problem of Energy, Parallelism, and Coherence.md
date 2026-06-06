@@ -2,6 +2,7 @@
 layout: article
 title: "Universe Simulation: A Problem of Energy, Parallelism, and Coherence"
 subtitle: "Why a fully simulated reality collapses under its own computational weight"
+slug: universe-simulation-a-problem-of-energy-parallelism-and-coherence 
 date: 2026-04-08
 last_modified_at: 2026-04-08
 schema:

@@ -2,6 +2,7 @@
 layout: article
 title: "The Network Society: TCP/IP Protocol and the Birth of the Internet"
 subtitle: "Part-I How Vincent Cerf, Postel, and dozens of other scientists built what we use today"
+slug: the-network-society-tcp-ip-protocol-and-the-birth-of-the-internet 
 date: 2026-05-13
 last_modified_at: 2026-05-13
 schema:

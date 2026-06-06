@@ -2,6 +2,7 @@
 layout: article
 title: "Understanding the Mathematical Functioning of Hashing"
 subtitle: "A Technical Overview of SHA-256: Architecture, Operations, and Security"
+slug: understanding-the-mathematical-functioning-of-hashing
 date: 2024-11-25
 author: "Kennidy L. Guimarães"
 email: "kennidyLguimaraes@gmail.com"

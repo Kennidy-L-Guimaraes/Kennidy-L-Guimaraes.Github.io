@@ -2,6 +2,7 @@
 layout: article
 title: "The Network Society: CIDR, NAT and the Collapse of End-to-End"
 subtitle: "Part-II How IPv4 scarcity reshaped Internet architecture"
+slug: the-network-society-cidr-nat-and-the-collapse-of-end-to-end 
 date: 2026-05-22
 last_modified_at: 2026-05-22
 schema:
