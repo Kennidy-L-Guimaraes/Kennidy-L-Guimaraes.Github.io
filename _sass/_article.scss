@@ -420,3 +420,8 @@ h1.artigo-titulo { color: var(--cor-texto); }
     box-shadow: none;
     padding: 0;
 }
+
+//New text size for highlighting
+.highlighter-rouge .hljs {
+    font-size: 0.7rem;
+}
