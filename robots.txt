@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://kennidylguimaraes.com/sitemap.xml
+
+# RSS Feed
+Allow: /feed.xml

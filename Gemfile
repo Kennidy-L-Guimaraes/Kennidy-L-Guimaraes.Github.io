@@ -9,3 +9,4 @@ end
 
 gem "jekyll-mermaid", "~> 1.0"
 gem "jekyll-feed"
+gem "jekyll-sitemap"
