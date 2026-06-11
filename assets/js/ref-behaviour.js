@@ -7,9 +7,17 @@ document.addEventListener('DOMContentLoaded', function () {
   var ttLink  = document.getElementById('tt-link');
   var ttLabel = document.getElementById('tt-link-label');
   var refs    = window.__refs || {};
+  var index   = window.__refIndex || {};
   var hideTimer;
 
-  function show(el, n) {
+  // Preenche os números inline ([1], [2]...) resolvidos pelo índice
+  document.querySelectorAll('.ref-num-inline[data-ref-key]').forEach(function (el) {
+    var num = index[el.dataset.refKey];
+    if (num !== undefined) el.textContent = num;
+  });
+
+  function show(el, id) {
+    var n    = index[id];
     var data = refs[n];
     if (!data) return;
     ttNum.textContent   = n;
@@ -36,9 +44,9 @@ document.addEventListener('DOMContentLoaded', function () {
   function hide() { tooltip.classList.remove('active'); }
 
   document.querySelectorAll('.ref-link').forEach(function (el) {
-    el.addEventListener('mouseenter', function () { clearTimeout(hideTimer); show(el, +el.dataset.ref); });
+    el.addEventListener('mouseenter', function () { clearTimeout(hideTimer); show(el, el.dataset.ref); });
     el.addEventListener('mouseleave', function () { hideTimer = setTimeout(hide, 220); });
-    el.addEventListener('focus',      function () { clearTimeout(hideTimer); show(el, +el.dataset.ref); });
+    el.addEventListener('focus',      function () { clearTimeout(hideTimer); show(el, el.dataset.ref); });
     el.addEventListener('blur',       function () { hideTimer = setTimeout(hide, 220); });
   });
 

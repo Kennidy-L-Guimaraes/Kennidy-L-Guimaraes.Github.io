@@ -68,12 +68,14 @@ layout: default
         {{ content }}
     </article>
 
-    {% if page.references %}
+<!--REFERENCES-->
+        {% if page.references %}
     <section class="referencias" aria-label="References">
         <span class="referencias-cabecalho">References</span>
         <ol>
-            {% for ref in page.references %}
-            <li>{{ ref | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+            {% for pair in page.references %}
+            {% assign ref_obj = pair[1] %}
+            <li>{{ ref_obj.text | markdownify | remove: '<p>' | remove: '</p>' }}</li>
             {% endfor %}
         </ol>
     </section>
