@@ -14,9 +14,16 @@ tags: [systems, Architecture, DDD, Series]
 series: "ddd-in-practice"
 series_part: 4
 image: /assets/img/og/ddd-in-practice-aggregate-root-organizing-entities-part-iv.png
+
 references:
-  - "Evans, E. (2003). Domain-Driven Design: Tackling Complexity in the Heart of Software. Addison-Wesley. https://www.domainlanguage.com/ddd/"
-  - "Fowler, M. DDD Aggregate. martinfowler.com. https://martinfowler.com/bliki/DDD_Aggregate.html"
+  evans:
+    text: "Evans, E. (2003). Domain-Driven Design: Tackling Complexity in the Heart of Software. Addison-Wesley"
+    url: "https://www.domainlanguage.com/ddd/"
+  
+  fowler:
+    text: "Fowler, M. DDD Aggregate. martinfowler.com."
+    url: "https://martinfowler.com/bliki/DDD_Aggregate.html"
+
 related:
   - title: "DDD in Practice: from problem to model - Part I"
     category: "Software Architecture"
@@ -36,7 +43,7 @@ related:
 
 In the previous article, I explained how Value Objects work, why we should use them, and whether they allow objects within objects; I also explained Entities, which serve to gather the context of Value Objects, take their output, and apply validation rules.
 
-In this article, I will cover the Aggregates responsible for bringing all entities together into a single order and ensuring that the integrity of the whole is respected {% include ref.html n=1 %} {% include ref.html n=2 %}.
+In this article, I will cover the Aggregates responsible for bringing all entities together into a single order and ensuring that the integrity of the whole is respected {% include ref.html id="evans" %} {% include ref.html id="fowler" %}.
 
 In the words of Martin Fowler:
 <div class="destaque-bloco">

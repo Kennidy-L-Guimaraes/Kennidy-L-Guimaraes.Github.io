@@ -14,9 +14,16 @@ tags: [systems, Architecture, DDD, Series]
 series: "ddd-in-practice"
 series_part: 3
 image: /assets/img/og/ddd-in-practice-modeling-entities-and-value-objects-part-iii.png
+
 references:
-  - "Evans, E. (2003). Domain-Driven Design: Tackling Complexity in the Heart of Software. Addison-Wesley. https://www.domainlanguage.com/ddd/"
-  - "Fowler, M. Value Object. martinfowler.com. https://martinfowler.com/bliki/ValueObject.html"
+    evans: 
+        text: "Evans, E. (2003). Domain-Driven Design: Tackling Complexity in the Heart of Software. Addison-Wesley"
+        url: "https://www.domainlanguage.com/ddd/"
+    
+    fowler: 
+        text: "Fowler, M. Value Object. martinfowler.com."
+        url: "https://martinfowler.com/bliki/ValueObject.html"
+    
 related:
   - title: "DDD in Practice: from problem to model - Part I"
     category: "Software Architecture"
@@ -52,7 +59,7 @@ It is clear to us that the pizza's responsibility belongs to the pizza order, bu
 We can therefore define that the ingredients will be Value Objects, since they follow two fundamental rules.
 
 <span class="destaque-bloco">
-"If I have two point objects that represent the cartesian coordinates of (2,3), it makes sense to treat them as equal. Objects that are equal due to the value of their properties, in this case their x and y coordinates, are called value objects." — Martin Fowler {% include ref.html n=2 %}
+"If I have two point objects that represent the cartesian coordinates of (2,3), it makes sense to treat them as equal. Objects that are equal due to the value of their properties, in this case their x and y coordinates, are called value objects." — Martin Fowler {% include ref.html id="fowler" %}
 </span>
 
 Each object holds a single responsibility. In the case of Flavors, the object returns whether a given Flavor is on the list, whether it is valid, whether a quantity X is available. Each object has its own rules and data validation methods.
@@ -179,17 +186,15 @@ public class Flavor
 }
 ```
 
-<span class="destaque-bloco">
- <strong>Note:</strong> Some analogies were used to make the explanation simpler, and will be clarified here. First, Value Objects must be immutable — and that is a rule. Avoid hardcoded values unless the system genuinely requires them. Once instantiated, they must remain pure, as they represent values within the domain and concentrate important validations. Think of them as consistency checkpoints of the system — not in a structural sense, but in the sense of ensuring that the data passing through them is already valid and reliable.
-</span>
-
-<span class="destaque-bloco">
+<div class="nota-autor">
+ <strong>Note:</strong> Some analogies were used to make the explanation simpler, and will be clarified here. 
+ <br>
+ <strong>First</strong>, Value Objects must be immutable — and that is a rule. Avoid hardcoded values unless the system genuinely requires them. Once instantiated, they must remain pure, as they represent values within the domain and concentrate important validations. Think of them as consistency checkpoints of the system — not in a structural sense, but in the sense of ensuring that the data passing through them is already valid and reliable.
+ <br>   
  It is clear that in the examples we used hardcoded values to simplify, but in real systems the data comes from external sources, such as a database, generally fed by other systems such as inventory or management. In that scenario, the Value Object remains immutable, but new instances can be created from updated data, without the object itself being altered.
-</span>
-
-<span class="destaque-bloco">
- Second, the examples used are basic and intentionally minimal. The full complexity of a DDD-based system was not covered — only the essentials for understanding. In practice, it is common for an Entity to have identity, invariants, and explicit business rules, in addition to frequently working with abstractions such as interfaces, and applying principles such as Dependency Inversion and Dependency Injection.
-</span>
+ <br>
+ <strong>Second</strong>, the examples used are basic and intentionally minimal. The full complexity of a DDD-based system was not covered — only the essentials for understanding. In practice, it is common for an Entity to have identity, invariants, and explicit business rules, in addition to frequently working with abstractions such as interfaces, and applying principles such as Dependency Inversion and Dependency Injection.
+</div>
 
 ---
 

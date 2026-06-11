@@ -14,6 +14,7 @@ tags: [systems, Architecture, DDD, Series]
 series: "ddd-in-practice"
 series_part: 1
 image: /assets/img/og/ddd-in-practice-from-problem-to-model-part-i.png
+
 references:
   evans:
     text: "Evans, E. (2003). Domain-Driven Design: Tackling Complexity in the Heart of Software. Addison-Wesley."
@@ -55,7 +56,7 @@ Imagine you were hired to build software for a restaurant. You can do it in a wa
 
 Yes, even a pizzeria's software is a critical system. Maybe not to you — but certainly to the owner and manager of that chain.
 
-<div class="destaque-bloco">
+<div class="nota-autor">
 
 Note: Here I am referring to critical systems in the context of DDD, and not to the absolute criticality of systems. Read more about System Criticality in this other article {% include ref.html id="guimaraes" %}.
 </div>

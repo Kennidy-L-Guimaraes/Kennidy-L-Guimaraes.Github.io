@@ -14,10 +14,20 @@ tags: [systems, Architecture, DDD, Series]
 series: "ddd-in-practice"
 series_part: 2
 image: /assets/img/og/ddd-in-practice-from-ubiquitous-language-to-bounded-context-part-ii.png
+
 references:
-  - "Evans, E. (2003). Domain-Driven Design: Tackling Complexity in the Heart of Software. Addison-Wesley. https://www.domainlanguage.com/ddd/"
-  - "Fowler, M. Ubiquitous Language. martinfowler.com. https://martinfowler.com/bliki/UbiquitousLanguage.html"
-  - "Fowler, M. Bounded Context. martinfowler.com. https://martinfowler.com/bliki/BoundedContext.html"
+  evans:
+    text: "Evans, E. (2003). Domain-Driven Design: Tackling Complexity in the Heart of Software. Addison-Wesley."
+    url: "https://www.domainlanguage.com/ddd/"
+
+  fowler-i:
+     text: "Fowler, M. Ubiquitous Language. martinfowler.com."
+     url: "https://martinfowler.com/bliki/UbiquitousLanguage.html"
+
+  fowler-ii:
+    text: "Fowler, M. Bounded Context. martinfowler.com."
+    url: "https://martinfowler.com/bliki/BoundedContext.html"
+
 related:
   - title: "DDD in Practice: from problem to model - Part I"
     category: "Software Architecture"
@@ -41,7 +51,7 @@ For many developers, writing compact, low-verbosity code that looks technically 
 Writing good code does not require making it more complex than it already is. **Ubiquitous Language** addresses exactly this: bridging the language of the code with the language of the business. Even if names become longer, the goal is not brevity — it is comprehension, shared across the entire team, so that even a non-technical stakeholder reading the code can follow what is happening.
 
 <span class="destaque-bloco">
-"By using a model-based language pervasively and not being satisfied until it flows, we approach a model that is complete and comprehensible, composed of simple elements that combine to express complex ideas." — Eric Evans {% include ref.html n=1 %}
+"By using a model-based language pervasively and not being satisfied until it flows, we approach a model that is complete and comprehensible, composed of simple elements that combine to express complex ideas." — Eric Evans {% include ref.html id="evans" %}
 </span>
 
 Consider the example below. You may not know C# syntax, but the code is readable even to developers working in other languages:
@@ -91,7 +101,7 @@ The code tells a story — it reads almost like a book. This makes it far easier
 Factory.PreparingOrder(ReceivesTheOrder) → Returns OrderReady
 ```
 
-At times, it becomes necessary to refactor the Ubiquitous Language itself to keep it more precise {% include ref.html n=2 %}:
+At times, it becomes necessary to refactor the Ubiquitous Language itself to keep it more precise {% include ref.html id="fowler-i" %}:
 
 ```
 Factory.PreparingPizza(ReceivesTheOrder) → Returns PizzaReady
@@ -107,7 +117,7 @@ Which makes it even more readable and faithful to the domain.
 
 **II.** APIs, dependencies, and all parts of the system must speak the same language (with the exception of infrastructure — databases and similar components).
 
-**III.** It is a living language — one that can and should be refactored to stay current and accurate {% include ref.html n=2 %}.
+**III.** It is a living language — one that can and should be refactored to stay current and accurate {% include ref.html id="fowler-i" %}.
 
 **IV.** If someone unfamiliar with the syntax reads the code and understands it, and if collaborators — from management to operations — recognise the verbs being used, then the code is ubiquitous.
 
@@ -149,7 +159,7 @@ Once the language is defined, we must define the contexts. This is because "Orde
 
 Naming things well is the first step, but in larger projects, a name alone is not enough. Imagine a solution with dozens of classes — if both "orders" live in the same place without physical separation, context exists only in the name, not in the structure. Over time, boundaries weaken and one context begins to bleed into the other.
 
-Contexts are often shaped by human culture itself. False cognates are a vivid example: in Portuguese, *cachorro* means dog, and *cachorrinho* means puppy — but in Spanish, *cachorro* refers to any young animal, regardless of species. The same applies to false cognates in English: the word changes, and the context changes with it {% include ref.html n=3 %}.
+Contexts are often shaped by human culture itself. False cognates are a vivid example: in Portuguese, *cachorro* means dog, and *cachorrinho* means puppy — but in Spanish, *cachorro* refers to any young animal, regardless of species. The same applies to false cognates in English: the word changes, and the context changes with it {% include ref.html id="fowler-ii" %}.
 
 This is why separation must be reinforced in the very organisation of the code, following the hierarchy of module, package, and context:
 
