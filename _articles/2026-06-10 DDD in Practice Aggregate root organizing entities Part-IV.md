@@ -6,6 +6,8 @@ slug: ddd-in-practice-aggregate-root-organizing-entities-part-iv
 description: "Learn how Aggregate Root controls entities, protects invariants and guarantees consistency in Domain-Driven Design."
 date: 2026-06-10
 last_modified_at: 2026-06-10
+schema:
+  type: Article
 author: "Kennidy L. Guimarães"
 categories: [architecture, Domain-Driven-Design]
 tags: [systems, Architecture, DDD, Series]

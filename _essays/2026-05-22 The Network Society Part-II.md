@@ -2,11 +2,12 @@
 layout: article
 title: "The Network Society: CIDR, NAT and the Collapse of End-to-End"
 subtitle: "Part-II How IPv4 scarcity reshaped Internet architecture"
+description: "Learn about the collapse of end-to-end internet connections, and how we got to CIDR and NAT."
 slug: the-network-society-cidr-nat-and-the-collapse-of-end-to-end 
 date: 2026-05-22
 last_modified_at: 2026-05-22
 schema:
-  type: Essays and Papers
+  type: Article
 author: "Kennidy L. Guimarães"
 categories: [Network Protocols]
 tags: [Network protocols, Internet, DARPA, Networks, Classful, CIDR, MASK, Public-IP, Private-IP, NAT, CGNAT, RFC]

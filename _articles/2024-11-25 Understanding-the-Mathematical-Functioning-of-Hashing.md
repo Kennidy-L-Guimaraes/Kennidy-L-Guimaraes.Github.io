@@ -2,10 +2,12 @@
 layout: article
 title: "Understanding the Mathematical Functioning of Hashing"
 subtitle: "A Technical Overview of SHA-256: Architecture, Operations, and Security"
+description: "Learn how the Sha-256 Hashing function works in depth."
 slug: understanding-the-mathematical-functioning-of-hashing
 date: 2024-11-25
+schema:
+  type: Article
 author: "Kennidy L. Guimarães"
-email: "kennidyLguimaraes@gmail.com"
 categories: [cryptography, hash]
 tags: [algorithms, Computer Science, systems, Mathematical]
 image: /assets/img/og/understanding-the-mathematical-functioning-of-hashing.png

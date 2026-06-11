@@ -2,9 +2,12 @@
 layout: article
 title: "DDD in practice: from problem to model - Part I"
 subtitle: "Serie: Domain-Driven Design: From Problem to Code. Why domain modeling matters more than the pattern itself"
+description: "Learn what domain modeling is and why it's more important than using patterns."
 slug: ddd-in-practice-from-problem-to-model-part-i
 date: 2026-03-13
 last_modified_at: 2026-04-7
+schema:
+  type: Article
 author: "Kennidy L. Guimarães"
 categories: [architecture, Domain-Driven-Design]
 tags: [systems, Architecture, DDD, Series]

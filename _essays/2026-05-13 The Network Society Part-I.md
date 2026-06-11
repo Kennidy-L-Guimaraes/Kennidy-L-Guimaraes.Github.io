@@ -2,11 +2,12 @@
 layout: article
 title: "The Network Society: TCP/IP Protocol and the Birth of the Internet"
 subtitle: "Part-I How Vincent Cerf, Postel, and dozens of other scientists built what we use today"
+description: "Learn about how we went from a Simplex connection to a FullSuplex connection with TCP/IP and the emergence of the internet."
 slug: the-network-society-tcp-ip-protocol-and-the-birth-of-the-internet 
 date: 2026-05-13
 last_modified_at: 2026-05-13
 schema:
-  type: Essays and Papers
+  type: Article
 author: "Kennidy L. Guimarães"
 categories: [Network Protocols]
 tags: [Network protocols, Internet, DARPA, Networks, TCP, IP, TCP/IP]

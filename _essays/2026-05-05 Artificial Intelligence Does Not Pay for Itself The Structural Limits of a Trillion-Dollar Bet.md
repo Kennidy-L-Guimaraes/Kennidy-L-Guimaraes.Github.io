@@ -2,11 +2,12 @@
 layout: article
 title: "Artificial Intelligence Does Not Pay for Itself: The Structural Limits of a Trillion-Dollar Bet"
 subtitle: "The economic and structural limits behind the AI boom"
+description: "An analysis of why artificial intelligence has not yet generated sustainable returns, despite unprecedented investments in chips, energy, infrastructure, and data centers."
 slug: artificial-intelligence-does-not-pay-for-itself-the-structural-limits-of-a-trillion-dollar-bet
 date: 2026-05-05
 last_modified_at: 2026-05-05
 schema:
-  type: Essays and Papers
+  type: Article
 author: "Kennidy L. Guimarães"
 categories: [artificial intelligence]
 tags: [AI, OpenAI, Anthropic, Infrastructure, Energy, Semiconductor, Market, Investment, Bubble]

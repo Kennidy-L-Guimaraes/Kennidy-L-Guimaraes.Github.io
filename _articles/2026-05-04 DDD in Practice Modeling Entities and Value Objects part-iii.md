@@ -3,8 +3,11 @@ layout: article
 title: "DDD in Practice: Modeling Entities and Value Objects - Part III"
 subtitle: "Serie: Domain-Driven Design: From Problem to Code. Modeling Entities and Value Objects according to context"
 slug: ddd-in-practice-modeling-entities-and-value-objects-part-iii
+description: "How to Model Entities and Value Objects according to context."
 date: 2026-05-04
 last_modified_at: 2026-05-04
+schema:
+  type: Article
 author: "Kennidy L. Guimarães"
 categories: [architecture, Domain-Driven-Design]
 tags: [systems, Architecture, DDD, Series]

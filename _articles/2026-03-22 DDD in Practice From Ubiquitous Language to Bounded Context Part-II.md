@@ -2,9 +2,12 @@
 layout: article
 title: "DDD in Practice: From Ubiquitous Language to Bounded Context - Part II"
 subtitle: "Serie: Domain-Driven Design: From Problem to Code. How naming things right — and in the right place — shapes the entire architecture"
+description: "How Ubiquitous Language shapes the entire system architecture."
 slug: ddd-in-practice-from-ubiquitous-language-to-bounded-context-part-ii 
 date: 2026-03-23
 last_modified_at: 2026-04-07
+schema:
+  type: Article
 author: "Kennidy L. Guimarães"
 categories: [architecture, Domain-Driven-Design]
 tags: [systems, Architecture, DDD, Series]

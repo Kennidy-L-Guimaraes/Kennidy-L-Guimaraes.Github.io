@@ -2,11 +2,12 @@
 layout: article
 title: "The Hierarchical Distribution of Information"
 subtitle: "Toward a Theory of State and Strategic Knowledge in Hierarchical Systems"
+description: "Theory on the decay of abstract/strategic information and state/real information in rigid systems."
 slug: the-hierarchical-distribution-of-information
 date: 2026-06-05
 last_modified_at: 2026-06-05
 schema:
-  type: Essays and Papers
+  type: Article
 author: "Kennidy L. Guimarães"
 categories: [Information Theory]
 tags: [Edge Systems, Hierarchy, Information Theory, Complex Systems, Information Degrowth, Economics, Hayek]

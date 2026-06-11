@@ -2,6 +2,7 @@
 layout: article
 title: "Random Hash Cascade (RHC): A Pseudo-Random Hashing Algorithm Using Mersenne Twister and SHA-256"
 subtitle: "Study: Utilization of Hash Cascades for Pseudo-Random Hash Generation"
+description: "Algorithm Theory to create a cascade of random hashes to generate a secure chained hash."
 slug: rhc-random-hash-cascade
 date: 2023-06-07
 last_modified_at: 2026-03-29

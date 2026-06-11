@@ -2,11 +2,12 @@
 layout: article
 title: "Universe Simulation: A Problem of Energy, Parallelism, and Coherence"
 subtitle: "Why a fully simulated reality collapses under its own computational weight"
+description: "An analysis of why the universe cannot simply be simulated, considering limitations such as energy, parallelism, computational coherence, and physics."
 slug: universe-simulation-a-problem-of-energy-parallelism-and-coherence 
 date: 2026-04-08
 last_modified_at: 2026-04-08
 schema:
-  type: Essay
+  type: Article
 author: "Kennidy L. Guimarães"
 categories: [computer science]
 image: /assets/img/og/universe-simulation-a-problem-of-energy-parallelism-and-coherence.png
