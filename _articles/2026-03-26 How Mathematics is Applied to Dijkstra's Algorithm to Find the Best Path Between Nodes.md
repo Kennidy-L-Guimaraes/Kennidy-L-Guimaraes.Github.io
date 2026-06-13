@@ -13,12 +13,28 @@ categories: [algorithms]
 tags: [algorithms, Mathematical, Graphs, Search]
 image: /assets/img/og/how-mathematics-is-applied-to-dijkstra-s-algorithm-to-find-the-best-path-between-nodes.png
 references:
-  - "Frana, P. L. (2001). An Interview with Edsger W. Dijkstra. Communications of the ACM. https://dl.acm.org/doi/epdf/10.1145/1787234.1787249"         # [1]
-  - "Department of Computer Science and Engineering, HKUST. Shortest Path Algorithms — Lecture Notes. https://www.cse.ust.hk/~dekai/271/notes/L10/L10.pdf"         # [2]
-  - "TU Munich — Algorithms & Discrete Mathematics. The Classic Among Shortest Path Algorithms: Dijkstra. https://algorithms.discrete.ma.tum.de/graph-algorithms/spp-dijkstra/index_en.html"         # [3]
-  - "Stanford University — CS106B. Dijkstra's Algorithm. https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1262/lectures/27-dijkstra/"         # [4]
-  - "MIT OpenCourseWare (YouTube). Lecture 16: Dijkstra's Algorithm. https://www.youtube.com/watch?v=2E7MmKv0Y24"         # [5]
-  - "Wikipedia. Dijkstra's Algorithm. https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"         # [6]
+  frana:
+    text: "Frana, P. L. (2001). An Interview with Edsger W. Dijkstra. Communications of the ACM." 
+    url: "https://dl.acm.org/doi/epdf/10.1145/1787234.1787249"
+  cse:
+    text: "Department of Computer Science and Engineering, HKUST. Shortest Path Algorithms — Lecture Notes."
+    url: "https://www.cse.ust.hk/~dekai/271/notes/L10/L10.pdf"
+  
+  tumunich:
+    text: "TU Munich — Algorithms & Discrete Mathematics. The Classic Among Shortest Path Algorithms: Dijkstra."      
+    url: "https://algorithms.discrete.ma.tum.de/graph-algorithms/spp-dijkstra/index_en.html"
+  
+  cs106b: 
+    text: "Stanford University — CS106B. Dijkstra's Algorithm."
+    url: "https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1262/lectures/27-dijkstra/"
+
+  mit:
+    text: "MIT OpenCourseWare (YouTube). Lecture 16: Dijkstra's Algorithm."
+    url: "https://www.youtube.com/watch?v=2E7MmKv0Y24"
+  
+  wikipedia:
+    text: "Wikipedia. Dijkstra's Algorithm."
+    url: "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"         # [6]
 related:
   - title: "Related Article Title"
     category: "Category"
@@ -58,7 +74,7 @@ Having understood the problem, we need to understand where the solution was born
 ### Dijkstra's Algorithm
 
 <span class="destaque-bloco">
-"What is the shortest way to travel from Rotterdam to Groningen, in general: from a given city to a given city. It is the algorithm for the shortest path, which I designed in about twenty minutes. One morning I was shopping in Amsterdam with my young fiancée, and tired, we sat down on the café terrace to drink a cup of coffee and I was just thinking about whether I could do this, and I then designed the algorithm for the shortest path. As I said, it was a twenty-minute invention. In fact, it was published in 1959, three years later. The publication is still readable; it is, in fact, quite nice. One of the reasons that it is so nice was that I designed it without pencil and paper. I learned later that one of the advantages of designing without pencil and paper is that you are almost forced to avoid all avoidable complexities. Eventually, that algorithm became, to my great amazement, one of the cornerstones of my fame." — Edsger W. Dijkstra, in an interview with Philip L. Frana, Communications of the ACM, 2001 {% include ref.html n=1 %}
+"What is the shortest way to travel from Rotterdam to Groningen, in general: from a given city to a given city. It is the algorithm for the shortest path, which I designed in about twenty minutes. One morning I was shopping in Amsterdam with my young fiancée, and tired, we sat down on the café terrace to drink a cup of coffee and I was just thinking about whether I could do this, and I then designed the algorithm for the shortest path. As I said, it was a twenty-minute invention. In fact, it was published in 1959, three years later. The publication is still readable; it is, in fact, quite nice. One of the reasons that it is so nice was that I designed it without pencil and paper. I learned later that one of the advantages of designing without pencil and paper is that you are almost forced to avoid all avoidable complexities. Eventually, that algorithm became, to my great amazement, one of the cornerstones of my fame." — Edsger W. Dijkstra, in an interview with Philip L. Frana, Communications of the ACM, 2001 {% include ref.html id="frana" %}
 </span>
 
 As we can see, a work of approximately twenty minutes yielded not only recognition for Edsger W. Dijkstra, but also fundamental applications in computing, GPS navigation systems, and artificial intelligence.
@@ -67,7 +83,7 @@ As we can see, a work of approximately twenty minutes yielded not only recogniti
 
 ### Initialization and Edge Relaxation
 
-The algorithm requires an initial node — a well-defined starting point. For the late driver, this point is their current location, node $A$, and their goal is to reach $Z$ as efficiently as possible. Since they do not previously know the cost of all paths within a search space that grows approximately as $k^d$, it is initially assumed that all distances are unknown, represented as infinity {% include ref.html n=2 %}:
+The algorithm requires an initial node — a well-defined starting point. For the late driver, this point is their current location, node $A$, and their goal is to reach $Z$ as efficiently as possible. Since they do not previously know the cost of all paths within a search space that grows approximately as $k^d$, it is initially assumed that all distances are unknown, represented as infinity {% include ref.html id="cse" %}:
 
 <div class="math-block">
 
@@ -117,7 +133,7 @@ $$V = \{A_0,\ C_\infty,\ F_5,\ G_\infty,\ E_\infty,\ H_\infty,\ \ldots\}$$
 
 ### Graph Expansion
 
-The algorithm must move on to the next node not yet visited — not in the sense of being completely unknown, but in the sense that its lowest cost can still be updated. The choice of this node is not arbitrary: the one with the lowest known accumulated cost at that moment is always selected {% include ref.html n=3 %}.
+The algorithm must move on to the next node not yet visited — not in the sense of being completely unknown, but in the sense that its lowest cost can still be updated. The choice of this node is not arbitrary: the one with the lowest known accumulated cost at that moment is always selected {% include ref.html id="cs106b" %}.
 
 Suppose $F$ has been reached with $\text{dist}(F) = 5$. From it, the algorithm analyzes its neighbors, such as $E$, checking whether there is a better path through $F$:
 
@@ -145,7 +161,7 @@ As the depth of exploration increases, the number of paths grows exponentially. 
 
 ### Iteration and Convergence
 
-Continuing the example, suppose the path $A \to F \to E$ results in a total cost {% include ref.html n=4 %}:
+Continuing the example, suppose the path $A \to F \to E$ results in a total cost {% include ref.html id="mit" %}:
 
 <div class="math-block">
 
@@ -262,7 +278,7 @@ The three diagrams below show the algorithm executing step by step over the same
 
 ### Application in Real Systems
 
-In systems like GPS, the balance is not based solely on kilometers. The edge weights incorporate environmental variables — traffic, road conditions, geolocation data. What the algorithm processes is not pure distance, but a **composite cost** that reflects the reality of travel {% include ref.html n=5 %}.
+In systems like GPS, the balance is not based solely on kilometers. The edge weights incorporate environmental variables — traffic, road conditions, geolocation data. What the algorithm processes is not pure distance, but a **composite cost** that reflects the reality of travel {% include ref.html id="wikipedia" %}.
 
 In the example presented, the path found was $A \to F \to E \to Z$ due to the lower accumulated costs along those edges. However, this result is not fixed. Changes in weights can lead to completely different decisions. If $F$ is connected to multiple edges $F_1, F_2, \ldots, F_n$ with distinct weights, an imbalance in those values can turn a previously viable path into an inferior option, redirecting the search to another route.
 

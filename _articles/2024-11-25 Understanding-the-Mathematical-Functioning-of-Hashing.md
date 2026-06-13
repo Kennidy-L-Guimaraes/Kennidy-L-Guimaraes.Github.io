@@ -11,14 +11,34 @@ author: "Kennidy L. Guimarães"
 categories: [cryptography, hash]
 tags: [algorithms, Computer Science, systems, Mathematical]
 image: /assets/img/og/understanding-the-mathematical-functioning-of-hashing.png
+
 references:
-  - "National Institute of Standards and Technology. (2015). Secure Hash Standard (SHS). FIPS PUB 180-4. https://csrc.nist.gov/publications/detail/fips/180/4/final"
-  - "Eastlake, D., & Hansen, T. (2011). US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF). RFC 6234. https://datatracker.ietf.org/doc/html/rfc6234"
-  - "Wang, X., Yin, Y. L., & Yu, H. (2005). Finding Collisions in the Full SHA-1. CRYPTO 2005."
-  - "Merkle, R. C. (1979). Secrecy, Authentication, and Public Key Systems. Stanford University PhD Thesis."
-  - "Davies, D. W., & Price, W. L. (1989). Security for Computer Networks. Wiley."
-  - "Brown, G. (2017). How secure is 256-bit security? 3Blue1Brown. https://www.3blue1brown.com/lessons/256-bit-security"
-  - "Harper, D. (2010). How long would it take to count to a trillion? Numberphile reference."
+  fipspub180: texr:"National Institute of Standards and Technology. (2015). Secure Hash Standard (SHS). FIPS PUB 180-4."
+  url: "https://csrc.nist.gov/publications/detail/fips/180/4/final"
+  
+  rfc6234:
+    text: "Eastlake, D., & Hansen, T. (2011). US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF). RFC 6234"
+    url: "https://datatracker.ietf.org/doc/html/rfc6234"
+  
+  crypto2005:
+    text: "Wang, X., Yin, Y. L., & Yu, H. (2005). Finding Collisions in the Full SHA-1. CRYPTO 2005."
+    url: ""
+  
+  merkle:
+    text: "Merkle, R. C. (1979). Secrecy, Authentication, and Public Key Systems. Stanford University PhD Thesis."
+    url: ""
+  
+  davies:
+    text: "Davies, D. W., & Price, W. L. (1989). Security for Computer Networks. Wiley."
+    url: ""
+
+  brown:
+    text: "Brown, G. (2017). How secure is 256-bit security? 3Blue1Brown."
+    url: "https://www.3blue1brown.com/lessons/256-bit-security"
+  
+  harper:
+    text: "Harper, D. (2010). How long would it take to count to a trillion? Numberphile reference."
+    url: ""
 ---
 {% include ref-tooltips.html references=page.references %}
 
@@ -54,8 +74,8 @@ SHA-256 was developed by the **National Security Agency (NSA)** and published in
 
 The algorithm is built upon two well-established constructions:
 
-- **Merkle–Damgård scheme** {% include ref.html n=4 %}: a framework for constructing hash functions that process messages of arbitrary length through an iterated compression function, producing a fixed-size output.
-- **Davies–Meyer structure** {% include ref.html n=4 %}: a method for constructing one-way compression functions from block ciphers, where the plaintext is used to modify a running state variable.
+- **Merkle–Damgård scheme** {% include ref.html id="merkle" %}: a framework for constructing hash functions that process messages of arbitrary length through an iterated compression function, producing a fixed-size output.
+- **Davies–Meyer structure** {% include ref.html id="davies" %}: a method for constructing one-way compression functions from block ciphers, where the plaintext is used to modify a running state variable.
 
 SHA-256 belongs to the **SHA-2 family**, which includes SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, and SHA-512/256 — each differing in output size and internal word length.
 
@@ -63,13 +83,13 @@ SHA-256 belongs to the **SHA-2 family**, which includes SHA-224, SHA-256, SHA-38
 "We recommend that anyone relying on SHA-1 for security migrate to SHA-2 or SHA-3 as soon as possible." — Chris Celi, NIST scientist.
 </span>
 
-In **2005**, Professor Xiaoyun Wang announced a differential attack against SHA-1 demonstrating a viable path to finding **hash collisions** — two distinct inputs that produce the same digest. This vulnerability does not affect SHA-256, but it underscores why the migration away from SHA-1 is necessary. The NIST formally recommends full deprecation of SHA-1 by **December 31, 2030**.
+In **2005**, Professor Xiaoyun Wang announced a differential attack against SHA-1 demonstrating a viable path to finding **hash collisions** {% include ref.html id="crypto2005" %} — two distinct inputs that produce the same digest. This vulnerability does not affect SHA-256, but it underscores why the migration away from SHA-1 is necessary. The NIST formally recommends full deprecation of SHA-1 by **December 31, 2030**.
 
 ---
 
 ## 4. Standards
 
-SHA-256 is currently standardized under **FIPS PUB 180-4** {% include ref.html n=1 %}, which supersedes the earlier FIPS PUB 180-2. The updated standard removed specifications for SHA-1, reflecting growing consensus around its inadequate security margins. Developers and systems integrators should reference FIPS 180-4 as the authoritative specification.
+SHA-256 is currently standardized under **FIPS PUB 180-4** {% include ref.html id="fipspub180" %}, which supersedes the earlier FIPS PUB 180-2. The updated standard removed specifications for SHA-1, reflecting growing consensus around its inadequate security margins. Developers and systems integrators should reference FIPS 180-4 as the authoritative specification.
 
 ---
 

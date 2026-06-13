@@ -12,14 +12,22 @@ author: "Kennidy L. Guimarães"
 categories: [algorithms]
 tags: [algorithms, Mathematical, Graphs, Search]
 image: /assets/img/og/how-a-uses-heuristics-and-mathematics-to-define-the-best-and-least-costly-route.png
+
 references:
-  - "Hart, P. E., Nilsson, N. J., & Raphael, B. (1968). A Formal Basis for the Heuristic Determination of Minimum Cost Paths. IEEE Transactions on Systems Science and Cybernetics, 4(2), 100–107."         # [1]
-  - "University of Auckland. A* Search Algorithm — Research Notes. https://www.cs.auckland.ac.nz/courses/compsci709s2c/resources/Mike.d/astarNilsson.pdf"         # [2]
-  - "GeeksforGeeks. A* Search Algorithm. https://www.geeksforgeeks.org/dsa/a-search-algorithm/"         # [3]
+  ieee:
+    text: "Hart, P. E., Nilsson, N. J., & Raphael, B. (1968). A Formal Basis for the Heuristic Determination of Minimum Cost Paths. IEEE Transactions on Systems Science and Cybernetics, 4(2), 100–107."
+
+  auckland:
+    text:  "University of Auckland. A* Search Algorithm — Research Notes."      
+    url: "https://www.cs.auckland.ac.nz/courses/compsci709s2c/resources/Mike.d/astarNilsson.pdf"
+
+  geeksforgeeks:
+     text: "GeeksforGeeks. A* Search Algorithm."
+     url: "https://www.geeksforgeeks.org/dsa/a-search-algorithm/"
 ---
 {% include ref-tooltips.html references=page.references %}
 
-Having explained Dijkstra's algorithm, we cannot overlook another algorithm that uses a similar system but is profoundly different: the **A* algorithm** (read as "A-star"). Peter Hart, Nils Nilsson, and Bertram Raphael from the Stanford Research Institute (now SRI International) published the foundational paper on this algorithm {% include ref.html n=1 %}.
+Having explained Dijkstra's algorithm, we cannot overlook another algorithm that uses a similar system but is profoundly different: the **A* algorithm** (read as "A-star"). Peter Hart, Nils Nilsson, and Bertram Raphael from the Stanford Research Institute (now SRI International) published the foundational paper on this algorithm {% include ref.html id="ieee" %}.
 
 A* can be seen as an evolution of Dijkstra's algorithm, with changes in its mathematical formulation and the incorporation of heuristics. It represents a kind of "controlled mathematical leap" to discover the best route. If the heuristic is good, it can be significantly faster than Dijkstra; however, if the heuristic is poor, you would probably prefer Dijkstra. A* is used in GPS routing, artificial intelligence, and navigation systems, just like Dijkstra itself. Let's focus on what truly matters: its formulation.
 
@@ -373,9 +381,10 @@ Therefore, even though the heuristic of St₁₀ is high ($h = 80$) — which ca
 
 This perfectly illustrates the intelligence of A*: the heuristic guides the search, but the actual accumulated cost ($g$) is always considered, guaranteeing that the optimal path is found.
 
-<span class="destaque-bloco">
-**Important Note:** The heuristic is not added to the final cost of the solution. It only composes the function $f(n) = g(n) + h(n)$, which is used to prioritize the expansion of nodes during the search. The actual cost of the route is given exclusively by $g$.
-</span>
+<div class="nota-autor">
+
+  Important Note: The heuristic is not added to the final cost of the solution. It only composes the function $f(n) = g(n) + h(n)$, which is used to prioritize the expansion of nodes during the search. The actual cost of the route is given exclusively by $g$.
+</div>
 
 You can follow the journey on the Graph below:
  
