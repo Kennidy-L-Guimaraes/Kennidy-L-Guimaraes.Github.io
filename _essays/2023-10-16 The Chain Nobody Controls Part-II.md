@@ -13,26 +13,68 @@ tags: [Bitcoin, Blockchain, Chains of links, Hash, Mathematics, Satoshi Nakamoto
 series: "the-chain-nobody-controls"
 series_part: 2
 image: /assets/img/og/how-blockchain-works-blocks-hashes-and-mining.png
+
 references:
-  - "Nakamoto, S. (2008). Bitcoin: A Peer-to-Peer Electronic Cash System. https://bitcoin.org/bitcoin.pdf"
-  - "Satoshi Nakamoto — Bitcoin Wiki. https://en.bitcoin.it/wiki/Satoshi_Nakamoto"
-  - "IBM. What is Blockchain? https://www.ibm.com/topics/blockchain"
-  - "Wikipedia. 2007–2008 Financial Crisis. https://en.wikipedia.org/wiki/2007%E2%80%932008_financial_crisis"
-  - "U.S. Senate Committee on Banking, Housing, and Urban Affairs. (2013). https://www.govinfo.gov/content/pkg/CHRG-113shrg86598/pdf/CHRG-113shrg86598.pdf"
-  - "The Times. (2009). Chancellor on brink of second bailout for banks. https://www.thetimes.com/article/chancellor-alistair-darling-on-brink-of-second-bailout-for-banks-n9l382mn62h"
-  - "Blockchair. Bitcoin Block 0 (Genesis Block). https://blockchair.com/bitcoin/block/0"
-  - "U.S. Bureau of Labor Statistics. (2022). Purchasing Power of the Consumer Dollar. https://www.bls.gov/cpi/factsheets/purchasing-power-constant-dollars.htm"
-  - "Dai, W. (1998). B-Money. http://www.weidai.com/bmoney.txt"
-  - "Back, A. (2002). Hashcash — A Denial of Service Counter-Measure. http://www.hashcash.org/papers/hashcash.pdf"
-  - "IMF. Inflation. https://www.imf.org/en/Publications/fandd/issues/Series/Back-to-Basics/Inflation"
-  - "Reuters. Why scarcity is an important feature of bitcoin. https://www.reuters.com/plus/cme/why-scarcity-is-an-important-feature-of-bitcoin"
-  - "Wikipedia. Gold Reserve Act. https://en.wikipedia.org/wiki/Gold_Reserve_Act"
-  - "An Act to Protect the Currency System of the United States. https://govtrackus.s3.amazonaws.com/legislink/pdf/stat/48/STATUTE-48-Pg337a.pdf"
+  nakamoto:
+    text: "Nakamoto, S. (2008). Bitcoin: A Peer-to-Peer Electronic Cash System."
+    url: "https://bitcoin.org/bitcoin.pdf"
+
+  bitcoinwiki:
+    text: "Satoshi Nakamoto — Bitcoin Wiki."
+    url: "https://en.bitcoin.it/wiki/Satoshi_Nakamoto"
+  
+  ibm: 
+    text: "IBM. What is Blockchain?"
+    url: "https://www.ibm.com/topics/blockchain"
+
+  wikipedia:
+    text: "Wikipedia. 2007–2008 Financial Crisis."
+    url: "https://en.wikipedia.org/wiki/2007%E2%80%932008_financial_crisis"
+
+  urbanaffairs:
+    text: "U.S. Senate Committee on Banking, Housing, and Urban Affairs. (2013). "
+    url: "https://www.govinfo.gov/content/pkg/CHRG-113shrg86598/pdf/CHRG-113shrg86598.pdf"
+
+  thetimes: 
+    text: "The Times. (2009). Chancellor on brink of second bailout for banks. "
+    url: "https://www.thetimes.com/article/chancellor-alistair-darling-on-brink-of-second-bailout-for-banks-n9l382mn62h"
+
+  blockchair: 
+    text: "Blockchair. Bitcoin Block 0 (Genesis Block). "
+    url: "https://blockchair.com/bitcoin/block/0"
+  
+  laborstatistics:
+    text: "U.S. Bureau of Labor Statistics. (2022). Purchasing Power of the Consumer Dollar. "
+    url: "https://www.bls.gov/cpi/factsheets/purchasing-power-constant-dollars.htm"
+
+  bmoney:
+    text: "Dai, W. (1998). B-Money. "
+    url: "http://www.weidai.com/bmoney.txt"
+
+  hashcash:
+    text: "Back, A. (2002). Hashcash — A Denial of Service Counter-Measure. " 
+    url: "http://www.hashcash.org/papers/hashcash.pdf"   
+  
+  imf:
+    text: "IMF. Inflation."
+    url: "https://www.imf.org/en/Publications/fandd/issues/Series/Back-to-Basics/Inflation"
+  
+  reuters:
+    text: "Reuters. Why scarcity is an important feature of bitcoin. "
+    url: "https://www.reuters.com/plus/cme/why-scarcity-is-an-important-feature-of-bitcoin"
+
+  goldreserve:
+    text: "Wikipedia. Gold Reserve Act. "
+    url: "https://en.wikipedia.org/wiki/Gold_Reserve_Act"
+
+  govtrackus:
+    text: "An Act to Protect the Currency System of the United States. "
+    url: "https://govtrackus.s3.amazonaws.com/legislink/pdf/stat/48/STATUTE-48-Pg337a.pdf"
 
 ---
 {% include ref-tooltips.html references=page.references %}
 
-Blockchain is a distributed and immutable ledger — the infrastructure that makes Bitcoin possible. In Part 1 of this series, we saw how it solves the double-spending problem. Now we go one level deeper: how this structure actually works internally, block by block, hash by hash {% include ref.html n=1 %}.
+Blockchain is a distributed and immutable ledger — the infrastructure that makes Bitcoin possible. In Part 1 of this series, we saw how it solves the double-spending problem. Now we go one level deeper: how this structure actually works internally, block by block, hash by hash {% include ref.html id="nakamoto" %}.
 
 ---
 
@@ -40,7 +82,7 @@ Blockchain is a distributed and immutable ledger — the infrastructure that mak
 
 Blockchain is a distributed and immutable ledger that records transactions in blocks interconnected through cryptographic hashes. Each block contains a timestamp, transaction data, a digital signature to ensure authenticity, and the hash of the previous block header, creating a chain of blocks ("Blockchain").
 
-Blockchain is managed by a *peer-to-peer* (P2P) network, which distributes the data among the network's *nodes*. In other words, each *node* holds a backup copy that ensures authenticity, guaranteeing that no other copy can be altered without consensus {% include ref.html n=3 %}.
+Blockchain is managed by a *peer-to-peer* (P2P) network, which distributes the data among the network's *nodes*. In other words, each *node* holds a backup copy that ensures authenticity, guaranteeing that no other copy can be altered without consensus {%include ref.html id="bitcoinwiki"%} {% include ref.html id="ibm" %}.
 
 Each *node* must perform a **proof of work**, which we can call mining. This process consists of solving a complex mathematical problem, whose complexity is defined by the network based on the number of *nodes*. The more *nodes*, the more complex the problem becomes (determined by the network's *hashrate*), and the more computational power is required to solve it.
 
@@ -234,14 +276,14 @@ Notice how security can be compromised, especially by the human factor. In many 
 
 Scarcity is an important characteristic of Bitcoin and of the blockchain network itself. But to understand this concept, we first need to understand what inflation is.
 
-According to the IMF (*International Monetary Fund*), inflation measures how much a set of goods and services has become more expensive over a given period, usually a year {% include ref.html n=11 %}. Many people associate inflation with rising prices and, although this is somewhat correct, price increases are not inflation itself but rather one of its consequences.
+According to the IMF (*International Monetary Fund*), inflation measures how much a set of goods and services has become more expensive over a given period, usually a year {% include ref.html id="imf" %}. Many people associate inflation with rising prices and, although this is somewhat correct, price increases are not inflation itself but rather one of its consequences.
 
 Inflation can be defined as the increase of the monetary base, which in turn reduces the purchasing power of the currency in circulation. For example, imagine that there are only 50,000 units of a currency called "Native Silver — Pn", produced based on a single mine in a certain country. This currency is very valuable because there are few units, and unless new mines are discovered for exploration, new coins cannot be minted.
 
 Now suppose that 90% of these coins are in full circulation, while the remainder is under the control of the country’s central bank or reserved as a financial fund. If this nation faces unexpected problems — such as storms, hurricanes, earthquakes, or other disasters — this may lead to the depletion of national reserves. Without new mines available, the country may resort to a small "trick": mixing copper with silver. In this case, there will be inflation for two reasons: the increase of the monetary base, with many more coins in circulation; and the deterioration of the backing, since the coin is no longer 99.9% silver but a mixture — and therefore will have a lower value. The greater the quantity of coins in circulation, the higher the inflation; the greater the amount of copper, the lower the value of each unit.
 
 <span class="destaque-bloco">
-The same occurred when President Franklin D. Roosevelt changed the statutory price of gold from *US$ 20.67* to *US$ 35.00* per troy ounce after the approval of the Gold Reserve Act — which granted the American president full powers to define the value of gold and allowed the rupture of the Dollar/Gold backing into Dollar/Issuer Trust. One year earlier, in 1933, Executive Order 6102 had made it a crime for U.S. citizens to own or trade gold anywhere in the world. The confiscated gold was stored at Fort Knox {% include ref.html n=13 %} {% include ref.html n=14 %}.
+The same occurred when President Franklin D. Roosevelt changed the statutory price of gold from *US$ 20.67* to *US$ 35.00* per troy ounce after the approval of the Gold Reserve Act — which granted the American president full powers to define the value of gold and allowed the rupture of the Dollar/Gold backing into Dollar/Issuer Trust. One year earlier, in 1933, Executive Order 6102 had made it a crime for U.S. citizens to own or trade gold anywhere in the world. The confiscated gold was stored at Fort Knox {% include ref.html id="goldreserve" %} {% include ref.html id="govtrackus" %}.
 </span>
 
 Roosevelt justified the Gold Reserve Act of 1934 with the following words:

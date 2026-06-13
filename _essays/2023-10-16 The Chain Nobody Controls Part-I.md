@@ -11,17 +11,48 @@ author: "Kennidy L. Guimarães"
 categories: [bitcoin & blockchain]
 tags: [Bitcoin, Blockchain, Chains of links, Hash, Mathematics, Satoshi Nakamoto]
 image: /assets/img/og/bitcoin-as-an-intangible-asset-and-the-double-spending-problem.png
+
 references:
-  - "Nakamoto, S. (2008). Bitcoin: A Peer-to-Peer Electronic Cash System. https://bitcoin.org/bitcoin.pdf"
-  - "Satoshi Nakamoto — Bitcoin Wiki. https://en.bitcoin.it/wiki/Satoshi_Nakamoto"
-  - "IBM. What is Blockchain? https://www.ibm.com/topics/blockchain"
-  - "Wikipedia. 2007–2008 Financial Crisis. https://en.wikipedia.org/wiki/2007%E2%80%932008_financial_crisis"
-  - "U.S. Senate Committee on Banking, Housing, and Urban Affairs. (2013). Hearing on the Financial Crisis. https://www.govinfo.gov/content/pkg/CHRG-113shrg86598/pdf/CHRG-113shrg86598.pdf"
-  - "The Times. (2009). Chancellor Alistair Darling on brink of second bailout for banks. https://www.thetimes.com/article/chancellor-alistair-darling-on-brink-of-second-bailout-for-banks-n9l382mn62h"
-  - "Blockchair. Bitcoin Block 0 (Genesis Block). https://blockchair.com/bitcoin/block/0"
-  - "U.S. Bureau of Labor Statistics. (2022). Purchasing Power of the Consumer Dollar. https://www.bls.gov/cpi/factsheets/purchasing-power-constant-dollars.htm"
-  - "Dai, W. (1998). B-Money. http://www.weidai.com/bmoney.txt"
-  - "Back, A. (2002). Hashcash — A Denial of Service Counter-Measure. http://www.hashcash.org/papers/hashcash.pdf"
+  nakamoto:
+    text: "Nakamoto, S. (2008). Bitcoin: A Peer-to-Peer Electronic Cash System."
+    url: "https://bitcoin.org/bitcoin.pdf"
+
+  bitcoinwiki:
+    text: "Satoshi Nakamoto — Bitcoin Wiki."
+    url: "https://en.bitcoin.it/wiki/Satoshi_Nakamoto"
+  
+  ibm:
+    text: "IBM. What is Blockchain?"
+    url: "https://www.ibm.com/topics/blockchain"
+
+  wikipedia:
+    text: "Wikipedia. 2007–2008 Financial Crisis."
+    url: "https://en.wikipedia.org/wiki/2007%E2%80%932008_financial_crisis"
+
+  usgov:
+    text: "U.S. Senate Committee on Banking, Housing, and Urban Affairs. (2013). Hearing on the Financial Crisis."
+    url: "https://www.govinfo.gov/content/pkg/CHRG-113shrg86598/pdf/CHRG-113shrg86598.pdf"
+
+  thetimes:
+    text: "The Times. (2009). Chancellor Alistair Darling on brink of second bailout for banks."
+    url: "https://www.thetimes.com/article/chancellor-alistair-darling-on-brink-of-second-bailout-for-banks-n9l382mn62h"
+
+  blockchair:
+    text: "Blockchair. Bitcoin Block 0 (Genesis Block)."
+    url: "https://blockchair.com/bitcoin/block/0"
+
+  laborstatistics:
+    text: "U.S. Bureau of Labor Statistics. (2022). Purchasing Power of the Consumer Dollar."
+    url: "https://www.bls.gov/cpi/factsheets/purchasing-power-constant-dollars.htm"
+
+  bmoney:
+    text: "Dai, W. (1998). B-Money."
+    url: "http://www.weidai.com/bmoney.txt"
+
+  hashcash:
+    text: "Back, A. (2002). Hashcash — A Denial of Service Counter-Measure."
+    url: "http://www.hashcash.org/papers/hashcash.pdf"
+
 series: "the-chain-nobody-controls"
 series_part: 1
 related:
@@ -61,7 +92,7 @@ _Intangible assets_, on the other hand, derive their existence from legal, infor
 Bitcoin is an intangible asset, much like digital cash. It has no physical form, nor does a file containing "your bitcoins" exist somewhere on a central server.
 
 Ownership in Bitcoin is defined cryptographically. Control over a wallet is determined by possession of its private keys, which authorize transactions on the network.
-Unlike traditional banking systems, however, Bitcoin does not rely on a centralized server maintaining balances and permissions. Instead, the system operates through a distributed ledger replicated across thousands of nodes {% include ref.html n=1 %}, where transactions are publicly verified and permanently recorded.
+Unlike traditional banking systems, however, Bitcoin does not rely on a centralized server maintaining balances and permissions. Instead, the system operates through a distributed ledger replicated across thousands of nodes {% include ref.html id="nakamoto" %}, where transactions are publicly verified and permanently recorded.
 
 This is the origin of the well-known expression:
 
@@ -91,13 +122,13 @@ This problem is known in computer science as the double-spending problem, and it
 
 You might ask: what does this have to do with blockchain? The answer is simpler than you might think: everything.
 
-The blockchain is the solution that Satoshi Nakamoto (creator of Bitcoin and the blockchain) {% include ref.html n=2 %} found to solve the double-spending problem in Bitcoin. In general terms, the blockchain is a large ledger containing all information about the transfers made on the network, including who transferred what to whom, and when.
+The blockchain is the solution that Satoshi Nakamoto (creator of Bitcoin and the blockchain) {% include ref.html id="bitcoinwiki" %} found to solve the double-spending problem in Bitcoin. In general terms, the blockchain is a large ledger containing all information about the transfers made on the network, including who transferred what to whom, and when.
 The blockchain system is public and auditable by anyone, meaning Bob can track the transfer in real time and verify whether it has been completed. Likewise, Alice can confirm that the amount she sent to Bob has actually reached its destination.
 
 One truly important detail is that the blockchain is a pseudonymous system: although it may appear anonymous, there are ways to link transactions to a person's real-world identity — even if certain methods and practices, when adopted, can make transactions "nearly" untraceable. I will discuss this further in another article.
 
 From this, we can understand that the blockchain is a ledger — a large informational registry that documents every transaction on the Bitcoin network, recording who transferred what to whom, in a manner that is public and easily auditable.
-The blockchain is sometimes considered more secure than traditional systems due to its resistance to government censorship. The fact that the system cannot be altered without the consent of the network makes it highly resistant to dishonest manipulation. Every transaction is permanently recorded: it cannot be deleted or undone unless a majority of the network's hash power (commonly called a 51% majority) agrees {% include ref.html n=3 %}.
+The blockchain is sometimes considered more secure than traditional systems due to its resistance to government censorship. The fact that the system cannot be altered without the consent of the network makes it highly resistant to dishonest manipulation. Every transaction is permanently recorded: it cannot be deleted or undone unless a majority of the network's hash power (commonly called a 51% majority) agrees {% include ref.html id="ibm" %}.
 
 ---
 
@@ -119,18 +150,18 @@ In essence, the blockchain emerged alongside the idea of Bitcoin, with the White
 
 ### The Context of the 2008 Crisis
 
-Some important context must be noted. Bitcoin — and, consequently, the blockchain — emerged at a critical moment in world history: the year was 2008, and the severe crisis triggered by high-risk mortgage lending, known as the subprime bubble, was in full swing. Banks such as Lehman Brothers in the United States began to collapse, and a global economic crisis took hold rapidly {% include ref.html n=4 %}.
+Some important context must be noted. Bitcoin — and, consequently, the blockchain — emerged at a critical moment in world history: the year was 2008, and the severe crisis triggered by high-risk mortgage lending, known as the subprime bubble, was in full swing. Banks such as Lehman Brothers in the United States began to collapse, and a global economic crisis took hold rapidly {% include ref.html id="wikipedia" %}.
 
 In response, governments around the world mobilized massively to rescue financial institutions through monetary subsidies and fiscal policies, seeking to prevent the collapse of the global financial system.
 
-Some estimates suggest that one in four families lost 75% or more of their net worth during this period {% include ref.html n=5 %}. While these measures helped to contain the crisis to some extent, the resulting debt — along with the cost of the bailouts — was passed on to taxpayers. This naturally sparked intense debate across society, and one group in particular seemed genuinely willing to take action.
+Some estimates suggest that one in four families lost 75% or more of their net worth during this period {% include ref.html id="usgov" %}. While these measures helped to contain the crisis to some extent, the resulting debt — along with the cost of the bailouts — was passed on to taxpayers. This naturally sparked intense debate across society, and one group in particular seemed genuinely willing to take action.
 
 ### The Genesis Block
 
 In 2009, a user operating under the pseudonym Satoshi Nakamoto registered on the site Bitcointalk.org (both BitcoinTalk.org and Bitcoin.org were once under the direct or indirect control of Satoshi Nakamoto; they are now managed by moderators).
 The platform was created to discuss and develop the Bitcoin and blockchain project proposed in the 2008 WhitePaper. Discussions on the forum were not limited to technical aspects — though these were the majority — but also addressed the philosophical and logical underpinnings of the currency and the system.
 
-The first block ever mined, known as the Genesis Block (a reference to the Book of Genesis in the Bible), contained not only the initial transaction data but also a reference to the 2008 financial crisis {% include ref.html n=6 %} {% include ref.html n=7 %}. The block carried the following message:
+The first block ever mined, known as the Genesis Block (a reference to the Book of Genesis in the Bible), contained not only the initial transaction data but also a reference to the 2008 financial crisis {% include ref.html id="thetimes" %} {% include ref.html id="blockchair" %}. The block carried the following message:
 
  <span class="destaque-bloco">
  The Times 03/Jan/2009 Chancellor on brink of second bailout for banks
@@ -150,9 +181,9 @@ Fiat currencies have been largely responsible for eroding that trust, not only b
 The root problem with conventional currency is all the trust that's required to make it work. The central bank must be trusted not to debase the currency, but the history of fiat currencies is full of breaches of that trust. Banks must be trusted to hold our money and transfer it electronically, but they lend it out in waves of credit bubbles with barely a fraction in reserve. We have to trust them with our privacy, trust them not to let identity thieves drain our accounts. — Satoshi Nakamoto.
 </span>
 
-According to a report by the United States Department of Labor covering 2021–2022, the dollar lost 7.4% of its purchasing power due to inflation {% include ref.html n=8 %}.
+According to a report by the United States Department of Labor covering 2021–2022, the dollar lost 7.4% of its purchasing power due to inflation {% include ref.html id="laborstatistics" %}.
 
-The statements made by Satoshi Nakamoto — both via email and on the Bitcointalk.org forum — indicate that he had lost confidence in the conventional monetary system, and this distrust appears to have been the primary motivation behind the creation of Bitcoin and the blockchain. Satoshi was inspired by earlier concepts, including B-Money by W. Dai and HashCash by Adam Back {% include ref.html n=9 %}{% include ref.html n=10 %}.
+The statements made by Satoshi Nakamoto — both via email and on the Bitcointalk.org forum — indicate that he had lost confidence in the conventional monetary system, and this distrust appears to have been the primary motivation behind the creation of Bitcoin and the blockchain. Satoshi was inspired by earlier concepts, including B-Money by W. Dai and HashCash by Adam Back {% include ref.html id="bmoney" %}{% include ref.html id="hashcash" %}.
 
 If the blockchain is a public, immutable ledger, auditable by anyone — then who writes to it?
 
