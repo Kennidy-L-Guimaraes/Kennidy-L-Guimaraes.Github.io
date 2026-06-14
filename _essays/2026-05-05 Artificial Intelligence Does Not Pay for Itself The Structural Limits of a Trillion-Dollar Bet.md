@@ -12,18 +12,51 @@ author: "Kennidy L. Guimarães"
 categories: [artificial intelligence]
 tags: [AI, OpenAI, Anthropic, Infrastructure, Energy, Semiconductor, Market, Investment, Bubble]
 image: /assets/img/og/artificial-intelligence-does-not-pay-for-itself-the-structural-limits-of-a-trillion-dollar-bet.png
+
 references:
-  - "Tunguz, T. (2025). OpenAI Hardware Spending 2025–2035. https://tomtunguz.com/openai-hardware-spending-2025-2035#fn:1"                                      # [1]
-  - "CNBC. (2025, October 15). A Guide to $1 Trillion Worth of AI Deals Between OpenAI and NVIDIA. https://www.cnbc.com/2025/10/15/a-guide-to-1-trillion-worth-of-ai-deals-between-openai-nvidia.html"  # [2]
-  - "OpenAI. (2025). Next Chapter of the Microsoft–OpenAI Partnership. https://openai.com/index/next-chapter-of-microsoft-openai-partnership"                    # [3]
-  - "CNBC. (2025, October 7). Tech VC Orlando Bravo on the AI Bubble. https://www.cnbc.com/2025/10/07/tech-vc-orlando-bravo-ai-bubble.html"                      # [4]
-  - "BBC News. (2025). Sora: OpenAI's Video Generator — A Black Hole of Resources. https://www.bbc.com/news/articles/c3w3e467ewqo"                               # [5]
-  - "BBC News. (2025). OpenAI Ends $1 Billion Disney Animation Deal. https://www.bbc.com/news/articles/c5ydp1gdqwqo"                                             # [6]
-  - "Euronews. (2025, March 17). ChatGPT, DeepSeek & Co — How Much Energy Do AI-Powered Chatbots Consume? https://www.euronews.com/my-europe/2025/03/17/chatgpt-deepseek-co-how-much-energy-do-ai-powered-chatbots-consume" # [7]
-  - "CBS News. (2025). Computer Prices Rise Amid Memory Chip Shortage Driven by Artificial Intelligence. https://www.cbsnews.com/news/computer-price-memory-chip-shortage-artificial-intelligence/" # [8]
-  - "TIME. (2026, March 26). We Must Prepare for an AI Bubble Now. https://time.com/article/2026/03/26/we-must-prepare-for-an-ai-bubble-now/"                   # [9]
-  - "Investing.com. Taiwan Semiconductor Manufacturing Co. — Stock Chart. https://www.investing.com/equities/taiwan-semicond.manufacturing-co"                   # [10]
-  - "Investing.com. SK Hynix Inc — Stock Chart. https://www.investing.com/equities/sk-hynix-inc"                                                                # [11]
+  tunguz:
+    text: "Tunguz, T. (2025). OpenAI Hardware Spending 2025–2035. "
+    url: "https://tomtunguz.com/openai-hardware-spending-2025-2035#fn:1"
+    
+  cnbcoctober15:
+    text: "CNBC. (2025, October 15). A Guide to $1 Trillion Worth of AI Deals Between OpenAI and NVIDIA. " 
+    url: "https://www.cnbc.com/2025/10/15/a-guide-to-1-trillion-worth-of-ai-deals-between-openai-nvidia.html"
+
+  openai: 
+    text: "OpenAI. (2025). Next Chapter of the Microsoft–OpenAI Partnership. "
+    url: "https://openai.com/index/next-chapter-of-microsoft-openai-partnership" 
+
+  cnbcoctober7:
+    text: "CNBC. (2025, October 7). Tech VC Orlando Bravo on the AI Bubble. "
+    url: "https://www.cnbc.com/2025/10/07/tech-vc-orlando-bravo-ai-bubble.html" 
+
+  bbcsora:
+    text: "BBC News. (2025). Sora: OpenAI's Video Generator — A Black Hole of Resources. "
+    url: "https://www.bbc.com/news/articles/c3w3e467ewqo"
+    
+  bbcopenai:
+    text: "BBC News. (2025). OpenAI Ends $1 Billion Disney Animation Deal. "
+    url: "https://www.bbc.com/news/articles/c5ydp1gdqwqo"
+    
+  euronews:
+    text: "Euronews. (2025, March 17). ChatGPT, DeepSeek & Co — How Much Energy Do AI-Powered Chatbots Consume? " 
+    url: "https://www.euronews.com/my-europe/2025/03/17/chatgpt-deepseek-co-how-much-energy-do-ai-powered-chatbots-consume"
+
+  cbs2025:
+    text: "CBS News. (2025). Computer Prices Rise Amid Memory Chip Shortage Driven by Artificial Intelligence. " 
+    url: "https://www.cbsnews.com/news/computer-price-memory-chip-shortage-artificial-intelligence/"
+  
+  timemarch26: 
+    text: "TIME. (2026, March 26). We Must Prepare for an AI Bubble Now. "           
+    url: "https://time.com/article/2026/03/26/we-must-prepare-for-an-ai-bubble-now/"
+
+  investingtaiwan:
+    text: "Investing.com. Taiwan Semiconductor Manufacturing Co. — Stock Chart. "                 
+    url: "https://www.investing.com/equities/taiwan-semicond.manufacturing-co"
+
+  investingskhynix:
+    text: "Investing.com. SK Hynix Inc — Stock Chart. "  
+    url: "https://www.investing.com/equities/sk-hynix-inc"                                                              # [11]
   
 ---
 {% include ref-tooltips.html references=page.references %}
@@ -60,7 +93,7 @@ Ask yourself how much you paid to use GPT, and whether that amount could possibl
 
 AI systems are expensive — far more expensive than the general public imagines — and we demand more from them at an accelerating pace, because there is a war between models not unlike the Browser Wars, but at a significantly larger scale. Most people cannot fathom how much energy each small request to an AI chat costs: the analysis of an image, the generation of visual content, the answer to a complex question. Most simply accept this service as "free," because they have never received a bill like the ones OpenAI almost certainly does.
 
-Just to satisfy curiosity: the company's infrastructure through 2035 will cost one trillion dollars — an astronomical figure, though not representative of real value today. Estimated at **$111 billion** through 2027 {% include ref.html n=1 %}, OpenAI's annualized revenue reached **$20 billion** in 2025 (+233% vs. 2024), yet projected infrastructure spending stands at **$600 billion** through 2030 and **$1 trillion** through 2035. This means a promise of future value, even after receiving one hundred billion dollars in investment from NVIDIA — which, curiously, will serve to finance OpenAI's rental of NVIDIA's own GPUs {% include ref.html n=2 %}. Consider further that Microsoft made a similar move by investing approximately **$250 billion**, on the condition that OpenAI consume its Microsoft Azure services {% include ref.html n=3 %}.
+Just to satisfy curiosity: the company's infrastructure through 2035 will cost one trillion dollars — an astronomical figure, though not representative of real value today. Estimated at **$111 billion** through 2027 {% include ref.html id="tunguz" %}, OpenAI's annualized revenue reached **$20 billion** in 2025 (+233% vs. 2024), yet projected infrastructure spending stands at **$600 billion** through 2030 and **$1 trillion** through 2035. This means a promise of future value, even after receiving one hundred billion dollars in investment from NVIDIA — which, curiously, will serve to finance OpenAI's rental of NVIDIA's own GPUs {% include ref.html id="cnbcoctober15" %}. Consider further that Microsoft made a similar move by investing approximately **$250 billion**, on the condition that OpenAI consume its Microsoft Azure services {% include ref.html id="openai" %}.
 
 ### The Cost Structure
 
@@ -78,9 +111,9 @@ This is where many people assume the whole system is paying for itself and that 
 
 Generating text with AI is expensive. Generating an image is more expensive still, consuming exponentially more processing power and energy. A video in full HD requires magnitudes more — which is precisely why images and video are restricted in most AI services.
 
-If a system does not pay for itself, it dies. That is exactly what happened to OpenAI's SORA {% include ref.html n=5 %}: it did not die as a standalone product from lack of fame, but because too few people are willing to pay to generate video memes on the internet. The system consumed far more processing per response due to its graphical demands — and this is also why Claude does not generate images directly in chat. Not because of lack of capability — they genuinely have it — but because the system does not pay for itself.
+If a system does not pay for itself, it dies. That is exactly what happened to OpenAI's SORA {% include ref.html id="bbcsora" %}: it did not die as a standalone product from lack of fame, but because too few people are willing to pay to generate video memes on the internet. The system consumed far more processing per response due to its graphical demands — and this is also why Claude does not generate images directly in chat. Not because of lack of capability — they genuinely have it — but because the system does not pay for itself.
 
-Having buried its AI capable of generating videos and animations "similar to Disney's," OpenAI also terminated its one-billion-dollar deal with the animation studio {% include ref.html n=6 %}. It is not as though the company wanted to walk away from a Disney deal — it is simply that it is not profitable enough. Forrester analyst Thomas Husson told BBC News it was *"a black hole of resources"* with *"limited monetization"* {% include ref.html n=5 %}.
+Having buried its AI capable of generating videos and animations "similar to Disney's," OpenAI also terminated its one-billion-dollar deal with the animation studio {% include ref.html id="bbcopenai" %}. It is not as though the company wanted to walk away from a Disney deal — it is simply that it is not profitable enough. Forrester analyst Thomas Husson told BBC News it was *"a black hole of resources"* with *"limited monetization"* {% include ref.html id="bbcsora" %}.
 
 ### The Problem with the Free Version
 
@@ -98,7 +131,7 @@ Each company has its own strategy, but with one thing in common: restrict the fr
 
 Beyond the costs already mentioned, it is worth intensifying the energy metric. Some research suggests that a single query to ChatGPT can cost up to ten times more energy than the same query on Google — not because Google is more efficient, but because it does not need to over-filter and applies a delimited context to your query. It is, in other words, a search across its data centers based on PageRank, followed by display. ChatGPT, by contrast, is considerably more complex in terms of data processing, which drives up the cost.
 
-With an estimated 9 billion daily searches, this would translate to an additional demand of nearly 10 TWh of electricity per year {% include ref.html n=7 %}. In other words: if demand keeps growing, you may not need to share your job — but you will certainly share your electricity, and likely other resources, now that you also compete for processor power and RAM {% include ref.html n=8 %}.
+With an estimated 9 billion daily searches, this would translate to an additional demand of nearly 10 TWh of electricity per year {% include ref.html id="euronews" %}. In other words: if demand keeps growing, you may not need to share your job — but you will certainly share your electricity, and likely other resources, now that you also compete for processor power and RAM {% include ref.html id="cbs2025" %}.
 
 <span class="destaque-bloco">
 "Computer costs have fallen steadily over the last 40 years until the AI boom reversed that trend." — Oxford Economics
@@ -110,10 +143,10 @@ It is worth noting, however, that chips have achieved meaningful efficiency gain
 
 ## Is It a Bubble?
 
-Investors expect the AI market to reach its peak of **$1 trillion** in infrastructure — or even **$5 trillion** {% include ref.html n=9 %} — pouring ever more money into companies that currently generate no real wealth, for users content with the free version, while the price of microchips and memory ripples through the personal computing market in what I call unfair competition, also driving up electricity costs. It is the bet of all bets.
+Investors expect the AI market to reach its peak of **$1 trillion** in infrastructure — or even **$5 trillion** {% include ref.html id="timemarch26" %} — pouring ever more money into companies that currently generate no real wealth, for users content with the free version, while the price of microchips and memory ripples through the personal computing market in what I call unfair competition, also driving up electricity costs. It is the bet of all bets.
 
 <span class="destaque-bloco">
-"Notably, this excess investment is being funded by the public..." — TIME {% include ref.html n=9 %}
+"Notably, this excess investment is being funded by the public..." — TIME {% include ref.html id="timemarch26" %}
 </span>
 
 The answer on whether this is a bubble depends. A bubble is generally defined by a market-moving event; the "burst" occurs when one actor begins a withdrawal that incentivizes another, feeding a spiral that tends toward zero. No one wants to be the last one on the boat — but this only makes sense when the "boat" has no intrinsic value. And the truth is, AI does have value — substantial value. That is not the question.
@@ -149,5 +182,5 @@ The accumulation of armed conflicts around the world — among them the Russo-Uk
 
 In a scenario of escalation toward a broader conflict, the relentless demand for chips and memory from AI companies would compound military and industrial needs, exhausting reserves, creating lengthy supply chain delays, and driving hardware prices to prohibitive levels. In that context, the first models to become unviable would be precisely those financed by investors and offered free of charge to users — the very ones that today already operate on the edge between cost and revenue. There is no structural reason for investors to sustain free services indefinitely under conditions of scarcity.
 
-This risk already has expression in the markets. TSMC, the world's leading manufacturer of advanced chips, recorded significant stock appreciation, rising from approximately **$28** to **$69** over the past year — growth exceeding 100% {% include ref.html n=10 %}. SK Hynix, one of the three largest RAM manufacturers in the world, followed an even steeper trajectory, climbing from roughly **$130** to approximately **$960** over the same period, representing appreciation exceeding 500% {% include ref.html n=11 %}.
+This risk already has expression in the markets. TSMC, the world's leading manufacturer of advanced chips, recorded significant stock appreciation, rising from approximately **$28** to **$69** over the past year — growth exceeding 100% {% include ref.html id="investingtaiwan" %}. SK Hynix, one of the three largest RAM manufacturers in the world, followed an even steeper trajectory, climbing from roughly **$130** to approximately **$960** over the same period, representing appreciation exceeding 500% {% include ref.html id="investingskhynix" %}.
 [_Data from 2026 with rough currency conversion._]

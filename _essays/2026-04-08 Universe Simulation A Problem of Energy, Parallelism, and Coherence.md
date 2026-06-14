@@ -12,9 +12,16 @@ author: "Kennidy L. Guimarães"
 categories: [computer science]
 image: /assets/img/og/universe-simulation-a-problem-of-energy-parallelism-and-coherence.png
 tags: [simulation hypothesis, physics, computation, philosophy]
+
 references: 
- - "Scott Aaronson https://scottaaronson.blog/?p=7774"  
- - "Kelly, Ivan. (2017). Are we living in a Matrix-like simulated reality? https://www.researchgate.net/publication/319725266_Are_we_living_in_a_Matrix-like_simulated_reality"
+  scott: 
+    text: "Scott Aaronson "
+    url: "https://scottaaronson.blog/?p=7774"
+  
+  kelly:
+    text:  "Kelly, Ivan. (2017). Are we living in a Matrix-like simulated reality? "
+    url: "https://www.researchgate.net/publication/319725266_Are_we_living_in_a_Matrix-like_simulated_reality"
+    
 
 ---
 {% include ref-tooltips.html references=page.references %}
