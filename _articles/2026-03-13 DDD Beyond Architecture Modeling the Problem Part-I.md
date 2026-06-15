@@ -131,7 +131,10 @@ The head chef is the one who can say whether an order can or cannot be fulfilled
 
 This is what we call an **Aggregate**. It coordinates multiple entities and can reject an order only if one of the entities it contains is unable to fulfill its part. {% include ref.html id="evans" %}
 
-In practice, it does not validate state directly — it only coordinates other entities. That is what sets it apart from a regular entity.
+<div class="nota-autor">
+
+Aggregates perform state validation, ensuring that an entity is either created in a valid state or not created at all. In general, an aggregate verifies whether the provided data conforms to the rules and characteristics of the selected entity category. If it does not, the aggregate prevents the entity from being created, acting as a layer of protection and context boundary enforcement, since it aggregates only the entities defined within its bounded context.
+</div>
 
 For example: the head chef coordinates both the ingredient cook and the line cook. They manage everyone but cannot modify the rules established in contract with the other entities. So an empty order is still rejected by the order manager and never reaches the head chef. But if an order arrives without going through the ingredient cook, the head chef prevents it from moving forward to production. They ensure everyone does their part, without changing the kitchen's rules. If everything checks out, the order is finally forwarded to production.
 
@@ -251,10 +254,17 @@ Whether the pizza was sweet or savory does not matter here. The Promotions entit
 All those fiscal entities also need to be coordinated. The fiscal manager is responsible for that, orchestrating the steps — for instance, refusing an order if any entity is not operational, such as the tax calculation service.
 
 So we have two coordinators: the Head Chef and the Fiscal Manager. Both are Aggregates. But they also need to answer to a higher instance.
-
-If you thought of the pizzeria owner, you are mistaken. That is linear human thinking, and software does not care about org charts.
+If you thought of the pizzeria owner, you're mistaken.
+The answer is Order, but what is the difference between an aggregate and its root?
 
 The real question is: who can encapsulate all the rules necessary for an order to exist validly within the system?
+The primary difference between an Aggregate and an Aggregate Root lies in the role each plays within the domain model. While both act as clusters that group related objects, they serve distinct purposes.
+
+The first purpose of an aggregate is to define a boundary around a specific context. In other words, it determines where a set of objects and entities belongs within a given domain. For example, where do entities associated with the Kitchen context end, and where do entities associated with the Fiscal context begin? The aggregate provides this separation by encapsulating Kitchen-related entities within one aggregate and Fiscal-related entities within another.
+
+At some point, however, both aggregates may need to be coordinated as part of a larger business process. This can be achieved through another aggregate, such as an Order aggregate, which acts as the Aggregate Root because it represents and governs everything related to a customer order.
+
+It is important to remember that every aggregate has a root entity through which the aggregate is accessed and manipulated. In more complex systems, aggregates may reference other aggregates through identifiers, preserving the autonomy and consistency boundaries of each aggregate. Coordination across multiple aggregates, when necessary, is handled by a higher layer typically an Application Service or Domain Service.
 
 **The Order.**
 
@@ -357,9 +367,9 @@ Throughout this article, we identified the main building blocks that form a DDD-
 
 **Value Object** — an object without identity, defined by its values, and responsible for its own rules.
 
-**Aggregate** — an entity orchestrator that ensures all entities fulfill their part without altering their rules.
+**Aggregate** — A cluster of entities grouped within a consistency boundary, responsible for coordinating its members and ensuring the unit is either created in a valid state or not created at all.
 
-**Aggregate Root** — the highest-level instance that encapsulates the rules necessary for the order to exist validly.
+**Aggregate Root** — This is the root entity of an aggregate, providing the entry point through which the aggregate is accessed and manipulated.
 
 **Factory** — where the object is truly produced, always valid by contract.
 
@@ -375,7 +385,7 @@ Beyond that, with rare exceptions, early-career developers rarely participate di
 
 And yet it is precisely in that dialogue between domain experts and developers that DDD finds its true value. Even an apparently simple system — like a pizzeria's — can be extremely critical to a business's operation.
 
-An unhandled error, a poorly modeled entity, or a misapplied tax rule can result in systems going down during peak demand, incorrectly calculated taxes, or promotions applied the wrong way.  {% include ref.html id=martin %}
+An unhandled error, a poorly modeled entity, or a misapplied tax rule can result in systems going down during peak demand, incorrectly calculated taxes, or promotions applied the wrong way.  {% include ref.html id="martin" %}
 
 In more complex scenarios, integrations with other systems can also introduce inconsistencies into the domain model. In those cases, structures like **Anti-Corruption Layers** become important for protecting the core domain against external rules or structures that could compromise its consistency. {% include ref.html id="newman" %}
 
