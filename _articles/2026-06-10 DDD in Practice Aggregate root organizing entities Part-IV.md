@@ -91,7 +91,7 @@ The main problem that an Aggregate aims to solve lies primarily in maintaining c
 
 For example, when building an order, we would have to create and validate each entity individually. This would not only increase the complexity of the call, but would also open the door to invalid system states.
 
-<div class="destaque-bloco">
+<div class="nota-autor">
 
 “I am assuming that you actually have a Value Object with proper data handling.”
 </div>
@@ -172,7 +172,7 @@ class OrderAggregate
 end class
 ```
 
-*Pseudocode example of an Aggregate using the entities from the contract and performing invariant validation.*
+*Example in pseudocode of an aggregate performing invariant validation.*
 
 It receives the order data through an OrderDTO (Data Transfer Object).
 
@@ -232,12 +232,34 @@ Thus, we guarantee an intact and previously validated unit.
 Naturally, it should not validate the internal values of Value Objects, but rather the integrity of the whole.
 
 - V. If You Are Putting Too Many Entities into an Aggregate, It May Be a Sign That the Boundaries Are Poorly Defined
-Not everything that is related necessarily belongs to the same aggregate.
+Not everything that is related necessarily belongs to the same aggregate. The separation between an entity and its aggregate is solely given by the context; it is the context that informs in which aggregate an entity should reside.
 
 - VI. An Aggregate Is Responsible for Itself and for the Objects Within It
 In other words: it is either born valid, or it is not born at all.
 
+The rules above assume that invariants are being enforced correctly. It is worth going deeper into what invariants actually are and how they operate within an Aggregate.
+
 ---
+
+### Invariants in Depth
+
+Not all rules within a domain are equal. Some rules apply only to a single value — a price 
+must not be negative, a quantity must be a whole number. Others apply to the state of the 
+whole: a delivered order cannot be cancelled; an order without items cannot proceed to the 
+kitchen. These are invariants — rules that must remain true regardless of the operation 
+being performed, at any point in the object's lifecycle.
+
+An Aggregate operates across two levels of invariants. The first level belongs to the 
+Aggregate itself: rules that govern the consistency of the unit as a whole, such as 
+preventing an order from being submitted after the kitchen has closed. The second level 
+belongs to the entities within it: each entity knows what makes it valid, and the Aggregate 
+trusts that judgment without inspecting internal values directly.
+
+An invariant is always a rule — not an object or an entity. That said, a rule can be 
+encapsulated in an object to make it reusable across different Aggregates in the system, 
+functioning as a shared module. The rule remains an invariant; the object is simply its 
+carrier.
+
 
 ### Conclusion
 
