@@ -54,35 +54,33 @@ Writing good code does not require making it more complex than it already is. **
 "By using a model-based language pervasively and not being satisfied until it flows, we approach a model that is complete and comprehensible, composed of simple elements that combine to express complex ideas." — Eric Evans {% include ref.html id="evans" %}
 </span>
 
-Consider the example below. You may not know C# syntax, but the code is readable even to developers working in other languages:
+Consider the example below. You may not know _pseudocode_ syntax, but the code is readable even to developers working in other languages:
 
-```csharp
+```text
 // Abbreviated — not ubiquitous
-ObjPiz p = svc.getMtdPiz(id);
-p.setFlgPrt(true);
+pizza = service.GetPreparedPizza(id)
+pizza.SetPackedFlag(true)
 
 // Ubiquitous Language
-ReadyPizza pizza = kitchen.FetchReadyPizza(orderId);
-pizza.Pack();
+pizza = kitchen.FetchReadyPizza(orderId)
+pizza.Pack()
 ```
 
 Or, without any comments, still perfectly understandable:
 
-```csharp
-// Not ubiquitous
-if (ord.getSts() == 2 && ord.getItms().size() > 0) {
-    prcSvc.exec(ord.getId());
-}
+```text
+IF order.Status = 2 AND order.Items.Count > 0 THEN
+    preparationService.Execute(order.Id)
+END IF
 
-// Ubiquitous Language
-if (order.IsConfirmed() && order.HasItems()) {
-    kitchen.StartPreparation(order);
-}
+IF order.IsConfirmed() AND order.HasItems() THEN
+    kitchen.StartPreparation(order)
+END IF
 ```
 
 Ubiquitous Language has several layers that go beyond simply naming things well. It must be alive, aligned with the shared vocabulary of the environment, and faithful to the business rules. Domain events are a clear illustration of this:
 
-```csharp
+```text
 // Technical — not ubiquitous
 StatusChangedEvent
 RecordUpdatedEvent
@@ -123,30 +121,28 @@ Which makes it even more readable and faithful to the domain.
 
 ---
 
-### A More Refined Example in C\#
+### A More Refined Example in Pseudocode
 
 Now let us see how this applies to a more complete structure. Observe the two classes below:
 
-```csharp
+```text
 // Not ubiquitous
-public class Obj
-{
-    public int Id { get; set; }
-    public string Nm { get; set; }
-    public int Sts { get; set; }
-    public List<ObjItem> Itms { get; set; }
-    public decimal TtVal { get; set; }
-}
+Class Obj
+    Property Id : Integer
+    Property Nm : String
+    Property Sts : Integer
+    Property Itms : List of ObjItem
+    Property TtVal : Decimal
+EndClass
 
 // Ubiquitous Language
-public class Order
-{
-    public int Id { get; set; }
-    public string CustomerName { get; set; }
-    public OrderStatus Status { get; private set; }
-    public List<OrderItem> Items { get; private set; }
-    public decimal TotalAmount { get; private set; }
-}
+Class Order
+    Property Id : Integer
+    Property CustomerName : String
+    Property Status : OrderStatus
+    Property Items : List of OrderItem
+    Property TotalAmount : Decimal
+EndClass
 ```
 
 Without any additional comments, you can already tell which of the two translates the business language into code.
@@ -169,32 +165,44 @@ Module     → represents the main domain
     Context → isolates the rules of that specific context
 ```
 
-In practice, in C#, this translates into namespaces that carry the context with them. Notice that both classes below are named `Order` — no prefix, no suffix — and yet there is absolutely no ambiguity:
+In practice, in pseudocode, this translates into namespaces that carry the context with them. Notice that both classes below are named `Order` — no prefix, no suffix — and yet there is absolutely no ambiguity:
 
-```csharp
-namespace Pizzeria.Kitchen.Orders
-{
-    public class Order
-    {
-        public RequestedPizza Pizza { get; private set; }
-        public OrderStatus Status { get; private set; }
+```text
+Namespace Pizzeria.Kitchen.Orders
 
-        public void StartPreparation() { ... }
-        public void Finalise() { ... }
-    }
-}
+    Class Order
+        Property Pizza : RequestedPizza
+            Private Set
 
-namespace Pizzeria.Fiscal.Orders
-{
-    public class Order
-    {
-        public decimal TaxableAmount { get; private set; }
-        public string InvoiceKey { get; private set; }
+        Property Status : OrderStatus
+            Private Set
 
-        public void IssueInvoice() { ... }
-        public void Cancel() { ... }
-    }
-}
+        Method StartPreparation()
+            ...
+
+        Method Finalise()
+            ...
+
+    EndClass
+EndNamespace
+
+Namespace Pizzeria.Fiscal.Orders
+
+    Class Order
+        Property TaxableAmount : Decimal
+            Private Set
+
+        Property InvoiceKey : String
+            Private Set
+
+        Method IssueInvoice()
+            ...
+
+        Method Cancel()
+            ...
+
+    EndClass
+EndNamespace
 ```
 
 The namespace carries the context:
