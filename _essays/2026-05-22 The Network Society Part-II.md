@@ -12,14 +12,35 @@ author: "Kennidy L. Guimarães"
 categories: [Network Protocols]
 tags: [Network protocols, Internet, DARPA, Networks, Classful, CIDR, MASK, Public-IP, Private-IP, NAT, CGNAT, RFC]
 image: /assets/img/og/the-network-society-cidr-nat-and-the-collapse-of-end-to-end.png
-references: 
-  - "RFC: 791 Internet Protocol. https://www.rfc-editor.org/rfc/rfc791"
-  - "RFC: 1519 Classless Inter-Domain Routing (CIDR) https://www.rfc-editor.org/rfc/rfc1519"
-  - "RFC: 950 Internet Standard Subnetting Procedure https://www.rfc-editor.org/rfc/rfc950"
-  - "Computer Networks (5th Edition) Andrew Tanenbaum https://www.amazon.com/Computer-Networks-5th-Andrew-Tanenbaum/dp/0132126958"
-  - "RFC: 1918 Address Allocation for Private Internets https://www.rfc-editor.org/rfc/rfc1918" 
-  - "RFC: 1631 The IP Network Address Translator (NAT) https://www.rfc-editor.org/rfc/rfc1631"
-  - "RFC: 6888 Common Requirements for Carrier-Grade NATs (CGNs) https://www.rfc-editor.org/rfc/rfc6888.html"
+
+references:
+  rfc791: 
+    text: "RFC: 791 Internet Protocol. "
+    url: "https://www.rfc-editor.org/rfc/rfc791"
+  
+  rfc1519: 
+    text: "RFC: 1519 Classless Inter-Domain Routing (CIDR) "
+    url: "https://www.rfc-editor.org/rfc/rfc1519"
+
+  rfc950: 
+    text: "RFC: 950 Internet Standard Subnetting Procedure "
+    url: "https://www.rfc-editor.org/rfc/rfc950"
+
+  computernetworks:
+    text: "Computer Networks (5th Edition) Andrew Tanenbaum "
+    url: "https://www.amazon.com/Computer-Networks-5th-Andrew-Tanenbaum/dp/0132126958"
+
+  rfc1918: 
+    text: "RFC: 1918 Address Allocation for Private Internets "
+    url: "https://www.rfc-editor.org/rfc/rfc1918"
+    
+  rfc1631:
+    text: "RFC: 1631 The IP Network Address Translator (NAT) "
+    url: "https://www.rfc-editor.org/rfc/rfc1631"
+
+  rfc6888: 
+    text: "RFC: 6888 Common Requirements for Carrier-Grade NATs (CGNs) "
+    url: "https://www.rfc-editor.org/rfc/rfc6888.html"
 series: "The-Network-Society"
 series_part: 2
 related:
@@ -114,25 +135,25 @@ If this problem continued, we would face endless queues, massive lists with mill
 
 ## Fuller's Working Group
 
-Vince Fuller and his working group {% include ref.html n=2 %} observed another problem _(beyond routing tables)_: with the growing number of hosts connected to the Internet, the waste of IPs had become problematic, and before long there would be an IP shortage, causing Hosts to be excluded from the network.
+Vince Fuller and his working group {% include ref.html id="rfc1519" %} observed another problem _(beyond routing tables)_: with the growing number of hosts connected to the Internet, the waste of IPs had become problematic, and before long there would be an IP shortage, causing Hosts to be excluded from the network.
 In the words of the memorandum:
 <div class="destaque-bloco">
 
-"The fundamental cause of this problem is the lack of a network class of appropriate size for medium-sized organizations; class C, with a maximum of 254 host addresses, is too small, while class B, which allows up to 65,534 addresses, is too large for most organizations." {% include ref.html n=2 %}
+"The fundamental cause of this problem is the lack of a network class of appropriate size for medium-sized organizations; class C, with a maximum of 254 host addresses, is too small, while class B, which allows up to 65,534 addresses, is too large for most organizations." {% include ref.html id="rfc1519" %}
 </div>
 
 Although the memorandum was focused on resolving this problem and the growth of routing tables, it did not aim to solve the potential IP shortage. The group considered their own solution temporary until a definitive long-term idea could emerge.
 
 <div class="destaque-bloco">
 
-"This plan should be viable for at least three (3) years, after which, it is expected that the deployment of an adequate long-term solution will take place." {% include ref.html n=2 %}
+"This plan should be viable for at least three (3) years, after which, it is expected that the deployment of an adequate long-term solution will take place." {% include ref.html id="rfc1519" %}
 </div>
 
 And so the idea arose within Fuller's group to create CIDR — Classless Inter-Domain Routing.
 The goal was twofold: remove the class system before the complete exhaustion of IP addresses, but not only that — also allow greater flexibility in IP address usage and reduce waste. Note: reduce waste — the idea here was not to effectively solve the scarcity problem, but to close the tap that had been left open for far too long.
 
 To accomplish this, a new mechanism was needed to compensate for the Classes.
-The idea was essentially to allocate class numbers to each network service provider, which would then pass on bitmask-oriented subsets of the provider's address space {% include ref.html n=2 %}. 
+The idea was essentially to allocate class numbers to each network service provider, which would then pass on bitmask-oriented subsets of the provider's address space {% include ref.html id="rfc1519" %}. 
 
 However, for that to work, it was necessary to understand where network identification ended and Host identification began.
 The Classful model delimited this boundary in a fixed manner through classes A, B, and C.
@@ -145,7 +166,7 @@ That mechanism is the network mask.
 ## Network Mask
 
 The network mask is a 32-bit value used to define which part of an IP address belongs to the network and which part belongs to the Hosts.
-It must have exactly 32 bits in order to align correctly with IPv4 addresses, which also use 32 bits {% include ref.html n=3 %}.
+It must have exactly 32 bits in order to align correctly with IPv4 addresses, which also use 32 bits {% include ref.html id="rfc950" %}.
 
 As a simple example, consider the following address:
 
@@ -258,7 +279,7 @@ This distinction is fundamental for understanding the concepts of local network,
 If we learned anything related to Classful, it is that IP waste is truly regrettable — and that is because when it comes to IPv4, the number of addresses is limited.
 CIDR limited that waste, as shown in the previous example. However, there still seems to be some waste left: in the previous chapter, approximately 1,192 IPs were unused, which can be reclaimed.
 
-There is a good explanation of how this reclamation works in Chapter 5 of Andrew Tanenbaum's book (**Computer Networks 5th Edition**) {% include ref.html n=4 %}.
+There is a good explanation of how this reclamation works in Chapter 5 of Andrew Tanenbaum's book (**Computer Networks 5th Edition**) {% include ref.html id="computernetworks" %}.
 However, I will condense that explanation, briefly, with a simple analogy.
 Let us say the fictional company SourceMobile has requested approximately 256 IPs for its machines.
 They certainly will not need much more than that, so they receive an address like this:
@@ -420,7 +441,7 @@ A university might use 200 IPs for its computers, while those same students woul
 If every member of a family owned a phone, each phone would need a new IP — printers and other devices too.
 Soon the number of machines would surpass the number of people, which had already surpassed the available IP range.
 
-It was not a rough estimate — it was clear that there would not be enough addresses for everyone, and potentially billions of people would be left without Internet access {% include ref.html n=5 %}.
+It was not a rough estimate — it was clear that there would not be enough addresses for everyone, and potentially billions of people would be left without Internet access {% include ref.html id="rfc1918" %}.
 
 To address this problem, even if only as a stopgap, the Internet engineering community reached a consensus: we could split addressing into two layers — IPs that connect directly to the Internet and IPs used only for local communication.
 Not every device connected to a network actually needed to be reachable from the Internet, and this quickly became evident.
@@ -435,13 +456,13 @@ They are not directly routable on the public Internet and can be reused across d
 
 <div class="destaque-bloco">
 
-"We will refer to the hosts in the first and second categories as 'private'. We will refer to the hosts in the third category as 'public'." {% include ref.html n=5 %}
+"We will refer to the hosts in the first and second categories as 'private'. We will refer to the hosts in the third category as 'public'." {% include ref.html id="rfc1918" %}
 </div>
 
 For example, millions of networks around the world can simultaneously use:
 _192.168.0.1_
 without any problem, because these addresses remain isolated within their respective local networks.
-This is only possible because RFC 1918 {% include ref.html n=5 %} defined ranges reserved exclusively for private use:
+This is only possible because RFC 1918 {% include ref.html id="rfc1918" %} defined ranges reserved exclusively for private use:
 
 10.0.0.0/8 <br>
 172.16.0.0/12 <br>
@@ -453,7 +474,7 @@ Of course, when using private IPs, it is worth noting that switching to a public
 
 <div class="destaque-bloco">
 
-"A significant disadvantage of using private address space is that it may actually reduce a company's flexibility for Internet access. Once someone commits to using a private address, they are committing to renumber part or all of a company if it is decided to provide IP connectivity between that part (or the entire company) and the Internet." {% include ref.html n=5 %}
+"A significant disadvantage of using private address space is that it may actually reduce a company's flexibility for Internet access. Once someone commits to using a private address, they are committing to renumber part or all of a company if it is decided to provide IP connectivity between that part (or the entire company) and the Internet." {% include ref.html id="rfc1918" %}
 </div>
 
 However, for most people this does not represent a considerable disadvantage.
@@ -473,7 +494,7 @@ The fact that the printer is not accessible from the public network (Internet) b
 The solutions presented — CIDR and the separation between public and private IPs — are considered stopgap measures, meaning they temporarily resolve a problem until a definitive solution emerges.
 
 However, even with these measures, the number of IPs began to decrease drastically. As people used an increasing number of personal computers, the shortage predicted for some years ahead seemed to be approaching faster and faster.
-In this scenario, K. Egevang published a memorandum {% include ref.html n=6 %}, proposing what he believed could complement CIDR — or even replace it.
+In this scenario, K. Egevang published a memorandum {% include ref.html id="rfc1631" %}, proposing what he believed could complement CIDR — or even replace it.
 <div class="destaque-bloco">
 
 "It may be that CIDR will not be adequate to maintain IP…
@@ -553,7 +574,7 @@ So another stopgap solution emerged.
 Note that all of these solutions are stopgap measures — though some are still implemented to this day. Can they still be called stopgap?
 
 The solution was to use a second layer of NAT. The so-called Carrier-Grade NATs (CGNs) could be added at the first layer, turning the public IP of the NAT router into a private IP, thus allowing a single public IP at the first layer — which could then be used by countless subscribers.
-For example, there could be 50 thousand users (NAT) behind a single CGNAT, all sharing one public IP address, with each of those 50 thousand users having computers, televisions, cameras, and phones with private IPs, in a NAT -> CGNAT connection that would handle the address translation and packet listing {% include ref.html n=7 %}.
+For example, there could be 50 thousand users (NAT) behind a single CGNAT, all sharing one public IP address, with each of those 50 thousand users having computers, televisions, cameras, and phones with private IPs, in a NAT -> CGNAT connection that would handle the address translation and packet listing {% include ref.html id="rfc6888" %}.
 </div>
 <div class="nota-autor">
 

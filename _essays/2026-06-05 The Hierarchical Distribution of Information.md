@@ -12,8 +12,11 @@ author: "Kennidy L. Guimarães"
 categories: [Information Theory]
 tags: [Edge Systems, Hierarchy, Information Theory, Complex Systems, Information Degrowth, Economics, Hayek]
 image: /assets/img/og/the-hierarchical-distribution-of-information.png
+
 references:
-  - "Hayek, F. A. 'The Use of Knowledge in Society.' The American Economic Review, vol. 35, n. 4, set. 1945, pp. 519–530. https://home.uchicago.edu/~vlima/courses/econ200/spring01/hayek.pdf"
+  hayek:
+    text: "Hayek, F. A. 'The Use of Knowledge in Society.' The American Economic Review, vol. 35, n. 4, set. 1945, pp. 519–530. "
+  url: "https://home.uchicago.edu/~vlima/courses/econ200/spring01/hayek.pdf"  
 ---
 
 {% include ref-tooltips.html references=page.references %}
@@ -40,7 +43,7 @@ Not all information existing within a system is fully known to all agents; nor d
 
 Based on these definitions, we can establish that, for any agent in relation to themselves, $$I_e = I_a$$, since all information virtually contained within the agent is fully accessible to them — barring cognitive impairments that would prevent such access. This does not imply, however, that $$I_e = I_t$$.
 
-This finding speaks directly to Hayek's argument in *The Use of Knowledge in Society*: we do not have access to the totality of information contained in another individual, and even if we did, we would still lack full interpretive access to it {% include ref.html n=1 %}.
+This finding speaks directly to Hayek's argument in *The Use of Knowledge in Society*: we do not have access to the totality of information contained in another individual, and even if we did, we would still lack full interpretive access to it {% include ref.html id="hayek" %}.
 
 ---
 
@@ -194,7 +197,7 @@ The oscillations between loyal agents and disruptive agents produce cumulative d
 
 ### 6. Coordination without Complete Information
 
-The foregoing raises a central question: if the system operates with fragmented and progressively diminishing information, how is it possible for it to function and achieve coordinated objectives? The answer can once again be found in Hayek {% include ref.html n=1 %}:
+The foregoing raises a central question: if the system operates with fragmented and progressively diminishing information, how is it possible for it to function and achieve coordinated objectives? The answer can once again be found in Hayek {% include ref.html id="hayek" %}:
 
 <div class="destaque-bloco">
 "The whole acts as one market, not because any of its members survey the whole field, but because their limited individual fields of vision sufficiently overlap so that through many intermediaries the relevant information is communicated to all. The mere fact that there is one price for any commodity — or that local prices are connected in a manner determined by the cost of transport, etc. — brings about the solution which (it is just conceptually possible) might have been arrived at by one single mind possessing all the information which is in fact dispersed among all the people involved in the process." — Hayek, 1945
