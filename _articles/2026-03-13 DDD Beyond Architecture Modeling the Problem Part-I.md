@@ -9,7 +9,7 @@ last_modified_at: 2026-04-7
 schema:
   type: Article
 author: "Kennidy L. Guimarães"
-categories: [architecture, Domain-Driven-Design]
+categories: [Domain-Driven-Design]
 tags: [systems, Architecture, DDD, Series]
 series: "ddd-in-practice"
 series_part: 1

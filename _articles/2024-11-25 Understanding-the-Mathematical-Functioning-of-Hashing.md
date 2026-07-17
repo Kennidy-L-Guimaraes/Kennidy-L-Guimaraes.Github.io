@@ -8,7 +8,7 @@ date: 2024-11-25
 schema:
   type: Article
 author: "Kennidy L. Guimarães"
-categories: [cryptography, hash]
+categories: [cryptography]
 tags: [algorithms, Computer Science, systems, Mathematical]
 image: /assets/img/og/understanding-the-mathematical-functioning-of-hashing.png
 

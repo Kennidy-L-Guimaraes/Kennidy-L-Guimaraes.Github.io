@@ -4,22 +4,13 @@ layout: default
 {% include nav.html %}
 <div class="artigo-wrapper">
 
-  <nav class="menu artigo-nav" aria-label="Back to home">
-    <ul>
-      <li><a href="{{ '/' | relative_url }}">← Home</a></li>
-    </ul>
-  </nav>
-
   <!-- ── Hero ──────────────────────────────────────────────── -->
   <div class="about-hero">
     <div class="about-hero-avatar">
       <img src="{{ site.author.avatar }}" alt="{{ site.author.name }}" loading="lazy" />
     </div>
     <div class="about-hero-text">
-      <div class="about-avail">
-        <span class="about-avail-dot"></span>
-        Open to opportunities
-      </div>
+      <span class="about-avail">Open to opportunities</span>
       <h1 class="about-name">{{ site.author.name }}</h1>
       <p class="about-role">{{ site.author.role }}</p>
       <div class="about-hero-meta">
@@ -31,12 +22,9 @@ layout: default
     <a class="about-cv-btn"
        href="{{ site.author.cv_url | default: '#' }}"
        target="_blank" rel="noopener noreferrer">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
       Download CV
     </a>
   </div>
-
-  <hr class="artigo-divider">
 
   <!-- ── Bio ───────────────────────────────────────────────── -->
   <div class="about-corpo">
@@ -45,10 +33,7 @@ layout: default
 
   <!-- ── Stack ─────────────────────────────────────────────── -->
   <section class="about-block">
-    <div class="about-section-header">
-      <span class="about-section-label">Core expertise</span>
-      <span class="about-section-rule"></span>
-    </div>
+    <h2 class="about-section-label">Core expertise</h2>
     <div class="about-tags">
       <span class="about-tag about-tag-main">Software Architecture</span>
       <span class="about-tag about-tag-main">Domain-Driven Design</span>
@@ -67,15 +52,9 @@ layout: default
     </div>
   </section>
 
-  <!-- ── Timeline ──────────────────────────────────────────── -->
-  
-
   <!-- ── GitHub Activity ───────────────────────────────────── -->
   <section class="about-block">
-    <div class="about-section-header">
-      <span class="about-section-label">GitHub Activity</span>
-      <span class="about-section-rule"></span>
-    </div>
+    <h2 class="about-section-label">GitHub Activity</h2>
     <div class="about-activity-wrap">
       <div class="about-commits-stat">
         <span class="about-commits-num" id="about-commits-num">—</span>
@@ -95,10 +74,7 @@ layout: default
 
   <!-- ── Connect ───────────────────────────────────────────── -->
   <section class="about-block">
-    <div class="about-section-header">
-      <span class="about-section-label">Connect</span>
-      <span class="about-section-rule"></span>
-    </div>
+    <h2 class="about-section-label">Connect</h2>
     <div class="about-connect">
       <a class="about-connect-link" href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a>
       {% if site.author.linkedin %}

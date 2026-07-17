@@ -1,6 +1,11 @@
 // ============================================================
-// _about.scss — About page redesign
+// _about.scss — About page, book-page treatment
 // ============================================================
+
+.artigo-wrapper {
+  background: color-mix(in srgb, var(--cor-fundo) 96%, #b9935f00 4%);
+  counter-reset: about-section;
+}
 
 // ── Hero ─────────────────────────────────────────────────────
 .about-hero {
@@ -9,7 +14,8 @@
   gap: 2rem;
   align-items: start;
   padding-bottom: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.4rem;
+  border-bottom: var(--borda-fina);
 
   @media (max-width: 700px) {
     grid-template-columns: 1fr;
@@ -20,9 +26,8 @@
 .about-hero-avatar {
   width: 88px;
   height: 88px;
-  border-radius: 50%;
   border: var(--borda-fina);
-  overflow: hidden;
+  padding: 3px;
   flex-shrink: 0;
 
   img {
@@ -30,6 +35,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    filter: grayscale(15%);
   }
 
   @media (max-width: 700px) {
@@ -44,35 +50,15 @@
   gap: 4px;
 }
 
+// Availability — plain italic marginal note, no pill, no pulse
 .about-avail {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #166534;
-  background: #f0fdf4;
-  border: 1.5px solid #166534;
-  border-radius: 100px;
-  padding: 5px 14px;
+  font-family: var(--fonte-principal);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--cor-destaque);
   margin-bottom: 0.5rem;
-  width: fit-content;
-}
 
-.about-avail-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #16a34a;
-  flex-shrink: 0;
-  animation: pulse-green-about 2s ease-in-out infinite;
-}
-
-@keyframes pulse-green-about {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4); }
-  50%       { box-shadow: 0 0 0 5px rgba(22, 163, 74, 0); }
+  &::before { content: '· '; }
 }
 
 .about-name {
@@ -97,33 +83,28 @@
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
+  font-family: var(--fonte-principal);
+  font-style: italic;
   font-size: 0.85rem;
   color: var(--cor-link);
 }
 
 .about-meta-sep { opacity: 0.4; }
 
-// ── CV button ─────────────────────────────────────────────────
+// ── CV link — text, not a filled button ────────────────────────
 .about-cv-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
   font-family: var(--fonte-principal);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  padding: 10px 22px;
-  background: var(--cor-texto);
-  color: var(--cor-fundo);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--cor-link);
   text-decoration: none;
-  border-radius: 3px;
+  border-bottom: 1px solid rgba(138, 122, 103, 0.4);
   white-space: nowrap;
   align-self: center;
-  transition: opacity 0.2s;
+  transition: color 0.2s, border-color 0.2s;
 
-  svg { flex-shrink: 0; }
-  &:hover { opacity: 0.82; }
+  &::after { content: ' →'; }
+  &:hover { color: var(--cor-destaque); border-bottom-color: var(--cor-destaque); }
 
   @media (max-width: 700px) {
     align-self: flex-start;
@@ -137,13 +118,23 @@
   font-size: 1.07rem;
   line-height: 1.9;
   color: var(--cor-texto);
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
   max-width: 640px;
 
   p {
     margin-bottom: 22px;
     text-align: justify;
     &:last-child { margin-bottom: 0; }
+  }
+
+  // Drop cap on the opening paragraph only
+  p:first-of-type::first-letter {
+    font-size: 2.8em;
+    line-height: 0.72;
+    font-weight: 500;
+    float: left;
+    padding: 0.02em 0.09em 0 0;
+    color: var(--cor-destaque);
   }
 
   a {
@@ -155,57 +146,72 @@
   }
 }
 
-// ── Shared block ─────────────────────────────────────────────
+// ── Shared block — roman-numeral chapter labels, same as
+//    home / list pages ──────────────────────────────────────────
 .about-block {
-  margin-bottom: 2.8rem;
-}
+  margin-bottom: 2.6rem;
+  padding-bottom: 2.6rem;
+  border-bottom: var(--borda-fina);
 
-.about-section-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 1.4rem;
+  &:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 }
 
 .about-section-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--cor-destaque);
-  white-space: nowrap;
+  counter-increment: about-section;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--fonte-principal);
+  font-weight: 500;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  font-size: 1.05rem;
+  color: #999;
+  margin: 0 0 1.4rem;
+
+  &::before {
+    content: counter(about-section, upper-roman);
+    font-variant: normal;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--cor-destaque);
+    min-width: 1.4em;
+  }
+
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--cor-link);
+    opacity: 0.25;
+    transform: translateY(2px);
+  }
 }
 
-.about-section-rule {
-  flex: 1;
-  height: 1px;
-  background: rgba(138, 122, 103, 0.2);
-  display: block;
-}
-
-// ── Stack tags ────────────────────────────────────────────────
+// ── Stack — a typographic list, not pill tags ──────────────────
 .about-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-}
-
-.about-tag {
+  align-items: baseline;
+  gap: 0;
   font-family: var(--fonte-principal);
-  font-size: 0.85rem;
-  font-weight: 500;
-  padding: 5px 14px;
-  border: var(--borda-fina);
-  border-radius: 100px;
+  font-size: 0.95rem;
   color: var(--cor-link);
 }
 
+.about-tag {
+  font-style: italic;
+
+  &:not(:last-child)::after { content: ' · '; opacity: 0.4; font-style: normal; }
+}
+
 .about-tag-main {
-  border-color: var(--cor-texto);
+  font-style: normal;
+  font-weight: 500;
   color: var(--cor-texto);
 }
 
-// ── Timeline ─────────────────────────────────────────────────
+// ── Timeline (kept for future use — same book vocabulary) ──────
 .about-timeline {
   display: flex;
   flex-direction: column;
@@ -244,24 +250,24 @@
 }
 
 .about-tl-sub {
+  font-family: var(--fonte-principal);
   font-size: 0.83rem;
   color: var(--cor-link);
   font-style: italic;
 }
 
-// ── GitHub Activity ───────────────────────────────────────────
+// ── GitHub Activity — plain frame, no rounded card ──────────────
 .about-activity-wrap {
-  background: var(--cor-fundo);
-  border: var(--borda-fina);
-  border-radius: 8px;
-  padding: 1.4rem 1.6rem;
+  border-top: var(--borda-fina);
+  border-bottom: var(--borda-fina);
+  padding: 1.6rem 0;
 }
 
 .about-commits-stat {
   display: flex;
   align-items: baseline;
   gap: 12px;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
 }
 
 .about-commits-num {
@@ -273,6 +279,7 @@
 }
 
 .about-commits-lbl {
+  font-family: var(--fonte-principal);
   font-size: 0.85rem;
   color: var(--cor-link);
   font-style: italic;
@@ -288,10 +295,10 @@
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 2px;
-  opacity: 0.88;
-  transition: opacity 0.2s;
-  &:hover { opacity: 1; }
+  opacity: 0.85;
+  filter: grayscale(25%);
+  transition: opacity 0.2s, filter 0.2s;
+  &:hover { opacity: 1; filter: grayscale(0%); }
 }
 
 .about-graph-caption {
@@ -303,26 +310,42 @@
   text-align: center;
 }
 
-// ── Connect ───────────────────────────────────────────────────
+// ── Connect — inline list separated by ·, not button chips ─────
 .about-connect {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  align-items: baseline;
+  gap: 0;
+  font-family: var(--fonte-principal);
+  font-size: 0.95rem;
 }
 
 .about-connect-link {
-  font-family: var(--fonte-principal);
-  font-size: 0.88rem;
-  font-weight: 500;
-  padding: 7px 16px;
-  border: var(--borda-fina);
-  border-radius: 3px;
   color: var(--cor-texto);
   text-decoration: none;
-  transition: border-color 0.2s, color 0.2s;
+  border-bottom: 1px solid rgba(138, 122, 103, 0.35);
+  transition: color 0.2s, border-color 0.2s;
+
+  &:not(:last-child)::after {
+    content: ' · ';
+    color: var(--cor-link);
+    opacity: 0.4;
+    border-bottom: none;
+  }
 
   &:hover {
-    border-color: var(--cor-destaque);
     color: var(--cor-destaque);
+    border-bottom-color: var(--cor-destaque);
   }
+}
+
+// Closing printer's ornament
+.about-block:last-child::after {
+  content: '❧';
+  display: block;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--cor-link);
+  opacity: 0.5;
+  padding-top: 1.8rem;
 }

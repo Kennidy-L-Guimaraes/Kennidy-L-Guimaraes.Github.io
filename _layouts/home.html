@@ -2,151 +2,88 @@
 layout: default
 ---
 
-{% assign all_posts = site.articles | concat: site.papers | concat: site.essays | sort: 'date' | reverse %}
-{% assign featured = all_posts | first %}
+{% assign articles = site.articles | sort: 'date' | reverse %}
+{% assign essays   = site.essays   | sort: 'date' | reverse %}
+{% assign papers   = site.papers   | sort: 'date' | reverse %}
 
-<div class="home-wrapper">
+<div class="home-wrapper toc-wrapper">
 
-  <!-- NAV -->
+  <!-- NAV (unchanged) -->
   {% include nav.html %}
   <div class="home-search-results" id="home-search-results" hidden></div>
 
-  <!-- FLOATING SOCIAL -->
+  <!-- FLOATING SOCIAL (unchanged) -->
   {% include social-float.html %}
 
-  <!-- HERO -->
-  <section class="home-hero">
-    <div class="home-hero-avatar">
-      <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" loading="lazy" />
-    </div>
-    <div class="home-hero-text">
-      <h1 class="home-hero-name">{{ site.author.name }}</h1>
-      <p class="home-hero-role">{{ site.author.role }}</p>
-      <p class="home-hero-tags">Architecture &middot; Domain-Driven Design &middot; Cryptography &middot; System Design</p>
-      <div class="home-hero-bio">{{ content }}</div>
-      <div class="home-hero-btns">
-        <a class="home-btn-primary" href="{{ '/articles/' | relative_url }}">Read Articles</a>
-        <a class="home-btn-secondary" href="{{ '/softwares/' | relative_url }}">View Projects</a>
-      </div>
-    </div>
+  <!-- TITLE -->
+  <section class="toc-title">
+    <span class="toc-title-year">{{ site.time | date: "%Y" }}</span>
+    <h1>Contents</h1>
   </section>
 
-  <!-- FEATURED ARTICLE -->
-  {% if featured %}
-  {% assign excerpt_text = featured.content | strip_html | truncatewords: 45 %}
-  <section class="home-section">
-    <div class="home-section-head">
-      <span class="home-section-label">Featured article</span>
-    </div>
-    <a class="home-featured-card" href="{{ featured.url | relative_url }}">
-
-      <div class="home-featured-excerpt" aria-hidden="true">
-        <span class="home-featured-excerpt-label">Preview</span>
-        <p>{{ excerpt_text }}</p>
-      </div>
-
-      <div class="home-featured-body">
-        <div class="home-featured-top">
-          <span class="home-featured-badge">New</span>
-          <span class="home-featured-type">
-            {{ featured.date | date: "%b %d, %Y" }}
-            &middot; {{ featured.content | number_of_words | divided_by: 220 | plus: 1 }} min read
-          </span>
-        </div>
-        <h2 class="home-featured-title">{{ featured.title }}</h2>
-        {% if featured.subtitle %}
-        <p class="home-featured-desc">{{ featured.subtitle }}</p>
-        {% endif %}
-        <span class="home-featured-read">Read Article &rarr;</span>
-      </div>
-
-    </a>
-  </section>
+  {% if content and content != "" %}
+  <div class="toc-bio">{{ content }}</div>
   {% endif %}
 
-  <!-- TOPICS -->
-  <section class="home-section">
-    <div class="home-section-head">
-      <span class="home-section-label">Browse by topic</span>
-    </div>
-    {% include category-box.html %}
-  </section>
+  {% assign all_posts = site.articles | concat: site.essays | concat: site.papers | sort: "date" | reverse %}
 
-  <!-- LATEST ARTICLES -->
-  <section class="home-section">
-    <div class="home-section-head">
-      <span class="home-section-label">Latest articles</span>
-      <a class="home-section-viewall" href="{{ '/articles/' | relative_url }}">
-        View all articles &rarr;
-      </a>
-    </div>
+<!-- NEW -->
+{% assign latest = all_posts.first %}
+{% if latest %}
+<section class="toc-section">
+  <h2 class="toc-section-label">New</h2>
 
-    <div class="home-articles-grid">
-      {% for post in all_posts limit: 3 %}
-      <a class="home-article-card" href="{{ post.url | relative_url }}">
+  <a class="toc-entry" href="{{ latest.url | relative_url }}">
+    <span class="toc-entry-title">{{ latest.title }}</span>
+    <span class="toc-dots" aria-hidden="true"></span>
+    <span class="toc-entry-date">{{ latest.date | date: "%b %Y" }}</span>
+  </a>
+</section>
+{% endif %}
 
-        {% if post.image %}
-        <div class="home-article-image-wrapper">
-          <img
-            src="{{ post.image | relative_url }}"
-            alt="{{ post.title }}"
-            class="home-article-image"
-          >
-        </div>
+<!-- TOPICS -->
+{% for topic in site.topic_order %}
+
+  {% assign has_posts = false %}
+
+  {% for post in all_posts %}
+    {% for cat in post.categories %}
+      {% if cat == topic %}
+        {% assign has_posts = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if has_posts %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% if has_posts %}
+  <section class="toc-section">
+    <h2 class="toc-section-label">{{ topic | replace: "-", " " }}</h2>
+
+    {% for post in all_posts %}
+      {% for cat in post.categories %}
+        {% if cat == topic %}
+          <a class="toc-entry" href="{{ post.url | relative_url }}">
+            <span class="toc-entry-title">{{ post.title }}</span>
+            <span class="toc-dots"></span>
+            <span class="toc-entry-date">{{ post.date | date: "%b %Y" }}</span>
+          </a>
+          {% break %}
         {% endif %}
-
-        <div class="home-article-content">
-          <h3 class="home-article-title">{{ post.title }}</h3>
-
-          <div class="home-article-tags">
-            {% for cat in post.categories limit: 2 %}
-            <span class="home-tag">#{{ cat }}</span>
-            {% endfor %}
-          </div>
-
-          {% if post.subtitle %}
-          <p class="home-article-desc">{{ post.subtitle }}</p>
-          {% endif %}
-
-          <span class="home-article-meta">
-            {{ post.date | date: "%b %d, %Y" }} &middot;
-            {{ post.content | number_of_words | divided_by: 220 | plus: 1 }} min read
-          </span>
-        </div>
-
-      </a>
       {% endfor %}
-    </div>
-  </section>
+    {% endfor %}
 
-  <!-- PROJECTS (GitHub repos) -->
-  <section class="home-section">
-    <div class="home-section-head">
-      <span class="home-section-label">Projects</span>
-      <a class="home-section-viewall" href="{{ '/softwares/' | relative_url }}">View all projects &rarr;</a>
-    </div>
-    <div id="github-repos" class="home-repos-list" aria-live="polite">
-      <p class="home-repo-loading">Loading repositories…</p>
-    </div>
   </section>
+  {% endif %}
+{% endfor %}
 
-  <!-- RESEARCH PAPERS -->
-  <section class="home-section">
-    <div class="home-section-head">
-      <span class="home-section-label">Research papers</span>
-      <a class="home-section-viewall" href="{{ '/papers/' | relative_url }}">View all papers &rarr;</a>
-    </div>
-    <div class="home-papers-list">
-      {% assign papers = site.papers | sort: 'date' | reverse %}
-      {% for paper in papers %}
-      <a class="home-paper-item" href="{{ paper.url | relative_url }}">
-        <div>
-          <div class="home-paper-title">{{ paper.title }}</div>
-          {% if paper.subtitle %}<div class="home-paper-sub">{{ paper.subtitle }}</div>{% endif %}
-        </div>
-        <span class="home-paper-arr">&nearr;</span>
-      </a>
-      {% endfor %}
+  <!-- PROJECTS (GitHub repos, fetched client-side in default.html) -->
+  <section class="toc-section">
+    <h2 class="toc-section-label">Projects</h2>
+    <div id="github-repos" class="toc-projects" aria-live="polite">
+      <span class="toc-loading">Loading repositories…</span>
     </div>
   </section>
 

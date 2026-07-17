@@ -26,6 +26,15 @@
     }
 }
 
+.home-nav-logo-link {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover .home-nav-logo {
+        color: var(--cor-destaque);
+    }
+}
+
 .site-controls {
     display: flex;
     align-items: center;

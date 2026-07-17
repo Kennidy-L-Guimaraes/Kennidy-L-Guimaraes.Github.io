@@ -1,5 +1,7 @@
 <nav class="home-nav" data-page-type="{% if page.url == "/" %}home{% elsif page.collection == "articles" %}articles{% elsif page.collection == "essays" %}essays{% elsif page.collection == "papers" %}papers{% else %}home{% endif %}">
-  <span class="home-nav-logo">{{ site.author.name }}</span>
+  <a href="{{ '/' | relative_url }}" class="home-nav-logo-link">
+    <span class="home-nav-logo">{{ site.author.name }}</span>
+</a>
   
   <div class="home-nav-links">
     <a href="{{ '/articles/' | relative_url }}">Articles</a>
