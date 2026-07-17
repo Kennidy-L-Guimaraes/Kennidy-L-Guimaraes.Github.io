@@ -72,49 +72,60 @@ This ensures that the Entity object is only responsible for orchestrating the Va
 
 With this in mind, we first need to build our Value Objects — starting with `Flavor`. This object verifies whether the submitted Flavor is available on the list and, assuming that when registering Parmesan Cheese in the database we also register its expiry date, checks whether it is still within that date.
 
-In C#, this would look as follows:
+In _pseudocode_, this would look as follows:
 
-```csharp
-public class Flavor
-{
-    public string Name { get; }
-    public DateTime ExpiryDate { get; }
+```text
+CLASS Flavor
 
-    private static readonly IReadOnlyList<string> AvailableFlavors = new List<string>
-    {
-        "Margherita", "Calabrese", "Chicken with Catupiry", "Four Cheeses"
-    };
+    PROPERTY Name : String
+    PROPERTY ExpiryDate : Date
 
-    public Flavor(string name, DateTime expiryDate)
-    {
-        if (!AvailableFlavors.Contains(name))
-            throw new ArgumentException($"Flavor '{name}' is not available. Available Flavors: {string.Join(", ", AvailableFlavors)}");
+    CONSTANT AvailableFlavors =
+    [
+        "Margherita",
+        "Calabrese",
+        "Chicken with Catupiry",
+        "Four Cheeses"
+    ]
 
-        if (expiryDate < DateTime.Today)
-            throw new ArgumentException($"The Flavor '{name}' is past its expiry date.");
+    CONSTRUCTOR Flavor(name : String, expiryDate : Date)
 
-        Name = name;
-        ExpiryDate = expiryDate;
-    }
-}
+        IF name NOT IN AvailableFlavors THEN
+            RAISE ERROR
+                "Flavor '" + name + "' is not available. Available Flavors: "
+                + JOIN(", ", AvailableFlavors)
+        END IF
+
+        IF expiryDate < TODAY THEN
+            RAISE ERROR
+                "The Flavor '" + name + "' is past its expiry date."
+        END IF
+
+        Name ← name
+        ExpiryDate ← expiryDate
+
+    END CONSTRUCTOR
+
+END CLASS
 ```
 
 This way we do not need to worry about validating inside the Entity, because the `Flavor` object already delivers a ready and reliable value. What remains for the `PizzaOrder` Entity is simply to use it:
 
-```csharp
-public class PizzaOrder
-{
-    public Flavor Flavor { get; }
-    public string Drink { get; }
-    public int Quantity { get; }
+```text
+CLASS PizzaOrder
 
-    public PizzaOrder(Flavor flavor, string drink, int quantity)
-    {
-        Flavor = flavor;
-        Drink = drink;
-        Quantity = quantity;
-    }
-}
+    PROPERTY Flavor : Flavor
+    PROPERTY Drink : String
+    PROPERTY Quantity : Integer
+
+    CONSTRUCTOR PizzaOrder(flavor : Flavor, drink : String, quantity : Integer)
+        Flavor ← flavor
+        Drink ← drink
+        Quantity ← quantity
+
+    END CONSTRUCTOR
+
+END CLASS
 ```
 
 In the previous example I used fixed lists as values, but in DDD we do not use values directly from external layers without first separating the connections. There is local data, such as SQLite, and remote data, such as PostgreSQL, and having that separation across layers limits the confusion and problems that arise from a lack of single responsibility. The structure can follow something like `Database → SQLiteController → SQLiteDatabase` or `Database → SQLController → PostgreSQLDatabase`. Depending on the case, you may have a single DAO class in more legacy systems (Data Access Object).
@@ -125,30 +136,43 @@ In the previous example I used fixed lists as values, but in DDD we do not use v
 
 Continuing, we apply the same principle to Drinks. They must be on a predefined list, or be possible to prepare from a list of fruits registered in the database. These boundaries are what prevent someone from ordering cheese juice or ketchup juice — even if the option does not appear on the menu initially. In programming, we must always account for the curious. The `PizzaOrder` Entity would look like this:
 
-```csharp
-public class PizzaOrder
-{
-    public Flavor Flavor { get; }
-    public Drink Drink { get; }
-    public int Quantity { get; }
+```text
+CLASS PizzaOrder
 
-    public PizzaOrder(Flavor flavor, Drink drink, int quantity)
-    {
-        Flavor = flavor;
-        Drink = drink;
-        Quantity = quantity;
-    }
-}
+    PROPERTY Flavor : Flavor
+    PROPERTY Drink : Drink
+    PROPERTY Quantity : Integer
+
+    CONSTRUCTOR PizzaOrder(
+        flavor : Flavor,
+        drink : Drink,
+        quantity : Integer
+    )
+
+        Flavor ← flavor
+        Drink ← drink
+        Quantity ← quantity
+
+    END CONSTRUCTOR
+
+END CLASS
 ```
 
 A question may arise: can there be objects within a Value Object — objects within objects? Yes, there can. One example is generic exceptions — you may want to avoid writing the same exception repeatedly. Knowing the use case, you can write a base exception that each Value Object adapts as minimally as possible to display to the user or operator. Another example is a formatting class that removes special characters, whitespace, or unintended uppercase letters:
 
-```csharp
-public static class Formatter
-{
-    public static string Normalize(string value) =>
-        value?.Trim().ToLower() ?? string.Empty;
-}
+```text
+CLASS Formatter
+
+    STATIC FUNCTION Normalize(value : String) : String
+
+        IF value IS NULL THEN
+            RETURN ""
+        END IF
+        RETURN TO_LOWER(TRIM(value))
+
+    END FUNCTION
+
+END CLASS
 ```
 
 There are many scenarios where this is useful, including but not limited to database classes. In many cases they are referred to as Services, but that is a generic term — Services also designates the return services of an API or other layers. Pay close attention to your own organization's documentation.
@@ -161,29 +185,53 @@ Now with the Value Objects ready, we can turn our attention to the Entity. Its r
 
 The premise of the code would look like this:
 
-```csharp
-public class Flavor
-{
-    public string Name { get; }
-    public DateTime ExpiryDate { get; }
-    private readonly List<string> _ingredients;
+```text
 
-    public Flavor(string name, DateTime expiryDate, List<string> ingredients)
-    {
-        Name = name;
-        ExpiryDate = expiryDate;
-        _ingredients = ingredients ?? new List<string>();
-    }
+    PROPERTY Name : String
+    PROPERTY ExpiryDate : Date
+    PRIVATE PROPERTY IngredientsList : List<String>
 
-    public Flavor RemoveIngredient(string ingredient)
-    {
-        var updatedIngredients = new List<string>(_ingredients);
-        updatedIngredients.Remove(ingredient);
-        return new Flavor(Name, ExpiryDate, updatedIngredients);
-    }
+    CONSTRUCTOR Flavor(
+        name : String,
+        expiryDate : Date,
+        ingredients : List<String>
+    )
 
-    public IReadOnlyList<string> Ingredients => _ingredients.AsReadOnly();
-}
+        Name ← name
+        ExpiryDate ← expiryDate
+
+        IF ingredients IS NULL THEN
+            IngredientsList ← EMPTY_LIST()
+        ELSE
+            IngredientsList ← ingredients
+        END IF
+
+    END CONSTRUCTOR
+
+
+    FUNCTION RemoveIngredient(
+        ingredient : String
+    ) : Flavor
+
+        updatedIngredients ← COPY(IngredientsList)
+
+        REMOVE updatedIngredients, ingredient
+
+        RETURN NEW Flavor(
+            Name,
+            ExpiryDate,
+            updatedIngredients
+        )
+
+    END FUNCTION
+
+
+    FUNCTION Ingredients() : ReadOnlyList<String>
+        RETURN READ_ONLY_VIEW(IngredientsList)
+
+    END FUNCTION
+
+END CLASS
 ```
 
 <div class="nota-autor">
