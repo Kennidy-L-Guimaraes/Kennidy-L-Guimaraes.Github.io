@@ -1,4 +1,4 @@
-<nav class="home-nav" data-page-type="{% if page.url == "/" %}home{% elsif page.collection == "articles" %}articles{% elsif page.collection == "essays" %}essays{% elsif page.collection == "papers" %}papers{% else %}home{% endif %}">
+<nav class="home-nav" data-page-type="{% if page.url == "/" %}home{% elsif page.collection == "articles" %}articles{% elsif page.collection == "essays" %}essays{% elsif page.collection == "papers" %}papers{% elsif page.collection == "book_reviews" %}book_reviews{% else %}home{% endif %}">
   <a href="{{ '/' | relative_url }}" class="home-nav-logo-link">
     <span class="home-nav-logo">{{ site.author.name }}</span>
 </a>
@@ -7,6 +7,7 @@
     <a href="{{ '/articles/' | relative_url }}">Articles</a>
     <a href="{{ '/papers/' | relative_url }}">Papers</a>
     <a href="{{ '/essays/' | relative_url }}">Essays</a>
+    <a href="{{ '/book-reviews/' | relative_url }}">Book Reviews</a>
     <a href="{{ '/softwares/' | relative_url }}">Projects</a>
     <a href="{{ '/about' | relative_url }}">About</a>
   </div>

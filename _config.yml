@@ -45,6 +45,11 @@ collections: # P/ Publications
     output: true
     permalink: /p/:slug/
 
+  book_reviews:
+    output: true
+    permalink: /p/:slug/
+ 
+
 announcement:
   active: false
   show_on: all          # "home" ou "all" (todas as páginas)

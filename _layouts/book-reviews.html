@@ -1,0 +1,65 @@
+---
+layout: default
+title: "Recensiones Librorum"
+description: "Book reviews and reading notes by Kennidy L. Guimarães — commentary and critique on the books he has read."
+---
+{% include nav.html %}
+
+<div class="artigo-wrapper">
+    <header class="list-header">
+        <h1 class="list-titulo">Recensiones Librorum</h1>
+        <p class="list-descricao">Notes and critique on books read — topic, argument, and my own reading of each.</p>
+    </header>
+
+    <div class="list-grid">
+        {% assign sorted = site.book_reviews | sort: "date" | reverse %}
+        {% for review in sorted %}
+        <a class="list-card list-card--book" href="{{ review.url | relative_url }}">
+
+            <div class="list-card-cover">
+                {% if review.cover %}
+                <img src="{{ review.cover | relative_url }}" alt="Cover of {{ review.book_title | default: review.title }}" loading="lazy">
+                {% endif %}
+            </div>
+
+            <div class="list-card-body">
+                <div class="list-card-top">
+                    {% if review.categories %}
+                    <span class="list-card-cat">{{ review.categories | join: ' · ' }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="list-card-heading">
+                    <h2 class="list-card-titulo">{{ review.title }}</h2>
+                    <span class="list-card-dots" aria-hidden="true"></span>
+                    <span class="list-card-date">{{ review.date | date: "%b %Y" }}</span>
+                </div>
+
+                {% if review.book_author %}
+                <span class="list-card-book-author">{{ review.book_author }}</span>
+                {% endif %}
+
+                {% if review.excerpt %}
+                <p class="list-card-sub">{{ review.excerpt }}</p>
+                {% endif %}
+
+                <div class="list-card-meta">
+                    <span>{{ review.author | default: site.author.name }}</span>
+                    <span class="list-card-dot">·</span>
+                    <span class="list-card-tempo" data-words="{{ review.content | number_of_words }}">— min read</span>
+                </div>
+            </div>
+
+        </a>
+        {% endfor %}
+    </div>
+
+</div>
+
+<script>
+document.querySelectorAll('.list-card-tempo').forEach(function (el) {
+    const words   = parseInt(el.dataset.words, 10) || 0;
+    const minutes = Math.ceil(words / 220);
+    el.textContent = minutes + ' min read';
+});
+</script>

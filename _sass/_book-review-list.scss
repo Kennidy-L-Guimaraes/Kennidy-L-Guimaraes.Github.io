@@ -1,0 +1,80 @@
+// ============================================================
+// _book-review-list.scss — Book review listing (Recensiones Librorum)
+// Extends the .list-card pattern from _list.scss with a cover image.
+// Import this AFTER _list.scss so it can build on those rules.
+// ============================================================
+
+.list-card--book {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 26px 26px 26px 0;
+
+    // Same numbering / hover arrow behavior as the standard card
+    .list-card-top,
+    .list-card-heading,
+    .list-card-sub,
+    .list-card-meta {
+        // reset the vertical-stack spacing since these now live
+        // inside a flex child alongside the cover
+        margin: 0;
+    }
+}
+
+// --- Cover thumbnail ---
+.list-card-cover {
+    flex-shrink: 0;
+    width: 84px;
+    height: 126px; // 2:3 book-cover ratio
+    background-color: var(--cor-selecao);
+    border: var(--borda-fina);
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+// --- Right column: number/category, title+date, excerpt, meta ---
+.list-card--book .list-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 0; // allow text truncation / dot-leader shrink inside flex
+}
+
+// Excerpt reuses .list-card-sub styling from _list.scss but is not
+// italic-restricted to a subtitle — allow slightly more width.
+.list-card--book .list-card-sub {
+    max-width: none;
+}
+
+// Author of the book (distinct from the review's own byline)
+.list-card-book-author {
+    font-family: var(--fonte-principal);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--cor-link);
+    opacity: 0.85;
+}
+
+// --- Responsive: stack cover above text on narrow screens ---
+@media (max-width: 767px) {
+    .list-card--book {
+        flex-direction: row; // keep side-by-side even on mobile; cover shrinks
+        gap: 14px;
+        padding: 20px 0;
+    }
+    .list-card-cover {
+        width: 56px;
+        height: 84px;
+    }
+    .list-card--book .list-card-titulo {
+        font-size: 1.05rem;
+    }
+}
