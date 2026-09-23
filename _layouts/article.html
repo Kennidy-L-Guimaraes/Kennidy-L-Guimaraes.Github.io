@@ -4,12 +4,46 @@ layout: default
 
 <!-- Reading progress bar — styled via _progress.scss -->
 <div class="leitura-progresso" id="leitura-progresso"></div>
+
 <nav class="menu artigo-nav" aria-label="Back to home">
     <ul>
         <li><a href="{{ '/' | relative_url }}">← Contents</a></li>
-        <li><a href="{{ '/articles/' | relative_url }}">Articles & Papers</a></li>
     </ul>
 </nav>
+
+{% if page.book_author %}
+{% assign autor_nome = page.book_author %}
+
+{% capture autor_foto_url %}{% autor_foto autor_nome %}{% endcapture %}
+{% assign autor_foto_url = autor_foto_url | strip %}
+
+{% capture autor_bio_conteudo %}{% autor_bio autor_nome %}{% endcapture %}
+{% assign autor_bio_conteudo = autor_bio_conteudo | strip %}
+
+<aside class="autor-sidebar" aria-label="Sobre o autor">
+    <button class="autor-sidebar-fechar" aria-label="Fechar barra do autor" id="autor-sidebar-fechar">&times;</button>
+
+    {% if autor_foto_url != "" %}
+    <div class="autor-sidebar-foto-wrap">
+        <img src="{{ autor_foto_url | relative_url }}"
+             alt="{{ autor_nome }}"
+             class="autor-sidebar-foto"
+             onerror="this.closest('.autor-sidebar-foto-wrap').remove();">
+    </div>
+    {% endif %}
+
+    <div class="autor-sidebar-inner">
+        <span class="autor-sidebar-rotulo">Sobre o Autor</span>
+        <h2 class="autor-sidebar-nome">{{ autor_nome }}</h2>
+
+        {% if autor_bio_conteudo != "" %}
+        <div class="autor-sidebar-bio">
+            {{ autor_bio_conteudo | markdownify }}
+        </div>
+        {% endif %}
+    </div>
+</aside>
+{% endif %}
 
 <div class="artigo-wrapper">
 
@@ -58,6 +92,27 @@ layout: default
         </div>
     </div>
     {% endif %}
+
+    {% if page.book_author %}
+        <details class="autor-card-mobile">
+            <summary>
+                {% if autor_foto_url != "" %}
+                <img src="{{ autor_foto_url | relative_url }}" alt="{{ autor_nome }}" class="autor-card-mobile-foto">
+                {% endif %}
+                <span class="autor-card-mobile-texto">
+                    <span class="autor-card-mobile-rotulo">Sobre o Autor</span>
+                    <span class="autor-card-mobile-nome">{{ autor_nome }}</span>
+                </span>
+                <span class="autor-card-mobile-seta" aria-hidden="true">▾</span>
+            </summary>
+
+            {% if autor_bio_conteudo != "" %}
+            <div class="autor-card-mobile-bio">
+                {{ autor_bio_conteudo | markdownify }}
+            </div>
+            {% endif %}
+        </details>
+        {% endif %}
 
     <aside class="toc" id="toc" aria-label="Table of contents">
         <span class="toc-cabecalho">Contents</span>
@@ -136,4 +191,5 @@ layout: default
 <script src="{{ '/assets/js/code-blocks.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/related.js' | relative_url }}"></script>
 <script defer src="{{ '/assets/js/ref-behaviour.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/autor-sidebar.js' | relative_url }}"></script>
 

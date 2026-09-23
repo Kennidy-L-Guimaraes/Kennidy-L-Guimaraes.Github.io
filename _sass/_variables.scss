@@ -6,8 +6,8 @@
 
 :root {
     --fonte-principal: 'Cormorant Garamond', serif;
-    --cor-fundo:            #fff9e7;
-    --cor-texto:            #2a1404;
+    --cor-fundo:            #F5F0E2;
+    --cor-texto:            #0D0A0A;
     --cor-destaque:         rgb(61 39 35);
     --cor-progresso:        #944700;  
     --cor-selecao:          rgba(155, 106, 28, 0.15); 
@@ -21,6 +21,10 @@
     --cor-ArtigoBarra:      #9b511c;  
     --cor-CardHome:         rgba(255, 249, 240, 0.812);
     --cor-CardHomeColapse:  rgb(92 35 3);
+    --cor-AutorSidebar-fundo:       #1d0004;
+    --cor-AutorSidebar-destaque:    #e6d5b8;
+    --cor-AutorSidebar-texto:       #f9f9f9;
+    --cor-AutorSidebar-textoSec: #fefdfb;
 }
 
 //*, *::before, *::after {
@@ -43,4 +47,8 @@
     --cor-ArtigoBarra:       #9f9f9fc4;  
     --cor-CardHome:          rgba(78, 78, 78, 0.02);
     --cor-CardHomeColapse:   #520f0f;  
+    --cor-AutorSidebar-fundo:       #350007;
+    --cor-AutorSidebar-destaque:    #d9a860;
+    --cor-AutorSidebar-texto:       #ffffff;
+    --cor-AutorSidebar-textoSec: #fffefe;
 }
