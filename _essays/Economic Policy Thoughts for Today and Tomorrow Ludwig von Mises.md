@@ -4,7 +4,7 @@ title: "Meditatio - Economic Policy Thoughts for Today and Tomorrow Ludwig Von M
 book_author: "Ludwig Von Mises"
 date: 2026-09-05
 cover: files\meditatios\Economic_policy_thoughts_for_today_and_tomorrow.jpg
-image:
+image: /assets/img/og/meditatio-economic-policy-thoughts-for-today-and-tomorrow-ludwig-von-mises.png
 categories: [Philosophy]
 excerpt: "On Mises's visit to Argentina and the distinction between the King and the ordinary salesperson."
 references:

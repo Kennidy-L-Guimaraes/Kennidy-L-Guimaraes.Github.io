@@ -4,7 +4,7 @@ title: "Meditatio - The Fatal Conceit: The errors of Socialism"
 book_author: "Friedrich August Von Hayek"
 date: 2026-09-23
 cover: files\meditatios\The_Fatal_Conceit_F.A_Hayek.jpg
-image:
+image: /assets/img/og/meditatio-the-fatal-conceit-the-errors-of-socialism.png
 categories: [Philosophy]
 excerpt: "A meditation on Hayek's The Fatal Conceit, drawing not only on that work itself but also on Aristotle's Politics."
 references:

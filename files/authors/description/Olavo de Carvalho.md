@@ -1,7 +1,7 @@
 ### 1947 — 2022
 
-Olavo Luiz Pimentel de Carvalho foi um jornalista, escritor, filosofo, ensaísta e ideólogo de nacionalidade brasileira, fundador e professor do Seminário de Filosofia COF (Sapientiam Autem Non Vincit Malitia).
+Olavo Luiz Pimentel de Carvalho was a Brazilian journalist, writer, philosopher, essayist, and ideologue, as well as the founder and professor of the COF Philosophy Seminar (*Sapientiam Autem Non Vincit Malitia*).
 
 ---
 
-> Moderação na defesa da verdade é serviço prestado à mentira.
+> Moderation in the defense of truth is a service rendered to falsehood.
