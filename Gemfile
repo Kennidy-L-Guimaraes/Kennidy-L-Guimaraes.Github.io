@@ -1,12 +1,19 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.3"
+gem "jekyll", "~> 3.10"
+
+# _config.yml
 gem "jekyll-seo-tag"
-
-group :jekyll_plugins do
-  gem "jekyll-seo-tag"
-end
-
-gem "jekyll-mermaid", "~> 1.0"
+gem "jekyll-mermaid"
 gem "jekyll-feed"
 gem "jekyll-sitemap"
+
+# Markdown 3.x é GFM
+gem "kramdown-parser-gfm"
+
+#  3.3/3.4
+gem "base64"
+gem "bigdecimal"
+gem "csv"
+gem "logger"
+gem "webrick"
