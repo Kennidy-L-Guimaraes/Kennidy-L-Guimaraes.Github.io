@@ -12,11 +12,10 @@ author: "Kennidy L. Guimarães"
 categories: [Information Theory]
 tags: [Edge Systems, Hierarchy, Information Theory, Complex Systems, Information Degrowth, Economics, Hayek]
 image: /assets/img/og/the-hierarchical-distribution-of-information.png
-
 references:
   hayek:
-    text: "Hayek, F. A. 'The Use of Knowledge in Society.' The American Economic Review, vol. 35, n. 4, set. 1945, pp. 519–530. "
-  url: "https://home.uchicago.edu/~vlima/courses/econ200/spring01/hayek.pdf"  
+    text: "Hayek, F. A. The Use of Knowledge in Society. The American Economic Review, vol. 35, n. 4, set. 1945, pp. 519–530."
+    url: "https://home.uchicago.edu/~vlima/courses/econ200/spring01/hayek.pdf"  
 ---
 
 {% include ref-tooltips.html references=page.references %}

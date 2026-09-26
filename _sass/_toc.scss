@@ -72,3 +72,13 @@
 @media (max-width: 1200px) {
     .toc { display: none !important; }
 }
+
+.artigo-wrapper.tem-autor-sidebar .toc {
+    left: 1120px; // 380 (sidebar) + 720 (artigo) + 20 (respiro)
+}
+
+@media (max-width: 1340px) {
+    .artigo-wrapper.tem-autor-sidebar .toc {
+        display: none !important;
+    }
+}

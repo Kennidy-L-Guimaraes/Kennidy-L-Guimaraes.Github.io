@@ -11,6 +11,7 @@
         flex-direction: column;
         gap: 15px;
         align-items: flex-start;
+
     }
 
     a {
@@ -89,6 +90,15 @@
         display: inline-block;
         margin: 0 4px;
     }
+}
+
+.home-nav {
+    max-width: 650px;
+    margin: 0 auto;
+    gap: 16px;
+    padding: 1.2rem 0;
+    border-bottom: var(--borda-fina);
+    flex-wrap: wrap;
 }
 
 /* Esconde o widget do Google Translate */

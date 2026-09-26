@@ -20,6 +20,7 @@ layout: default
 {% capture autor_bio_conteudo %}{% autor_bio autor_nome %}{% endcapture %}
 {% assign autor_bio_conteudo = autor_bio_conteudo | strip %}
 
+<div class="artigo-container-com-autor">
 <aside class="autor-sidebar" aria-label="Sobre o autor">
     <button class="autor-sidebar-fechar" aria-label="Fechar barra do autor" id="autor-sidebar-fechar">&times;</button>
 
@@ -45,7 +46,7 @@ layout: default
 </aside>
 {% endif %}
 
-<div class="artigo-wrapper">
+<div class="artigo-wrapper{% if page.book_author %} tem-autor-sidebar{% endif %}">
 
     <header class="artigo-header">
         <div class="artigo-header-barra" aria-hidden="true"></div>
@@ -170,6 +171,10 @@ layout: default
 
 </div>
 
+{% if page.book_author %}
+</div>
+{% endif %}
+
 <!-- Back to top button -->
 <button class="voltar-topo" id="voltar-topo" aria-label="Back to top">↑</button>
 
@@ -192,4 +197,3 @@ layout: default
 <script src="{{ '/assets/js/related.js' | relative_url }}"></script>
 <script defer src="{{ '/assets/js/ref-behaviour.js' | relative_url }}"></script>
 <script defer src="{{ '/assets/js/autor-sidebar.js' | relative_url }}"></script>
-
