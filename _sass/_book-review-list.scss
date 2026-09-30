@@ -1,5 +1,4 @@
 // ============================================================
-// _book-review-list.scss — Book review listing (Recensiones Librorum)
 // Extends the .list-card pattern from _list.scss with a cover image.
 // Import this AFTER _list.scss so it can build on those rules.
 // ============================================================
@@ -30,12 +29,14 @@
     background-color: var(--cor-selecao);
     border: var(--borda-fina);
     overflow: hidden;
+    
 
     img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
+        filter: grayscale(1); 
     }
 }
 

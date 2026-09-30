@@ -35,7 +35,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: grayscale(15%);
+    filter: unquote("invert(var(--Invert-logo))"); 
   }
 
   @media (max-width: 700px) {
@@ -296,7 +296,7 @@
   height: auto;
   display: block;
   opacity: 0.85;
-  filter: grayscale(25%);
+  filter: unquote("invert(var(--Invert-logo))");
   transition: opacity 0.2s, filter 0.2s;
   &:hover { opacity: 1; filter: grayscale(0%); }
 }
@@ -337,15 +337,4 @@
     color: var(--cor-destaque);
     border-bottom-color: var(--cor-destaque);
   }
-}
-
-// Closing printer's ornament
-.about-block:last-child::after {
-  content: '❧';
-  display: block;
-  text-align: center;
-  font-size: 1.1rem;
-  color: var(--cor-link);
-  opacity: 0.5;
-  padding-top: 1.8rem;
 }

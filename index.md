@@ -4,7 +4,5 @@ title: Kennidy L. Guimarães
 image: /assets/img/og/home.png
 ---
 
-<p>Systems Engineer and writer, currently studying Computer Science at
-<a href="https://uniitalo.com.br/" target="_blank">Italo-Brazilian University</a>.
-Focused on software architecture, domain modeling, and long-term system maintainability.
+<p>NEQVE VERITAS SINE FORTITVDINE, <br> NEQVE FORTITVDO SINE VERITATE; <br> EX VTRISQVE IVSTITIA.<br>
 <a href="{{ '/about' | relative_url }}">About me →</a></p>

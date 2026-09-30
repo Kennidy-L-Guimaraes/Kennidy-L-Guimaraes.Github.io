@@ -140,7 +140,7 @@
 
 .toc-title {
   text-align: center;
-  padding: 3.4rem 0 2rem;
+  padding: 2.4rem 0 1rem;
 
   .toc-title-year {
     display: block;
@@ -159,12 +159,12 @@
     font-size: 2.4rem;
     letter-spacing: 0.03em;
     margin: 0;
-    padding-bottom: 1.05rem;
+    //padding-bottom: 1.05rem;
     color: var(--cor-texto);
-    background-image:
-      linear-gradient(var(--cor-link), var(--cor-link)),
-      linear-gradient(var(--cor-link), var(--cor-link));
-    background-size: 58px 1px, 30px 1px;
+    //background-image:
+      //linear-gradient(var(--cor-link), var(--cor-link)),
+      //linear-gradient(var(--cor-link), var(--cor-link));
+   // background-size: 58px 1px, 30px 1px;
     background-position: center bottom, center calc(100% - 7px);
     background-repeat: no-repeat;
     opacity: 1;
@@ -183,13 +183,24 @@
   line-height: 1.75;
   color: var(--cor-link);
 
-  p { margin: 0; }
+  p {
+    margin: 0;
+    text-align: center;
+    font-style: normal;
+    font-weight: 200;
+  }
 
   a {
     color: var(--cor-link);
     text-decoration: underline;
     text-underline-offset: 3px;
   }
+}
+
+.toc-title img {
+  height: 25%;
+  width: 25%;
+  filter: unquote("invert(var(--Invert-logo))");
 }
 
 .toc-section {
