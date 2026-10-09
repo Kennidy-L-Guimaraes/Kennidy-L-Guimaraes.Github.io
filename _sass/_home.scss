@@ -141,6 +141,7 @@
 .toc-title {
   text-align: center;
   padding: 2.4rem 0 1rem;
+  padding-bottom: 0px;
 
   .toc-title-year {
     display: block;
@@ -198,8 +199,8 @@
 }
 
 .toc-title img {
-  height: 25%;
-  width: 25%;
+  height: 15%;
+  width: 15%;
   filter: unquote("invert(var(--Invert-logo))");
 }
 
