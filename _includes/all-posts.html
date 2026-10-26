@@ -1,0 +1,9 @@
+{%- assign all_posts = "" | split: "," -%}
+{%- for s in site.data.sections -%}
+  {%- if s.collection -%}
+    {%- assign col = site.collections | where: "label", s.collection | first -%}
+    {%- if col -%}
+      {%- assign all_posts = all_posts | concat: col.docs -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}

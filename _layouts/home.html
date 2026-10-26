@@ -3,7 +3,7 @@ layout: default
 ---
 
 {% assign articles = site.articles | sort: 'date' | reverse %}
-{% assign essays   = site.essays   | sort: 'date' | reverse %}
+{% assign commentarium = site.commentarium   | sort: 'date' | reverse %}
 {% assign papers   = site.papers   | sort: 'date' | reverse %}
 
 <div class="home-wrapper toc-wrapper">
@@ -27,7 +27,7 @@ layout: default
   <div class="toc-bio">{{ content }}</div>
   {% endif %}
 
-  {% assign all_posts = site.articles | concat: site.essays | concat: site.papers | sort: "date" | reverse %}
+  {% assign all_posts = site.articles | concat: site.commentarium | concat: site.papers | sort: "date" | reverse %}
 
 <!-- NEW -->
 {% assign latest = all_posts.first %}

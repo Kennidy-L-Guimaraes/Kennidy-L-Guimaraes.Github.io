@@ -28,7 +28,7 @@ permalink: /topics/
 {% comment %} Dump all posts as JSON for JS to filter {% endcomment %}
 <script>
 const ALL_POSTS = [
-  {% assign all_posts = site.articles | concat: site.papers | concat: site.essays | sort: 'date' | reverse %}
+  {% assign all_posts = site.articles | concat: site.papers | concat: site.commentarium | sort: 'date' | reverse %}
   {% for post in all_posts %}
   {
     "title":    {{ post.title | jsonify }},

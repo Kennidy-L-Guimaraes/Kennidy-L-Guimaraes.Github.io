@@ -17,7 +17,7 @@ permalink: /feed.xml
     <email>{{ site.author.email }}</email>
   </author>
 
-  {% assign all = site.articles | concat: site.papers | concat: site.essays | sort: 'date' | reverse %}
+  {% assign all = site.articles | concat: site.papers | concat: site.commentarium | sort: 'date' | reverse %}
   {% assign posts = all | limit: 20 %}
   <updated>{{ posts.first.date | date_to_xmlschema }}</updated>
 

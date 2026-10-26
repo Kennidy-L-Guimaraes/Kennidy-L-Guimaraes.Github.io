@@ -1,0 +1,18 @@
+- label: Articles
+  url: /articles/
+  collection: articles
+
+- label: Papers
+  url: /papers/
+  collection: papers
+
+- label: Commentarium
+  url: /commentarium/
+  collection: commentarium
+
+
+- label: Projects
+  url: /softwares/
+
+- label: About
+  url: /about

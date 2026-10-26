@@ -38,7 +38,7 @@ collections: # P/ Publications
   articles:
     output: true
     permalink: /p/:slug/
-  essays:
+  commentarium:
     output: true
     permalink: /p/:slug/
   topics:

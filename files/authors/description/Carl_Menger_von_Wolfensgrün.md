@@ -1,8 +1,10 @@
 ### 1840 — 1921 ✝
 
-Professor e Doutor com Honras na Faculdade de Direito e Ciência Politica da Universidade de Viena, Austriaco, e fundador da Escola Austriaca de Economia, veio de uma familia de funcionários públicos Oficiais, onde teve a oportunidade de realizar observações a respeito do funcionamento da maquina pública. Também foi nomeado um dos professores do príncipe herdeiro Rudolf, com quem realizou extensas viagens de estudo pela Europa em 1877 e 1878.
-Carl Menger recebeu muitas honrarias e prêmios; em 1900, foi nomeado membro vitalício da Câmara dos Lordes.
+Professor and Doctor with Honors at the Faculty of Law and Political Science of the University of Vienna, Austrian, and founder of the Austrian School of Economics, he came from a family of official civil servants, where he had the opportunity to make observations about the workings of the public machinery. He was also appointed one of the tutors of Crown Prince Rudolf, with whom he undertook extensive study trips through Europe in 1877 and 1878.
+
+Carl Menger received many honors and awards; in 1900, he was appointed a lifetime member of the House of Lords.
 
 ---
 
-> “Como é possível que instituições que servem ao bem-estar comum e são extremamente significativas para seu desenvolvimento surjam sem uma vontade comum direcionada ao seu estabelecimento?”
+
+> “How is it possible that institutions that serve the common welfare and are extremely significant for its development arise without a common will directed toward their establishment?”

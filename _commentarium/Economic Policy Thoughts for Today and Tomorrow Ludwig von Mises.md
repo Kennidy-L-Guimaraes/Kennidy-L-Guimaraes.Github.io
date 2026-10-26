@@ -1,9 +1,9 @@
 ---
 layout: article
-title: "Meditatio - Economic Policy Thoughts for Today and Tomorrow Ludwig Von Mises."
+title: "Commentarium - Economic Policy Thoughts for Today and Tomorrow Ludwig Von Mises."
 book_author: "Ludwig Von Mises"
 date: 2026-09-05
-cover: files/meditatios/Economic_policy_thoughts_for_today_and_tomorrow.jpg
+cover: files/commentarium/Economic_policy_thoughts_for_today_and_tomorrow.jpg
 image: /assets/img/og/meditatio-economic-policy-thoughts-for-today-and-tomorrow-ludwig-von-mises.png
 categories: [Philosophy]
 excerpt: "On Mises's visit to Argentina and the distinction between the King and the ordinary salesperson."
@@ -168,7 +168,7 @@ Of course, as stated at the beginning of this meditatio, people want milk, rent,
  
 The State, naturally, cannot exist without abundant consumption of resources. As an example, imagine a State that cannot even defend itself and its own established system. The great question is not the consumption of resources, which is, in other words, inevitable, but rather how hungry for those resources the State is, and how much it is capable of devouring.
  
-In the era of the gold standard, this consumption was limited to the amount of gold existing in the State, since, evidently, the State could not consume beyond the wealth existing on-site. But the modern State, with paper money, managed the feat of artificially creating two ways to grow beyond local wealth: debt and money printing. I will not go deeper into these, since that falls outside the meditation of the late Mises's own book — I reserve them for another occasion.
+In the era of the gold standard, this consumption was limited to the amount of gold existing in the State, since, evidently, the State could not consume beyond the wealth existing on-site. But the modern State, with paper money, managed the feat of artificially creating two ways to grow beyond local wealth: debt and money printing. I will not go deeper into these, since that falls outside the _Commentarium_ of the late Mises's own book — I reserve them for another occasion.
  
 However, Mises deals precisely with the consequence of both: inflation. And inflation cannot be defined in any way other than an increase in the quantity of money in circulation. Contrary to what might be suggested, inflation is not the rise in prices. In reality, products remain at the same cost — sometimes even lower, thanks to technological advances that favor faster manufacturing or acquisition of raw materials. What happens, in short, is the devaluation of the currency.
  
@@ -204,7 +204,7 @@ The home of an average American will have better conditions and a better housing
  
 ### Conclusion
  
-During the reading and meditation of this book, I journeyed through the Roman Empire, Britain, pre- and post-war Germany, and, finally, the "rigid," modern economic states — though Mises did not use this term — and we were able to establish that economics is a natural human expression. Thus, man naturally buys and sells, just as he negotiates his time.
+During the reading and _Commentarium_ of this book, I journeyed through the Roman Empire, Britain, pre- and post-war Germany, and, finally, the "rigid," modern economic states — though Mises did not use this term — and we were able to establish that economics is a natural human expression. Thus, man naturally buys and sells, just as he negotiates his time.
  
 Whoever thinks that such a dynamic system can be partially rigidified without, at some point, ending up completely strangled is mistaken — and once the market is strangled, so is the stomach of those who depend on it. Mises describes well what the State does, and how it does it, to impoverish itself, to flagellate itself, and, ultimately, to destroy the generational wealth of the civilian population. Thus, we say that what the State should do is exactly the opposite of what it currently does.
  

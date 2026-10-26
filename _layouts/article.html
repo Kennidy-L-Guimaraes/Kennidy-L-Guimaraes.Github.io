@@ -66,11 +66,10 @@ layout: default
     </header>
 
     <hr class="artigo-divider">
+    {% include all-posts.html %}
 
     {% if page.series %}
-    {% assign serie_posts = site.articles | concat: site.papers | concat: site.essays
-        | where: "series", page.series
-        | sort: "series_part" %}
+    {% assign serie_posts = all_posts | where: "series", page.series | sort: "series_part" %}
     {% assign serie_total = serie_posts | size %}
     <div class="serie-callout">
         <div class="serie-callout-inner">
@@ -101,7 +100,7 @@ layout: default
                 <img src="{{ autor_foto_url | relative_url }}" alt="{{ autor_nome }}" class="autor-card-mobile-foto">
                 {% endif %}
                 <span class="autor-card-mobile-texto">
-                    <span class="autor-card-mobile-rotulo">Sobre o Autor</span>
+                    <span class="autor-card-mobile-rotulo">About the Author</span>
                     <span class="autor-card-mobile-nome">{{ autor_nome }}</span>
                 </span>
                 <span class="autor-card-mobile-seta" aria-hidden="true">▾</span>
@@ -144,7 +143,6 @@ layout: default
 
     <script>
   window.SITE_POSTS = [
-    {% assign all_posts = site.articles | concat: site.papers | concat: site.essays %}
     {% assign other_posts = all_posts | where_exp: "item", "item.url != page.url" %}
     {% for post in other_posts %}{% unless forloop.first %},{% endunless %}
     {

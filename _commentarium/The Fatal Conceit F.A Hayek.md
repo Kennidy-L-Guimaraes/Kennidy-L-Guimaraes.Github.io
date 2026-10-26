@@ -1,12 +1,12 @@
 ---
 layout: article                      
-title: "Meditatio - The Fatal Conceit: The errors of Socialism"
+title: "Commentarium - The Fatal Conceit: The errors of Socialism"
 book_author: "Friedrich August Von Hayek"
 date: 2026-09-23
-cover: files/meditatios/The_Fatal_Conceit_F.A_Hayek.jpg
+cover: files/commentarium/The_Fatal_Conceit_F.A_Hayek.jpg
 image: /assets/img/og/meditatio-the-fatal-conceit-the-errors-of-socialism.png
 categories: [Philosophy]
-excerpt: "A meditation on Hayek's The Fatal Conceit, drawing not only on that work itself but also on Aristotle's Politics."
+excerpt: "A Commentarium on Hayek's The Fatal Conceit, drawing not only on that work itself but also on Aristotle's Politics."
 references:
     AristotlePolitics:
         text: "Aristotle, Politics, written in 350 BC, translated by Benjamin Jowett"
@@ -44,13 +44,13 @@ references:
 
 {% include ref-tooltips.html references=page.references %}
 
-Adding all the sources and references that a meditation may contain is a legitimate and common practice. However, referencing the sources cited by the original work itself is not the primary purpose of a meditation, as this would ultimately lead us into an extensive chain of cross-references.
+Adding all the sources and references that a _Commentarium_ may contain is a legitimate and common practice. However, referencing the sources cited by the original work itself is not the primary purpose of a _Commentarium_, as this would ultimately lead us into an extensive chain of cross-references.
 
-For this reason, I will take F. A. Hayek’s *The Fatal Conceit* as the primary material for this meditation. I will also use *The Use of Knowledge in Society*, by the same author, as a supplementary source, since it deals, at least in part, with issues related to the same problem and may therefore contribute to the development of the reflection.
+For this reason, I will take F. A. Hayek’s *The Fatal Conceit* as the primary material for this _Commentarium_. I will also use *The Use of Knowledge in Society*, by the same author, as a supplementary source, since it deals, at least in part, with issues related to the same problem and may therefore contribute to the development of the reflection.
 
 In addition to these works, I will draw upon Aristotle, particularly the *Nicomachean Ethics* and *Politics*, as well as upon several quotations from other writers and thinkers that I have considered relevant to include (such as Adam Smith).
 
-The substance of this meditation is therefore grounded in the problem and argument presented by Hayek. Its purpose, however, is not simply to reproduce or summarize them. The fruit of meditation lies in thinking with the author, conversing with his work, subjecting it to reflection, and testing it beyond its logical formulation, following, as far as possible, the paths toward which his own reasoning leads us.
+The substance of this _Commentarium_ is therefore grounded in the problem and argument presented by Hayek. Its purpose, however, is not simply to reproduce or summarize them. The fruit of _Commentarium_ lies in thinking with the author, conversing with his work, subjecting it to reflection, and testing it beyond its logical formulation, following, as far as possible, the paths toward which his own reasoning leads us.
 
 
 ### Culture, reason, and man in the middle
@@ -215,16 +215,12 @@ However, supposing such a committee possessed the capacity to reorganize all arr
 
 It happens that such knowledge is only fully produced while the system remains dispersed and dynamic. As the planner comes to know, there is more still to be known; and the moment the system ceases to be fragmented, changes arise concerning change itself: states change, but they change without prior notice. The planner, therefore, would need not only to know the state of the system, but also to continually track that which ceases to be relevant, that which becomes relevant, and that which has not yet even arisen as knowledge to be known — as I have postulated, that all state information from the periphery arrives at the center modified and fragmented {% include ref.html id="GuimaraesHDI" %}, where neither the one who possesses the greatest information about the periphery's state, nor the one who possesses the greatest information about the center, holds the greatest fraction of the knowledge to be known, but rather the one who concentrates the largest part of both.
 
-### Conclusion
+### Conclusio
 
-At the outset of this meditation, I proceeded from two foundations: the first, Aristotelian, so that we might understand that man is not capable of living alone, by himself, and, through it, we understand what forms a household, a city, and a state — parts of a larger aggregate — and that it would be an error to administer a state as one administers a household. We also explored the limit of Aristotelian knowledge regarding natural and unnatural economies. Hayek, in turn, shows us that it would not merely be an error, but that it would bring about the destruction of the aggregate whole itself; as an example, we have different cultures that, if they do not oppose one another when kept distinct, clearly oppose one another when treated as universal, and others that possess no equivalent at all for universalization. And finally, resting on both, I trace the dissection of the corpse with a postulated article, in which I demonstrate that all the information a committee, such as a state, possesses is, in itself, a fragment of the total information, and that, wherever the center may move to, it will still contain a fragment of a fragment.
+At the outset of this _Commentarium_, I proceeded from two foundations: the first, Aristotelian, so that we might understand that man is not capable of living alone, by himself, and, through it, we understand what forms a household, a city, and a state — parts of a larger aggregate — and that it would be an error to administer a state as one administers a household. We also explored the limit of Aristotelian knowledge regarding natural and unnatural economies. Hayek, in turn, shows us that it would not merely be an error, but that it would bring about the destruction of the aggregate whole itself. And finally, resting on both, I trace the dissection of the corpse with a postulated article, in which I demonstrate that all the information a committee, such as a state, possesses is, in itself, a fragment of the total information, and that, wherever the center may move to, it will still contain a fragment of a fragment.
 
-I said, at the beginning, that man carries within himself both instinct and reason, and that neither suffices alone: instinct cannot be judged from outside itself, and reason, when it seeks to occupy that external position, feigns a place that does not exist. Just as there is no post from which reason may audit the instinct that makes it possible, there is likewise no post, within the arrangement, from which a single man (committee, organization, or otherwise) might possess the totality of what must be known in order to arrange it. In both cases, the error is the same: to suppose that there exists a place outside the system, when every place is within it.
+I said, at the beginning, that man carries within himself both instinct and reason, and that neither suffices alone: instinct cannot be judged from outside itself, and reason, when it seeks to occupy that external position, feigns a place that does not exist. Just as there is no post from which reason may audit the instinct that makes it possible, there is likewise no post, within the arrangement, from which a single man (committee, organization, or otherwise) might possess the totality of what must be known in order to arrange it.
 
-The farmer who knows everything about his wheat knows nothing of the blacksmith; the general who orders the campaign knows nothing of the true state of all his soldiers. And just as morality is not born ready-made in man, but is formed by the culture that precedes it, so too the knowledge that sustains the market is not born ready-made in anyone, but is formed by the dispersion that precedes it — a dispersion no committee can gather without first destroying it — and, once destroyed, those within the system are destroyed as well, even if not immediately.
+And just as morality is not born ready-made in man, but is formed by the culture that precedes it, so too the knowledge that sustains the market is not born ready-made in anyone, but is formed by the dispersion that precedes it — a dispersion no committee can gather without first destroying it — and, once destroyed, those within the system are destroyed as well, even if not immediately.
 
-I wish, however, to note two points. The first concerns Hayek: it is said that Hayek is a conservative, but he is not; nor is he a positivist. His critique of positivism and of socialism runs throughout his book. Hayek is a genuine classical liberal, not because he called himself one, but because his ideas are closer to a classical conception of liberalism than to today's liberals, who tend to admit a certain level of positivism as _"normal"_ and no longer even see themselves as standing outside of it.
-
-The second point concerns socialism. As has been established here, _"classical"_ socialism possesses no capacity whatsoever for the general control of the market — not through simple ideology, _"which is highly dysfunctional,"_ but by the very nature of the market and of individuals. Classical socialists tend, at times, to belittle individual capacities and to theorize that, once endowed with more _"intellect"_ than a mere individual, they hold the bellicose mission of _"saving him"_ from himself, and thereby fall into the fatal error — *The Fatal Conceit* — of failing to take into account individual wills, freedoms, and desires, regarding only their own desires and wills as just or sufficient.
-
-Hayek calls this Arrogance; however, the term *patocrat*, or merely the *famulus* of a patocrat, may seem more fitting.
+As has been established here, the general control of the market lies beyond the reach of any planner — not through simple ideology, but by the very nature of the knowledge that sustains it. Those who belittle individual capacities and theorize that, once endowed with more _"intellect"_ than a mere individual, they hold the bellicose mission of _"saving him"_ from himself, fall into the fatal error — *The Fatal Conceit* — of failing to take into account individual wills, freedoms, and desires, regarding only their own desires and wills as just or sufficient.

@@ -1,3 +1,14 @@
+{% include all-posts.html %}
+
+{%- assign search_posts = all_posts -%}
+{%- if page.url != "/" and page.collection -%}
+  {%- assign in_section = all_posts | where: "collection", page.collection -%}
+  {%- if in_section.size > 0 -%}
+    {%- assign search_posts = in_section -%}
+  {%- endif -%}
+{%- endif -%}
+{%- assign search_posts = search_posts | sort: 'date' | reverse -%}
+
 <script>
 (function(){
   var input  = document.getElementById('home-search-input');
@@ -9,18 +20,7 @@
   var pageType = nav.getAttribute('data-page-type');
 
   var posts = [
-    {% if page.url == "/" %}
-      {% assign all_posts = site.articles | concat: site.papers | concat: site.essays | sort: 'date' | reverse %}
-    {% elsif page.collection == 'articles' %}
-      {% assign all_posts = site.articles | sort: 'date' | reverse %}
-    {% elsif page.collection == 'essays' %}
-      {% assign all_posts = site.essays | sort: 'date' | reverse %}
-    {% elsif page.collection == 'papers' %}
-      {% assign all_posts = site.papers | sort: 'date' | reverse %}
-    {% else %}
-      {% assign all_posts = site.articles | concat: site.papers | concat: site.essays | sort: 'date' | reverse %}
-    {% endif %}
-    {% for post in all_posts %}
+    {% for post in search_posts %}
       {
         "title": {{ post.title | jsonify }},
         "url": {{ post.url | relative_url | jsonify }}

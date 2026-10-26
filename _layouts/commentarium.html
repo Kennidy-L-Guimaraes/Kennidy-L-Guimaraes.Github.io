@@ -1,29 +1,27 @@
 ---
 layout: default
-title: "Essays"
-description: "Book reviews and reading notes by Kennidy L. Guimarães — commentary and critique on the books he has read."
+title: "Commentarium"
+description: "Book Comments and reading notes by Kennidy L. Guimarães — commentary and critique on the books he has read."
 ---
 {% include nav.html %}
 
 <div class="artigo-wrapper">
     <header class="list-header">
-        <h1 class="list-titulo">Essays</h1>
+        <h1 class="list-titulo">Commentarium</h1>
     
     <p class="list-descricao">
-        A meditation <em>Meditatio</em> is neither a summary <em>Summarium</em>, exegesis <em>Exegesis</em>, commentary <em>Commentarius</em>, nor preface <em>Praefatio</em>. It is the reader's own reflection upon a work, sometimes leading through other authors and ideas. The <em>meditator</em> need not agree with the work in its entirety, but his reading inevitably bears his own interpretive substance.
+        A Comment <em>Commentarium</em> is neither a summary <em>Summarium</em>, exegesis <em>Exegesis</em>, nor preface <em>Praefatio</em>. It is the reader's own reflection upon a work, sometimes leading through other authors and ideas. The <em>meditator</em> need not agree with the work in its entirety, but his reading inevitably bears his own interpretive substance.
     </p>
-
-
     </header>
 
     <div class="list-grid">
-        {% assign sorted = site.essays | sort: "date" | reverse %}
+        {% assign sorted = site.commentarium | sort: "date" | reverse %}
         {% for review in sorted %}
         <a class="list-card list-card--book" href="{{ review.url | relative_url }}">
 
             <div class="list-card-cover">
                 {% if review.cover %}
-                <img src="{{ review.cover | relative_url }}" alt="Cover of {{ essays_title | default: review.title }}" loading="lazy">
+                <img src="{{ review.cover | relative_url }}" alt="Cover of {{ commentarium_title | default: review.title }}" loading="lazy">
                 {% endif %}
             </div>
 

@@ -9,7 +9,7 @@ const path      = require('path');
 const JEKYLL_URL  = 'http://localhost:4000';
 const TEMPLATE    = `${JEKYLL_URL}/og-template/`;
 const OUTPUT_DIR  = path.join(__dirname, 'assets', 'img', 'og');
-const COLLECTIONS = ['_articles', '_essays', '_papers'];
+const COLLECTIONS = ['_articles', '_commentarium', '_papers'];
 const FORCE_ALL   = process.argv.includes('--all');
 
 // Paleta oficial
@@ -163,7 +163,7 @@ async function generateHome(page) {
 
     return 'generated';
   } catch (err) {
-    console.error(`Erro na home:`, err.message);
+    console.error(`Error:`, err.message);
     return 'error';
   }
 }
@@ -191,7 +191,7 @@ async function generate() {
   else if (homeResult === 'skipped') skipped++;
 
   if (!files.length) {
-    console.log('\nNenhum arquivo de coleção encontrado.');
+    console.log('\nNo collection file found.');
   }
 
   for (const file of files) {
@@ -218,7 +218,7 @@ async function generate() {
     }
 
     const url = buildUrl(fm, content);
-    console.log(`Gerando: ${filename}`);
+    console.log(`Generating: ${filename}`);
 
     try {
       await preparePage(page, url);
@@ -237,22 +237,22 @@ async function generate() {
       generated++;
 
     } catch (err) {
-      console.error(`Erro em ${file}:`, err.message);
+      console.error(`Error in ${file}:`, err.message);
     }
   }
 
   await browser.close();
 
-  console.log('\nResultado:');
-  console.log(`Geradas: ${generated}`);
-  console.log(`Puladas: ${skipped}`);
+  console.log('\nResult:');
+  console.log(`Generated: ${generated}`);
+  console.log(`Skipped: ${skipped}`);
   console.log(`assets/img/og/`);
 
-  console.log('\nCores aplicadas:');
+  console.log('\nColors:');
   console.log(COLORS);
 }
 
 generate().catch(err => {
-  console.error('Erro fatal:', err);
+  console.error('Fatal Error:', err);
   process.exit(1);
 });
