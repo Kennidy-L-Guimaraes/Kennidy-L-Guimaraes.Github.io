@@ -1,0 +1,35 @@
+{%- assign _keys = "" | split: "" -%}
+{%- for item in include.items -%}
+
+  {%- comment -%} Grupo: a série inteira, ou o próprio artigo se for avulso {%- endcomment -%}
+  {%- if item.series -%}
+    {%- assign _gid = item.series | slugify -%}
+    {%- assign _gts = 0 -%}
+    {%- for o in include.items -%}
+      {%- if o.series == item.series -%}
+        {%- assign _ots = o.date | date: '%s' | plus: 0 -%}
+        {%- if _ots > _gts -%}{%- assign _gts = _ots -%}{%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- else -%}
+    {%- assign _gid = item.url | slugify -%}
+    {%- assign _gts = item.date | date: '%s' | plus: 0 -%}
+  {%- endif -%}
+
+  {%- assign _gdesc = 9999999999 | minus: _gts | prepend: '0000000000' | slice: -10, 10 -%}
+  {%- assign _part = item.series_part | default: 9999 | prepend: '0000' | slice: -4, 4 -%}
+  {%- assign _ts = item.date | date: '%s' | prepend: '0000000000' | slice: -10, 10 -%}
+
+  {%- capture _key -%}
+    {{- _gdesc -}}~{{- _gid -}}~{{- _part -}}~{{- _ts -}}~{{- forloop.index0 -}}
+  {%- endcapture -%}
+  {%- assign _keys = _keys | push: _key -%}
+{%- endfor -%}
+
+{%- assign _keys = _keys | sort -%}
+
+{%- assign sorted_articles = "" | split: "" -%}
+{%- for _k in _keys -%}
+  {%- assign _i = _k | split: '~' | last | plus: 0 -%}
+  {%- assign sorted_articles = sorted_articles | push: include.items[_i] -%}
+{%- endfor -%}

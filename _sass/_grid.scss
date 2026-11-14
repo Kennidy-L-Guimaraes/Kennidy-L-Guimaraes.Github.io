@@ -1,0 +1,32 @@
+@use "abstracts" as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: $gap;
+  max-width: $container;
+  margin: 2.2rem auto 4rem;
+  padding: 0 2rem;
+
+  @include below($bp-tablet) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0 1rem;
+    margin-top: 1.5rem;
+  }
+}
+
+.photo  { grid-column: 1; }
+.bio    { grid-column: 2 / 5; }
+.mascot { grid-column: 5; }
+.tabs   { grid-column: 1 / -1; }
+.cards  { grid-column: 1 / 5; }
+.panel  { grid-column: 5; }
+
+@include below($bp-tablet) {
+  .photo  { grid-column: 1;      order: 1; }
+  .mascot { grid-column: 2;      order: 2; }
+  .bio    { grid-column: 1 / -1; order: 3; }
+  .tabs   { order: 4; }
+  .cards  { grid-column: 1 / -1; order: 5; }
+  .panel  { grid-column: 1 / -1; order: 6; }
+}

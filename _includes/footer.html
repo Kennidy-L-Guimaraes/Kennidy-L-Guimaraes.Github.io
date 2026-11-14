@@ -1,25 +1,48 @@
-<div class="footer-grid">
-    <img class="footer-logo" src="{{ '/HarpyGriffinFoot.png' | relative_url }}" alt="{{ site.author.name }}">
+{%- assign flinks = t.footer_links | default: site.footer.links -%}
+{%- assign ftext = t.footer_text | default: site.footer.text -%}
+{%- assign fnote = t.footer_note | default: site.footer.note -%}
+<footer class="site-footer">
+  <div class="footer-inner">
+    <section class="footer-brand">
+      <p class="footer-name">{{ site.title }}</p>
+      {% if ftext %}<p class="footer-text">{{ ftext }}</p>{% endif %}
+    </section>
 
-    <div class="footer-info">
-        <h4>Contact &amp; Links</h4>
-        <ul>
-            {% if site.author.email %}
-            <li>Email: <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
-            {% endif %}
-            {% if site.author.address %}
-            <li>Address: {{ site.author.address }}</li>
-            {% endif %}
-            {% if site.author.phone %}
-            <li>Number: {{ site.author.phone }}</li>
-            {% endif %}
-            <li>
-                <a href="{{ '/feed.xml' | relative_url }}" title="RSS Feed" class="footer-rss">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px; margin-right:5px;"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>RSS Feed
-                </a>
-            </li>
-        </ul>
+    {% if site.menu %}
+    <nav class="footer-col" aria-label="{{ t.categories }}">
+      <h2 class="eyebrow">{{ t.categories }}</h2>
+      <ul>
+        {% for c in site.menu %}<li><a href="{{ home | relative_url }}#{{ c.key }}">{{ t.menu[c.key] | default: c.label }}</a></li>{% endfor %}
+      </ul>
+    </nav>
+    {% endif %}
+
+    {% if flinks %}
+    <nav class="footer-col" aria-label="{{ t.links }}">
+      <h2 class="eyebrow">{{ t.links }}</h2>
+      <ul>
+        {% for l in flinks %}
+          <li><a href="{% if l.url contains '://' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}">{{ l.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    {% endif %}
+
+    {% if site.socials %}
+    <div class="footer-col">
+      <h2 class="eyebrow">{{ t.socials }}</h2>
+      <div class="footer-socials">
+        {% for s in site.socials %}
+          <a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.name }}"><img src="{{ site.socials_icon_url | replace: 'ICON', s.icon }}" alt="{{ s.name }}"></a>
+        {% endfor %}
+      </div>
     </div>
-</div>
+    {% endif %}
+  </div>
 
-<p class="footer-legal">&copy; {{ 'now' | date: "%Y" }} {{ site.author.name }}. All rights reserved. (All essays and articles are licensed under CC BY-ND 4.0)</p>
+  <div class="footer-bottom">
+    <span class="seal" lang="ja">{% include seal.html %}</span>
+    <span class="footer-copy">© {{ site.time | date: '%Y' }} {{ site.title }}{% if fnote %} · {{ fnote }}{% endif %}</span>
+    <a class="to-top" href="#">{{ t.top }} Back to Top ↑</a>
+  </div>
+</footer>

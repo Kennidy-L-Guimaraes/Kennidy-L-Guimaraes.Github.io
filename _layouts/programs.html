@@ -1,0 +1,142 @@
+{%- assign d = site.donate -%}
+{%- assign dl = page.download_url -%}
+{%- if dl contains '://' -%}
+  {%- assign dl_href = dl -%}
+{%- else -%}
+  {%- assign dl_href = dl | relative_url -%}
+{%- endif -%}
+{%- assign dl_file = dl | split: '/' | last -%}
+{%- assign has_donate = false -%}
+{%- if d.enabled and d.btc_address -%}{%- assign has_donate = true -%}{%- endif -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | escape }} - {{ site.title | escape }}</title>
+  <meta name="description" content="{{ page.description | escape }}">
+  <link rel="icon" href="{{ site.favicon | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/program.css' | relative_url }}">
+  <script>
+    try {
+      var s = JSON.parse(localStorage.getItem('seen') || '{}'), t = {{ page.date | date: '%s' | default: 0 }};
+      if ((s.softwares || 0) < t) { s.softwares = t; localStorage.setItem('seen', JSON.stringify(s)); }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+<div class="page">
+
+  <header class="top">
+    <h1>{{ page.title | escape }}</h1>
+    <p class="tagline">{{ page.tagline }}</p>
+    <nav aria-label="Program menu">
+      <ul class="menu">
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#floss">FLOSS</a></li>
+        <li><a href="#download">Download</a></li>
+        {%- if page.sha256 -%}<li><a href="#verify">Checksum</a></li>{%- endif -%}
+        {%- if has_donate -%}<li><a href="#donate">Donate</a></li>{%- endif -%}
+        {%- if page.source_url -%}<li><a href="{{ page.source_url }}" target="_blank" rel="noopener">Source</a></li>{%- endif -%}
+      </ul>
+    </nav>
+  </header>
+
+  <hr>
+
+  <main class="post" data-cat="softwares" data-ts="{{ page.date | date: '%s' }}">
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="text">{{ content }}</div>
+      <table class="info">
+        <tr><th scope="row">Version</th><td>{{ page.version }}</td></tr>
+        <tr><th scope="row">Platform</th><td>{{ page.platform }}</td></tr>
+        <tr><th scope="row">Last update</th><td>{{ page.updated }}</td></tr>
+        <tr><th scope="row">Encryption algorithm</th><td>{{ page.algorithm }}</td></tr>
+      </table>
+    </section>
+
+    {%- if page.screenshot -%}
+    <p class="center">
+      <a href="{{ page.screenshot | relative_url }}" target="_blank" rel="noopener"><img class="shot" src="{{ page.screenshot | relative_url }}" alt="{{ page.title | escape }} screenshot" loading="lazy"></a>
+    </p>
+    {%- endif -%}
+
+    <hr>
+
+    <section id="floss">
+      <h2>FLOSS</h2>
+      <div class="text">
+        <p>FLOSS means Free/Libre and Open-Source Software: software you may run, study, share and improve. {{ page.title | escape }} follows that idea and will always be free.</p>
+        {%- if page.license -%}
+        <p>License: <strong>{{ page.license | escape }}</strong>{% if page.license_url %} (<a href="{{ page.license_url }}" target="_blank" rel="noopener">read it</a>){% endif %}</p>
+        {%- endif -%}
+        {%- if page.source_url -%}
+        <p>Because this program deals with encryption, anyone can audit it: <a href="{{ page.source_url }}" target="_blank" rel="noopener">source code</a>.</p>
+        {%- endif -%}
+      </div>
+    </section>
+
+    <hr>
+
+    <section id="download">
+      <h2>Download</h2>
+      <p class="center">
+        <a class="btn btn-big" href="{{ dl_href }}" download>{{ page.download_label | default: 'Download' }}</a>
+      </p>
+      <p class="fileinfo center">{{ dl_file }}{% if page.filesize %} &middot; {{ page.filesize }}{% endif %} &middot; {{ page.platform }}</p>
+    </section>
+
+    {%- if page.sha256 -%}
+    <hr>
+
+    <section id="verify">
+      <h2>Checksum (SHA-256)</h2>
+      <code class="hash notranslate" translate="no">{{ page.sha256 }}</code>
+      <p class="text">Check the file you downloaded against this value before running it. On Windows (Command Prompt):</p>
+      <pre class="cmd notranslate" translate="no">certutil -hashfile {{ dl_file }} SHA256</pre>
+      <p class="text">Or in PowerShell:</p>
+      <pre class="cmd notranslate" translate="no">Get-FileHash {{ dl_file }} -Algorithm SHA256</pre>
+      <p class="text">The two values must match exactly. If they do not, delete the file.</p>
+    </section>
+    {%- endif -%}
+
+    {%- if has_donate -%}
+    <hr>
+
+    <section id="donate">
+      <h2>Donate</h2>
+      <div class="donate" aria-label="Support this work" data-btc="{{ d.btc_address | escape }}"{% if d.lightning %} data-ln="{{ d.lightning | escape }}"{% endif %} data-copied="Copied">
+        <p class="donate-text">{{ d.text }}</p>
+        <div class="donate-tabs" role="tablist">
+          <button class="donate-tab is-active" type="button" role="tab" aria-selected="true" data-tab="btc">Bitcoin</button>
+          {%- if d.lightning -%}<button class="donate-tab" type="button" role="tab" aria-selected="false" data-tab="ln">Lightning</button>{%- endif -%}
+        </div>
+        <a class="donate-qr" href="bitcoin:{{ d.btc_address | escape }}" aria-label="Open in wallet"></a>
+        <div class="donate-meta">
+          <small class="donate-label notranslate" translate="no">BTC ADDRESS</small>
+          <button class="donate-copy" type="button">Copy</button>
+        </div>
+        <code class="donate-value notranslate" translate="no">{{ d.btc_address }}</code>
+      </div>
+    </section>
+    {%- endif -%}
+
+  </main>
+
+  <hr>
+
+  <footer class="foot">
+    <p>Free and Open-Source &middot; <a href="{{ '/' | relative_url }}">Back to {{ site.title | escape }}</a></p>
+  </footer>
+
+</div>
+
+{%- if has_donate -%}
+<script src="{{ '/assets/js/qrcode.min.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/donate.js' | relative_url }}" defer></script>
+{%- endif -%}
+</body>
+</html>

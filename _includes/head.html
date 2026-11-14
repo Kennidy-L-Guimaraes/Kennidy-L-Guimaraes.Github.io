@@ -1,0 +1,36 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+{%- if site.favicon -%}
+<link rel="icon" href="{{ site.favicon | relative_url }}">
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ site.favicon | relative_url }}">
+{%- endif -%}
+
+<script>
+(function(){var d="{{ site.color_scheme | default: 'auto' }}",t;
+try{t=localStorage.getItem('theme')}catch(e){}
+t=t||d; if(t==='auto'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+document.documentElement.dataset.theme=t;})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="{{ site.fonts.url | default: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&family=Zen+Old+Mincho:wght@500;700&display=swap' }}">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+{%- comment -%} Sobrescritas do _config.yml: ficam DEPOIS do main.css para vencerem os padrões do SCSS. {%- endcomment -%}
+<style>
+{% if site.colors.light %}:root,[data-theme="light"]{ {% for c in site.colors.light %}--{{ c[0] }}:{{ c[1] }};{% endfor %} }{% endif %}
+{% if site.colors.dark %}[data-theme="dark"]{ {% for c in site.colors.dark %}--{{ c[0] }}:{{ c[1] }};{% endfor %} }{% endif %}
+:root{ {% if site.fonts.display %}--font-display:{{ site.fonts.display }};{% endif %}{% if site.fonts.body %}--font-body:{{ site.fonts.body }};{% endif %}{% if site.fonts.accent %}--font-accent:{{ site.fonts.accent }};{% endif %}{% if site.fonts.accent_spacing %}--accent-spacing:{{ site.fonts.accent_spacing }};{% endif %} }
+</style>
+<script defer src="{{ '/assets/js/protect-terms.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/translate.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/app.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/translate.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/toc.js' | relative_url }}"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/delphi.min.js"></script>
+<script defer src="{{ '/assets/js/code.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/lightbox.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/order.js' | relative_url }}"></script>

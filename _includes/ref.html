@@ -1,7 +1,16 @@
-{% comment %}
-  Usage: {% include ref.html id="evans" %}
-  Renders a superscript citation link that triggers the tooltip on hover.
-  The matching reference data must be loaded via ref-tooltips.html on the same page.
-  The display number is resolved at runtime from window.__refIndex.
-{% endcomment %}
-<a class="ref-link" data-ref="{{ include.id }}" href="#ref-{{ include.id }}" aria-label="Reference {{ include.id }}">[<span class="ref-num-inline" data-ref-key="{{ include.id }}"></span>]</a>
+
+{%- assign ref = page.references[include.id] -%}
+{%- if ref -%}
+<a class="ref-link"
+   href="{{ ref.url | escape }}"
+   target="_blank"
+   rel="noopener noreferrer">
+  <sup>[{{ include.label | default: include.id | escape }}]</sup>
+  <span class="ref-tooltip" role="tooltip">
+    <span class="ref-tooltip__text">{{ ref.text | escape }}</span>
+    <span class="ref-tooltip__url">{{ ref.url | escape }}</span>
+  </span>
+</a>
+{%- else -%}
+<span class="ref-missing">[Referência inexistente: {{ include.id | escape }}]</span>
+{%- endif -%}

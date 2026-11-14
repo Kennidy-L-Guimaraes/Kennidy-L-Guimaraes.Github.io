@@ -1,0 +1,65 @@
+{%- assign t = site.data.i18n.en -%}
+{%- assign idx = nil -%}
+{%- assign prev_part = nil -%}
+{%- assign next_part = nil -%}
+{%- if page.series -%}
+  {%- assign parts = site.articles | where: 'series', page.series | sort: 'series_part' -%}
+  {%- for p in parts -%}
+    {%- if p.url == page.url -%}{%- assign idx = forloop.index0 -%}{%- endif -%}
+  {%- endfor -%}
+  {%- if idx != nil -%}
+    {%- if idx > 0 -%}
+      {%- assign prev_idx = idx | minus: 1 -%}
+      {%- assign prev_part = parts[prev_idx] -%}
+    {%- endif -%}
+    {%- assign next_idx = idx | plus: 1 -%}
+    {%- assign next_part = parts[next_idx] -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- if include.mode == 'top' and page.series -%}
+  <p class="series-banner">
+    <span class="series-name">{{ page.series | replace: '-', ' ' }}</span>
+    <span>{{ t.series_part }} {{ page.series_part }}{% if page.series_total %} / {{ page.series_total }}{% endif %}</span>
+    {%- if next_part -%}
+      <a href="{{ next_part.url | relative_url }}">{{ t.series_next }} →</a>
+    {%- endif -%}
+  </p>
+{%- endif -%}
+
+{%- if include.mode == 'bottom' -%}
+  {%- if prev_part or next_part -%}
+    <nav class="series-nav" aria-label="{{ page.series | replace: '-', ' ' }}">
+      {%- if prev_part -%}
+        <a class="series-link prev" href="{{ prev_part.url | relative_url }}">
+          <small>← {{ t.series_prev }}</small>
+          <span>{{ prev_part.title }}</span>
+        </a>
+      {%- endif -%}
+      {%- if next_part -%}
+        <a class="series-link next" href="{{ next_part.url | relative_url }}">
+          <small>{{ t.series_next }} →</small>
+          <span>{{ next_part.title }}</span>
+        </a>
+      {%- endif -%}
+    </nav>
+  {%- endif -%}
+
+  {%- if page.related -%}
+    <section class="related">
+      <h2 class="eyebrow">{{ t.related }}</h2>
+      <ul>
+        {%- for r in page.related -%}
+          <li>
+            {%- if r.url and r.url != '#' -%}
+              <a href="{{ r.url | relative_url }}">{{ r.title }}</a>
+            {%- else -%}
+              <span class="soon">{{ r.title }} <em>({{ t.coming_soon }})</em></span>
+            {%- endif -%}
+            <small>{{ r.category }}{% if r.date %} · {{ r.date }}{% endif %}</small>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </section>
+  {%- endif -%}
+{%- endif -%}

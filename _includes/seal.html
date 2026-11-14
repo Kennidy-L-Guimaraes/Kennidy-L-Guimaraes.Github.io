@@ -1,0 +1,10 @@
+{%- assign seal = site.author.seal | default: '印' -%}
+{%- if seal contains '/' -%}
+  {%- if seal contains '://' -%}
+    <img src="{{ seal }}" alt="" width="64" height="64">
+  {%- else -%}
+    <img src="{{ seal | relative_url }}" alt="" width="64" height="64">
+  {%- endif -%}
+{%- else -%}
+  {{ seal }}
+{%- endif -%}

@@ -1,0 +1,33 @@
+.card--software {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  padding: 1.25rem;
+  background: var(--surface, #1c1815);
+  border-radius: 10px;
+
+  .software-title {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .software-desc {
+    margin: 0;
+    flex: 1;
+    font-size: .9rem;
+    opacity: .8;
+  }
+
+  .software-btn {
+    align-self: flex-start;
+    padding: .55rem 1rem;
+    border-radius: 6px;
+    background: var(--accent, #c8453e);
+    color: #fff;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+}

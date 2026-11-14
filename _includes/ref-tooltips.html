@@ -1,35 +1,75 @@
-{% comment %}
-  _includes/ref-tooltips.html
-{% endcomment %}
 
-<div id="ref-tooltip" class="ref-tooltip" role="tooltip">
-  <div class="ref-tooltip-header">
-    <span class="ref-tooltip-num" id="tt-num"></span>
-    <span class="ref-tooltip-title" id="tt-title"></span>
-  </div>
-  <div class="ref-tooltip-body">
-    <a class="ref-tooltip-link" id="tt-link" target="_blank" rel="noopener noreferrer">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-        <polyline points="15 3 21 3 21 9"/>
-        <line x1="10" y1="14" x2="21" y2="3"/>
-      </svg>
-      <span id="tt-link-label"></span>
-    </a>
-  </div>
-</div>
+<style>
+.ref-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
 
-<script>
-window.__refs     = {};
-window.__refIndex = {};
-{% assign ref_index = 0 %}
-{% for pair in include.references %}
-  {% assign ref_index = ref_index | plus: 1 %}
-  {% assign ref_id    = pair[0] %}
-  {% assign ref_obj   = pair[1] %}
-  {% assign ref_title = ref_obj.text %}
-  {% assign ref_url   = ref_obj.url | default: "" %}
-window.__refs[{{ ref_index }}] = { id: {{ ref_id | jsonify }}, title: {{ ref_title | jsonify }}, url: {{ ref_url | jsonify }} };
-window.__refIndex[{{ ref_id | jsonify }}] = {{ ref_index }};
-{% endfor %}
-</script>
+.ref-link sup {
+  color: var(--accent, #b9302a);
+  font-size: 0.78em;
+  cursor: pointer;
+}
+
+.ref-tooltip {
+  position: absolute;
+  z-index: 100;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  width: max-content;
+  max-width: min(340px, 80vw);
+  padding: 12px 14px;
+
+  color: var(--fg, #1c1a17);
+  background: var(--surface, #fff);
+  border: 1px solid var(--line, #b1aeae);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+
+  font-size: 0.85rem;
+  line-height: 1.5;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: left;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 4px);
+  transition: opacity 140ms ease, transform 140ms ease,
+              visibility 140ms;
+}
+
+.ref-tooltip__text {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ref-tooltip__url {
+  display: block;
+  padding-top: 7px;
+  border-top: 1px solid var(--line, #b1aeae);
+  color: var(--accent, #b9302a);
+  font-size: 0.78em;
+  overflow-wrap: anywhere;
+}
+
+.ref-link:hover .ref-tooltip,
+.ref-link:focus-visible .ref-tooltip {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.ref-missing {
+  color: #b9302a;
+  text-decoration: underline dotted;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ref-tooltip {
+    transition: none;
+  }
+}
+</style>

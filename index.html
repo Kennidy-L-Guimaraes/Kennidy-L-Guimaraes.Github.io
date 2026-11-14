@@ -1,0 +1,124 @@
+---
+layout: default
+---
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign t = site.data.i18n[lang] -%}
+{%- assign articles = site.articles | sort: 'date' | reverse -%}
+{%- if site.programs -%}
+  {%- assign programs = site.programs | sort: 'date' | reverse -%}
+{%- endif -%}
+{%- assign notices = t.notices | default: site.notice.items -%}
+{%- assign d = site.donate -%}
+<main class="grid">
+  <a class="hero" href="{{ site.author.link_url | relative_url }}">
+    <img src="{{ site.author.photo | relative_url }}" alt="{{ site.title }}" style="object-position: {{ site.author.photo_position | default: '50% 30%' }}" onerror="this.remove()">
+    <span class="hero-cta">{{ t.about_link | default: site.author.link_label }}</span>
+  </a>
+
+  {%- if site.home_ads.size > 0 or d.enabled -%}
+  <div class="ads">
+    {%- for ad in site.home_ads -%}
+      {%- if ad.enabled != false and ad.image and ad.url -%}
+        {%- if ad.image contains '://' -%}
+          {%- assign ad_image = ad.image -%}
+        {%- else -%}
+          {%- assign ad_image = ad.image | relative_url -%}
+        {%- endif -%}
+        {%- if ad.url contains '://' -%}
+          {%- assign ad_url = ad.url -%}
+        {%- else -%}
+          {%- assign ad_url = ad.url | relative_url -%}
+        {%- endif -%}
+    <figure class="mascot home-ad">
+      <a class="home-ad-image" href="{{ ad_url }}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+        <img src="{{ ad_image }}" alt="{{ ad.alt }}" loading="lazy">
+      </a>
+      <a class="home-ad-button" href="{{ ad_url }}" target="_blank" rel="noopener">{{ ad.text }}</a>
+      {%- if ad.label -%}<small class="home-ad-label">{{ ad.label }}</small>{%- endif -%}
+    </figure>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if d.enabled and d.btc_address -%}
+    <section class="donate" aria-label="Support this work" data-btc="{{ d.btc_address | escape }}"{% if d.lightning %} data-ln="{{ d.lightning | escape }}"{% endif %} data-copied="Copied">
+      <p class="donate-text">{{ d.text }}</p>
+      <div class="donate-tabs" role="tablist">
+        <button class="donate-tab is-active" type="button" role="tab" aria-selected="true" data-tab="btc">Bitcoin</button>
+        {%- if d.lightning -%}<button class="donate-tab" type="button" role="tab" aria-selected="false" data-tab="ln">Lightning</button>{%- endif -%}
+      </div>
+      <a class="donate-qr" href="bitcoin:{{ d.btc_address | escape }}" aria-label="Open in wallet"></a>
+      <div class="donate-meta">
+        <small class="donate-label notranslate" translate="no">BTC ADDRESS</small>
+        <button class="donate-copy" type="button">Copy</button>
+      </div>
+      <code class="donate-value notranslate" translate="no">{{ d.btc_address }}</code>
+    </section>
+    {%- endif -%}
+  </div>
+  {%- endif -%}
+
+  <nav class="tabs" data-cards="{{ site.home.cards }}" data-new-days="{{ site.home.new_days }}" data-count="{{ site.home.badge_count }}" aria-label="{{ t.categories | default: 'Categories' }}">
+    {% for c in site.menu %}
+      {% assign ic = c.icon | default: 'folder' %}
+      <button class="tab" type="button" data-cat="{{ c.key }}" aria-pressed="false">
+        <span class="tab-icon"><img src="{{ site.icons8_url | replace: 'ICON', ic }}" alt=""></span>
+        <span class="tab-label">{{ t.menu[c.key] | default: c.label }}</span>
+        <b class="badge" hidden></b>
+      </button>
+    {% endfor %}
+  </nav>
+
+  <section class="cards">
+    {% for a in articles %}
+      {%- assign cover = site.og_image.fallback_bg -%}
+      {%- if a.cover -%}
+        {%- assign cover = a.cover -%}
+      {%- elsif site.og_image.enabled -%}
+        {%- assign title_encoded = a.title | url_encode -%}
+        {%- assign cover = site.og_image.template | replace: 'TITLE', title_encoded -%}
+      {%- endif -%}
+
+      {%- capture cats -%}
+        {%- for category in a.categories -%}{{ category | slugify }}{% unless forloop.last %},{% endunless %}{%- endfor -%}
+      {%- endcapture -%}
+
+      <article class="card{% if forloop.index > site.home.cards %} extra{% endif %}" data-cat="{{ cats | strip | escape }}" data-ts="{{ a.date | date: '%s' }}" data-series="{{ a.series | slugify }}" data-part="{{ a.series_part }}"{% if forloop.index > site.home.cards %} hidden{% endif %}>
+        <a class="cover" href="{{ a.url | relative_url }}" style="--cover: url('{{ cover | relative_url }}')"><span class="cover-title">{{ a.title | escape }}</span></a>
+        <div class="card-foot">
+          <span class="card-title">{{ a.title | escape }}</span>
+          <a class="read" href="{{ a.url | relative_url }}">{{ t.read | default: site.home.read_label | escape }}</a>
+        </div>
+      </article>
+    {% endfor %}
+
+    {% for p in programs %}
+      <article class="card card--software" data-cat="softwares" data-ts="{{ p.date | date: '%s' }}" data-series="" data-part="" data-tab-only>
+        <h3 class="software-title">{{ p.title | escape }}</h3>
+        <p class="software-desc">{{ p.description | escape }}</p>
+        <a class="software-btn" href="{{ p.url | relative_url }}">{{ t.visit_site | default: 'Visit site' }}</a>
+      </article>
+    {% endfor %}
+    <p id="empty" class="empty" hidden>{{ t.empty | default: 'No articles here yet.' }}</p>
+  </section>
+
+  <aside class="panel">
+    <div class="notices">
+      <h2 class="eyebrow">{{ t.notice_title | default: site.notice.title }}</h2>
+      <ul>
+        {% for n in notices %}
+          <li>{{ n | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="socials">
+      {% for s in site.socials %}
+        <a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.name }}"><img src="{{ site.socials_icon_url | replace: 'ICON', s.icon }}" alt="{{ s.name }}"></a>
+      {% endfor %}
+    </div>
+  </aside>
+</main>
+
+{%- if d.enabled and d.btc_address -%}
+<script src="{{ '/assets/js/qrcode.min.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/donate.js' | relative_url }}" defer></script>
+{%- endif -%}

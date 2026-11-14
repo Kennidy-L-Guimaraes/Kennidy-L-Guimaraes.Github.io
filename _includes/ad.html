@@ -1,0 +1,21 @@
+{%- if site.ad.enabled and site.ad.image and site.ad.url -%}
+  {%- if site.ad.image contains '://' -%}
+    {%- assign ad_image = site.ad.image -%}
+  {%- else -%}
+    {%- assign ad_image = site.ad.image | relative_url -%}
+  {%- endif -%}
+  {%- if site.ad.url contains '://' -%}
+    {%- assign ad_url = site.ad.url -%}
+  {%- else -%}
+    {%- assign ad_url = site.ad.url | relative_url -%}
+  {%- endif -%}
+  <aside class="ad-rail" aria-label="{{ site.ad.label | default: 'Advertisement' }}">
+    <div class="ad">
+      <a class="ad-image" href="{{ ad_url }}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+        <img src="{{ ad_image }}" alt="{{ site.ad.alt }}" loading="lazy">
+      </a>
+      <a class="ad-button" href="{{ ad_url }}" target="_blank" rel="noopener">{{ site.ad.text }}</a>
+      {%- if site.ad.label -%}<small class="ad-label">{{ site.ad.label }}</small>{%- endif -%}
+    </div>
+  </aside>
+{%- endif -%}

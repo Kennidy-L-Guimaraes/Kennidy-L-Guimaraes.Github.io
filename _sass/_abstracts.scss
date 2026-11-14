@@ -1,0 +1,16 @@
+// Variáveis e mixins de compilação (não geram CSS sozinhos).
+$container: 1200px;
+$gap: 1.5rem;
+$radius: 6px;
+$bp-tablet: 900px;
+$bp-phone: 480px;
+
+@mixin below($bp) {
+  @media (max-width: $bp) { @content; }
+}
+@mixin lift {
+  box-shadow: 0 1px 2px rgba(30, 22, 10, .06), 0 14px 30px -16px rgba(30, 22, 10, .4);
+}
+@mixin lift-sm {
+  box-shadow: 0 1px 2px rgba(30, 22, 10, .05), 0 6px 16px -10px rgba(30, 22, 10, .35);
+}

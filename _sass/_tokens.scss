@@ -1,0 +1,30 @@
+// Valores padrão. O _config.yml (colors / fonts) sobrescreve o que for preenchido lá.
+:root,
+[data-theme="light"] {
+  --bg: #f4efe6;
+  --surface: #fbf8f2;
+  --fg: #1c1a17;
+  --muted: #6f675b;
+  --line: #ddd3c0;
+  --accent: #b9302a;
+  --accent_fg: #ffffff;
+  --indigo: #1f3556;
+  --note: #f6efdd;
+}
+[data-theme="dark"] {
+  --bg: #14120f;
+  --surface: #1e1b17;
+  --fg: #ece5d6;
+  --muted: #a39a88;
+  --line: #38332a;
+  --accent: #d0453d;
+  --accent_fg: #ffffff;
+  --indigo: #3a5a8c;
+  --note: #2d2719;
+}
+:root {
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-accent: 'Zen Old Mincho', 'Noto Serif JP', serif;
+  --accent-spacing: .02em;
+}

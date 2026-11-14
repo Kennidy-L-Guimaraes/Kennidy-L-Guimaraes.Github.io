@@ -1,0 +1,47 @@
+@use "abstracts" as *;
+
+.panel {
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  background: var(--surface);
+
+  box-shadow: inset 0 3px 0 var(--accent), 0 14px 30px -16px rgba(30, 22, 10, .4);
+}
+.notices {
+  flex: 1;
+  padding: 1.3rem 1.2rem 1rem;
+
+  ul { margin: 0; padding: 0; list-style: none; }
+  li { position: relative; padding-left: 1rem; font-size: .93rem; }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .62em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+}
+.socials {
+  display: flex;
+  gap: .7rem;
+  justify-content: center;
+  padding: 1rem;
+
+  a {
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    background: var(--bg);
+    transition: transform .15s ease;
+
+    &:hover { transform: translateY(-2px); }
+  }
+  img { width: 1.2rem; height: 1.2rem; }
+}

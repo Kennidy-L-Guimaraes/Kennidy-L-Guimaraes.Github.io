@@ -1,71 +1,127 @@
 title: "Kennidy L. Guimarães"
-description: "Writer and Software Developer"
+tagline: "Programming, Networks, and Structure"
+lang: en-US
+default_lang: en
+url: "https://www.kennidylguimaraes.com"
 baseurl: ""
-url: "https://kennidylguimaraes.com"
-lang: "en-us"
+favicon: /assets/img/favicon.ico
 
 author:
-  name: "Kennidy L. Guimarães"
-  role: "Systems are not opinions. They are demonstrated"
-  github: "Kennidy-L-Guimaraes"
-  instagram: "Kennidy.L.Guimaraes"
-  twitter: "kennidyl.guimaraes"
-  linkedin: "kennidy-l-guimarães-2031aa389"
-  medium: "kennidylguimaraes"
-  avatar: "HarpyGriffinhead.png"
-  email: "me@kennidylguimaraes.com"
-  address: "Florianópolis, Brazil"
+  photo: /assets/img/foto.jpg
+  photo_position: "50% 30%"
+  link_label: "About me →"
+  link_url: /about/
+  seal: "/assets/img/HarpyGriffinhead.png"
 
-future: true
-markdown: kramdown
+home_ads:
+  - enabled: false
+    image: /assets/img/ad-home.jpg
+    alt: "Guide cover"
+    text: "Install Now"
+    url: "https://example.com/guide"
+    label: "Advertisement"
 
-plugins:
-  - jekyll-seo-tag
-  - jekyll-mermaid
-  - jekyll-sass-converter
-  - jekyll-feed
-  - jekyll-sitemap
-mermaid:
-  src: 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js'
+donate:
+  enabled: true
+  text: "If you enjoyed these texts or the software (Free And Open-Source) helped you, consider supporting this content with Bitcoin. If you can't, share it, or simply make use of Bitcoin."
+  btc_address: "bc1qk2xpvee9p8zhq35q0709tfy6ec700z5p5kkgwx"
+  lightning: "boyishepoch39@walletofsatoshi.com"  
 
-collections: # P/ Publications
-  softwares:
-    output: true
-    permalink: /p/:slug/ 
-  papers:
-    output: true
-    permalink: /p/:slug/
+menu:
+  - { key: cryptography,      label: "Cryptography", icon: "lock" }
+  - { key: bitcoin,           label: "Bitcoin",      icon: "bitcoin" }
+  - { key: architecture,      label: "Architecture", icon: "blueprint" }
+  - { key: ai,                label: "A.I",          icon: "artificial-intelligence" }
+  - { key: computer-networks, label: "Computer Networks",   icon: "nas" }
+  - { key: algorithms,        label: "Algorithms",   icon: "rubiks-cube" }
+  - { key: cyberop,           label: "CyberOP",      icon: "anonymous-mask" }
+  - { key: papers,            label: "Papers",       icon: "paper" }
+  - { key: softwares,         label: "Programs",     icon: "program" }
+
+icons8_url: "https://img.icons8.com/ios-filled/64/000000/ICON.png"
+
+home:
+  cards: 4
+  new_days: 7
+  badge_count: true
+  read_label: "Read now"
+
+og_image:
+  enabled: false
+  template: "https://SEU-SERVIDOR/api?title=TITLE"
+  fallback_bg: "/assets/img/card-bg.jpg"
+
+notice:
+  title: "Notices"
+  items:
+    - 'If you are looking for the Commentariums, Meditatios, and other materials (the old site), please visit [www.veridarium.com](https://www.veridarium.com){:target="_blank" rel="noopener"}.'
+
+socials:
+  - { name: GitHub,    url: "https://github.com/Kennidy-L-Guimaraes",         icon: "github" }
+  - { name: LinkedIn,  url: "https://linkedin.com/",                          icon: "linkedin" }
+  - { name: X,         url: "https://x.com/",                                 icon: "twitterx" }
+  - { name: Instagram, url: "https://www.instagram.com/kennidy.l.guimaraes/", icon: "instagram" }
+  - { name: Email,     url: "mailto:me@kennidylguimaraes.com",                icon: "gmail" }
+socials_icon_url: "https://img.icons8.com/ios-filled/48/000000/ICON.png"
+
+color_scheme: dark
+
+fonts:
+  url: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&family=Zen+Old+Mincho:wght@500;700&display=swap"
+  display: "'Cormorant Garamond', Georgia, serif"
+  body: "'Inter', system-ui, sans-serif"
+  accent: "'Zen Old Mincho', 'Noto Serif JP', serif"
+  accent_spacing: "0.02em"
+
+colors:
+  light:
+    bg: "#ffffff"
+    surface: "#ffffff"
+    fg: "#1c1a17"
+    muted: "#41403f"
+    line: "#b1aeae"
+    accent: "#b9302a"
+    accent_fg: "#dcdcdc"
+    indigo: "#4c0f1a"
+    note: "#f6efdf"
+  dark:
+    bg: "#14120f"
+    surface: "#1e1b17"
+    fg: "#ffffff"
+    muted: "#ffffff"
+    line: "#e2e2e2"
+    accent: "#d0453d"
+    accent_fg: "#ffffff"
+    indigo: "#4c0f1a"
+    note: "#1d1a16"
+
+collections:
   articles:
     output: true
-    permalink: /p/:slug/
-  commentarium:
+    permalink: /p/:name/
+  programs:
     output: true
-    permalink: /p/:slug/
-  topics:
-    output: true
-    permalink: /p/:slug/
+    permalink: /program/:name/
 
-  book_reviews:
-    output: true
-    permalink: /p/:slug/
- 
+defaults:
+  - scope: { path: "", type: articles }
+    values: { layout: articles }
 
-announcement:
-  active: false
-  show_on: all          # "home" ou "all" (todas as páginas)
-  label: "Important!"    # texto do badge vermelho
-  message: "Please note that this website is still under construction; it may undergo changes, present inconsistencies, and its articles may be redirected. Thank you for your understanding."
-  cta_text: "Get in touch"
-  cta_url: " "
+footer:
+  text: "Notes about programming"
+  note: "Jekyll"
+  links:
+    - { label: "about", url: "/about/" }
+    - { label: "RSS", url: "/feed.xml" } 
 
-topic_order:
- - Domain-Driven-Design
- - Network Protocols
- - algorithms
- - cryptography
- - bitcoin & blockchain
- - artificial intelligence
- - computer science
- - mathematics
- - Information Theory
- - OffTopic  
+kramdown:
+  syntax_highlighter_opts:
+    disable: true   
+
+ad:
+  enabled: false
+  image: /assets/img/ad.jpg
+  alt: "Free guide cover"
+  text: "Download now"
+  url: "https://example.com/download"
+  label: "Advertisement"    

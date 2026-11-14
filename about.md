@@ -1,19 +1,33 @@
 ---
-layout: about
-title: "About"
-description: "Kennidy L. Guimarães — software developer, writer, and Computer Science student. Focused on software architecture, domain modeling, cryptography, and technical education."
+layout: default
+title: About
+permalink: /about/
 ---
 
-<p>I am a software developer and writer, currently studying Computer Science at
-<a href="https://uniitalo.com.br/" target="_blank">Italo-Brazilian University</a>.
-My work is focused on the design and development of reliable software systems, with a particular interest in software architecture, domain modeling, and long-term system maintainability.</p>
+<main class="about" markdown="1">
 
-<p>I am particularly interested in applying architectural principles such as Clean Architecture, Domain-Driven Design (DDD), and the MVC pattern to build durable and well-structured systems. My projects focus on clear domain boundaries, separation of concerns, and maintainable codebases designed to evolve over time.</p>
+<img class="about-photo" src="{{ site.author.photo | relative_url }}" alt="{{ site.title }}" onerror="this.remove()">
 
-<p>Alongside my development work, I maintain academic interests in Mathematical Sciences, Cryptography, and Linguistics — areas that influence my approach to problem-solving, system design, and algorithmic thinking.</p>
+# About
 
-<p>Between 2022 and 2025, I worked as an instructor at a vocational school, where I taught introductory courses in Logic, Algorithms, and Artificial Intelligence. During this period, I also delivered lectures in public and state schools across Southern Brazil, including the Santa Catarina Military Police School.</p>
+Writer, Software Developer, and CyberOP (Cybersecurity Operations) Researcher. Among my projects are software solutions for machine management, such as **Basileus**, and data encryption, such as **Gladius**, both available as free and open-source software (FLOSS).
 
-<p>In 2025, I presented lectures on recent advances in Artificial Intelligence for students in the public education system, contributing to initiatives aimed at expanding access to technological education.</p>
+## What you will find here
 
-<p>Outside formal activities, I dedicate part of my time to research, technical writing, and software development.</p>
+- **Series**, such as *The Network Society*, which walk through a subject in order, from the first concept to the last.
+- **Standalone articles** on architecture, algorithms and security.
+- **Diagrams** drawn in Mermaid. Click any diagram to enlarge it.
+
+_The articles are written in English. The language switcher at the top translates the page automatically, so the translation may be imperfect._
+
+## Earlier writing
+
+My commentaries, meditations and other older material are on the previous site, [veridarium.com](https://www.veridarium.com){:target="_blank" rel="noopener"}.
+
+## Contact
+
+{% for s in site.socials %}[{{ s.name }}]({{ s.url }}){:target="_blank" rel="noopener"}{% unless forloop.last %} · {% endunless %}{% endfor %}
+
+You can also follow new articles through the [RSS feed]({{ '/feed.xml' | relative_url }}).
+
+</main>

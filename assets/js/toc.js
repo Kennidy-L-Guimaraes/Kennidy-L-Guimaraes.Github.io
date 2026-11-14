@@ -1,47 +1,61 @@
-// ============================================================
-// toc.js — Floating table of contents
-// Builds the TOC from h2 and h3 headings in #artigo-corpo.
-// Highlights the active section as the user scrolls.
-// Used on: article pages (article.html)
-// ============================================================
+(() => {
+  "use strict";
 
-(function () {
-    const corpo    = document.getElementById('artigo-corpo');
-    const tocLista = document.getElementById('toc-lista');
-    const toc      = document.getElementById('toc');
+  const article = document.querySelector("article.post");
+  const toc = document.querySelector("[data-toc]");
+  if (!article || !toc) return;
 
-    if (!corpo || !tocLista || !toc) return;
+  const headings = [...article.querySelectorAll("h2, h3")].filter(
+    (h) => !h.closest("[data-toc], .related, .series-nav")
+  );
+  if (headings.length < 3) return;
 
-    const headings = corpo.querySelectorAll('h2, h3');
-    if (headings.length < 3) return;
+  const used = new Set(
+    [...document.querySelectorAll("[id]")].map((el) => el.id)
+  );
 
-    // Show the TOC container
-    toc.style.display = 'block';
+  function ensureId(h) {
+    if (h.id) return h.id;
 
-    // Build TOC links from headings
-    headings.forEach(function (h, i) {
-        if (!h.id) h.id = 'secao-' + i;
+    const base =
+      h.textContent
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "") || "section";
 
-        const a       = document.createElement('a');
-        a.href        = '#' + h.id;
-        a.textContent = h.textContent;
-        a.className   = 'toc-item toc-' + h.tagName.toLowerCase();
+    let id = base;
+    let n = 2;
+    while (used.has(id)) id = `${base}-${n++}`;
 
-        a.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.getElementById(h.id).scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
+    used.add(id);
+    h.id = id;
+    return id;
+  }
 
-        tocLista.appendChild(a);
-    });
+  const root = document.createElement("ol");
 
-    // Highlight active section on scroll using IntersectionObserver
-    const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            const link = tocLista.querySelector('a[href="#' + entry.target.id + '"]');
-            if (link) link.classList.toggle('ativo', entry.isIntersecting);
-        });
-    }, { rootMargin: '-10% 0px -80% 0px' });
+  headings.forEach((h) => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = `#${ensureId(h)}`;
+    a.textContent = h.textContent.trim();
+    li.appendChild(a);
 
-    headings.forEach(function (h) { observer.observe(h); });
+    if (h.tagName === "H3" && root.lastElementChild) {
+      let sub = root.lastElementChild.querySelector("ol");
+      if (!sub) {
+        sub = document.createElement("ol");
+        root.lastElementChild.appendChild(sub);
+      }
+      sub.appendChild(li);
+    } else {
+      root.appendChild(li);
+    }
+  });
+
+  toc.appendChild(root);
+  toc.hidden = false;
 })();
