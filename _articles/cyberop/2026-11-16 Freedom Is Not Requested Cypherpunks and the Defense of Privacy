@@ -1,0 +1,41 @@
+---
+layout: article
+title: "Freedom Is Not Requested: Cypherpunks and the Defense of Privacy"
+subtitle: "Cryptography, Individual Sovereignty, and Freedom"
+description: "A manifesto on the Cypherpunk movement, individual freedom, cryptography, and the defense of privacy against institutional power."
+slug: freedom-is-not-requested-cypherpunks-and-the-defense-of-privacy
+date: 2026-11-16
+last_modified_at: 2026-11-16
+schema:
+  type: Article
+author: "Kennidy L. Guimarães"
+categories: [cyberop]
+tags: [Manifest, Critical]
+cover: /assets/img/covers/Les Trois Crânes, par Paul Cézanne.jpg
+
+---
+{% include ref-tooltips.html references=page.references %}
+
+People often say, or agree, that governments and states should have agencies and organizations dedicated to defending their freedoms. Armies are established and funded around this idea, along with the entire intelligence apparatus. However, a skeptical man tends to ask himself: what if, just suppose, these organizations and agencies turn against the very freedoms they swore to defend? If these freedoms are founded solely upon the law, then that same law can cease to serve as the foundation for these organizations and agencies, and, in opposition, those very agencies may adopt new values grounded in new laws that stand against our freedom.
+
+Thus, fighting against these organizations, or acting to protect legally sanctioned freedoms, automatically makes a man a supposed criminal. A just man will ask whether it is just for a man who defends freedoms, such as the right to privacy or the freedom to possess a secret, to be imprisoned or sanctioned. A legalist will accept that whatever is written in the law is "just," even if it infringes upon all his freedoms, because, to him, legality is the foundation of his own morality, and not the other way around.
+
+Among them, there are a few, not many, who, refusing to surrender their freedoms, will seek to resist by every means possible. Outnumbered, without the support of powerful organizations and standing against organizations that represent the power of the State, of entire governments, they sometimes represent the thin line between freedom and the struggle against it. They are called Cypherpunks, a name that reveals their form of resistance to such organizations (Cryptography Punk). Obviously, they are not limited to a simplistic view of resistance; that is, they are not blocking streets or destroying public property. Rather, behind monitors, behind their screens and mathematical blackboards, they build the tools necessary for every form of freedom.
+
+Without such contributions, we would not have encrypted emails, nor would we have cryptography to protect our secrets and our digital property.
+
+It is true that none of this would be denied to a government or its organizations, but only to the citizens who sustain the entire system, only to the citizens who pay for protection and for the protection of their freedoms. But where would freedom be if we cannot even possess a secret, or have the means to ensure the privacy of those secrets?
+
+When the only value recognized by a society of freedoms lies in the fact that they constitute a guarantee through the law, then those freedoms, to that society, are worth no more than the paper on which they were written. When the only way to defend them is through promises, then their defense is no more real than the good faith of the one making the promise. And that is a fragile and volatile foundation.
+
+When we say that we want privacy and freedom, we do not mean half-privacy, nor half-freedom. We certainly do not mean: "we want privacy only to the extent permitted by law or determined by a judge." We mean that we want total privacy, beyond the reach of a judge whom we do not trust, and in general. 
+
+<span class="citation">
+For if privacy is good, why do the State and its organizations act against it? And if it is bad, why do they make use of it?
+</span>
+
+Is it just that only they should have secrets, when this is natural to man? Or is it just that we should be constant targets of surveillance through their organizations?
+
+For this reason, now more than ever, we must fight and refuse to yield to attempts to undermine our freedoms and privacy. We must fight to ensure that what has been achieved is not rolled back. If the threat was once explicit and direct, today it is subtle, disguised, as always, behind the argument of protecting citizens' interests, fighting crime, and combating illegality.
+
+I am grateful to all the Cypherpunks and to the community that made privacy, cryptography, and personal independence possible: David Chaum, Hal Finney, Satoshi Nakamoto, Adam Back, Nick Szabo, Wei Dai, Phil Zimmermann, Eric Hughes, Timothy C. May, John Gilmore, and others.
