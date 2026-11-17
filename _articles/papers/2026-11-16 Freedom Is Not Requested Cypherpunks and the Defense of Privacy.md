@@ -9,7 +9,7 @@ last_modified_at: 2026-11-16
 schema:
   type: Article
 author: "Kennidy L. Guimarães"
-categories: [cyberop]
+categories: [papers]
 tags: [Manifest, Critical]
 cover: /assets/img/covers/Les Trois Crânes, par Paul Cézanne.jpg
 
